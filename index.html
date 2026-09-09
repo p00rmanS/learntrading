@@ -16,10 +16,16 @@
       <h1>The Tape Reader's<br><em>Notebook</em></h1>
       <p class="sub">A ground-up refresher on price action, volume, and market structure — before you touch a demo account again.</p>
     </div>
-    <div class="ticket">
-      <span>CME:BTC1!</span>
-      <span class="px dn">78,635</span>
-      <span class="dn">−1.77%</span>
+    <div class="masthead-controls">
+      <div class="ticket">
+        <span>CME:BTC1!</span>
+        <span class="px dn">78,635</span>
+        <span class="dn">−1.77%</span>
+      </div>
+      <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+        <span class="theme-toggle-icon" aria-hidden="true">◐</span>
+        <span class="theme-toggle-label">Theme</span>
+      </button>
     </div>
   </header>
 
@@ -60,6 +66,10 @@
 
   <nav class="rail" aria-label="Chapters">
     <div class="rail-head">Watchlist / Contents</div>
+    <div class="rail-progress">
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFill"></div></div>
+      <span id="progressLabel" class="mono">0 / 33 read</span>
+    </div>
     <ol>
       <li><a href="#letter"><span class="n mono">—</span> Before You Start</a></li>
       <li><a href="#candles"><span class="n mono">01</span> Candle Anatomy</a></li>
@@ -93,7 +103,8 @@
       <li><a href="#sessions"><span class="n mono">29</span> Trading Sessions</a></li>
       <li><a href="#confluence"><span class="n mono">30</span> Confluence</a></li>
       <li><a href="#quiz"><span class="n mono">31</span> Knowledge Check</a></li>
-      <li><a href="#glossary"><span class="n mono">32</span> Glossary</a></li>
+      <li><a href="#ichimoku"><span class="n mono">32</span> Ichimoku Cloud</a></li>
+      <li><a href="#glossary"><span class="n mono">33</span> Glossary</a></li>
     </ol>
   </nav>
 
@@ -101,7 +112,7 @@
 
     <!-- 01 CANDLES -->
     <section id="candles">
-      <div class="section-head"><span class="num">01</span><h2>Anatomy of a Candle</h2></div>
+      <div class="section-head"><span class="num">01</span><h2>Anatomy of a Candle</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="candles"><span>mark read</span></label></div>
       <p class="deck">Every candle is a four-number argument between buyers and sellers, settled over one time period: open, high, low, close.</p>
 
       <p>A candle isn't a shape — it's a compressed story. The <b>body</b> is the distance between open and close; the <b>wicks</b> (or shadows) are the high and low that price rejected before settling back inside the body. A long wick means price visited a level and got rejected from it hard. A tiny body with long wicks on both ends means neither side won — indecision.</p>
@@ -167,7 +178,7 @@
 
     <!-- 02 PATTERNS -->
     <section id="patterns">
-      <div class="section-head"><span class="num">02</span><h2>Candlestick Patterns Worth Knowing</h2></div>
+      <div class="section-head"><span class="num">02</span><h2>Candlestick Patterns Worth Knowing</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="patterns"><span>mark read</span></label></div>
       <p class="deck">A handful of shapes recur often enough to earn names. They mean nothing in isolation — context (trend, location, volume) is what makes them worth watching.</p>
 
       <div class="simple">
@@ -220,7 +231,7 @@
 
     <!-- 03 STRUCTURE -->
     <section id="structure">
-      <div class="section-head"><span class="num">03</span><h2>Trend &amp; Market Structure</h2></div>
+      <div class="section-head"><span class="num">03</span><h2>Trend &amp; Market Structure</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="structure"><span>mark read</span></label></div>
       <p class="deck">Trend isn't a slope you eyeball — it's a sequence of highs and lows you can point to.</p>
 
       <p>An <b>uptrend</b> is a series of higher highs (HH) and higher lows (HL): every pullback finds support above the last one. A <b>downtrend</b> is the mirror — lower highs (LH) and lower lows (LL). The market is only "trending" while that sequence keeps printing. The moment a higher-low fails to hold, or a lower-high gets broken, structure has shifted.</p>
@@ -271,7 +282,7 @@
 
     <!-- 04 S/R -->
     <section id="sr">
-      <div class="section-head"><span class="num">04</span><h2>Support &amp; Resistance</h2></div>
+      <div class="section-head"><span class="num">04</span><h2>Support &amp; Resistance</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="sr"><span>mark read</span></label></div>
       <p class="deck">Think in zones, not lines. Price rarely respects a level to the exact tick.</p>
 
       <p><b>Support</b> is a price area where buying pressure has repeatedly overwhelmed selling; <b>resistance</b> is the reverse. The more times a zone has been tested, the more traders are watching it — which is exactly why zones eventually break: everyone's stop or order is sitting in the same place. When a resistance zone finally breaks, it frequently flips and becomes support on the retest — <b>role reversal</b>, one of the most reliable structural ideas in price action.</p>
@@ -307,7 +318,7 @@
 
     <!-- 05 LIQUIDITY -->
     <section id="liquidity">
-      <div class="section-head"><span class="num">05</span><h2>Liquidity &amp; Stop Hunts</h2></div>
+      <div class="section-head"><span class="num">05</span><h2>Liquidity &amp; Stop Hunts</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="liquidity"><span>mark read</span></label></div>
       <p class="deck">Every obvious high or low has orders parked just beyond it &mdash; and price knows exactly where they're sitting.</p>
 
       <p>When two swing highs land at roughly the same price, everyone can see it &mdash; which is exactly the problem. Traders who sold at that level have stop-losses resting just above it. Breakout traders have buy-stop orders resting just above it too, ready to trigger the moment price finally clears the level. That whole cluster of resting orders is called <b>liquidity</b>. Large players often need a lot of opposing orders to fill their own size without moving price too far against themselves &mdash; and a cluster of stops is exactly that. It's common for price to wick briefly through an obvious high or low, trigger that resting liquidity, and then reverse hard back the other way.</p>
@@ -342,7 +353,7 @@
 
     <!-- 06 CHART PATTERNS -->
     <section id="chartpatterns">
-      <div class="section-head"><span class="num">06</span><h2>Chart Patterns</h2></div>
+      <div class="section-head"><span class="num">06</span><h2>Chart Patterns</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="chartpatterns"><span>mark read</span></label></div>
       <p class="deck">Zoom out from a single candle to a whole shape, and price tends to repeat a handful of them — because the crowd behind the tape repeats the same behaviors.</p>
 
       <p>These fall into three families. <b>Reversal patterns</b> (double top, head &amp; shoulders, and their inverses) mark a trend running out of energy and turning the other way. <b>Continuation patterns</b> (flags, pennants, rectangles) are pauses — the market catching its breath mid-trend before carrying on in the same direction. <b>Bilateral patterns</b> (triangles) can break either way — the shape itself doesn't tell you which, only that volatility is compressing before a decision.</p>
@@ -369,7 +380,7 @@
 
     <!-- 07 VOLUME -->
     <section id="volume">
-      <div class="section-head"><span class="num">07</span><h2>Reading Volume</h2></div>
+      <div class="section-head"><span class="num">07</span><h2>Reading Volume</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="volume"><span>mark read</span></label></div>
       <p class="deck">Price tells you what happened. Volume tells you how much conviction was behind it.</p>
 
       <p>A breakout on heavy volume means real participation pushed price through a level — it's more likely to hold. A breakout on thin volume is easier to fade; there may not be enough behind it to sustain the move. Watch for two recurring tells: <b>climax volume</b> (an extreme volume spike after an extended move, often marking exhaustion rather than continuation) and <b>declining volume on a pullback</b> (a healthy sign in a trend — the retracement lacks conviction, so the prior move is likely to resume).</p>
@@ -417,7 +428,7 @@
 
     <!-- 08 CME GAPS -->
     <section id="gaps">
-      <div class="section-head"><span class="num">08</span><h2>CME Gaps — Specific to Bitcoin Futures</h2></div>
+      <div class="section-head"><span class="num">08</span><h2>CME Gaps — Specific to Bitcoin Futures</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="gaps"><span>mark read</span></label></div>
       <p class="deck">This one matters directly for the chart you screenshotted: <span class="mono">CME:BTC1!</span> trades on exchange hours. Spot Bitcoin never sleeps.</p>
 
       <p>CME Bitcoin futures only trade roughly Sunday 5pm CT through Friday 4pm CT, with a short daily maintenance break. Spot Bitcoin trades 24/7/365 on crypto exchanges. If spot price moves meaningfully over a weekend while CME is closed, the futures chart reopens Sunday evening at wherever spot now sits — leaving a visible empty space on the candlestick chart between Friday's close and Sunday's open. That empty space is the <b>CME gap</b>.</p>
@@ -461,7 +472,7 @@
 
     <!-- 09 WYCKOFF -->
     <section id="wyckoff">
-      <div class="section-head"><span class="num">09</span><h2>Spotting Accumulation</h2></div>
+      <div class="section-head"><span class="num">09</span><h2>Spotting Accumulation</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="wyckoff"><span>mark read</span></label></div>
       <p class="deck">Big buyers can't fill a position in one candle without moving price against themselves — so they build it quietly, inside a range. Wyckoff's schematic is the classic map of what that looks like.</p>
 
       <p>After a hard decline, "smart money" accumulation often follows a recognizable rhythm: a climactic sell-off, a snap-back rally, a sideways range where supply is absorbed, one final shakeout below the range to trigger stops and grab liquidity, and then a break upward on expanding volume.</p>
@@ -518,7 +529,7 @@
 
     <!-- 10 MOVING AVERAGES & BOLLINGER BANDS -->
     <section id="mas">
-      <div class="section-head"><span class="num">10</span><h2>Moving Averages &amp; Bollinger Bands</h2></div>
+      <div class="section-head"><span class="num">10</span><h2>Moving Averages &amp; Bollinger Bands</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="mas"><span>mark read</span></label></div>
       <p class="deck">Two overlays worth turning on from that indicator search dialog you screenshotted. Both are just math on top of price — the skill is knowing what the math is telling you.</p>
 
       <p>A <b>moving average (MA)</b> is the average closing price over the last N candles, redrawn every candle so it "moves." It smooths out noise and shows you the trend without the zig-zag. <b>MA20</b> (roughly one trading month on a daily chart) tracks the short-term trend and reacts fast. <b>MA200</b> (roughly nine to ten months) is the slow one institutions watch as a line in the sand for the broader regime — price spending most of its time above MA200 is a structurally bullish market; below it, structurally bearish.</p>
@@ -579,7 +590,7 @@
 
     <!-- 11 FIBONACCI -->
     <section id="fibonacci">
-      <div class="section-head"><span class="num">11</span><h2>Fibonacci Retracement &amp; Extension</h2></div>
+      <div class="section-head"><span class="num">11</span><h2>Fibonacci Retracement &amp; Extension</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="fibonacci"><span>mark read</span></label></div>
       <p class="deck">A pullback almost never retraces 100% of a move &mdash; and certain partial levels keep getting tested, because enough traders are watching the same ones.</p>
 
       <p>Draw a line from a swing low to a swing high (in an uptrend) and a charting platform will divide that leg into ratios pulled from the Fibonacci sequence: 23.6%, 38.2%, 50%, 61.8%, and 78.6%. These become horizontal levels where a pullback often stalls before the trend resumes &mdash; the 61.8% zone in particular is nicknamed the <b>golden pocket</b>. Beyond the original high, <b>extension</b> levels like 127.2% and 161.8% mark where the next leg might reasonably run out of steam &mdash; useful as a rough profit-target zone, not an exact number.</p>
@@ -619,7 +630,7 @@
 
     <!-- 12 MOMENTUM -->
     <section id="momentum">
-      <div class="section-head"><span class="num">12</span><h2>Momentum: RSI &amp; MACD</h2></div>
+      <div class="section-head"><span class="num">12</span><h2>Momentum: RSI &amp; MACD</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="momentum"><span>mark read</span></label></div>
       <p class="deck">Price tells you where the market went. Momentum tells you how hard it's still trying to get there.</p>
 
       <p><b>RSI</b> (Relative Strength Index) compares the size of recent up-candles to recent down-candles and scales the result from 0 to 100. Above 70 is usually called overbought, below 30 oversold &mdash; but in a strong trend RSI can sit pinned near an extreme for a long stretch, so treat those zones as "worth watching," not an automatic signal. <b>MACD</b> plots the gap between a fast and a slow moving average (12 and 26 periods) against its own 9-period average &mdash; when the two cross, or when the whole thing crosses zero, momentum is shifting direction.</p>
@@ -660,7 +671,7 @@
 
     <!-- 13 TIMEFRAMES -->
     <section id="timeframes">
-      <div class="section-head"><span class="num">13</span><h2>Timeframes &amp; Top-Down Analysis</h2></div>
+      <div class="section-head"><span class="num">13</span><h2>Timeframes &amp; Top-Down Analysis</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="timeframes"><span>mark read</span></label></div>
       <p class="deck">The same candle can be an entire trend on one timeframe and a single blip on another &mdash; always know which map you're holding.</p>
 
       <p>Work top-down, not bottom-up. Start on a higher timeframe (Daily or Weekly) to read the dominant trend and mark the major support/resistance zones &mdash; this is your <b>bias</b>. Drop to a middle timeframe (4H or 1H) to see the current structure and whatever pattern is forming inside that bias. Only then drop to a lower timeframe (15m or 5m) to fine-tune exactly where you'd enter. The lower timeframe's job is timing, never overruling the direction the higher timeframe already set.</p>
@@ -706,7 +717,7 @@
 
     <!-- 14 ORDER TYPES & FUTURES MECHANICS -->
     <section id="ordertypes">
-      <div class="section-head"><span class="num">14</span><h2>Order Types &amp; Futures Mechanics</h2></div>
+      <div class="section-head"><span class="num">14</span><h2>Order Types &amp; Futures Mechanics</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="ordertypes"><span>mark read</span></label></div>
       <p class="deck">Two different things worth knowing cold: the buttons you'll actually click, and what makes a continuous futures symbol like BTC1! behave the way it does.</p>
 
       <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3.5 my-5">
@@ -745,7 +756,7 @@
 
     <!-- 15 TRADING STYLES -->
     <section id="styles">
-      <div class="section-head"><span class="num">15</span><h2>Trading Styles</h2></div>
+      <div class="section-head"><span class="num">15</span><h2>Trading Styles</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="styles"><span>mark read</span></label></div>
       <p class="deck">How long you hold a trade should be a decision you made on purpose, not an accident of whatever chart happened to be open.</p>
 
       <div class="overflow-x-auto my-5">
@@ -772,7 +783,7 @@
 
     <!-- 16 PSYCHOLOGY -->
     <section id="psychology">
-      <div class="section-head"><span class="num">16</span><h2>Trading Psychology</h2></div>
+      <div class="section-head"><span class="num">16</span><h2>Trading Psychology</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="psychology"><span>mark read</span></label></div>
       <p class="deck">The chart doesn't move your account balance. Your reaction to the chart does.</p>
 
       <p>Every rule in the "Before You Start" letter exists to fight one of a handful of predictable failure modes. Here they are by name, so you can catch yourself mid-mistake instead of only in the postmortem.</p>
@@ -813,7 +824,7 @@
 
     <!-- 17 POSITION SIZING & RISK OF RUIN -->
     <section id="risk">
-      <div class="section-head"><span class="num">17</span><h2>Position Sizing &amp; Risk of Ruin</h2></div>
+      <div class="section-head"><span class="num">17</span><h2>Position Sizing &amp; Risk of Ruin</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="risk"><span>mark read</span></label></div>
       <p class="deck">A profitable strategy can still bust an account if the bet size is wrong. This is the math the "1% rule" in the mentor letter is actually protecting you from.</p>
 
       <p>Even a strategy with a real edge will lose several trades in a row sometimes &mdash; that's normal, not a sign something's broken. What matters is whether your account can survive that losing streak. Risking a small, fixed percentage per trade means a bad stretch dents the account; risking a large percentage means the same stretch can wipe it out, even if the strategy itself was fine the whole time.</p>
@@ -879,7 +890,7 @@
 
     <!-- 18 LEVERAGE & MARGIN -->
     <section id="leverage">
-      <div class="section-head"><span class="num">18</span><h2>Leverage &amp; Margin</h2></div>
+      <div class="section-head"><span class="num">18</span><h2>Leverage &amp; Margin</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="leverage"><span>mark read</span></label></div>
       <p class="deck">Futures are traded on margin by default &mdash; a small deposit controls a much bigger position. That cuts both ways, always.</p>
 
       <p><b>Leverage</b> means a small amount of your own money (the <b>margin</b>) controls a much larger position. It doesn't create profit out of nothing &mdash; it multiplies whatever the underlying price move already was, gains and losses alike. <b>Maintenance margin</b> is the minimum equity your broker requires you to keep in the position; fall below it and you get a <b>margin call</b> (add funds or the position gets force-closed) or outright <b>liquidation</b> (the position is closed for you, often at a worse price than you'd have chosen).</p>
@@ -916,7 +927,7 @@
 
     <!-- 19 VWAP -->
     <section id="vwap">
-      <div class="section-head"><span class="num">19</span><h2>VWAP (Volume-Weighted Average Price)</h2></div>
+      <div class="section-head"><span class="num">19</span><h2>VWAP (Volume-Weighted Average Price)</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="vwap"><span>mark read</span></label></div>
       <p class="deck">The average price everyone actually traded at today, weighted by how much volume happened at each level &mdash; not just a plain average of the high and low.</p>
 
       <p>VWAP resets at the start of each session and updates candle by candle, weighting each price by how much volume traded there. Institutions often use it as a fairness benchmark &mdash; trying to buy below VWAP or sell above it means you got a better-than-average deal for the session. As a read: price consistently above VWAP suggests buyers are in control for the day so far; consistently below suggests sellers are.</p>
@@ -945,7 +956,7 @@
 
     <!-- 20 ORDER BOOK & BID-ASK SPREAD -->
     <section id="orderbook">
-      <div class="section-head"><span class="num">20</span><h2>Order Book &amp; Bid-Ask Spread</h2></div>
+      <div class="section-head"><span class="num">20</span><h2>Order Book &amp; Bid-Ask Spread</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="orderbook"><span>mark read</span></label></div>
       <p class="deck">Behind every candle is a live list of everyone's current offers &mdash; the order book is where that list lives.</p>
 
       <p>The order book shows resting <b>bids</b> (buy orders) below the current price and resting <b>asks</b> or offers (sell orders) above it. The highest bid and the lowest ask define the <b>spread</b> &mdash; the small gap you effectively pay to trade immediately with a market order instead of waiting with a limit order. A "thick" book with large size stacked near the current price is liquid and harder to move; a "thin" book can let a modest order jump price several ticks.</p>
@@ -980,7 +991,7 @@
 
     <!-- 21 EXPECTANCY -->
     <section id="expectancy">
-      <div class="section-head"><span class="num">21</span><h2>Expectancy: Do You Have an Edge?</h2></div>
+      <div class="section-head"><span class="num">21</span><h2>Expectancy: Do You Have an Edge?</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="expectancy"><span>mark read</span></label></div>
       <p class="deck">Win rate alone tells you almost nothing. What matters is win rate multiplied by how big your average win and loss actually are.</p>
 
       <p>Expectancy per trade, in units of risk (R): <span class="mono">(Win% &times; Avg Win) &minus; (Loss% &times; Avg Loss)</span>. A system that wins less than half the time can still be strongly profitable if its winners are big enough relative to its losers &mdash; and a system that wins most of the time can quietly lose money if its rare losses are large enough.</p>
@@ -1009,7 +1020,7 @@
 
     <!-- 22 MACRO & CORRELATION -->
     <section id="macro">
-      <div class="section-head"><span class="num">22</span><h2>Macro Context &amp; Correlation</h2></div>
+      <div class="section-head"><span class="num">22</span><h2>Macro Context &amp; Correlation</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="macro"><span>mark read</span></label></div>
       <p class="deck">BTC1! doesn't trade in a vacuum &mdash; the watchlist panel you started with (SPX, NDQ, DJI, VIX, DXY) sitting right above your chart wasn't decoration.</p>
 
       <p>Since institutional futures adoption, Bitcoin has increasingly traded like a high-beta risk asset alongside stocks &mdash; often rising and falling with the Nasdaq/S&amp;P during broad "risk-on" and "risk-off" swings. <b>DXY</b> (the US Dollar Index) frequently moves opposite to risk assets: a strong dollar (risk-off) often coincides with BTC weakness, a weak dollar (risk-on) often coincides with BTC strength. <b>VIX</b>, the "fear index," spiking usually means broad de-risking across markets &mdash; BTC included, despite its "digital gold" reputation not always holding up in practice during those moments.</p>
@@ -1039,7 +1050,7 @@
 
     <!-- 23 NEWS EVENTS & ECONOMIC CALENDAR -->
     <section id="news">
-      <div class="section-head"><span class="num">23</span><h2>News Events &amp; the Economic Calendar</h2></div>
+      <div class="section-head"><span class="num">23</span><h2>News Events &amp; the Economic Calendar</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="news"><span>mark read</span></label></div>
       <p class="deck">A perfect technical setup can still get blown through in seconds by a scheduled headline &mdash; know when those headlines are coming.</p>
 
       <p>Major scheduled releases &mdash; the Fed's rate decision (FOMC), inflation data (CPI), and the monthly US jobs report (NFP) &mdash; routinely cause sharp volatility spikes and temporarily wider spreads (Section 20) across markets, BTC included. None of this shows up on a price chart until it happens. Checking a free economic calendar for the week takes a minute and can save you from holding a position straight into a coin-flip headline.</p>
@@ -1065,7 +1076,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
     <!-- 24 READ THIS CHART -->
     <section id="chart">
-      <div class="section-head"><span class="num">24</span><h2>Practice: Read Your Own Chart</h2></div>
+      <div class="section-head"><span class="num">24</span><h2>Practice: Read Your Own Chart</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="chart"><span>mark read</span></label></div>
       <p class="deck">This is your actual BTC1! daily chart, with EMA200, EMA20, and Bollinger Bands added — annotated with what actually matters on it. Read as an exercise, not a call on where price goes next.</p>
 
       <figure>
@@ -1124,7 +1135,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
     <!-- 25 TRADING PLAN -->
     <section id="plan">
-      <div class="section-head"><span class="num">25</span><h2>Your Trading Plan</h2></div>
+      <div class="section-head"><span class="num">25</span><h2>Your Trading Plan</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="plan"><span>mark read</span></label></div>
       <p class="deck">Write your rules down once, while you're calm &mdash; so a stressed, in-the-moment version of you has something to check against instead of improvising.</p>
 
       <p>A trading plan is different from the journal in Section 26: the journal records what you actually did, trade by trade. This plan records what you intend to do, decided in advance, so every trade can be judged against a standard that existed before you ever opened the chart.</p>
@@ -1145,7 +1156,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
     <!-- 26 JOURNAL -->
     <section id="journal">
-      <div class="section-head"><span class="num">26</span><h2>Demo Trade Journal</h2></div>
+      <div class="section-head"><span class="num">26</span><h2>Demo Trade Journal</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="journal"><span>mark read</span></label></div>
       <p class="deck">Relearning on a demo only works if you review it. Log every idea here — saved locally in this browser, just for you.</p>
 
       <form class="journal-form" id="journalForm">
@@ -1169,7 +1180,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
     <!-- 27 ELLIOTT WAVE -->
     <section id="elliott">
-      <div class="section-head"><span class="num">27</span><h2>Elliott Wave Theory</h2></div>
+      <div class="section-head"><span class="num">27</span><h2>Elliott Wave Theory</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="elliott"><span>mark read</span></label></div>
       <p class="deck">A trend rarely moves in one straight push &mdash; it tends to unfold in a repeating rhythm of five waves forward, three waves back.</p>
 
       <p>The theory: a trend advances in five waves (1&ndash;2&ndash;3&ndash;4&ndash;5), where waves 1, 3, and 5 move with the trend and waves 2 and 4 are corrective pullbacks against it &mdash; wave 3 is typically the longest and strongest. That five-wave move is then followed by a three-wave correction (A&ndash;B&ndash;C) against the whole thing, before the next five-wave sequence can begin. Two loose rules traders lean on: wave 2 shouldn't retrace past the very start of wave 1, and wave 4 usually shouldn't trade back into wave 1's price territory.</p>
@@ -1207,7 +1218,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
     <!-- 28 HARMONIC PATTERNS -->
     <section id="harmonics">
-      <div class="section-head"><span class="num">28</span><h2>Harmonic Patterns</h2></div>
+      <div class="section-head"><span class="num">28</span><h2>Harmonic Patterns</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="harmonics"><span>mark read</span></label></div>
       <p class="deck">A more precise cousin of the Fibonacci tool from Section 11 &mdash; patterns built from exact, measured ratios instead of a general shape.</p>
 
       <p>Harmonic patterns (Gartley, Bat, Butterfly, Crab, and others) map a five-point swing labeled X-A-B-C-D, where each leg must retrace or extend the previous one by a specific Fibonacci ratio. A classic Gartley, for example, wants point B to retrace close to 61.8% of the X-A leg, and point D to complete around a 78.6% retracement of that same leg &mdash; where several of those ratios converge is called the <b>PRZ</b>, the Potential Reversal Zone.</p>
@@ -1241,7 +1252,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
     <!-- 29 TRADING SESSIONS -->
     <section id="sessions">
-      <div class="section-head"><span class="num">29</span><h2>Trading Sessions &amp; Best Times to Trade</h2></div>
+      <div class="section-head"><span class="num">29</span><h2>Trading Sessions &amp; Best Times to Trade</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="sessions"><span>mark read</span></label></div>
       <p class="deck">Crypto trades around the clock, but activity isn't spread evenly across the day &mdash; some hours are the mall at closing time, others are the mall on Black Friday.</p>
 
       <p>Three broad sessions drive global volume: <b>Asian</b>, <b>London</b>, and <b>New York</b>. Volatility tends to pick up at each session's open and especially during the <b>London/New York overlap</b>, when both major regions are active at once. The quiet stretch in between &mdash; late in the US afternoon into the early Asian session &mdash; often produces thinner, choppier price action that's easy to misread as a real move.</p>
@@ -1273,7 +1284,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
     <!-- 30 CONFLUENCE -->
     <section id="confluence">
-      <div class="section-head"><span class="num">30</span><h2>Confluence: Stacking Your Edges</h2></div>
+      <div class="section-head"><span class="num">30</span><h2>Confluence: Stacking Your Edges</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="confluence"><span>mark read</span></label></div>
       <p class="deck">No single tool in this notebook is reliable by itself. The real signal shows up when several of them agree, at the same price, without you forcing it.</p>
 
       <p><b>Confluence</b> is what it's called when independent tools &mdash; a support zone, a Fibonacci level, a moving average, a volume signature, a candle pattern &mdash; all point to the same price area at the same time. None of them is magic on its own; what makes a zone worth real attention is several unrelated methods landing in the same place without you having to stretch to make them agree.</p>
@@ -1303,7 +1314,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
     <!-- 31 KNOWLEDGE CHECK -->
     <section id="quiz">
-      <div class="section-head"><span class="num">31</span><h2>Knowledge Check</h2></div>
+      <div class="section-head"><span class="num">31</span><h2>Knowledge Check</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="quiz"><span>mark read</span></label></div>
       <p class="deck">Ten questions pulled from across the notebook. No pressure &mdash; wrong answers just point you back to the section worth a re-read.</p>
 
       <div id="quizForm">
@@ -1383,9 +1394,45 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
       </div>
     </section>
 
-    <!-- 32 GLOSSARY -->
+    <!-- 32 ICHIMOKU CLOUD -->
+    <section id="ichimoku">
+      <div class="section-head"><span class="num">32</span><h2>Ichimoku Cloud</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="ichimoku"><span>mark read</span></label></div>
+      <p class="deck">Every tool so far describes the past or the present. This is the one indicator in the notebook that draws a projection of the future, right on the chart.</p>
+
+      <p>Ichimoku plots five lines from simple high/low midpoints: the fast <b>Tenkan-sen</b> (9-period) and slower <b>Kijun-sen</b> (26-period) behave like the MA crossover from Section 10 — a Tenkan cross above Kijun is a similar signal to a golden cross. The other two, <b>Senkou Span A</b> and <b>Senkou Span B</b>, are plotted <i>26 periods ahead</i> of price, and the shaded area between them is the <b>Kumo</b>, or cloud. Price trading above the cloud is a bullish regime, below it bearish, and inside it is exactly what it looks like — unresolved chop. A thick cloud marks a strong support/resistance zone; a thin one breaks easily.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 260" role="img" aria-label="A price line ending at the present moment, with a shaded cloud formed between two lines that continues on ahead of price into projected future space, where price above the cloud is labeled bullish.">
+          <line x1="0" y1="235" x2="640" y2="235" stroke="currentColor" stroke-opacity="0.2"/>
+          <polygon points="20,190 150,160 300,140 460,110 620,90 620,160 460,175 300,190 150,200 20,210" fill="var(--bull)" opacity="0.18"/>
+          <polyline points="20,190 150,160 300,140 460,110 620,90" fill="none" stroke="var(--bull)" stroke-width="1.5" stroke-opacity="0.7"/>
+          <polyline points="20,210 150,200 300,190 460,175 620,160" fill="none" stroke="var(--bear)" stroke-width="1.5" stroke-opacity="0.7"/>
+          <text x="540" y="128" text-anchor="middle" class="mono" font-size="11" fill="var(--ink-soft)">Kumo (cloud)</text>
+
+          <polyline points="20,150 100,130 180,155 260,100 340,120 400,90 460,105" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="460" cy="105" r="4" fill="currentColor"/>
+
+          <line x1="460" y1="10" x2="460" y2="230" stroke="currentColor" stroke-opacity="0.35" stroke-dasharray="3 4"/>
+          <text x="460" y="248" text-anchor="middle" class="mono" font-size="10">now</text>
+          <text x="540" y="70" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)" font-weight="700">price above cloud = bullish</text>
+          <text x="290" y="248" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">history</text>
+          <text x="560" y="248" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">projected 26 periods ahead</text>
+        </svg>
+        <figcaption>The cloud keeps extending to the right of "now" because Span A and B are calculated from today's data but plotted 26 periods into the future — a support/resistance zone the chart is showing you before price ever gets there.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Every other tool in this notebook only tells you about the past or right now — like a weather report. Ichimoku's cloud is more like a forecast: it draws the expected "weather system" for the days ahead, based on today's pattern. Clear skies above the cloud means bullish, storms below it mean bearish, and fog inside it means nobody can tell yet.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Lahat ng ibang tool sa notebook na ito ay tungkol lamang sa nakaraan o kasalukuyan — parang weather report. Ang ulap ng Ichimoku ay mas parang forecast — ipinapakita nito ang inaasahang "sistema ng panahon" sa mga susunod na araw, batay sa pattern ngayon. Malinaw na kalangitan sa itaas ng ulap ibig sabihin bullish, bagyo sa ilalim nito ibig sabihin bearish, at ulap sa gitna ibig sabihin wala pang malinaw.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Ichimoku is a complete system on its own — some traders use only its five lines and nothing else. Treat it here as one more input for the Section 30 confluence check, not a replacement for everything before it.</div>
+    </section>
+
+    <!-- 33 GLOSSARY -->
     <section id="glossary">
-      <div class="section-head"><span class="num">32</span><h2>Glossary</h2></div>
+      <div class="section-head"><span class="num">33</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -1424,6 +1471,8 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
         <div><dt>Harmonic Pattern</dt><dd>A precise XABCD price structure where each leg matches a specific Fibonacci ratio, pointing to a Potential Reversal Zone (PRZ).</dd></div>
         <div><dt>Trading Session</dt><dd>One of the three broad global trading windows — Asian, London, New York — whose overlaps typically bring the highest volume and volatility.</dd></div>
         <div><dt>Confluence</dt><dd>Multiple independent tools (a zone, a fib level, an average, a volume signature) all pointing to the same price area at once — the basis for a higher-conviction read.</dd></div>
+        <div><dt>Ichimoku Cloud (Kumo)</dt><dd>A five-line indicator whose Senkou Span A/B lines are plotted 26 periods ahead, shading a projected support/resistance zone; price above it is bullish, below bearish, inside it unresolved.</dd></div>
+        <div><dt>Tenkan-sen / Kijun-sen</dt><dd>Ichimoku's fast (9-period) and slow (26-period) midpoint lines — their crossover behaves like the MA golden/death cross from Section 10.</dd></div>
       </dl>
     </section>
 

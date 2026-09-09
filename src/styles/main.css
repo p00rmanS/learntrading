@@ -200,6 +200,36 @@ a{color:var(--accent);}
 .ticket .up{color:var(--bull);}
 .ticket .dn{color:var(--bear);}
 
+/* ---- masthead controls / theme toggle ---- */
+.masthead-controls{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.theme-toggle{
+  display:flex; align-items:center; gap:7px;
+  font-family:"IBM Plex Mono",monospace; font-size:12px;
+  border:1px solid var(--rule-strong); background:var(--panel);
+  color:var(--ink); padding:9px 12px; border-radius:2px;
+  cursor:pointer; box-shadow:var(--shadow);
+}
+.theme-toggle:hover{background:var(--panel-2);}
+.theme-toggle-icon{font-size:14px; color:var(--accent);}
+
+/* ---- nav rail progress ---- */
+.rail-progress{padding:10px 12px; border-bottom:1px solid var(--rule); background:var(--panel-2);}
+.rail-progress-track{height:6px; border-radius:3px; background:var(--rule); overflow:hidden; margin-bottom:6px;}
+.rail-progress-fill{height:100%; width:0%; background:var(--bull); transition:width .2s;}
+.rail-progress span{font-size:10.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em;}
+
+/* ---- mark-as-read checkbox ---- */
+.mark-read{
+  margin-left:auto;
+  display:flex; align-items:center; gap:6px;
+  font-family:"IBM Plex Mono",monospace; font-size:10.5px;
+  text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft);
+  cursor:pointer; white-space:nowrap;
+}
+.mark-read input{accent-color:var(--bull); cursor:pointer;}
+.section-head{flex-wrap:wrap;}
+section.is-read .section-head .num{color:var(--bull);}
+
 /* ---- nav rail (watchlist style) ---- */
 .rail{
   align-self:start;
