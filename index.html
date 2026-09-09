@@ -1,0 +1,1439 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Tape Reader's Notebook</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Archivo:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/src/styles/main.css">
+</head>
+<body>
+<div class="sheet">
+
+  <header class="masthead">
+    <div>
+      <p class="kicker">Field Notes &middot; Vol. 1 &middot; Reading the Tape</p>
+      <h1>The Tape Reader's<br><em>Notebook</em></h1>
+      <p class="sub">A ground-up refresher on price action, volume, and market structure — before you touch a demo account again.</p>
+    </div>
+    <div class="ticket">
+      <span>CME:BTC1!</span>
+      <span class="px dn">78,635</span>
+      <span class="dn">−1.77%</span>
+    </div>
+  </header>
+
+  <section class="letter" id="letter">
+    <p class="kicker">Before You Start</p>
+    <h2>A Word From Your Mentor</h2>
+    <p class="open">Two years in, and you chose to come back to page one on purpose. That's rarer than it sounds — most people who lose money trading just change the symbol and repeat the same mistake faster. Read this once now, and again in three months when you've forgotten it.</p>
+
+    <p>Every section in this notebook is about reading price — candles, structure, volume, gaps. None of it will save you if your size is wrong. Traders don't survive because they spot the best setups; they survive because they lose small enough, often enough, that one good trade erases five bad ones. Risk management isn't the boring chapter before the real trading starts. It <b>is</b> the trading.</p>
+
+    <div class="overflow-x-auto my-5">
+      <table>
+        <caption style="text-align:left; font-family:'IBM Plex Mono',monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft); margin-bottom:8px; caption-side:top;">Quick math — contract specs to size against</caption>
+        <thead><tr><th>Contract</th><th>Size</th><th>Tick</th><th>Tick value</th></tr></thead>
+        <tbody>
+          <tr><td>Bitcoin Futures <span class="mono">(BTC)</span></td><td class="mono">5 BTC</td><td class="mono">$5 / BTC</td><td class="mono">$25</td></tr>
+          <tr><td>Micro Bitcoin Futures <span class="mono">(MBT)</span></td><td class="mono">0.1 BTC</td><td class="mono">$5 / BTC</td><td class="mono">$0.50</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:14px; color:var(--ink-soft);">Worked example, risking 1% of a $10,000 demo account with a 500-point stop on MBT: risk budget is $100; each MBT contract risks $500 &times; 0.1 = $50 at that stop distance; $100 &divide; $50 = <b>2 contracts</b>, max. Confirm current specs with your broker before sizing anything for real — they do change.</p>
+
+    <p>Grade trades on process, not outcome. A trade you sized correctly, stopped correctly, and still lost is a <i>good</i> trade — journal it that way. A trade that made money because you moved your stop or skipped your checklist is a bad trade wearing a green number. Grade outcomes only, and you'll reinforce the exact habits that eventually blow up an account.</p>
+
+    <p>Demo will teach you mechanics — reading structure, drawing zones, running the Section 24 checklist until it's automatic. It won't teach you what it feels like to watch real money move against you. That's not a flaw in the exercise, just a limit to know going in: when you eventually go live, size so small it feels almost pointless. You're testing discipline under real emotion first, not trying to make money yet.</p>
+
+    <p>Last thing, before your first demo trade: open Section 26 and write one entry dated today that isn't a trade — a postmortem. What actually went wrong the first time around? Undersized stops, no plan, revenge trades after a loss? Be specific. Skip this and you risk relearning the chart perfectly while carrying forward the exact habit that ends an account.</p>
+
+    <div class="rules">
+      <div class="rule-card"><span class="num">01</span><p>Risk ≤1% per trade. No exceptions, no "just this once."</p></div>
+      <div class="rule-card"><span class="num">02</span><p>Stop-loss set before entry. If you can't say where you're wrong, you don't have a trade.</p></div>
+      <div class="rule-card"><span class="num">03</span><p>Two losses ends the trading day. Walk away — don't try to win it back.</p></div>
+      <div class="rule-card"><span class="num">04</span><p>No trade without a written reason. Can't fill out the Section 24 checklist? That's a guess, not a setup.</p></div>
+    </div>
+
+    <div class="sig"><span>— written for you, before the first demo trade</span><span>2026-09-07</span></div>
+  </section>
+
+  <nav class="rail" aria-label="Chapters">
+    <div class="rail-head">Watchlist / Contents</div>
+    <ol>
+      <li><a href="#letter"><span class="n mono">—</span> Before You Start</a></li>
+      <li><a href="#candles"><span class="n mono">01</span> Candle Anatomy</a></li>
+      <li><a href="#patterns"><span class="n mono">02</span> Candle Patterns</a></li>
+      <li><a href="#structure"><span class="n mono">03</span> Trend &amp; Structure</a></li>
+      <li><a href="#sr"><span class="n mono">04</span> Support &amp; Resistance</a></li>
+      <li><a href="#liquidity"><span class="n mono">05</span> Liquidity &amp; Stop Hunts</a></li>
+      <li><a href="#chartpatterns"><span class="n mono">06</span> Chart Patterns</a></li>
+      <li><a href="#volume"><span class="n mono">07</span> Reading Volume</a></li>
+      <li><a href="#gaps"><span class="n mono">08</span> CME Gaps</a></li>
+      <li><a href="#wyckoff"><span class="n mono">09</span> Accumulation</a></li>
+      <li><a href="#mas"><span class="n mono">10</span> Moving Averages &amp; Bands</a></li>
+      <li><a href="#fibonacci"><span class="n mono">11</span> Fibonacci</a></li>
+      <li><a href="#momentum"><span class="n mono">12</span> RSI &amp; MACD</a></li>
+      <li><a href="#timeframes"><span class="n mono">13</span> Timeframes</a></li>
+      <li><a href="#ordertypes"><span class="n mono">14</span> Orders &amp; Futures</a></li>
+      <li><a href="#styles"><span class="n mono">15</span> Trading Styles</a></li>
+      <li><a href="#psychology"><span class="n mono">16</span> Psychology</a></li>
+      <li><a href="#risk"><span class="n mono">17</span> Position Sizing</a></li>
+      <li><a href="#leverage"><span class="n mono">18</span> Leverage &amp; Margin</a></li>
+      <li><a href="#vwap"><span class="n mono">19</span> VWAP</a></li>
+      <li><a href="#orderbook"><span class="n mono">20</span> Order Book</a></li>
+      <li><a href="#expectancy"><span class="n mono">21</span> Expectancy</a></li>
+      <li><a href="#macro"><span class="n mono">22</span> Macro &amp; Correlation</a></li>
+      <li><a href="#news"><span class="n mono">23</span> News Events</a></li>
+      <li><a href="#chart"><span class="n mono">24</span> Read This Chart</a></li>
+      <li><a href="#plan"><span class="n mono">25</span> Trading Plan</a></li>
+      <li><a href="#journal"><span class="n mono">26</span> Demo Journal</a></li>
+      <li><a href="#elliott"><span class="n mono">27</span> Elliott Wave</a></li>
+      <li><a href="#harmonics"><span class="n mono">28</span> Harmonic Patterns</a></li>
+      <li><a href="#sessions"><span class="n mono">29</span> Trading Sessions</a></li>
+      <li><a href="#confluence"><span class="n mono">30</span> Confluence</a></li>
+      <li><a href="#quiz"><span class="n mono">31</span> Knowledge Check</a></li>
+      <li><a href="#glossary"><span class="n mono">32</span> Glossary</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <!-- 01 CANDLES -->
+    <section id="candles">
+      <div class="section-head"><span class="num">01</span><h2>Anatomy of a Candle</h2></div>
+      <p class="deck">Every candle is a four-number argument between buyers and sellers, settled over one time period: open, high, low, close.</p>
+
+      <p>A candle isn't a shape — it's a compressed story. The <b>body</b> is the distance between open and close; the <b>wicks</b> (or shadows) are the high and low that price rejected before settling back inside the body. A long wick means price visited a level and got rejected from it hard. A tiny body with long wicks on both ends means neither side won — indecision.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Think of a candle like a report card for one day of tug-of-war between Team Buyers and Team Sellers. The fat middle part shows who ended up winning and by how much. The thin lines poking out the top and bottom show how far each team got pulled before getting yanked back.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang score card ng laban ng bumibili (buyer) at nagbebenta (seller) sa loob ng isang araw. Kung berde, nanalo yung bumibili. Kung pula, nanalo yung nagbenta. Yung manipis na linya sa taas at baba parang tug-of-war — may sandaling natulak sila palayo pero nabawi rin.</div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 560 260" role="img" aria-label="Diagram of a bullish candle and a bearish candle, each labeled with open, high, low, close, body, and wick.">
+          <line x1="40" y1="20" x2="40" y2="230" stroke="currentColor" stroke-opacity="0.15"/>
+          <line x1="0" y1="230" x2="560" y2="230" stroke="currentColor" stroke-opacity="0.25"/>
+          <!-- bullish candle -->
+          <g transform="translate(150,0)">
+            <line x1="0" y1="30" x2="0" y2="210" stroke="currentColor" stroke-width="2"/>
+            <rect x="-22" y="70" width="44" height="100" fill="var(--bull)" stroke="currentColor" stroke-width="1"/>
+            <line x1="-60" y1="30" x2="0" y2="30" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="2 3"/>
+            <text x="-66" y="34" text-anchor="end" class="mono" font-size="11">high 79,010</text>
+            <line x1="-60" y1="210" x2="0" y2="210" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="2 3"/>
+            <text x="-66" y="214" text-anchor="end" class="mono" font-size="11">low 78,120</text>
+            <text x="34" y="74" class="mono" font-size="11">close 78,900</text>
+            <text x="34" y="174" class="mono" font-size="11">open 78,260</text>
+            <text x="0" y="248" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="13">BULLISH</text>
+            <text x="0" y="-4" text-anchor="middle" class="mono" font-size="10" opacity="0.7">upper wick</text>
+            <line x1="0" y1="0" x2="0" y2="18" stroke="currentColor" stroke-opacity="0.3" marker-end="url(#arr)"/>
+          </g>
+          <!-- bearish candle -->
+          <g transform="translate(380,0)">
+            <line x1="0" y1="25" x2="0" y2="215" stroke="currentColor" stroke-width="2"/>
+            <rect x="-22" y="65" width="44" height="70" fill="var(--bear)" stroke="currentColor" stroke-width="1"/>
+            <line x1="0" y1="30" x2="60" y2="30" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="2 3"/>
+            <text x="66" y="34" class="mono" font-size="11">high 79,400</text>
+            <line x1="0" y1="210" x2="60" y2="210" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="2 3"/>
+            <text x="66" y="214" class="mono" font-size="11">low 78,300</text>
+            <text x="-34" y="70" text-anchor="end" class="mono" font-size="11">open 79,150</text>
+            <text x="-34" y="140" text-anchor="end" class="mono" font-size="11">close 78,610</text>
+            <text x="0" y="248" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="13">BEARISH</text>
+            <text x="0" y="192" text-anchor="middle" class="mono" font-size="10" opacity="0.7">lower wick</text>
+          </g>
+          <defs>
+            <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 z" fill="currentColor" opacity="0.5"/></marker>
+          </defs>
+        </svg>
+        <figcaption>Green (bullish): close finished above open — buyers won the period. Red (bearish): close finished below open. Wick length shows how far price was pushed before being rejected.</figcaption>
+      </figure>
+
+      <p style="font-size:14px; color:var(--ink-soft);">Two more takes on the same idea, from the images you sent — same anatomy, different hand:</p>
+      <div class="ref-gallery grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 my-5">
+        <figure>
+          <img src="/src/images/candle-anatomy.webp" alt="Candle anatomy diagram labeling upper shadow, real body, and lower shadow for a bullish green candle and a bearish red candle.">
+          <figcaption>Same labels, different names: "shadow" here is what this notebook calls a wick.</figcaption>
+        </figure>
+        <figure>
+          <img src="/src/images/candle-strength.jpg" alt="Gold chart comparing medium, strong, and weak bullish candles against medium, strong, and weak bearish candles, plus neutral candles.">
+          <figcaption>Candle "strength" is just body size relative to its own wicks — a strong candle has a big body and short wicks; a weak one is mostly wick.</figcaption>
+        </figure>
+      </div>
+
+      <div class="note"><b>Field note</b>Timeframe changes the story, not the rules. A daily candle is 288 five-minute candles fighting it out. Always know what timeframe you're reading before you react to a shape.</div>
+    </section>
+
+    <!-- 02 PATTERNS -->
+    <section id="patterns">
+      <div class="section-head"><span class="num">02</span><h2>Candlestick Patterns Worth Knowing</h2></div>
+      <p class="deck">A handful of shapes recur often enough to earn names. They mean nothing in isolation — context (trend, location, volume) is what makes them worth watching.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>These shapes are like facial expressions. A hammer looks like someone got knocked down and immediately bounced back up strong. A doji looks like a shrug — a tie, nobody won. The shape alone doesn't tell you the whole story, same as a face alone doesn't tell you what someone's really thinking.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang facial expression ng market ang mga pattern na ito. Yung "hammer" parang natumba pero bumangon agad nang malakas. Yung "doji" parang balikat lang — walang nanalo, parang tabla (tie). Hindi porket may expression, alam mo na agad ang buong kwento.</div>
+      </div>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3.5 my-5">
+        <div class="card">
+          <h4>Doji <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--panel-2)] text-[var(--ink-soft)]">indecision</span></h4>
+          <p>Open ≈ close, long wicks either side. Neither side controlled the period. Common at turning points, useless as a signal on its own.</p>
+        </div>
+        <div class="card">
+          <h4>Hammer <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--bull-soft)] text-[var(--bull)]">reversal</span></h4>
+          <p>Small body near the top, long lower wick, little/no upper wick. After a downtrend, shows sellers pushed price down and buyers slammed it back up.</p>
+        </div>
+        <div class="card">
+          <h4>Shooting Star <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--bear-soft)] text-[var(--bear)]">reversal</span></h4>
+          <p>Mirror of the hammer — small body near the bottom, long upper wick. After an uptrend, shows a failed push higher.</p>
+        </div>
+        <div class="card">
+          <h4>Bullish Engulfing <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--bull-soft)] text-[var(--bull)]">reversal</span></h4>
+          <p>A red candle fully swallowed by the next green candle's body. Momentum flipped hands within one period.</p>
+        </div>
+        <div class="card">
+          <h4>Bearish Engulfing <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--bear-soft)] text-[var(--bear)]">reversal</span></h4>
+          <p>Same idea, inverted — a green candle engulfed by the next red one. Often marks exhaustion at a high.</p>
+        </div>
+        <div class="card">
+          <h4>Inside Bar <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--panel-2)] text-[var(--ink-soft)]">compression</span></h4>
+          <p>A candle whose entire range sits inside the prior candle's range. Volatility is coiling — often precedes an expansion move.</p>
+        </div>
+      </div>
+
+      <p style="font-size:14px; color:var(--ink-soft);">A wider reference sheet, and one of the cheat-sheets you'll find all over the internet:</p>
+      <div class="ref-gallery grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 my-5">
+        <figure>
+          <img src="/src/images/candlestick-reference.jpg" alt="Extended candlestick reference grid covering doji, dragonfly and gravestone doji, hammer, inverted hammer, hanging man, spinning tops, marubozu, piercing line, dark cloud cover, tweezers, harami, morning and evening star, abandoned baby, three soldiers and crows, and chart shapes like double top, double bottom, wedge, flag, and windows.">
+          <figcaption>Good as a name lookup. Treat every shape on it the same way as Section 02's six: context first, shape second — this sheet doesn't argue otherwise, it just doesn't have room to say so next to every icon.</figcaption>
+        </figure>
+        <figure>
+          <img src="/src/images/candlestick-signals.png" alt="Candlestick patterns and their signals chart labeling hammer, evening star, bullish engulfing, shooting star, spinning top, morning star, gravestone doji, inverted hammer, and bearish engulfing each with a Buy or Sell button.">
+          <figcaption>This is the version to be suspicious of.</figcaption>
+        </figure>
+      </div>
+
+      <div class="note"><b>Field note</b>None of these patterns work as a standalone trigger. A hammer at the bottom of a range means something; a hammer in the middle of chop means nothing. Location first, shape second. The "Buy / Sell" labels on that second sheet are exactly the oversimplification this field note is warning about — a shooting star in the middle of an uptrend is not an automatic "Sell" button, it's one clue that needs company (location, volume, structure) before it means anything.</div>
+    </section>
+
+    <!-- 03 STRUCTURE -->
+    <section id="structure">
+      <div class="section-head"><span class="num">03</span><h2>Trend &amp; Market Structure</h2></div>
+      <p class="deck">Trend isn't a slope you eyeball — it's a sequence of highs and lows you can point to.</p>
+
+      <p>An <b>uptrend</b> is a series of higher highs (HH) and higher lows (HL): every pullback finds support above the last one. A <b>downtrend</b> is the mirror — lower highs (LH) and lower lows (LL). The market is only "trending" while that sequence keeps printing. The moment a higher-low fails to hold, or a lower-high gets broken, structure has shifted.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>An uptrend is like climbing a staircase — sometimes you step back down one stair, but you never go lower than the last time you stepped back, so overall you keep going up. A downtrend is walking down that same staircase — even a step up doesn't get you higher than before.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang uptrend parang umaakyat ka ng hagdan — minsan bumababa ka ng isang baitang, pero hindi ka bumababa nang mas mababa sa huling pagbaba mo, kaya pataas pa rin overall. Ang downtrend, kabaliktaran — kahit tumaas ka ng konti, hindi mo pa rin naaabot yung dating pinakamataas.</div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 640 250" role="img" aria-label="Two zigzag price paths: an uptrend making higher highs and higher lows on the left, and a downtrend making lower highs and lower lows on the right, with a break of structure marked.">
+          <line x1="0" y1="230" x2="640" y2="230" stroke="currentColor" stroke-opacity="0.25"/>
+          <text x="150" y="18" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="13">UPTREND — HH / HL</text>
+          <polyline points="20,190 70,120 110,150 170,70 210,105 270,30" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+          <g class="mono" font-size="10">
+            <text x="70" y="112" text-anchor="middle">HH</text>
+            <text x="110" y="166" text-anchor="middle">HL</text>
+            <text x="170" y="62" text-anchor="middle">HH</text>
+            <text x="210" y="121" text-anchor="middle">HL</text>
+            <text x="270" y="22" text-anchor="middle">HH</text>
+          </g>
+          <circle cx="70" cy="120" r="3" fill="var(--bull)"/><circle cx="110" cy="150" r="3" fill="var(--bull)"/>
+          <circle cx="170" cy="70" r="3" fill="var(--bull)"/><circle cx="210" cy="105" r="3" fill="var(--bull)"/><circle cx="270" cy="30" r="3" fill="var(--bull)"/>
+
+          <line x1="330" y1="0" x2="330" y2="240" stroke="currentColor" stroke-opacity="0.15" stroke-dasharray="3 4"/>
+
+          <text x="490" y="18" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="13">DOWNTREND — LH / LL</text>
+          <polyline points="370,50 410,110 450,85 490,160 530,130 580,205" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
+          <g class="mono" font-size="10">
+            <text x="410" y="122" text-anchor="middle">LL</text>
+            <text x="450" y="77" text-anchor="middle">LH</text>
+            <text x="490" y="172" text-anchor="middle">LL</text>
+            <text x="530" y="122" text-anchor="middle">LH</text>
+            <text x="580" y="217" text-anchor="middle">LL</text>
+          </g>
+          <circle cx="410" cy="110" r="3" fill="var(--bear)"/><circle cx="450" cy="85" r="3" fill="var(--bear)"/>
+          <circle cx="490" cy="160" r="3" fill="var(--bear)"/><circle cx="530" cy="130" r="3" fill="var(--bear)"/><circle cx="580" cy="205" r="3" fill="var(--bear)"/>
+        </svg>
+        <figcaption>The instant an uptrend fails to make a new HH, or a pullback breaks below the prior HL, you have a <b>Change of Character (CHoCH)</b> — the first warning that structure may be flipping.</figcaption>
+      </figure>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3.5 my-5">
+        <div class="card"><h4>BOS <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--panel-2)] text-[var(--ink-soft)]">continuation</span></h4><p><b>Break of Structure</b> — price takes out the prior swing high (in an uptrend) confirming the trend is continuing.</p></div>
+        <div class="card"><h4>CHoCH <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--panel-2)] text-[var(--ink-soft)]">warning</span></h4><p><b>Change of Character</b> — the first higher-low or lower-high fails. Doesn't confirm reversal, but tells you to stop assuming continuation.</p></div>
+      </div>
+    </section>
+
+    <!-- 04 S/R -->
+    <section id="sr">
+      <div class="section-head"><span class="num">04</span><h2>Support &amp; Resistance</h2></div>
+      <p class="deck">Think in zones, not lines. Price rarely respects a level to the exact tick.</p>
+
+      <p><b>Support</b> is a price area where buying pressure has repeatedly overwhelmed selling; <b>resistance</b> is the reverse. The more times a zone has been tested, the more traders are watching it — which is exactly why zones eventually break: everyone's stop or order is sitting in the same place. When a resistance zone finally breaks, it frequently flips and becomes support on the retest — <b>role reversal</b>, one of the most reliable structural ideas in price action.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Support is like a floor a ball keeps bouncing on. Resistance is like a ceiling the ball keeps bumping its head on. Here's the fun part: if the ball finally punches through the floor and falls to a new level, that same floor can turn into the ceiling if the ball tries to climb back up — like a trapdoor that only opens one way.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang support parang sahig na tinatalbugan ng bola. Ang resistance parang kisame na binabangga ng bola paakyat. Kapag nabasag yung sahig at bumagsak yung bola sa mas mababa, pwedeng maging bagong kisame yung dating sahig kapag sumubok itong bumalik pataas — parang bitag na iisang direksyon lang ang bukas.</div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 640 230" role="img" aria-label="Price line testing a resistance zone three times, breaking through it, then retesting the same zone from above as new support.">
+          <line x1="0" y1="205" x2="640" y2="205" stroke="currentColor" stroke-opacity="0.25"/>
+          <rect x="0" y="88" width="640" height="20" fill="var(--accent)" opacity="0.18"/>
+          <line x1="0" y1="88" x2="640" y2="88" stroke="var(--accent)" stroke-dasharray="4 3"/>
+          <line x1="0" y1="108" x2="640" y2="108" stroke="var(--accent)" stroke-dasharray="4 3"/>
+          <text x="8" y="80" class="mono" font-size="11" fill="var(--accent)">resistance zone</text>
+          <polyline points="10,190 80,98 140,160 200,96 260,155 320,90 400,40 460,60 520,98 580,55" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="80" cy="98" r="4" fill="var(--bear)"/>
+          <circle cx="200" cy="96" r="4" fill="var(--bear)"/>
+          <circle cx="320" cy="90" r="4" fill="var(--bear)"/>
+          <circle cx="460" cy="60" r="4" fill="var(--bull)"/>
+          <text x="80" y="90" text-anchor="middle" class="mono" font-size="9">test 1</text>
+          <text x="200" y="88" text-anchor="middle" class="mono" font-size="9">test 2</text>
+          <text x="320" y="82" text-anchor="middle" class="mono" font-size="9">breaks</text>
+          <text x="460" y="52" text-anchor="middle" class="mono" font-size="9">retest as support</text>
+        </svg>
+        <figcaption>Three touches, then a break, then a retest from the other side — the zone's role flipped from resistance to support.</figcaption>
+      </figure>
+
+      <div class="note"><b>Field note</b>Draw zones with the wicks, not just the closes — the wick is where the market actually rejected. A zone drawn only from closing prices is often too narrow to mean anything on a retest.</div>
+    </section>
+
+    <!-- 05 LIQUIDITY -->
+    <section id="liquidity">
+      <div class="section-head"><span class="num">05</span><h2>Liquidity &amp; Stop Hunts</h2></div>
+      <p class="deck">Every obvious high or low has orders parked just beyond it &mdash; and price knows exactly where they're sitting.</p>
+
+      <p>When two swing highs land at roughly the same price, everyone can see it &mdash; which is exactly the problem. Traders who sold at that level have stop-losses resting just above it. Breakout traders have buy-stop orders resting just above it too, ready to trigger the moment price finally clears the level. That whole cluster of resting orders is called <b>liquidity</b>. Large players often need a lot of opposing orders to fill their own size without moving price too far against themselves &mdash; and a cluster of stops is exactly that. It's common for price to wick briefly through an obvious high or low, trigger that resting liquidity, and then reverse hard back the other way.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="Price forms two roughly equal swing highs with a zone of resting liquidity marked above them, then wicks briefly above the zone before reversing sharply downward.">
+          <line x1="0" y1="215" x2="640" y2="215" stroke="currentColor" stroke-opacity="0.25"/>
+          <rect x="90" y="42" width="330" height="20" fill="var(--accent)" opacity="0.15"/>
+          <line x1="90" y1="42" x2="420" y2="42" stroke="var(--accent)" stroke-dasharray="3 3"/>
+          <text x="96" y="35" class="mono" font-size="10.5" fill="var(--accent)">resting liquidity &mdash; stops + breakout buys</text>
+          <line x1="150" y1="62" x2="310" y2="60" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="2 3"/>
+          <polyline points="60,150 150,62 230,120 310,60 350,40 380,95 430,170 520,190" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="150" cy="62" r="4" fill="var(--bear)"/>
+          <circle cx="310" cy="60" r="4" fill="var(--bear)"/>
+          <text x="150" y="80" text-anchor="middle" class="mono" font-size="9.5">equal high</text>
+          <text x="310" y="78" text-anchor="middle" class="mono" font-size="9.5">equal high</text>
+          <circle cx="350" cy="40" r="5" fill="var(--accent)"/>
+          <text x="350" y="26" text-anchor="middle" class="mono" font-size="10" fill="var(--accent)" font-weight="700">the grab</text>
+          <text x="480" y="205" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)">sharp reversal &mdash; real move begins</text>
+        </svg>
+        <figcaption>Price pokes just above both equal highs &mdash; enough to trigger the stops and breakout orders sitting there &mdash; then reverses hard, having "grabbed" that liquidity before doing what it actually intended.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Imagine a fisherman who knows exactly where all the fish like to gather, so he casts his net right there instead of randomly. Big traders do something similar: they know where everyone's "safety exit" orders are parked &mdash; just above an obvious high, just below an obvious low &mdash; so price gets pushed there on purpose to scoop those orders up before the real move happens.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Isipin mo mangingisda na alam na alam kung saan nagtitipon ang mga isda, kaya doon niya inihahagis ang lambat imbes na kung saan-saan. Ganito rin ang ginagawa ng malalaking traders &mdash; alam nila kung saan nakatambak ang mga "safety exit" order ng mga tao, kaya sinasadyang idaan doon ang presyo para masagap muna iyon bago ang tunay na galaw.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This is the same mechanic you've already met twice under different names &mdash; the Wyckoff Spring in Section 09 and the role-reversal retest in Section 04. "Liquidity grab" is just the name for what's actually happening underneath both: a brief move beyond an obvious level to collect the orders resting there.</div>
+    </section>
+
+    <!-- 06 CHART PATTERNS -->
+    <section id="chartpatterns">
+      <div class="section-head"><span class="num">06</span><h2>Chart Patterns</h2></div>
+      <p class="deck">Zoom out from a single candle to a whole shape, and price tends to repeat a handful of them — because the crowd behind the tape repeats the same behaviors.</p>
+
+      <p>These fall into three families. <b>Reversal patterns</b> (double top, head &amp; shoulders, and their inverses) mark a trend running out of energy and turning the other way. <b>Continuation patterns</b> (flags, pennants, rectangles) are pauses — the market catching its breath mid-trend before carrying on in the same direction. <b>Bilateral patterns</b> (triangles) can break either way — the shape itself doesn't tell you which, only that volatility is compressing before a decision.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A double top looks like the letter M and a double bottom looks like a W — price tried twice to break through and failed, twice. A head and shoulders looks exactly like it sounds: a bump, a bigger bump, a bump — three tries, with the middle one the strongest, before it gives up. A flag or triangle is the market pausing to catch its breath mid-run, like a runner slowing to a jog before sprinting again.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang double top parang letrang M at ang double bottom parang W — dalawang beses sinubukan ng presyo tumawid pero nabigo nang dalawang beses. Ang head and shoulders literal na parang ulo at balikat — tatlong subok, yung gitna ang pinakamalakas, bago sumuko. Ang flag o triangle parang tumitigil lang sandali para huminga ang market habang tumatakbo, bago tumakbo ulit.</div>
+      </div>
+
+      <div class="ref-gallery grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-4 my-5">
+        <figure>
+          <img src="/src/images/chart-patterns-lines.webp" alt="Reversal patterns: double top, head and shoulders, rising wedge, double bottom, inverse head and shoulders, falling wedge. Continuation patterns: falling wedge, bullish rectangle, bullish pennant, rising wedge, bearish rectangle, bearish pennant. Bilateral patterns: ascending, descending, and symmetrical triangle. Each labeled with entry, stop, and target.">
+          <figcaption>Clean line version, grouped by family — reversal, continuation, bilateral.</figcaption>
+        </figure>
+        <figure>
+          <img src="/src/images/chart-patterns-grid.png" alt="Grid of sixteen chart patterns split into bullish and bearish continuation (triangles, wedges, flags) and bullish and bearish reversal (double and triple tops and bottoms, head and shoulders), each with example entry, stop-loss, and take-profit lines.">
+          <figcaption>Same sixteen shapes, colorized — bullish left of each pair, bearish right.</figcaption>
+        </figure>
+      </div>
+
+      <div class="note"><b>Field note</b>Treat the entry/stop/target lines drawn on both sheets as illustrations of where those three things <i>tend</i> to sit relative to the pattern — not fixed rules to copy onto your own chart. Your actual stop still comes from Section 04's zones (beyond the pattern's own high or low), and your position size still comes from the mentor letter's 1% math. A pattern tells you a shape formed; it doesn't set your risk for you.</div>
+    </section>
+
+    <!-- 07 VOLUME -->
+    <section id="volume">
+      <div class="section-head"><span class="num">07</span><h2>Reading Volume</h2></div>
+      <p class="deck">Price tells you what happened. Volume tells you how much conviction was behind it.</p>
+
+      <p>A breakout on heavy volume means real participation pushed price through a level — it's more likely to hold. A breakout on thin volume is easier to fade; there may not be enough behind it to sustain the move. Watch for two recurring tells: <b>climax volume</b> (an extreme volume spike after an extended move, often marking exhaustion rather than continuation) and <b>declining volume on a pullback</b> (a healthy sign in a trend — the retracement lacks conviction, so the prior move is likely to resume).</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Volume is like how loud the crowd cheers. A big move with a huge, loud cheer means tons of people really showed up and believe in it. A big move with barely any clapping means almost nobody showed up — it might not last.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang volume parang lakas ng sigawan ng crowd. Kung malaking galaw ng presyo na may kasamang malakas na sigawan, ibig sabihin marami talaga sumali at naniniwala. Kung tahimik lang habang malaki yung galaw, baka konti lang sumali at hindi tatagal.</div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 640 260" role="img" aria-label="Candlestick price chart above a volume histogram, with a climax volume spike marked at a swing high and a shrinking-volume pullback marked afterward.">
+          <line x1="0" y1="150" x2="640" y2="150" stroke="currentColor" stroke-opacity="0.2"/>
+          <g stroke="currentColor" stroke-width="1.6">
+            <line x1="30" y1="120" x2="30" y2="150"/><rect x="24" y="128" width="12" height="18" fill="var(--bull)"/>
+            <line x1="80" y1="100" x2="80" y2="140"/><rect x="74" y="105" width="12" height="24" fill="var(--bull)"/>
+            <line x1="130" y1="75" x2="130" y2="120"/><rect x="124" y="80" width="12" height="28" fill="var(--bull)"/>
+            <line x1="180" y1="45" x2="180" y2="95"/><rect x="174" y="50" width="12" height="32" fill="var(--bull)"/>
+            <line x1="230" y1="30" x2="230" y2="70"/><rect x="224" y="34" width="12" height="24" fill="var(--bear)"/>
+            <line x1="280" y1="55" x2="280" y2="95"/><rect x="274" y="60" width="12" height="22" fill="var(--bear)"/>
+            <line x1="330" y1="75" x2="330" y2="105"/><rect x="324" y="80" width="12" height="18" fill="var(--bear)"/>
+            <line x1="380" y1="85" x2="380" y2="112"/><rect x="374" y="90" width="12" height="14" fill="var(--bear)"/>
+            <line x1="430" y1="80" x2="430" y2="105"/><rect x="424" y="84" width="12" height="12" fill="var(--bull)"/>
+            <line x1="480" y1="60" x2="480" y2="95"/><rect x="474" y="65" width="12" height="20" fill="var(--bull)"/>
+          </g>
+          <line x1="0" y1="165" x2="640" y2="165" stroke="currentColor" stroke-opacity="0.15"/>
+          <g fill="var(--ink-soft)">
+            <rect x="24" y="235" width="12" height="10"/>
+            <rect x="74" y="222" width="12" height="23"/>
+            <rect x="124" y="205" width="12" height="40"/>
+            <rect x="174" y="190" width="12" height="55"/>
+            <rect x="224" y="175" width="12" height="70" fill="var(--accent)"/>
+            <rect x="274" y="215" width="12" height="30"/>
+            <rect x="324" y="228" width="12" height="17"/>
+            <rect x="374" y="236" width="12" height="9"/>
+            <rect x="424" y="230" width="12" height="15"/>
+            <rect x="474" y="212" width="12" height="33"/>
+          </g>
+          <text x="230" y="165" text-anchor="middle" class="mono" font-size="10" fill="var(--accent)">climax volume</text>
+          <text x="380" y="228" text-anchor="middle" class="mono" font-size="10">shrinking on pullback</text>
+        </svg>
+        <figcaption>The volume spike lands right at the swing high, then dries up through the pullback — sellers showed up once, hard, and buyers' pause afterward lacked conviction.</figcaption>
+      </figure>
+    </section>
+
+    <!-- 08 CME GAPS -->
+    <section id="gaps">
+      <div class="section-head"><span class="num">08</span><h2>CME Gaps — Specific to Bitcoin Futures</h2></div>
+      <p class="deck">This one matters directly for the chart you screenshotted: <span class="mono">CME:BTC1!</span> trades on exchange hours. Spot Bitcoin never sleeps.</p>
+
+      <p>CME Bitcoin futures only trade roughly Sunday 5pm CT through Friday 4pm CT, with a short daily maintenance break. Spot Bitcoin trades 24/7/365 on crypto exchanges. If spot price moves meaningfully over a weekend while CME is closed, the futures chart reopens Sunday evening at wherever spot now sits — leaving a visible empty space on the candlestick chart between Friday's close and Sunday's open. That empty space is the <b>CME gap</b>.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Imagine a shop (CME) that closes on weekends, but the shop right next door (spot Bitcoin) never closes, ever. If a big sale happens next door over the weekend and the price changes a lot, when the first shop reopens Monday it has to suddenly jump to match — leaving a gap in its own price chart from where it left off Friday.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Isipin mo tindahan (CME) na sarado tuwing weekend, pero yung katabi (spot Bitcoin) bukas talaga 24/7, walang tulog. Kung nagbago ang presyo doon habang sarado yung una, pagbukas nito ulit sa Lunes kailangan nitong tumalon papunta sa bagong presyo — kaya may puwang o "gap" sa chart nila mula noong huling sarado sila.</div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 640 250" role="img" aria-label="Timeline showing Friday's CME futures close, spot bitcoin continuing to move over the closed weekend, Monday's futures open at the new spot level leaving a gap, and price later filling back to the Friday close level." >
+          <line x1="20" y1="200" x2="620" y2="200" stroke="currentColor" stroke-opacity="0.25"/>
+          <line x1="0" y1="120" x2="640" y2="120" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="3 4"/>
+          <text x="8" y="114" class="mono" font-size="10">Fri close</text>
+
+          <line x1="120" y1="90" x2="120" y2="150" stroke="currentColor" stroke-width="2"/><rect x="110" y="105" width="20" height="30" fill="var(--bull)"/>
+          <text x="120" y="170" text-anchor="middle" class="mono" font-size="10">FRI</text>
+
+          <rect x="150" y="140" width="130" height="180" fill="var(--bear)" opacity="0.06"/>
+          <text x="215" y="205" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">CME closed —</text>
+          <text x="215" y="219" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">spot keeps moving</text>
+          <path d="M120,120 C 170,150 200,190 260,190" fill="none" stroke="currentColor" stroke-opacity="0.35" stroke-dasharray="2 4"/>
+
+          <line x1="330" y1="170" x2="330" y2="215" stroke="currentColor" stroke-width="2"/><rect x="320" y="185" width="20" height="25" fill="var(--bear)"/>
+          <text x="330" y="235" text-anchor="middle" class="mono" font-size="10">MON open</text>
+          <path d="M120,120 L330,120" stroke="var(--accent)" stroke-dasharray="2 3" opacity="0.6"/>
+          <text x="225" y="60" text-anchor="middle" class="mono" font-size="11" fill="var(--accent)">the gap</text>
+          <line x1="150" y1="70" x2="150" y2="185" stroke="var(--accent)" stroke-dasharray="1 4"/>
+          <line x1="300" y1="70" x2="300" y2="185" stroke="var(--accent)" stroke-dasharray="1 4"/>
+
+          <line x1="380" y1="190" x2="580" y2="122" stroke="var(--bull)" stroke-width="2.5" fill="none"/>
+          <circle cx="580" cy="122" r="4" fill="var(--bull)"/>
+          <text x="500" y="105" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)">gap "fills" back to Fri close</text>
+        </svg>
+        <figcaption>Traders mark these gaps and watch for price to retrace and "fill" them — a real statistical tendency, not a guarantee, and not a timed one.</figcaption>
+      </figure>
+
+      <div class="note"><b>Field note</b>Gap-fill is a tendency traders lean on, not a law of physics. Treat an open gap as a magnet worth marking on your chart — never as a trade signal by itself. Combine it with structure and volume before acting.</div>
+    </section>
+
+    <!-- 09 WYCKOFF -->
+    <section id="wyckoff">
+      <div class="section-head"><span class="num">09</span><h2>Spotting Accumulation</h2></div>
+      <p class="deck">Big buyers can't fill a position in one candle without moving price against themselves — so they build it quietly, inside a range. Wyckoff's schematic is the classic map of what that looks like.</p>
+
+      <p>After a hard decline, "smart money" accumulation often follows a recognizable rhythm: a climactic sell-off, a snap-back rally, a sideways range where supply is absorbed, one final shakeout below the range to trigger stops and grab liquidity, and then a break upward on expanding volume.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Imagine a whale wants to buy every mango at the market without the vendor noticing and raising the price. So the whale buys a little at a time, quietly, for weeks — the price just sits still. Right before leaving, the whale even pretends to walk away (scaring other buyers into selling cheap) so it can scoop up the last cheap mangoes — then finally lets everyone see it wants more, and the price shoots up.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Isipin mo may "malaking pating" (big investor) na gustong bilhin lahat ng mangga sa palengke nang hindi napapansin ng tindera, para hindi tumaas agad ang presyo. Kaya dahan-dahan siyang bumibili nang tahimik habang nakatengga lang ang presyo. Bago umalis, nagkukunwari pa siyang aalis (para matakot yung iba at magbenta ng mura) — doon niya sinasagap yung natitira. Saka lang niya babatuk-batukin tumaas nang husto ang presyo.</div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 720 320" role="img" aria-label="Wyckoff accumulation schematic showing price making a selling climax, an automatic rally, a trading range with a secondary test, a spring below the range, a sign of strength breakout, and a last point of support before markup.">
+          <line x1="0" y1="290" x2="720" y2="290" stroke="currentColor" stroke-opacity="0.2"/>
+          <line x1="70" y1="90" x2="640" y2="90" stroke="currentColor" stroke-opacity="0.35" stroke-dasharray="3 4"/>
+          <line x1="70" y1="215" x2="640" y2="215" stroke="currentColor" stroke-opacity="0.35" stroke-dasharray="3 4"/>
+          <text x="648" y="94" class="mono" font-size="10" fill="var(--ink-soft)">range high</text>
+          <text x="648" y="219" class="mono" font-size="10" fill="var(--ink-soft)">range low</text>
+
+          <polyline points="20,60 60,250 110,110 150,215 190,150 230,205 280,170 330,208 380,165 430,210 470,155 505,255 540,140 590,95 640,45"
+            fill="none" stroke="currentColor" stroke-width="2.5"/>
+
+          <g class="mono" font-size="10.5" text-anchor="middle">
+            <circle cx="60" cy="250" r="3.5" fill="var(--bear)"/><text x="60" y="272">SC</text>
+            <circle cx="110" cy="110" r="3.5" fill="var(--bull)"/><text x="110" y="98">AR</text>
+            <circle cx="150" cy="215" r="3.5" fill="var(--ink)"/><text x="150" y="237">ST</text>
+            <circle cx="280" cy="170" r="3.5" fill="var(--ink)"/><text x="280" y="192">ST</text>
+            <circle cx="430" cy="210" r="3.5" fill="var(--ink)"/><text x="430" y="232">ST</text>
+            <circle cx="505" cy="255" r="4" fill="var(--bear)"/><text x="505" y="277" font-weight="700">SPRING</text>
+            <circle cx="540" cy="140" r="3.5" fill="var(--bull)"/><text x="540" y="128">SOS</text>
+            <circle cx="590" cy="95" r="3.5" fill="var(--bull)"/><text x="590" y="83">LPS</text>
+            <circle cx="20" cy="60" r="3.5" fill="var(--ink-soft)"/><text x="20" y="48">PS</text>
+          </g>
+          <rect x="70" y="90" width="570" height="125" fill="var(--accent)" opacity="0.07"/>
+          <text x="355" y="105" text-anchor="middle" class="mono" font-size="11" fill="var(--accent)">the trading range — "the cause"</text>
+        </svg>
+        <figcaption>PS preliminary support, SC selling climax, AR automatic rally, ST secondary test, Spring — a shakeout below the range that traps late shorts, SOS sign of strength, LPS last point of support before markup begins.</figcaption>
+      </figure>
+
+      <div class="overflow-x-auto my-5">
+        <table>
+          <thead><tr><th>Phase</th><th>What's happening</th><th>What to look for</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">A</td><td>Downtrend exhausts</td><td>Climax volume, automatic rally, first test of the low</td></tr>
+            <tr><td class="mono">B</td><td>Range builds ("the cause")</td><td>Repeated tests of range edges, no follow-through either way</td></tr>
+            <tr><td class="mono">C</td><td>Final shakeout</td><td>Spring below range low on a wick, quickly reclaimed</td></tr>
+            <tr><td class="mono">D</td><td>Strength shows</td><td>Break of range high on rising volume, shallow pullback (LPS)</td></tr>
+            <tr><td class="mono">E</td><td>Markup</td><td>Trend leaves the range — this is the "effect"</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note"><b>Field note</b>Distribution at tops is this schematic flipped upside down: PSY, buying climax, AR down, upthrust (a spring that fails upward instead), then markdown. Same logic, opposite direction.</div>
+    </section>
+
+    <!-- 10 MOVING AVERAGES & BOLLINGER BANDS -->
+    <section id="mas">
+      <div class="section-head"><span class="num">10</span><h2>Moving Averages &amp; Bollinger Bands</h2></div>
+      <p class="deck">Two overlays worth turning on from that indicator search dialog you screenshotted. Both are just math on top of price — the skill is knowing what the math is telling you.</p>
+
+      <p>A <b>moving average (MA)</b> is the average closing price over the last N candles, redrawn every candle so it "moves." It smooths out noise and shows you the trend without the zig-zag. <b>MA20</b> (roughly one trading month on a daily chart) tracks the short-term trend and reacts fast. <b>MA200</b> (roughly nine to ten months) is the slow one institutions watch as a line in the sand for the broader regime — price spending most of its time above MA200 is a structurally bullish market; below it, structurally bearish.</p>
+
+      <div class="note"><b>Field note</b>The famous "Golden Cross" / "Death Cross" is usually built from the 50-day and 200-day MAs, not the 20 and 200 — a slower, less noisy pair. A 20/200 cross fires far more often and far earlier, which makes it faster but also far more prone to false signals. Know which pair you're looking at before you trust a cross.</div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A moving average is like your average grade over your last 20 or 200 quizzes. One bad quiz doesn't crash it and one lucky quiz doesn't spike it — it moves slowly, so it shows you the real overall direction: are you actually improving, or actually slipping?</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang moving average parang average grades mo sa huling 20 o 200 quiz. Hindi basta babagsak o tataas dahil lang sa isang quiz — dahan-dahan ang galaw niya, kaya makikita mo yung totoong direksyon mo: tumataas ba talaga o bumababa ang grades mo overall.</div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 640 250" role="img" aria-label="Price crossing above a fast moving average and a slow moving average, with the fast average crossing above the slow average marked as a golden cross, and the reverse marked as a death cross.">
+          <line x1="0" y1="225" x2="640" y2="225" stroke="currentColor" stroke-opacity="0.25"/>
+          <polyline points="10,190 60,175 110,150 160,120 210,95 260,80 310,95 360,120 410,150 460,175 510,150 560,110 610,70" fill="none" stroke="currentColor" stroke-opacity="0.35" stroke-width="1.6"/>
+          <polyline points="10,205 60,195 110,178 160,155 210,130 260,108 310,100 360,105 410,120 460,140 510,148 560,135 610,100" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <polyline points="10,215 60,212 110,207 160,200 210,192 260,183 310,176 360,172 410,170 460,170 510,168 560,160 610,145" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="330" cy="102" r="4" fill="var(--bull)"/>
+          <text x="330" y="88" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)">golden cross</text>
+          <text x="465" y="205" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">price · fast MA (20) · slow MA (200)</text>
+          <text x="565" y="152" text-anchor="middle" class="mono" font-size="10" fill="var(--bear)">death cross ↑ if it flips back under</text>
+        </svg>
+        <figcaption>Fast MA (amber) crossing above the slow MA (dark) while price also holds above both — the classic bullish alignment. The mirror image, fast crossing below slow, is the bearish version.</figcaption>
+      </figure>
+
+      <p>Both MAs also work as <b>dynamic support and resistance</b>: in a healthy uptrend, pullbacks often stall right at the MA20 and bounce. The further price stretches away from an MA, the more "extended" it is — and the more likely a mean-reversion snap back toward it.</p>
+
+      <p><b>Bollinger Bands</b> take this further: a middle band (usually the MA20), plus an upper and lower band drawn two standard deviations away from it. Since standard deviation measures how spread out price has been, the bands aren't fixed — they <b>widen</b> when volatility expands and <b>squeeze</b> tight when volatility dries up. A tight squeeze after a long quiet stretch is one of the more reliable warnings that a big directional move is loading, in either direction.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Bollinger Bands are like a rubber band wrapped around a bouncy ball. When the ball is calm and barely moving, the rubber band sits tight and narrow. When the ball suddenly bounces wild and hard, the rubber band stretches wide open. A very tight, narrow rubber band after a calm stretch usually means a big bounce is coming soon.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang Bollinger Bands parang rubber band sa paligid ng tumatalbog na bola. Kapag tahimik lang ang bola, masikip at makitid yung rubber band. Kapag biglang lumundag nang malakas, lumalawak yung rubber band. Kapag matagal nang masikip yung rubber band pagkatapos ng katahimikan, malapit na yatang lumundag nang malakas ang bola.</div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="Bollinger Bands narrowing into a squeeze during a quiet period, then expanding sharply as price breaks out and rides the upper band." >
+          <line x1="0" y1="215" x2="640" y2="215" stroke="currentColor" stroke-opacity="0.25"/>
+          <path d="M10,90 C 100,100 180,108 260,112 C 340,114 400,60 470,40 C 530,24 580,20 630,18" fill="none" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.4"/>
+          <path d="M10,150 C 100,138 180,128 260,124 C 340,120 400,140 470,155 C 530,166 580,172 630,176" fill="none" stroke="currentColor" stroke-opacity="0.3" stroke-width="1.4"/>
+          <path d="M10,120 C 100,119 180,118 260,118 C 340,117 400,100 470,97 C 530,95 580,96 630,97" fill="none" stroke="currentColor" stroke-opacity="0.5" stroke-dasharray="3 3"/>
+          <polyline points="10,125 60,112 110,122 160,116 210,120 260,118 300,110 340,95 380,70 420,50 460,42 500,38 540,32 580,26 630,22" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+          <rect x="180" y="108" width="90" height="26" fill="var(--accent)" opacity="0.12"/>
+          <text x="225" y="103" text-anchor="middle" class="mono" font-size="10" fill="var(--accent)">the squeeze</text>
+          <text x="540" y="16" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)">walking the upper band</text>
+        </svg>
+        <figcaption>Bands pinch together during the quiet range, then flare open as price breaks out and rides — "walks" — the upper band. In a strong trend, touching the band is not automatically "overbought."</figcaption>
+      </figure>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3.5 my-5">
+        <div class="card"><h4>In a range <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--panel-2)] text-[var(--ink-soft)]">mean-reversion</span></h4><p>Price tagging the outer band with no trend behind it often snaps back toward the middle band (the MA20).</p></div>
+        <div class="card"><h4>In a trend <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--bull-soft)] text-[var(--bull)]">continuation</span></h4><p>Price can "walk" the upper (or lower) band for many candles in a row. Treat repeated band touches as trend strength, not an automatic reversal signal.</p></div>
+      </div>
+
+      <div class="note"><b>Field note</b>From the dialog in your screenshot: type "Moving Average" into that search bar and add it twice — once set to length 20, once to length 200 — then search "Bollinger Bands" and add that too. All three live under the <b>Technicals</b> tab you already had open.</div>
+    </section>
+
+    <!-- 11 FIBONACCI -->
+    <section id="fibonacci">
+      <div class="section-head"><span class="num">11</span><h2>Fibonacci Retracement &amp; Extension</h2></div>
+      <p class="deck">A pullback almost never retraces 100% of a move &mdash; and certain partial levels keep getting tested, because enough traders are watching the same ones.</p>
+
+      <p>Draw a line from a swing low to a swing high (in an uptrend) and a charting platform will divide that leg into ratios pulled from the Fibonacci sequence: 23.6%, 38.2%, 50%, 61.8%, and 78.6%. These become horizontal levels where a pullback often stalls before the trend resumes &mdash; the 61.8% zone in particular is nicknamed the <b>golden pocket</b>. Beyond the original high, <b>extension</b> levels like 127.2% and 161.8% mark where the next leg might reasonably run out of steam &mdash; useful as a rough profit-target zone, not an exact number.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 280" role="img" aria-label="An uptrend leg from a swing low to a swing high, with Fibonacci retracement lines at 50 percent and 61.8 percent where price pulls back before continuing upward past the original high to the 127.2 and 161.8 percent extension levels.">
+          <line x1="0" y1="260" x2="640" y2="260" stroke="currentColor" stroke-opacity="0.25"/>
+          <line x1="0" y1="100" x2="630" y2="100" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="3 3"/>
+          <text x="8" y="94" class="mono" font-size="10">0% &middot; swing high</text>
+          <line x1="0" y1="180" x2="630" y2="180" stroke="var(--rule-strong)" stroke-dasharray="2 3"/>
+          <text x="8" y="174" class="mono" font-size="10">50%</text>
+          <line x1="0" y1="199" x2="630" y2="199" stroke="var(--accent)" stroke-dasharray="2 3"/>
+          <text x="8" y="213" class="mono" font-size="10" fill="var(--accent)">61.8% &middot; golden pocket</text>
+          <line x1="0" y1="260" x2="630" y2="260" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="3 3"/>
+          <text x="8" y="254" class="mono" font-size="10">100% &middot; swing low</text>
+          <line x1="0" y1="56" x2="630" y2="56" stroke="var(--bull)" stroke-opacity="0.5" stroke-dasharray="2 3"/>
+          <text x="500" y="50" class="mono" font-size="10" fill="var(--bull)">127.2% extension</text>
+          <line x1="0" y1="8" x2="630" y2="8" stroke="var(--bull)" stroke-opacity="0.5" stroke-dasharray="2 3"/>
+          <text x="500" y="20" class="mono" font-size="10" fill="var(--bull)">161.8% extension</text>
+          <polyline points="60,260 260,100 340,199 420,140 500,60 580,15" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="260" cy="100" r="4" fill="var(--bear)"/>
+          <circle cx="340" cy="199" r="4.5" fill="var(--accent)"/>
+          <text x="340" y="220" text-anchor="middle" class="mono" font-size="9.5" fill="var(--accent)">pullback holds here</text>
+        </svg>
+        <figcaption>Price retraces into the 61.8% zone, holds, then continues past the old high toward the 127.2%&ndash;161.8% extension area.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Stretch a rubber band from a table up to your hand, then let a little tension out. It doesn't snap all the way back down to the table &mdash; it settles at a spot partway down. Fibonacci levels are the market's favorite "partway down" spots, and they work partly because so many traders are watching those exact same spots at the same time.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Iunat mo yung rubber band mula sa mesa papunta sa kamay mo, tapos bitawan mo ng konti. Hindi ito babalik nang buo sa mesa &mdash; may parte kung saan ito huminto sa gitna. Ganyan din ang mga Fibonacci level &mdash; paboritong "paghinto sa gitna" ng market, at gumagana ito dahil marami ring traders ang nakatutok sa parehong mga parteng iyon.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Fib levels are among the most self-fulfilling tools in this notebook &mdash; useful precisely because so many people draw the same lines, not because of any hidden law of markets. Treat a fib zone as a place to look for confirmation (a candle pattern, a volume shift, a structure retest) rather than a signal on its own.</div>
+    </section>
+
+
+    <!-- 12 MOMENTUM -->
+    <section id="momentum">
+      <div class="section-head"><span class="num">12</span><h2>Momentum: RSI &amp; MACD</h2></div>
+      <p class="deck">Price tells you where the market went. Momentum tells you how hard it's still trying to get there.</p>
+
+      <p><b>RSI</b> (Relative Strength Index) compares the size of recent up-candles to recent down-candles and scales the result from 0 to 100. Above 70 is usually called overbought, below 30 oversold &mdash; but in a strong trend RSI can sit pinned near an extreme for a long stretch, so treat those zones as "worth watching," not an automatic signal. <b>MACD</b> plots the gap between a fast and a slow moving average (12 and 26 periods) against its own 9-period average &mdash; when the two cross, or when the whole thing crosses zero, momentum is shifting direction.</p>
+
+      <p>The single most useful thing either tool does is spot <b>divergence</b>: price making a new low while the oscillator makes a <i>higher</i> low. Price is still falling, but the force behind the fall is already weakening &mdash; often the earliest warning that a downtrend is running out of sellers (and the mirror version, at highs, warns a rally is running out of buyers).</p>
+
+      <figure>
+        <svg viewBox="0 0 640 320" role="img" aria-label="Price makes a lower low while the RSI indicator below it makes a higher low at the same point in time, marking a bullish divergence.">
+          <text x="10" y="16" class="mono" font-size="10" fill="var(--ink-soft)">PRICE</text>
+          <polyline points="30,70 150,140 220,90 300,165 380,110 450,60" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="150" cy="140" r="4" fill="var(--bear)"/>
+          <circle cx="300" cy="165" r="4" fill="var(--bear)"/>
+          <line x1="150" y1="140" x2="300" y2="165" stroke="var(--accent)" stroke-dasharray="2 3"/>
+          <text x="225" y="188" text-anchor="middle" class="mono" font-size="10" fill="var(--accent)">lower low</text>
+
+          <line x1="0" y1="185" x2="640" y2="185" stroke="currentColor" stroke-opacity="0.2"/>
+          <text x="10" y="205" class="mono" font-size="10" fill="var(--ink-soft)">RSI (14)</text>
+          <line x1="0" y1="272" x2="450" y2="272" stroke="currentColor" stroke-opacity="0.35" stroke-dasharray="3 3"/>
+          <text x="460" y="276" class="mono" font-size="9.5" fill="var(--ink-soft)">30</text>
+          <polyline points="30,215 150,255 220,235 300,220 380,195 450,155" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+          <circle cx="150" cy="255" r="4" fill="var(--bull)"/>
+          <circle cx="300" cy="220" r="4" fill="var(--bull)"/>
+          <line x1="150" y1="255" x2="300" y2="220" stroke="var(--accent)" stroke-dasharray="2 3"/>
+          <text x="225" y="298" text-anchor="middle" class="mono" font-size="10" fill="var(--accent)" font-weight="700">higher low = bullish divergence</text>
+        </svg>
+        <figcaption>Price's second low is deeper than its first &mdash; but RSI's second low is shallower than its first. The seller who pushed price down here had less force behind it than the seller before.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>RSI is like a speedometer strapped to a runner &mdash; it tells you how tired and fast they're going, not how far they've run. Divergence is spotting a runner who's still moving forward but is clearly out of breath, wobbling, slowing down &mdash; a good sign they're about to stop, even though they haven't stopped yet.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang RSI parang speedometer na nakakabit sa isang tumatakbo &mdash; sinasabi nito kung gaano siya kapagod at kabilis, hindi kung gaano na siya kalayo natakbo. Ang divergence ay ang pagkita sa isang tumatakbo pa rin pasulong pero halatang naubusan na ng hininga &mdash; senyales na malapit na siyang tumigil, kahit hindi pa siya tumitigil.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Both indicators lag price &mdash; they're built from it, not ahead of it. "Overbought" in a strong uptrend can stay overbought for weeks. Use RSI and MACD to confirm what structure and volume are already telling you, not to fight an obvious trend on your own.</div>
+    </section>
+
+
+    <!-- 13 TIMEFRAMES -->
+    <section id="timeframes">
+      <div class="section-head"><span class="num">13</span><h2>Timeframes &amp; Top-Down Analysis</h2></div>
+      <p class="deck">The same candle can be an entire trend on one timeframe and a single blip on another &mdash; always know which map you're holding.</p>
+
+      <p>Work top-down, not bottom-up. Start on a higher timeframe (Daily or Weekly) to read the dominant trend and mark the major support/resistance zones &mdash; this is your <b>bias</b>. Drop to a middle timeframe (4H or 1H) to see the current structure and whatever pattern is forming inside that bias. Only then drop to a lower timeframe (15m or 5m) to fine-tune exactly where you'd enter. The lower timeframe's job is timing, never overruling the direction the higher timeframe already set.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="Three panels labeled Daily, 4H, and 15 minutes, each zooming into a highlighted box from the previous panel, ending on candle-level detail for a precise entry.">
+          <line x1="212" y1="10" x2="212" y2="230" stroke="currentColor" stroke-opacity="0.15" stroke-dasharray="3 4"/>
+          <line x1="424" y1="10" x2="424" y2="230" stroke="currentColor" stroke-opacity="0.15" stroke-dasharray="3 4"/>
+          <text x="105" y="20" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="12">DAILY &middot; bias</text>
+          <text x="318" y="20" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="12">4H &middot; structure</text>
+          <text x="530" y="20" text-anchor="middle" font-family="Archivo" font-weight="700" font-size="12">15M &middot; entry</text>
+
+          <polyline points="30,180 60,160 90,140 120,150 150,105 180,95 205,75" fill="none" stroke="currentColor" stroke-width="2"/>
+          <rect x="128" y="88" width="60" height="75" fill="none" stroke="var(--accent)" stroke-dasharray="2 2"/>
+          <text x="158" y="178" text-anchor="middle" class="mono" font-size="9" fill="var(--accent)">zoom &rarr;</text>
+
+          <polyline points="245,90 275,120 300,150 325,168 350,145 380,115 405,90" fill="none" stroke="currentColor" stroke-width="2"/>
+          <rect x="318" y="140" width="45" height="45" fill="none" stroke="var(--accent)" stroke-dasharray="2 2"/>
+          <text x="340" y="200" text-anchor="middle" class="mono" font-size="9" fill="var(--accent)">zoom &rarr;</text>
+
+          <g stroke="currentColor" stroke-width="1.4">
+            <line x1="460" y1="150" x2="460" y2="185"/><rect x="454" y="160" width="12" height="16" fill="var(--bear)"/>
+            <line x1="485" y1="160" x2="485" y2="195"/><rect x="479" y="172" width="12" height="14" fill="var(--bear)"/>
+            <line x1="510" y1="150" x2="510" y2="200"/><rect x="504" y="180" width="12" height="14" fill="var(--bull)"/>
+            <line x1="535" y1="110" x2="535" y2="182"/><rect x="529" y="130" width="12" height="35" fill="var(--bull)"/>
+            <line x1="560" y1="95" x2="560" y2="150"/><rect x="554" y="105" width="12" height="30" fill="var(--bull)"/>
+          </g>
+          <circle cx="513" cy="197" r="5" fill="var(--accent)"/>
+          <text x="513" y="220" text-anchor="middle" class="mono" font-size="9.5" fill="var(--accent)" font-weight="700">ENTRY</text>
+        </svg>
+        <figcaption>Same pullback, three zoom levels: the Daily sets the trend to trade with, the 4H shows the pullback forming inside it, the 15-minute chart shows the exact candle where you'd actually click buy.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like using Google Maps. You zoom out to see the whole country first so you know which direction you're generally headed. Then you zoom into the city, then the street, to find the exact door. Nobody uses a world map to parallel park &mdash; and nobody should use a 15-minute chart to decide whether the overall trend is up or down.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang Google Maps &mdash; muna mong titingnan yung buong bansa (Daily) para malaman kung saang direksyon ka pupunta. Tapos zoom in ka sa siyudad (4H), tapos sa kalye (15-minuto) para mahanap yung eksaktong pinto. Walang gumagamit ng mapa ng buong mundo para lang mag-park ng sasakyan &mdash; at hindi dapat ginagamit ang 15-minutong chart para malaman kung pataas ba o pababa talaga ang market overall.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>If your 15-minute chart and your Daily chart disagree, the Daily wins the argument. A perfect-looking lower-timeframe setup against the higher-timeframe trend is a lower-probability trade, not a free pass to ignore the bigger picture.</div>
+    </section>
+
+
+    <!-- 14 ORDER TYPES & FUTURES MECHANICS -->
+    <section id="ordertypes">
+      <div class="section-head"><span class="num">14</span><h2>Order Types &amp; Futures Mechanics</h2></div>
+      <p class="deck">Two different things worth knowing cold: the buttons you'll actually click, and what makes a continuous futures symbol like BTC1! behave the way it does.</p>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3.5 my-5">
+        <div class="card"><h4>Market Order</h4><p>"Fill me right now, at whatever the current price is." Fastest way in or out &mdash; but on thin liquidity, your actual fill can slip worse than the price you saw.</p></div>
+        <div class="card"><h4>Limit Order</h4><p>"Only fill me at this price or better." You control the price, not the timing &mdash; it might never fill if the market never comes back to it.</p></div>
+        <div class="card"><h4>Stop Order</h4><p>"If price reaches this level, become a market order." The standard way to place a stop-loss or a breakout entry &mdash; can still slip in a fast move.</p></div>
+        <div class="card"><h4>Stop-Limit</h4><p>"If price reaches this level, place a limit order at this price." Protects against slippage, but in a fast move it can fail to fill at all.</p></div>
+      </div>
+
+      <p>Now the part specific to what you're actually charting: <span class="mono">BTC1!</span> isn't one single contract &mdash; it's a <b>continuous contract</b>, a stitched-together feed that always shows whichever quarterly CME Bitcoin futures contract is currently the front month, then automatically switches to the next one as expiration approaches. The real, tradable contracts underneath it expire quarterly (March, June, September, December) and are cash-settled &mdash; there's no actual bitcoin delivered.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 170" role="img" aria-label="Two overlapping timeline bars representing a December futures contract ending and a March futures contract beginning, with a small price difference at the rollover point where the continuous BTC1 chart switches between them.">
+          <line x1="20" y1="130" x2="620" y2="130" stroke="currentColor" stroke-opacity="0.2"/>
+          <line x1="30" y1="70" x2="360" y2="70" stroke="currentColor" stroke-width="4"/>
+          <text x="30" y="55" class="mono" font-size="11">DEC contract &middot; expiring</text>
+          <line x1="320" y1="90" x2="610" y2="90" stroke="var(--accent)" stroke-width="4"/>
+          <text x="320" y="115" class="mono" font-size="11" fill="var(--accent)">MAR contract &middot; new front month</text>
+          <line x1="340" y1="60" x2="340" y2="100" stroke="currentColor" stroke-dasharray="2 3"/>
+          <text x="340" y="45" text-anchor="middle" class="mono" font-size="10">roll &mdash; BTC1! switches feeds here</text>
+          <circle cx="340" cy="70" r="4" fill="currentColor"/>
+          <circle cx="340" cy="90" r="4" fill="var(--accent)"/>
+        </svg>
+        <figcaption>BTC1! is always "whoever's in the lead" &mdash; it hands off from one quarterly contract to the next, and that handoff can leave a small, harmless jump on the chart that has nothing to do with a CME weekend gap.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A market order is like buying a ticket from a scalper at whatever price they're asking, right now, because you need in immediately. A limit order is like haggling &mdash; you leave your offer and walk away, and they only call you if they accept it. A stop order is like a fire alarm wired to a sprinkler: the moment the trigger level is hit, it goes off automatically, no matter what else is happening. And BTC1! is like a relay race &mdash; it's not one runner the whole time, it's whoever is currently holding the baton, handed off every few months.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang market order parang bibili ka ng ticket sa scalper kahit magkano na, dahil kailangan mo na talaga agad. Ang limit order parang pagtawad &mdash; iiwan mo lang yung alok mo at aalis, tatawagan ka lang nila kung tinanggap nila. Ang stop order parang alarm ng sunog na naka-kabit sa sprinkler &mdash; sa sandaling maabot ang trigger level, kusa itong gagalaw kahit ano pa ang nangyayari. At ang BTC1! parang relay race &mdash; hindi iisang tumatakbo mula umpisa hanggang wakas, kundi sinumang may hawak ng baton ngayon, na nagpapalit-palit tuwing ilang buwan.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>If you ever place a real order (not just study the chart), check which specific expiration month you're actually trading &mdash; the continuous BTC1! chart is for reading history, not for clicking buttons on.</div>
+    </section>
+
+
+    <!-- 15 TRADING STYLES -->
+    <section id="styles">
+      <div class="section-head"><span class="num">15</span><h2>Trading Styles</h2></div>
+      <p class="deck">How long you hold a trade should be a decision you made on purpose, not an accident of whatever chart happened to be open.</p>
+
+      <div class="overflow-x-auto my-5">
+        <table>
+          <thead><tr><th>Style</th><th>Typical hold</th><th>Chart</th><th>Screen time</th></tr></thead>
+          <tbody>
+            <tr><td>Scalping</td><td class="mono">seconds&ndash;minutes</td><td class="mono">1m&ndash;5m</td><td>constant, glued to the screen</td></tr>
+            <tr><td>Day Trading</td><td class="mono">minutes&ndash;hours, flat by close</td><td class="mono">5m&ndash;15m</td><td>most of the session</td></tr>
+            <tr><td>Swing Trading</td><td class="mono">days&ndash;weeks</td><td class="mono">1H&ndash;4H&ndash;Daily</td><td>a few check-ins a day</td></tr>
+            <tr><td>Position Trading</td><td class="mono">weeks&ndash;months+</td><td class="mono">Daily&ndash;Weekly</td><td>occasional check-ins</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Scalping is table tennis &mdash; lightning fast, tiny points, nonstop. Day trading is a basketball game &mdash; quick-paced but it ends by the final buzzer, nothing carried into tomorrow. Swing trading is a boxing match with several rounds spread over days &mdash; you wait for your opening. Position trading is a marathon &mdash; months of patience for one big result.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang scalping parang table tennis &mdash; sobrang bilis, maliliit na puntos, walang tigil. Ang day trading parang laro ng basketball &mdash; mabilis pero may buzzer sa dulo, walang dala sa susunod na araw. Ang swing trading parang boxing match na maraming rounds sa loob ng ilang araw &mdash; naghihintay ka ng tamang pagkakataon. Ang position trading parang marathon &mdash; buwan-buwang pasensya para sa isang malaking resulta.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Pick the style that matches your actual schedule, not the one that looks most exciting online. A swing trader with a 9-to-5 job staring at 1-minute charts on lunch break is set up to make exhausted, emotional decisions in a style that was never built for that little attention.</div>
+    </section>
+
+
+    <!-- 16 PSYCHOLOGY -->
+    <section id="psychology">
+      <div class="section-head"><span class="num">16</span><h2>Trading Psychology</h2></div>
+      <p class="deck">The chart doesn't move your account balance. Your reaction to the chart does.</p>
+
+      <p>Every rule in the "Before You Start" letter exists to fight one of a handful of predictable failure modes. Here they are by name, so you can catch yourself mid-mistake instead of only in the postmortem.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 300" role="img" aria-label="A price-like curve rising through optimism, excitement, and euphoria at the peak of maximum risk, then falling through anxiety and panic to capitulation at the point of maximum opportunity, before rising again through hope and relief.">
+          <path d="M40,220 C 100,150 150,90 220,55 C 260,40 300,48 330,80 C 380,140 420,220 450,258 C 480,288 520,268 560,215 C 590,178 610,150 620,120" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="220" cy="55" r="5" fill="var(--accent)"/>
+          <text x="220" y="38" text-anchor="middle" class="mono" font-size="10.5" fill="var(--accent)" font-weight="700">euphoria &middot; max risk</text>
+          <circle cx="450" cy="258" r="5" fill="var(--bear)"/>
+          <text x="450" y="280" text-anchor="middle" class="mono" font-size="10.5" fill="var(--bear)" font-weight="700">capitulation &middot; max opportunity</text>
+          <text x="70" y="205" text-anchor="middle" class="mono" font-size="9.5">optimism</text>
+          <text x="150" y="115" text-anchor="middle" class="mono" font-size="9.5">excitement</text>
+          <text x="345" y="105" text-anchor="middle" class="mono" font-size="9.5">anxiety</text>
+          <text x="415" y="205" text-anchor="middle" class="mono" font-size="9.5">panic</text>
+          <text x="545" y="200" text-anchor="middle" class="mono" font-size="9.5">hope</text>
+          <text x="605" y="105" text-anchor="middle" class="mono" font-size="9.5">relief</text>
+        </svg>
+        <figcaption>The classic emotional cycle of a trade &mdash; the peak feels the safest and is the riskiest; the bottom feels the worst and is often the opportunity. Same shape as the Wyckoff schematic in Section 09, drawn from inside a trader's head instead of outside a chart.</figcaption>
+      </figure>
+
+      <div class="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-3.5 my-5">
+        <div class="card"><h4>FOMO</h4><p>Jumping into a move that already ran, without a plan, purely because you're afraid of missing it. <b>Fix:</b> if you missed the setup, you missed the trade &mdash; there is always another one.</p></div>
+        <div class="card"><h4>Revenge Trading</h4><p>Trying to immediately win back a loss with a bigger, less-planned trade. <b>Fix:</b> the "two losses ends the day" rule exists specifically for this.</p></div>
+        <div class="card"><h4>Overconfidence</h4><p>A win streak convincing you the rules don't apply right now, so size creeps up and the plan gets skipped. <b>Fix:</b> grade every trade by process, win or lose, so a streak can't rewrite your rules.</p></div>
+        <div class="card"><h4>Confirmation Bias</h4><p>Only noticing the chart details that agree with the trade you already wanted to take. <b>Fix:</b> the Section 24 checklist exists to make you check the boxes that could prove you wrong too.</p></div>
+        <div class="card"><h4>Sunk-Cost Holding</h4><p>Refusing to close a loser because "it'll come back," moving the stop further instead of admitting the plan failed. <b>Fix:</b> the stop was set by a calmer version of you, before the trade &mdash; trust that version, not the one currently staring at red numbers.</p></div>
+      </div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Trading feelings are a rollercoaster &mdash; from "best day ever" to "worst day ever" in the space of a few candles, before you've had any practice controlling that ride. The market doesn't know or care how you feel. But if you let your feelings drive, they will absolutely hijack a perfectly good plan.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang emosyon sa pagtrade parang rollercoaster &mdash; mula sa "pinakamasayang araw" hanggang "pinakamalungkot na araw" sa loob lang ng ilang candle, bago ka pa man masanay kontrolin ito. Walang pakialam ang market sa nararamdaman mo. Pero kung hahayaan mong ang emosyon ang mangunot, ito mismo ang sisira sa magandang plano mo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Notice which of these five you personally lean toward &mdash; most traders have one or two favorites. Write it at the top of your journal (Section 26) and check for it specifically, the same way you'd check a blind spot before changing lanes.</div>
+    </section>
+
+    <!-- 17 POSITION SIZING & RISK OF RUIN -->
+    <section id="risk">
+      <div class="section-head"><span class="num">17</span><h2>Position Sizing &amp; Risk of Ruin</h2></div>
+      <p class="deck">A profitable strategy can still bust an account if the bet size is wrong. This is the math the "1% rule" in the mentor letter is actually protecting you from.</p>
+
+      <p>Even a strategy with a real edge will lose several trades in a row sometimes &mdash; that's normal, not a sign something's broken. What matters is whether your account can survive that losing streak. Risking a small, fixed percentage per trade means a bad stretch dents the account; risking a large percentage means the same stretch can wipe it out, even if the strategy itself was fine the whole time.</p>
+
+      <figure>
+        <svg viewBox="0 0 500 260" role="img" aria-label="Bar chart showing a ten thousand dollar account after ten losing trades in a row at three different risk levels: risking one percent per trade leaves about nine thousand and forty four dollars, five percent per trade leaves about five thousand nine hundred eighty seven dollars, and ten percent per trade leaves about three thousand four hundred eighty seven dollars.">
+          <line x1="20" y1="20" x2="480" y2="20" stroke="currentColor" stroke-opacity="0.4" stroke-dasharray="3 3"/>
+          <text x="24" y="14" class="mono" font-size="10" fill="var(--ink-soft)">started at $10,000</text>
+          <line x1="20" y1="220" x2="480" y2="220" stroke="currentColor" stroke-opacity="0.3"/>
+
+          <rect x="90" y="39" width="70" height="181" fill="var(--bull)"/>
+          <text x="125" y="32" text-anchor="middle" class="mono" font-size="11" font-weight="700">$9,044</text>
+          <text x="125" y="238" text-anchor="middle" class="mono" font-size="10.5">1% risk</text>
+
+          <rect x="220" y="100" width="70" height="120" fill="var(--accent)"/>
+          <text x="255" y="93" text-anchor="middle" class="mono" font-size="11" font-weight="700">$5,987</text>
+          <text x="255" y="238" text-anchor="middle" class="mono" font-size="10.5">5% risk</text>
+
+          <rect x="350" y="150" width="70" height="70" fill="var(--bear)"/>
+          <text x="385" y="143" text-anchor="middle" class="mono" font-size="11" font-weight="700">$3,487</text>
+          <text x="385" y="238" text-anchor="middle" class="mono" font-size="10.5">10% risk</text>
+
+          <text x="250" y="255" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">same 10 losing trades in a row, three risk settings</text>
+        </svg>
+        <figcaption>Ten straight losses barely dents a 1%-risk account. The same ten losses cuts a 10%-risk account by nearly two-thirds &mdash; and the strategy didn't have to be any worse to get there.</figcaption>
+      </figure>
+
+      <p>Losses and the gains needed to recover from them aren't symmetric, either &mdash; the deeper the hole, the disproportionately bigger the climb back out:</p>
+
+      <div class="overflow-x-auto my-5">
+        <table>
+          <thead><tr><th>Account drops by</th><th>Gain needed to break even</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">10%</td><td class="mono">11.1%</td></tr>
+            <tr><td class="mono">20%</td><td class="mono">25%</td></tr>
+            <tr><td class="mono">50%</td><td class="mono">100%</td></tr>
+            <tr><td class="mono">75%</td><td class="mono">300%</td></tr>
+            <tr><td class="mono">90%</td><td class="mono">900%</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>Use this calculator the same way you'd use the worked example in the mentor letter &mdash; before the trade, not after:</p>
+
+      <form class="journal-form" id="riskCalcForm">
+        <label>Account Size ($) <input type="number" step="any" id="rAccount" placeholder="10000" required></label>
+        <label>Risk % Per Trade <input type="number" step="any" id="rRiskPct" placeholder="1" required></label>
+        <label>Entry Price <input type="number" step="any" id="rEntry" placeholder="78635" required></label>
+        <label>Stop Price <input type="number" step="any" id="rStop" placeholder="77900" required></label>
+        <button type="submit">Calculate</button>
+      </form>
+      <div id="riskCalcResult" class="readout" style="display:none;"></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Think of your account like a stack of poker chips you brought for the whole night, not just one hand. Betting a tiny slice each hand means a bad run of luck still leaves you chips to keep playing. Betting a huge slice each hand means one bad run and you're out of the game entirely &mdash; even if you were actually the better player.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Isipin mo ang account mo parang tumpok ng chips na dala mo para sa buong gabi, hindi lang para sa isang kamay. Kung maliit lang ang tinataya mo bawat kamay, kahit magkasunod-sunod ka matalo, may natitira ka pa ring chips para tumuloy maglaro. Kung malaki ang tinataya mo bawat kamay, isang masamang takbo lang, wala ka nang laban &mdash; kahit ikaw pa yung mas magaling maglaro.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>A losing streak of 10 in a row is not rare or unlucky &mdash; it's a normal, expected event over hundreds of trades, even for a good strategy. Size for the losing streak you know is coming, not for the win you hope is next.</div>
+    </section>
+
+
+    <!-- 18 LEVERAGE & MARGIN -->
+    <section id="leverage">
+      <div class="section-head"><span class="num">18</span><h2>Leverage &amp; Margin</h2></div>
+      <p class="deck">Futures are traded on margin by default &mdash; a small deposit controls a much bigger position. That cuts both ways, always.</p>
+
+      <p><b>Leverage</b> means a small amount of your own money (the <b>margin</b>) controls a much larger position. It doesn't create profit out of nothing &mdash; it multiplies whatever the underlying price move already was, gains and losses alike. <b>Maintenance margin</b> is the minimum equity your broker requires you to keep in the position; fall below it and you get a <b>margin call</b> (add funds or the position gets force-closed) or outright <b>liquidation</b> (the position is closed for you, often at a worse price than you'd have chosen).</p>
+
+      <figure>
+        <svg viewBox="0 0 400 260" role="img" aria-label="Bar chart comparing the account impact of the same five percent adverse price move at three leverage levels: no leverage loses five percent of the account, five times leverage loses twenty five percent, and ten times leverage loses fifty percent, approaching a margin call." >
+          <line x1="20" y1="220" x2="380" y2="220" stroke="currentColor" stroke-opacity="0.3"/>
+          <rect x="60" y="203" width="70" height="17" fill="var(--bull)"/>
+          <text x="95" y="238" text-anchor="middle" class="mono" font-size="10.5">1x (no leverage)</text>
+          <text x="95" y="196" text-anchor="middle" class="mono" font-size="11" font-weight="700">-5%</text>
+
+          <rect x="165" y="137" width="70" height="83" fill="var(--accent)"/>
+          <text x="200" y="238" text-anchor="middle" class="mono" font-size="10.5">5x leverage</text>
+          <text x="200" y="130" text-anchor="middle" class="mono" font-size="11" font-weight="700">-25%</text>
+
+          <rect x="270" y="53" width="70" height="167" fill="var(--bear)"/>
+          <text x="305" y="238" text-anchor="middle" class="mono" font-size="10.5">10x leverage</text>
+          <text x="305" y="46" text-anchor="middle" class="mono" font-size="11" font-weight="700">-50%</text>
+
+          <text x="200" y="20" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">same 5% adverse price move, three leverage levels</text>
+        </svg>
+        <figcaption>The price only moved 5% against the position in every bar. The account damage went from a scratch to nearly half the account, purely from how much leverage was riding on that same move.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Leverage is a magnifying glass pointed at whatever already happened to the price &mdash; it doesn't invent extra money, it just makes the real result look and feel much bigger, good or bad. A margin call is like a loan officer calling to say your collateral isn't covering the loan anymore, and if you don't add more right now, they'll take back what's theirs.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang leverage parang magnifying glass na nakatutok sa anumang nangyari na sa presyo &mdash; hindi ito gumagawa ng extra pera, pinapalaki lang nito ang totoong resulta, maganda man o masama. Ang margin call parang tumatawag na loan officer na nagsasabing hindi na sapat ang collateral mo sa utang &mdash; kung hindi ka magdadagdag agad, babawiin nila ang sa kanila.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Higher leverage means your stop-loss distance (in price) has to be tighter for the same dollar risk from the mentor letter's math &mdash; it doesn't let you skip that math, it makes getting it wrong more expensive, faster.</div>
+    </section>
+
+
+    <!-- 19 VWAP -->
+    <section id="vwap">
+      <div class="section-head"><span class="num">19</span><h2>VWAP (Volume-Weighted Average Price)</h2></div>
+      <p class="deck">The average price everyone actually traded at today, weighted by how much volume happened at each level &mdash; not just a plain average of the high and low.</p>
+
+      <p>VWAP resets at the start of each session and updates candle by candle, weighting each price by how much volume traded there. Institutions often use it as a fairness benchmark &mdash; trying to buy below VWAP or sell above it means you got a better-than-average deal for the session. As a read: price consistently above VWAP suggests buyers are in control for the day so far; consistently below suggests sellers are.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="An intraday price line weaving above and below a smoother, slowly rising VWAP line across a trading session.">
+          <line x1="0" y1="195" x2="640" y2="195" stroke="currentColor" stroke-opacity="0.2"/>
+          <polyline points="20,150 150,145 300,138 450,130 620,120" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-dasharray="5 3"/>
+          <text x="500" y="112" class="mono" font-size="10" fill="var(--accent)">VWAP</text>
+          <polyline points="20,170 60,140 100,160 140,120 180,150 220,100 260,140 300,110 340,150 380,120 420,160 460,110 500,140 540,100 580,130 620,105" fill="none" stroke="currentColor" stroke-width="2"/>
+          <text x="90" y="185" class="mono" font-size="9.5" fill="var(--bear)">below VWAP</text>
+          <text x="230" y="90" class="mono" font-size="9.5" fill="var(--bull)">above VWAP</text>
+        </svg>
+        <figcaption>Price weaves around VWAP through the session &mdash; the dashed line is the running, volume-weighted average, not just a straight line between the day's open and current price.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>VWAP is like figuring out the average price everyone paid for gas today at one station, weighted by how many people bought at each price &mdash; not just averaging the morning price and the evening price. It tells you whether the price you paid was a good deal or a bad deal compared to everyone else today.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang VWAP parang paghahanap ng average presyong binayaran ng lahat ng bumili ng gas ngayong araw sa istasyong iyon, batay sa dami ng bumili sa bawat presyo &mdash; hindi lang basic average ng presyo sa umaga at hapon. Sinasabi nito kung mura o mahal ang binili mo kumpara sa lahat ng ibang bumili ngayong araw.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>VWAP is an intraday tool by design &mdash; it resets every session, so it means the most on lower timeframes (5m&ndash;1H). On the Daily chart you've been practicing on, MA20 from Section 10 is doing a similar job.</div>
+    </section>
+
+
+    <!-- 20 ORDER BOOK & BID-ASK SPREAD -->
+    <section id="orderbook">
+      <div class="section-head"><span class="num">20</span><h2>Order Book &amp; Bid-Ask Spread</h2></div>
+      <p class="deck">Behind every candle is a live list of everyone's current offers &mdash; the order book is where that list lives.</p>
+
+      <p>The order book shows resting <b>bids</b> (buy orders) below the current price and resting <b>asks</b> or offers (sell orders) above it. The highest bid and the lowest ask define the <b>spread</b> &mdash; the small gap you effectively pay to trade immediately with a market order instead of waiting with a limit order. A "thick" book with large size stacked near the current price is liquid and harder to move; a "thin" book can let a modest order jump price several ticks.</p>
+
+      <figure>
+        <svg viewBox="0 0 500 280" role="img" aria-label="An order book depth ladder showing three ask price levels above a spread and three bid price levels below it, with green bars representing bid size and red bars representing ask size at each price.">
+          <text x="250" y="16" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">ASKS (sell orders)</text>
+          <rect x="250" y="24" width="40" height="14" fill="var(--bear)"/><text x="245" y="35" text-anchor="end" class="mono" font-size="10.5">78,350</text>
+          <rect x="250" y="54" width="65" height="14" fill="var(--bear)"/><text x="245" y="65" text-anchor="end" class="mono" font-size="10.5">78,330</text>
+          <rect x="250" y="84" width="30" height="14" fill="var(--bear)"/><text x="245" y="95" text-anchor="end" class="mono" font-size="10.5">78,320 &middot; best ask</text>
+
+          <rect x="150" y="108" width="200" height="42" fill="var(--accent)" opacity="0.15"/>
+          <text x="250" y="133" text-anchor="middle" class="mono" font-size="11" fill="var(--accent)" font-weight="700">SPREAD &middot; $20</text>
+
+          <rect x="210" y="158" width="55" height="14" fill="var(--bull)"/><text x="245" y="169" text-anchor="end" class="mono" font-size="10.5">78,300 &middot; best bid</text>
+          <rect x="180" y="188" width="70" height="14" fill="var(--bull)"/><text x="245" y="199" text-anchor="end" class="mono" font-size="10.5">78,290</text>
+          <rect x="215" y="218" width="35" height="14" fill="var(--bull)"/><text x="245" y="229" text-anchor="end" class="mono" font-size="10.5">78,280</text>
+          <text x="250" y="255" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">BIDS (buy orders)</text>
+        </svg>
+        <figcaption>Bar length is order size at that price. The spread is the gap between the best (highest) bid and the best (lowest) ask &mdash; the cost of getting filled right now instead of waiting.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>The order book is like a whiteboard at a garage sale listing everyone's current offers &mdash; buyers write what they're willing to pay, the seller writes what they're asking. The spread is the gap between the highest offer to buy and the lowest asking price to sell &mdash; the little bit of wiggle room in the middle.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang order book parang blackboard sa garage sale na nakalista ang lahat ng alok &mdash; sinusulat ng mga bibili kung magkano ang kaya nilang bayaran, at sinusulat ng nagbebenta kung magkano ang hinihingi niya. Ang spread ay ang agwat sa pagitan ng pinakamataas na alok bumili at pinakamababang hinihinging presyo &mdash; ang bahagyang puwang sa gitna.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>A wider-than-usual spread is itself information &mdash; it often shows up right before or during high-impact news (Section 23), when market makers pull back because they don't want to get caught quoting a stale price.</div>
+    </section>
+
+
+    <!-- 21 EXPECTANCY -->
+    <section id="expectancy">
+      <div class="section-head"><span class="num">21</span><h2>Expectancy: Do You Have an Edge?</h2></div>
+      <p class="deck">Win rate alone tells you almost nothing. What matters is win rate multiplied by how big your average win and loss actually are.</p>
+
+      <p>Expectancy per trade, in units of risk (R): <span class="mono">(Win% &times; Avg Win) &minus; (Loss% &times; Avg Loss)</span>. A system that wins less than half the time can still be strongly profitable if its winners are big enough relative to its losers &mdash; and a system that wins most of the time can quietly lose money if its rare losses are large enough.</p>
+
+      <div class="overflow-x-auto my-5">
+        <table>
+          <thead><tr><th>Win rate</th><th>Avg win</th><th>Avg loss</th><th>Expectancy</th><th>Verdict</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">40%</td><td class="mono">2.5R</td><td class="mono">1R</td><td class="mono">+0.40R</td><td><span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--bull-soft)] text-[var(--bull)]">profitable</span></td></tr>
+            <tr><td class="mono">70%</td><td class="mono">0.5R</td><td class="mono">1R</td><td class="mono">+0.05R</td><td><span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--panel-2)] text-[var(--ink-soft)]">barely profitable</span></td></tr>
+            <tr><td class="mono">50%</td><td class="mono">1R</td><td class="mono">1R</td><td class="mono">0.00R</td><td><span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--panel-2)] text-[var(--ink-soft)]">breakeven before costs</span></td></tr>
+            <tr><td class="mono">30%</td><td class="mono">1R</td><td class="mono">1R</td><td class="mono">&minus;0.40R</td><td><span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--bear-soft)] text-[var(--bear)]">losing system</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Think of it like a carnival game, not a coin flip. You don't need to win every round &mdash; you need the prize you win to be worth more than the cost of the rounds you lose. A game you win rarely but with a huge prize can beat a game you win constantly but with a tiny prize each time.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Isipin mo parang laro sa karnabal, hindi coin flip. Hindi mo kailangang manalo sa bawat round &mdash; kailangan lang mas malaki ang halaga ng premyo kumpara sa gastos mo sa mga round na natalo ka. Ang larong bihira mo manalo pero malaki ang premyo ay pwedeng mas mahusay kaysa sa larong madalas mo manalo pero konti lang ang premyo bawat beses.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Your demo journal (Section 26) is how you actually measure your own numbers instead of guessing them. After enough logged trades, compute your real win rate and average R &mdash; that's your real edge, not the one you assumed you had.</div>
+    </section>
+
+
+    <!-- 22 MACRO & CORRELATION -->
+    <section id="macro">
+      <div class="section-head"><span class="num">22</span><h2>Macro Context &amp; Correlation</h2></div>
+      <p class="deck">BTC1! doesn't trade in a vacuum &mdash; the watchlist panel you started with (SPX, NDQ, DJI, VIX, DXY) sitting right above your chart wasn't decoration.</p>
+
+      <p>Since institutional futures adoption, Bitcoin has increasingly traded like a high-beta risk asset alongside stocks &mdash; often rising and falling with the Nasdaq/S&amp;P during broad "risk-on" and "risk-off" swings. <b>DXY</b> (the US Dollar Index) frequently moves opposite to risk assets: a strong dollar (risk-off) often coincides with BTC weakness, a weak dollar (risk-on) often coincides with BTC strength. <b>VIX</b>, the "fear index," spiking usually means broad de-risking across markets &mdash; BTC included, despite its "digital gold" reputation not always holding up in practice during those moments.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="Two lines, BTC and the US Dollar Index, moving loosely opposite each other across time, with regions labeled risk-off where the dollar rises and BTC falls, and risk-on where the dollar falls and BTC rises.">
+          <line x1="0" y1="215" x2="640" y2="215" stroke="currentColor" stroke-opacity="0.2"/>
+          <polyline points="20,150 100,120 180,160 260,90 340,170 420,80 500,140 580,60" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+          <text x="590" y="55" class="mono" font-size="10" fill="var(--bull)">BTC</text>
+          <polyline points="20,90 100,110 180,70 260,130 340,60 420,140 500,85 580,150" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="590" y="155" class="mono" font-size="10" fill="var(--accent)">DXY</text>
+          <text x="150" y="205" text-anchor="middle" class="mono" font-size="10" fill="var(--bear)">risk-off &middot; DXY&uarr; BTC&darr;</text>
+          <text x="440" y="205" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)">risk-on &middot; DXY&darr; BTC&uarr;</text>
+        </svg>
+        <figcaption>The relationship isn't a fixed mirror image &mdash; it loosens and tightens over time &mdash; but a strong, sustained move in DXY or VIX is context worth checking before trusting a BTC chart in isolation.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Checking the wider market before trading BTC is like checking the regional weather forecast before heading to the beach, not just looking at the one patch of sky above your house. If it's stormy everywhere around you, your sunny little patch of sky might not stay sunny for long.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang pagtingin sa buong market bago mag-trade ng BTC ay parang pagtingin muna sa regional weather forecast bago pumunta sa beach, hindi lang yung ulap sa ibabaw mismo ng bahay mo. Kung maulan sa buong paligid, baka hindi rin magtagal ang maaraw na bahagi ng langit sa itaas mo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>You don't need to trade DXY or VIX to benefit from watching them &mdash; a quick glance at the same watchlist panel you already have open is enough context before trusting a setup on BTC1! alone.</div>
+    </section>
+
+
+    <!-- 23 NEWS EVENTS & ECONOMIC CALENDAR -->
+    <section id="news">
+      <div class="section-head"><span class="num">23</span><h2>News Events &amp; the Economic Calendar</h2></div>
+      <p class="deck">A perfect technical setup can still get blown through in seconds by a scheduled headline &mdash; know when those headlines are coming.</p>
+
+      <p>Major scheduled releases &mdash; the Fed's rate decision (FOMC), inflation data (CPI), and the monthly US jobs report (NFP) &mdash; routinely cause sharp volatility spikes and temporarily wider spreads (Section 20) across markets, BTC included. None of this shows up on a price chart until it happens. Checking a free economic calendar for the week takes a minute and can save you from holding a position straight into a coin-flip headline.</p>
+
+      <div class="readout">
+<span class="c">$</span> economic-calendar --week thisweek<br>
+TUE  08:30 ET   CPI (Inflation) .............. HIGH impact<br>
+WED  14:00 ET   FOMC Rate Decision ........... HIGH impact<br>
+FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
+<br>
+[ ] do I have an open position through any of these times?<br>
+[ ] am I comfortable with wider spreads and faster candles right then?
+      </div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Trading through a big scheduled news event without checking the calendar is like planning a picnic without checking if a storm warning was issued for that exact afternoon. The picnic spot (your chart) can look perfect right up until the sky opens up.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang pagtrade habang may malaking iskedyul na balita nang hindi tumitingin sa calendar ay parang pagplano ng picnic nang hindi mo tiningnan kung may storm warning sa eksaktong hapong iyon. Pwedeng magmukhang perpekto ang lugar ng picnic (yung chart mo) hanggang sa biglang bumuhos ang ulan.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>You don't have to trade the news to be affected by it &mdash; simply holding a position through a high-impact release means your stop can get tested by pure volatility that has nothing to do with your setup. Knowing the calendar is free; not knowing it isn't.</div>
+    </section>
+
+    <!-- 24 READ THIS CHART -->
+    <section id="chart">
+      <div class="section-head"><span class="num">24</span><h2>Practice: Read Your Own Chart</h2></div>
+      <p class="deck">This is your actual BTC1! daily chart, with EMA200, EMA20, and Bollinger Bands added — annotated with what actually matters on it. Read as an exercise, not a call on where price goes next.</p>
+
+      <figure>
+        <svg viewBox="0 0 720 340" role="img" aria-label="Annotated BTC1 daily chart: a major swing high near 127,000 in November, a downtrend into an 82,000 low in February, a failed bounce to 93,000, a selling climax near the 58,000 fifty-two week low, a trading range between 58,000 and 73,000 through the summer, a breakout in September to a high of 80,800, and the current price of 78,460 retesting the EMA200 at 78,305 from above.">
+          <line x1="20" y1="305" x2="700" y2="305" stroke="currentColor" stroke-opacity="0.25"/>
+          <rect x="520" y="233" width="150" height="56" fill="var(--accent)" opacity="0.09"/>
+          <text x="595" y="227" text-anchor="middle" class="mono" font-size="10" fill="var(--accent)">range ~58k&ndash;73k · Jun&ndash;Aug</text>
+
+          <polyline points="30,102 140,65 210,87 280,35 400,199 460,158 520,289 560,233 600,266 630,240 650,270 670,204 690,212"
+            fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <polyline points="30,110 140,95 210,80 280,68 400,140 460,155 520,180 560,195 600,205 630,208 650,210 670,211 690,213"
+            fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="1 0" opacity="0.85"/>
+          <text x="365" y="128" class="mono" font-size="9.5" fill="var(--accent)">EMA200 &mdash; lags, then flattens through the base</text>
+
+          <circle cx="280" cy="35" r="4.5" fill="var(--bear)"/>
+          <text x="280" y="22" text-anchor="middle" class="mono" font-size="10">swing high &middot; ~127k</text>
+
+          <circle cx="400" cy="199" r="4" fill="var(--bear)"/>
+          <text x="400" y="216" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">~82k</text>
+
+          <circle cx="460" cy="158" r="4" fill="var(--ink-soft)"/>
+          <text x="460" y="144" text-anchor="middle" class="mono" font-size="9.5">failed bounce &middot; ~93k</text>
+
+          <circle cx="520" cy="289" r="5" fill="var(--bear)"/>
+          <text x="520" y="307" text-anchor="middle" class="mono" font-size="10" font-weight="700">selling climax? &middot; ~58k</text>
+
+          <circle cx="690" cy="212" r="6" fill="var(--bull)"/>
+          <text x="620" y="55" text-anchor="middle" class="mono" font-size="10.5" fill="var(--bull)" font-weight="700">now: 78,460 retesting</text>
+          <text x="620" y="68" text-anchor="middle" class="mono" font-size="10.5" fill="var(--bull)" font-weight="700">EMA200 (78,305) from above</text>
+          <line x1="620" y1="76" x2="685" y2="205" stroke="var(--bull)" stroke-dasharray="2 3" opacity="0.6"/>
+
+          <text x="655" y="195" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">breakout &middot; day high 80,800</text>
+        </svg>
+        <figcaption>Dark line: price. Amber dashed line: EMA200 — notice how far it lags during the Nov&ndash;May decline, then flattens once price starts ranging, letting price catch back up to it by September.</figcaption>
+      </figure>
+
+      <p>Two things I'd flag before anything else: first, that 58k low lines up with your 52-week low and looks like it came with a volume spike — worth confirming on the histogram, since a climax low with no volume behind it is a much weaker signal. Second, today's candle is red and sitting almost exactly on the EMA200 — that's the moment to watch, not act on. Does it hold as support like Section 04's role reversal, or does price slice back below it? Either answer teaches you something; neither is a signal by itself.</p>
+
+      <div class="readout">
+<span class="c">$</span> checklist --symbol BTC1! --tf 1D<br>
+[ ] mark the last confirmed HH/HL or LH/LL — what's the <i>current</i> structure?<br>
+[ ] draw support/resistance from wicks, not closes<br>
+[ ] does the latest big move have volume behind it, or is it thin?<br>
+[ ] is price sitting inside an obvious range? mark the high and low<br>
+[ ] any open CME gaps on the chart? mark them<br>
+[ ] is price above or below the MA200 — bullish or bearish regime?<br>
+[ ] bands squeezed tight anywhere, or walking one side?<br>
+[ ] any liquidity resting above/below an obvious equal high or low?<br>
+[ ] check RSI/MACD for divergence against the last swing<br>
+[ ] does the higher timeframe agree with what this timeframe shows?<br>
+[ ] what would invalidate your read — write the exact price
+      </div>
+
+      <div class="note"><b>Field note</b>Answering that checklist honestly, in writing, before you place a demo trade is the entire point of this notebook. If you can't fill it out, you don't have a read yet — you have a guess.</div>
+    </section>
+
+    <!-- 25 TRADING PLAN -->
+    <section id="plan">
+      <div class="section-head"><span class="num">25</span><h2>Your Trading Plan</h2></div>
+      <p class="deck">Write your rules down once, while you're calm &mdash; so a stressed, in-the-moment version of you has something to check against instead of improvising.</p>
+
+      <p>A trading plan is different from the journal in Section 26: the journal records what you actually did, trade by trade. This plan records what you intend to do, decided in advance, so every trade can be judged against a standard that existed before you ever opened the chart.</p>
+
+      <form class="journal-form" id="planForm">
+        <label style="grid-column:1/-1">Markets I trade <input type="text" id="planMarkets" placeholder="e.g. BTC1! CME futures, Daily and 4H bias"></label>
+        <label style="grid-column:1/-1">My entry criteria <textarea id="planEntry" placeholder="e.g. only enter in the direction of the Daily trend, after a retest of a marked zone, with volume confirming"></textarea></label>
+        <label>Max risk per trade (%) <input type="number" step="any" id="planRiskPct" placeholder="1"></label>
+        <label>Max trades per day <input type="number" step="any" id="planMaxTrades" placeholder="2"></label>
+        <label style="grid-column:1/-1">Days/times I don't trade <input type="text" id="planNoTrade" placeholder="e.g. 30 minutes around FOMC, CPI, and NFP releases"></label>
+        <button type="submit">Save My Plan</button>
+      </form>
+
+      <div id="planDisplay"></div>
+
+      <div class="note"><b>Field note</b>Re-saving overwrites the plan below &mdash; that's fine, plans should evolve as you learn. What matters is that a written version exists before you trade, not that it's perfect on the first try.</div>
+    </section>
+
+    <!-- 26 JOURNAL -->
+    <section id="journal">
+      <div class="section-head"><span class="num">26</span><h2>Demo Trade Journal</h2></div>
+      <p class="deck">Relearning on a demo only works if you review it. Log every idea here — saved locally in this browser, just for you.</p>
+
+      <form class="journal-form" id="journalForm">
+        <label>Date <input type="date" id="jDate" required></label>
+        <label>Symbol <input type="text" id="jSymbol" placeholder="BTC1!" required></label>
+        <label>Side
+          <select id="jSide"><option>Long</option><option>Short</option></select>
+        </label>
+        <label>Entry <input type="number" step="any" id="jEntry" placeholder="78635" required></label>
+        <label>Stop <input type="number" step="any" id="jStop" placeholder="77900" required></label>
+        <label>Target <input type="number" step="any" id="jTarget" placeholder="80200" required></label>
+        <label>Result (P/L) <input type="number" step="any" id="jResult" placeholder="optional"></label>
+        <label style="grid-column:1/-1">Setup / reasoning
+          <textarea id="jNotes" placeholder="e.g. spring below range low on the 4H, volume confirming, structure still bullish HTF"></textarea>
+        </label>
+        <button type="submit">Log Trade</button>
+      </form>
+
+      <div id="journalTable"></div>
+    </section>
+
+    <!-- 27 ELLIOTT WAVE -->
+    <section id="elliott">
+      <div class="section-head"><span class="num">27</span><h2>Elliott Wave Theory</h2></div>
+      <p class="deck">A trend rarely moves in one straight push &mdash; it tends to unfold in a repeating rhythm of five waves forward, three waves back.</p>
+
+      <p>The theory: a trend advances in five waves (1&ndash;2&ndash;3&ndash;4&ndash;5), where waves 1, 3, and 5 move with the trend and waves 2 and 4 are corrective pullbacks against it &mdash; wave 3 is typically the longest and strongest. That five-wave move is then followed by a three-wave correction (A&ndash;B&ndash;C) against the whole thing, before the next five-wave sequence can begin. Two loose rules traders lean on: wave 2 shouldn't retrace past the very start of wave 1, and wave 4 usually shouldn't trade back into wave 1's price territory.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 260" role="img" aria-label="A five-wave impulse move labeled 1 through 5 trending upward with corrective pullbacks at 2 and 4, followed by a three-wave corrective move labeled A, B, and C trending back down.">
+          <line x1="0" y1="230" x2="640" y2="230" stroke="currentColor" stroke-opacity="0.25"/>
+          <polyline points="20,190 100,110 150,150 230,50 280,90 380,20 430,80 480,55 520,110 570,85" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <g class="mono" font-size="12" font-weight="700" text-anchor="middle">
+            <text x="100" y="100">1</text>
+            <text x="150" y="168">2</text>
+            <text x="230" y="40">3</text>
+            <text x="280" y="108">4</text>
+            <text x="380" y="10">5</text>
+            <text x="430" y="98">A</text>
+            <text x="480" y="45">B</text>
+            <text x="570" y="103">C</text>
+          </g>
+          <line x1="380" y1="0" x2="380" y2="240" stroke="currentColor" stroke-opacity="0.15" stroke-dasharray="3 4"/>
+          <text x="480" y="20" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">3-wave correction</text>
+          <text x="150" y="20" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">5-wave impulse</text>
+        </svg>
+        <figcaption>Five waves with the trend (1&ndash;5), then three waves against it (A&ndash;C) &mdash; and that whole shape can itself be one wave inside a bigger version of the same pattern.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like watching ocean waves roll in: a big wave forward, a little pull back, another big wave forward, a smaller pull back, one more big push &mdash; then a rest of three smaller waves before the next big set arrives. Nature repeats this same rhythm at different sizes &mdash; a small trend often looks like a tiny copy of a bigger one.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang panonood ng mga alon sa dagat &mdash; malaking alon pasulong, konting atras, malaking alon ulit, mas maliit na atras, isa pang malakas na tulak &mdash; tapos may pahingang tatlong maliliit na alon bago dumating ang susunod na malaking hanay. Umuulit ang kalikasan ng ritmong ito sa iba't ibang sukat &mdash; madalas ang isang maliit na trend ay parang maliit na kopya lang ng mas malaking trend.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Ten different traders can count ten different waves on the same chart in real time &mdash; the count is usually only obvious after the fact. Use Elliott Wave to think about rhythm and where a move might be tiring, never as a precise entry trigger by itself.</div>
+    </section>
+
+
+    <!-- 28 HARMONIC PATTERNS -->
+    <section id="harmonics">
+      <div class="section-head"><span class="num">28</span><h2>Harmonic Patterns</h2></div>
+      <p class="deck">A more precise cousin of the Fibonacci tool from Section 11 &mdash; patterns built from exact, measured ratios instead of a general shape.</p>
+
+      <p>Harmonic patterns (Gartley, Bat, Butterfly, Crab, and others) map a five-point swing labeled X-A-B-C-D, where each leg must retrace or extend the previous one by a specific Fibonacci ratio. A classic Gartley, for example, wants point B to retrace close to 61.8% of the X-A leg, and point D to complete around a 78.6% retracement of that same leg &mdash; where several of those ratios converge is called the <b>PRZ</b>, the Potential Reversal Zone.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="An XABCD harmonic pattern zigzag with points labeled X, A, B, C, and D, and a shaded potential reversal zone around point D where multiple Fibonacci ratios converge.">
+          <line x1="0" y1="215" x2="640" y2="215" stroke="currentColor" stroke-opacity="0.25"/>
+          <polyline points="40,190 160,50 250,140 350,80 460,190" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <rect x="430" y="170" width="60" height="45" fill="var(--accent)" opacity="0.15"/>
+          <text x="460" y="160" text-anchor="middle" class="mono" font-size="10" fill="var(--accent)">PRZ</text>
+          <g class="mono" font-size="12" font-weight="700">
+            <text x="40" y="205">X</text>
+            <text x="160" y="40">A</text>
+            <text x="250" y="160">B</text>
+            <text x="350" y="70">C</text>
+            <text x="460" y="205">D</text>
+          </g>
+        </svg>
+        <figcaption>Each leg (X-A, A-B, B-C, C-D) is measured against a specific Fibonacci ratio &mdash; when several of those ratios agree at point D, that convergence zone is the PRZ.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Regular chart patterns are like sketching a shape freehand. Harmonic patterns are like a dance with an exact, measured choreography &mdash; every step has to land within a specific percentage, not just "roughly about there."</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang regular na chart pattern ay parang libreng pagguhit ng hugis. Ang harmonic pattern ay parang sayaw na may eksaktong sukat sa bawat hakbang &mdash; kailangang tumapat sa partikular na porsyento ang bawat parte, hindi lang basta-basta "malapit na."</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Harmonic patterns are precise enough that most traders use dedicated scanning tools rather than drawing them by eye. Treat this section as knowing the vocabulary and the idea behind it, not a requirement to spot one manually.</div>
+    </section>
+
+
+    <!-- 29 TRADING SESSIONS -->
+    <section id="sessions">
+      <div class="section-head"><span class="num">29</span><h2>Trading Sessions &amp; Best Times to Trade</h2></div>
+      <p class="deck">Crypto trades around the clock, but activity isn't spread evenly across the day &mdash; some hours are the mall at closing time, others are the mall on Black Friday.</p>
+
+      <p>Three broad sessions drive global volume: <b>Asian</b>, <b>London</b>, and <b>New York</b>. Volatility tends to pick up at each session's open and especially during the <b>London/New York overlap</b>, when both major regions are active at once. The quiet stretch in between &mdash; late in the US afternoon into the early Asian session &mdash; often produces thinner, choppier price action that's easy to misread as a real move.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 160" role="img" aria-label="A 24-hour timeline showing overlapping Asian, London, and New York trading session bands, with a highlighted overlap zone between London and New York marking the highest typical volatility." >
+          <line x1="20" y1="130" x2="620" y2="130" stroke="currentColor" stroke-opacity="0.25"/>
+          <rect x="40" y="40" width="220" height="16" fill="var(--ink-soft)" opacity="0.5"/>
+          <text x="150" y="34" text-anchor="middle" class="mono" font-size="10.5">ASIAN</text>
+          <rect x="220" y="65" width="220" height="16" fill="var(--accent)" opacity="0.6"/>
+          <text x="330" y="59" text-anchor="middle" class="mono" font-size="10.5">LONDON</text>
+          <rect x="360" y="90" width="220" height="16" fill="var(--bull)" opacity="0.6"/>
+          <text x="470" y="115" text-anchor="middle" class="mono" font-size="10.5">NEW YORK</text>
+          <rect x="360" y="63" width="80" height="45" fill="none" stroke="var(--bear)" stroke-width="2" stroke-dasharray="3 3"/>
+          <text x="400" y="130" text-anchor="middle" class="mono" font-size="10" fill="var(--bear)" font-weight="700">overlap &middot; highest volume</text>
+        </svg>
+        <figcaption>Sessions overlap rather than hand off cleanly &mdash; the London/New York overlap is typically where volume and volatility peak for the day.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>The market is technically always open, but it's not always busy. Trading during the dead hours is like walking into an empty mall &mdash; nothing much is happening and any noise stands out too much. Trading during the big overlap is like the mall on its biggest sale day &mdash; way more real activity to actually read.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Bukas palagi ang market pero hindi laging maingay. Ang magtrade sa oras na tulog lahat ay parang pagpasok sa walang taong mall &mdash; kaunti lang ang nangyayari at kahit maliit na ingay, lumalaki. Ang magtrade sa oras ng overlap ay parang pagpunta sa mall sa pinakamalaking sale &mdash; mas maraming tunay na galaw na pwedeng basahin.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This connects directly to Section 08's CME gaps &mdash; the quietest stretch of all is the CME weekend closure itself, when only spot crypto is even moving.</div>
+    </section>
+
+
+    <!-- 30 CONFLUENCE -->
+    <section id="confluence">
+      <div class="section-head"><span class="num">30</span><h2>Confluence: Stacking Your Edges</h2></div>
+      <p class="deck">No single tool in this notebook is reliable by itself. The real signal shows up when several of them agree, at the same price, without you forcing it.</p>
+
+      <p><b>Confluence</b> is what it's called when independent tools &mdash; a support zone, a Fibonacci level, a moving average, a volume signature, a candle pattern &mdash; all point to the same price area at the same time. None of them is magic on its own; what makes a zone worth real attention is several unrelated methods landing in the same place without you having to stretch to make them agree.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="Four horizontal bands representing a support zone, a Fibonacci 61.8 percent level, the 200-day moving average, and a resting liquidity zone, all overlapping at the same price area labeled the confluence zone." >
+          <line x1="0" y1="195" x2="640" y2="195" stroke="currentColor" stroke-opacity="0.25"/>
+          <rect x="240" y="30" width="160" height="14" fill="var(--ink-soft)" opacity="0.5"/><text x="60" y="41" class="mono" font-size="10.5">Support zone</text>
+          <rect x="240" y="60" width="160" height="14" fill="var(--accent)" opacity="0.6"/><text x="60" y="71" class="mono" font-size="10.5">Fib 61.8%</text>
+          <rect x="240" y="90" width="160" height="14" fill="var(--bull)" opacity="0.5"/><text x="60" y="101" class="mono" font-size="10.5">MA200</text>
+          <rect x="240" y="120" width="160" height="14" fill="var(--bear)" opacity="0.5"/><text x="60" y="131" class="mono" font-size="10.5">Resting liquidity</text>
+          <rect x="235" y="24" width="170" height="116" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>
+          <text x="320" y="165" text-anchor="middle" class="mono" font-size="11" fill="var(--accent)" font-weight="700">confluence zone</text>
+        </svg>
+        <figcaption>Four unrelated tools, drawn independently, all landing in the same narrow price band &mdash; that overlap is the point, not any one band alone.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like asking four different friends the same question separately, without letting them talk to each other first. If all four happen to give you the same answer anyway, that means a lot more than if you'd only asked one friend.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang paghingi ng opinyon sa apat na magkaibang kaibigan nang hiwa-hiwalay, hindi sila nag-uusap sa isa't isa. Kung parehong-pareho ang sagot nilang apat, mas malaki ang ibig sabihin niyan kaysa kung isa lang kaibigan ang tinanong mo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This is exactly what the Section 24 checklist is for &mdash; it's not a formality, it's how you check for confluence on purpose instead of noticing it by accident. The more boxes genuinely check out at the same price, the more that zone earned your attention.</div>
+    </section>
+
+
+    <!-- 31 KNOWLEDGE CHECK -->
+    <section id="quiz">
+      <div class="section-head"><span class="num">31</span><h2>Knowledge Check</h2></div>
+      <p class="deck">Ten questions pulled from across the notebook. No pressure &mdash; wrong answers just point you back to the section worth a re-read.</p>
+
+      <div id="quizForm">
+        <div class="quiz-q" data-answer="b">
+          <p class="qtext">1. A small body with a long lower wick, showing up after a downtrend, is usually called a:</p>
+          <label><input type="radio" name="q1" value="a"> Shooting Star</label>
+          <label><input type="radio" name="q1" value="b"> Hammer</label>
+          <label><input type="radio" name="q1" value="c"> Doji</label>
+          <label><input type="radio" name="q1" value="d"> Marubozu</label>
+        </div>
+        <div class="quiz-q" data-answer="b">
+          <p class="qtext">2. An uptrend is defined by a repeating sequence of:</p>
+          <label><input type="radio" name="q2" value="a"> Lower Highs and Lower Lows</label>
+          <label><input type="radio" name="q2" value="b"> Higher Highs and Higher Lows</label>
+          <label><input type="radio" name="q2" value="c"> Equal Highs and Equal Lows</label>
+          <label><input type="radio" name="q2" value="d"> Random highs and lows</label>
+        </div>
+        <div class="quiz-q" data-answer="b">
+          <p class="qtext">3. A broken resistance zone that starts acting as support on a retest is called:</p>
+          <label><input type="radio" name="q3" value="a"> A Spring</label>
+          <label><input type="radio" name="q3" value="b"> Role Reversal</label>
+          <label><input type="radio" name="q3" value="c"> A Golden Cross</label>
+          <label><input type="radio" name="q3" value="d"> Contango</label>
+        </div>
+        <div class="quiz-q" data-answer="b">
+          <p class="qtext">4. A big price move on very low volume most likely means:</p>
+          <label><input type="radio" name="q4" value="a"> The move is very likely to hold</label>
+          <label><input type="radio" name="q4" value="b"> Not many participants are actually behind the move</label>
+          <label><input type="radio" name="q4" value="c"> It's guaranteed to reverse</label>
+          <label><input type="radio" name="q4" value="d"> The candle must be a doji</label>
+        </div>
+        <div class="quiz-q" data-answer="b">
+          <p class="qtext">5. A CME Bitcoin futures gap appears mainly because:</p>
+          <label><input type="radio" name="q5" value="a"> The exchange made a data error</label>
+          <label><input type="radio" name="q5" value="b"> Spot Bitcoin kept moving while CME futures were closed for the weekend</label>
+          <label><input type="radio" name="q5" value="c"> The contract expired</label>
+          <label><input type="radio" name="q5" value="d"> RSI hit 100</label>
+        </div>
+        <div class="quiz-q" data-answer="b">
+          <p class="qtext">6. In Wyckoff accumulation, a "Spring" is:</p>
+          <label><input type="radio" name="q6" value="a"> A rally to a new all-time high</label>
+          <label><input type="radio" name="q6" value="b"> A brief false breakdown below the range that quickly reclaims it</label>
+          <label><input type="radio" name="q6" value="c"> The exact midpoint of the range</label>
+          <label><input type="radio" name="q6" value="d"> A type of candlestick pattern</label>
+        </div>
+        <div class="quiz-q" data-answer="b">
+          <p class="qtext">7. Bullish divergence is when:</p>
+          <label><input type="radio" name="q7" value="a"> Price and RSI both make new lows together</label>
+          <label><input type="radio" name="q7" value="b"> Price makes a lower low while RSI makes a higher low</label>
+          <label><input type="radio" name="q7" value="c"> RSI crosses above 70</label>
+          <label><input type="radio" name="q7" value="d"> Price crosses above the 200 MA</label>
+        </div>
+        <div class="quiz-q" data-answer="b">
+          <p class="qtext">8. The main reason to risk only about 1% of your account per trade is to:</p>
+          <label><input type="radio" name="q8" value="a"> Guarantee a profit</label>
+          <label><input type="radio" name="q8" value="b"> Survive a normal losing streak without serious damage</label>
+          <label><input type="radio" name="q8" value="c"> Avoid paying trading fees</label>
+          <label><input type="radio" name="q8" value="d"> Qualify for lower margin requirements</label>
+        </div>
+        <div class="quiz-q" data-answer="b">
+          <p class="qtext">9. Using 10x leverage on a trade means:</p>
+          <label><input type="radio" name="q9" value="a"> Your risk is automatically capped at 10%</label>
+          <label><input type="radio" name="q9" value="b"> A given price move affects your account about 10 times more than with no leverage</label>
+          <label><input type="radio" name="q9" value="c"> You need 10 times less margin</label>
+          <label><input type="radio" name="q9" value="d"> It removes the need for a stop-loss</label>
+        </div>
+        <div class="quiz-q" data-answer="c">
+          <p class="qtext">10. Trying to immediately win back a loss with a bigger, unplanned trade is called:</p>
+          <label><input type="radio" name="q10" value="a"> Confirmation bias</label>
+          <label><input type="radio" name="q10" value="b"> FOMO</label>
+          <label><input type="radio" name="q10" value="c"> Revenge trading</label>
+          <label><input type="radio" name="q10" value="d"> Expectancy</label>
+        </div>
+
+        <button type="button" id="quizSubmit">Check My Answers</button>
+        <div id="quizScore" class="readout" style="display:none;"></div>
+      </div>
+    </section>
+
+    <!-- 32 GLOSSARY -->
+    <section id="glossary">
+      <div class="section-head"><span class="num">32</span><h2>Glossary</h2></div>
+      <p class="deck">Quick reference for terms used above.</p>
+      <dl class="glossary">
+        <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
+        <div><dt>BOS (Break of Structure)</dt><dd>Price takes out the prior swing high/low in the direction of the trend, confirming continuation.</dd></div>
+        <div><dt>CHoCH (Change of Character)</dt><dd>The first swing that breaks the established HH/HL or LH/LL sequence — an early warning of possible reversal.</dd></div>
+        <div><dt>Liquidity</dt><dd>Clusters of resting stop-loss and pending orders, often just beyond an obvious swing high/low — a common magnet for price.</dd></div>
+        <div><dt>Spring</dt><dd>A brief false breakdown below a trading range that quickly reclaims the range, trapping short sellers before markup.</dd></div>
+        <div><dt>Upthrust</dt><dd>The distribution mirror of a spring — a false breakout above a range that fails and reverses down.</dd></div>
+        <div><dt>CME Gap</dt><dd>An empty space on the CME Bitcoin futures chart where price jumped between Friday's close and the next session's open because spot moved while futures were closed.</dd></div>
+        <div><dt>Role Reversal</dt><dd>A broken resistance zone acting as new support on retest, or vice versa.</dd></div>
+        <div><dt>R:R (Risk:Reward)</dt><dd>Distance from entry to target, divided by distance from entry to stop — how much you stand to make versus lose.</dd></div>
+        <div><dt>MA20 / MA200</dt><dd>Average closing price over the last 20 or 200 candles. MA20 tracks short-term trend; MA200 marks the broader bullish/bearish regime.</dd></div>
+        <div><dt>Golden Cross / Death Cross</dt><dd>A faster MA crossing above (golden) or below (death) a slower MA — classically the 50-day over the 200-day.</dd></div>
+        <div><dt>Bollinger Bands</dt><dd>A moving average (basis) plus an upper and lower band drawn two standard deviations away, widening with volatility and squeezing when it dries up.</dd></div>
+        <div><dt>Head &amp; Shoulders</dt><dd>Three swing highs, the middle one tallest, sitting on a "neckline" — a classic reversal pattern. Upside-down, it's an Inverse Head &amp; Shoulders (bullish).</dd></div>
+        <div><dt>Double Top / Bottom</dt><dd>Two failed attempts at the same high (top, bearish) or same low (bottom, bullish) — shaped like an M or a W.</dd></div>
+        <div><dt>Flag / Pennant</dt><dd>A brief, tight sideways or counter-trend pause after a strong move, usually resolving in the direction of that original move.</dd></div>
+        <div><dt>Marubozu</dt><dd>A candle with no wicks at all, or almost none — one side had full control from open to close, no rejection either way.</dd></div>
+        <div><dt>Harami</dt><dd>A small candle sitting entirely inside the prior candle's body — the mirror-image cousin of an engulfing pattern, showing momentum stalling rather than reversing outright.</dd></div>
+        <div><dt>Three White Soldiers / Three Black Crows</dt><dd>Three consecutive strong candles in the same direction with little overlap — a forceful, sustained push by one side.</dd></div>
+        <div><dt>Liquidity</dt><dd>Clusters of resting stop-loss and pending orders, often just beyond an obvious swing high/low — a common magnet for price.</dd></div>
+        <div><dt>Fibonacci Retracement</dt><dd>Horizontal levels (23.6%, 38.2%, 50%, 61.8%, 78.6%) dividing a price swing, marking where a pullback often stalls before the trend resumes.</dd></div>
+        <div><dt>RSI (Relative Strength Index)</dt><dd>A 0–100 oscillator comparing recent up-moves to down-moves; above 70 is "overbought," below 30 "oversold."</dd></div>
+        <div><dt>MACD</dt><dd>The gap between a fast and slow moving average, plotted against its own signal line — crossovers flag a shift in momentum.</dd></div>
+        <div><dt>Divergence</dt><dd>Price makes a new high/low while an oscillator (RSI/MACD) doesn't confirm it — a warning that the move's underlying momentum is weakening.</dd></div>
+        <div><dt>Market / Limit / Stop Order</dt><dd>Market fills immediately at the current price; Limit only fills at a chosen price or better; Stop becomes a market order once a trigger price is hit.</dd></div>
+        <div><dt>Contract Rollover</dt><dd>The point where a continuous futures symbol (like BTC1!) switches its data feed from an expiring contract to the next quarterly one.</dd></div>
+        <div><dt>FOMO</dt><dd>Fear Of Missing Out — entering a trade late, without a plan, purely because the move already looks like it's happening without you.</dd></div>
+        <div><dt>Margin / Leverage</dt><dd>Margin is the collateral you put up; leverage is the multiple of exposure that collateral controls. Both gains and losses scale with the multiple.</dd></div>
+        <div><dt>Margin Call / Liquidation</dt><dd>A demand for more collateral when a leveraged position's equity falls too low; liquidation is the position being force-closed when it isn't met.</dd></div>
+        <div><dt>VWAP</dt><dd>Volume-Weighted Average Price — the session's average traded price, weighted by volume at each level; resets every session.</dd></div>
+        <div><dt>Bid / Ask / Spread</dt><dd>The bid is the highest resting buy order, the ask the lowest resting sell order; the spread is the gap between them.</dd></div>
+        <div><dt>Expectancy</dt><dd>(Win% × Avg Win) − (Loss% × Avg Loss) — the actual measure of whether a strategy is profitable over many trades, not win rate alone.</dd></div>
+        <div><dt>Risk-On / Risk-Off</dt><dd>Market-wide moods where money flows into riskier assets (risk-on) or out of them into safety (risk-off), typically moving stocks, BTC, and the US dollar together or in opposition.</dd></div>
+        <div><dt>Elliott Wave</dt><dd>A theory that trends unfold in a five-wave impulse (with the trend) followed by a three-wave correction (against it), repeating at different scales.</dd></div>
+        <div><dt>Harmonic Pattern</dt><dd>A precise XABCD price structure where each leg matches a specific Fibonacci ratio, pointing to a Potential Reversal Zone (PRZ).</dd></div>
+        <div><dt>Trading Session</dt><dd>One of the three broad global trading windows — Asian, London, New York — whose overlaps typically bring the highest volume and volatility.</dd></div>
+        <div><dt>Confluence</dt><dd>Multiple independent tools (a zone, a fib level, an average, a volume signature) all pointing to the same price area at once — the basis for a higher-conviction read.</dd></div>
+      </dl>
+    </section>
+
+  </main>
+
+  <footer>
+    Notebook for demo practice only — not trade advice. Verify every idea against live price action before risking anything beyond a simulated account.
+  </footer>
+
+</div>
+<script type="module" src="/src/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trading Fundamentals - Interactive Learning</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e1e2e 0%, #2d2d44 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            border-bottom: 2px solid #00d4ff;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: #2d2d44;
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .tab-btn:hover {
+            background: #00d4ff;
+            color: #1e1e2e;
+        }
+        
+        .tab-btn.active {
+            background: #00d4ff;
+            color: #1e1e2e;
+        }
+        
+        .content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .section {
+            background: #2d2d44;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid #00d4ff33;
+        }
+        
+        .section h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .section h3 {
+            color: #00ffff;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin: 30px 0;
+            background: #1e1e2e;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .explanation {
+            background: #1e1e2e;
+            padding: 20px;
+            border-left: 4px solid #00d4ff;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .key-points {
+            background: #1e1e2e;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 1px solid #00ff0044;
+        }
+        
+        .key-points li {
+            margin: 10px 0;
+            margin-left: 20px;
+            color: #00ff00;
+        }
+        
+        .candle-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .candle-card {
+            background: #1e1e2e;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #00d4ff44;
+            text-align: center;
+        }
+        
+        .candle-visual {
+            height: 100px;
+            margin: 15px 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 5px;
+        }
+        
+        .candle-body {
+            width: 20px;
+            background: #00ff00;
+            border: 1px solid #00ff00;
+        }
+        
+        .candle-body.bearish {
+            background: #ff0000;
+            border-color: #ff0000;
+        }
+        
+        .candle-wick {
+            width: 2px;
+            background: #666;
+        }
+        
+        .candle-label {
+            color: #00ffff;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .interactive-demo {
+            background: #1e1e2e;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .slider-control {
+            margin: 15px 0;
+        }
+        
+        .slider-control label {
+            display: block;
+            margin-bottom: 8px;
+            color: #00ffff;
+            font-weight: 600;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #00d4ff33;
+            outline: none;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00d4ff;
+            cursor: pointer;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #00d4ff;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .quiz {
+            background: #1e1e2e;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .quiz-question {
+            margin-bottom: 15px;
+        }
+        
+        .quiz-option {
+            margin: 8px 0;
+        }
+        
+        .quiz-option input[type="radio"] {
+            margin-right: 10px;
+        }
+        
+        .quiz-option label {
+            cursor: pointer;
+            color: #e0e0e0;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background: #00d4ff;
+            color: #1e1e2e;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .btn:hover {
+            background: #00ffff;
+        }
+        
+        .result {
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            display: none;
+        }
+        
+        .result.show {
+            display: block;
+        }
+        
+        .result.correct {
+            background: #00ff0033;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+        }
+        
+        .result.incorrect {
+            background: #ff000033;
+            color: #ff0000;
+            border: 1px solid #ff0000;
+        }
+        
+        .pattern-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .pattern-item {
+            background: #1e1e2e;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #00d4ff44;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pattern-item:hover {
+            border-color: #00d4ff;
+            transform: translateY(-3px);
+        }
+        
+        .pattern-name {
+            color: #00ffff;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .pattern-desc {
+            color: #a0a0a0;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📈 Trading Fundamentals</h1>
+            <p class="subtitle">Master Breakouts, Support, Resistance & Candlesticks</p>
+        </header>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="switchTab('candlesticks')">Candlesticks</button>
+            <button class="tab-btn" onclick="switchTab('support-resistance')">Support & Resistance</button>
+            <button class="tab-btn" onclick="switchTab('breakouts')">Breakouts</button>
+            <button class="tab-btn" onclick="switchTab('quiz')">Quiz</button>
+        </div>
+        
+        <!-- CANDLESTICKS TAB -->
+        <div id="candlesticks" class="content active">
+            <div class="section">
+                <h2>Understanding Candlestick Charts</h2>
+                <p style="margin-bottom: 20px;">Candlestick charts are the most popular way to display price action in trading. Each candle represents a specific time period (1 minute, 5 minutes, 1 hour, 1 day, etc.) and shows four key prices:</p>
+                
+                <div class="explanation">
+                    <strong>📌 The 4 Key Prices:</strong>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Open:</strong> The first price when the period opens</li>
+                        <li><strong>Close:</strong> The last price when the period closes</li>
+                        <li><strong>High:</strong> The highest price during the period</li>
+                        <li><strong>Low:</strong> The lowest price during the period</li>
+                    </ul>
+                </div>
+                
+                <h3>Candle Anatomy</h3>
+                <div class="candle-types">
+                    <div class="candle-card">
+                        <div class="candle-label">Bullish Candle</div>
+                        <div class="candle-visual">
+                            <div class="candle-wick" style="height: 60px;"></div>
+                            <div class="candle-body" style="height: 50px;"></div>
+                            <div class="candle-wick" style="height: 20px;"></div>
+                        </div>
+                        <p style="color: #a0a0a0; margin-top: 10px;">Price closed higher than it opened. Green indicates bullish sentiment.</p>
+                    </div>
+                    
+                    <div class="candle-card">
+                        <div class="candle-label">Bearish Candle</div>
+                        <div class="candle-visual">
+                            <div class="candle-wick" style="height: 60px;"></div>
+                            <div class="candle-body bearish" style="height: 50px;"></div>
+                            <div class="candle-wick" style="height: 20px;"></div>
+                        </div>
+                        <p style="color: #a0a0a0; margin-top: 10px;">Price closed lower than it opened. Red indicates bearish sentiment.</p>
+                    </div>
+                </div>
+                
+                <div class="key-points">
+                    <strong style="color: #00ffff;">Key Components:</strong>
+                    <ul>
+                        <li><strong>Body (Real Body):</strong> The rectangular part showing the distance between Open and Close</li>
+                        <li><strong>Wicks (Shadows):</strong> The thin lines showing the High and Low prices</li>
+                        <li><strong>Color:</strong> Usually green/white for bullish, red/black for bearish</li>
+                    </ul>
+                </div>
+                
+                <h3>Common Candlestick Patterns</h3>
+                <div class="pattern-grid">
+                    <div class="pattern-item">
+                        <div class="pattern-name">Hammer</div>
+                        <div class="pattern-desc">Small body at top, long lower wick. Signal of reversal after downtrend.</div>
+                    </div>
+                    <div class="pattern-item">
+                        <div class="pattern-name">Shooting Star</div>
+                        <div class="pattern-desc">Small body at bottom, long upper wick. Signal of potential reversal from uptrend.</div>
+                    </div>
+                    <div class="pattern-item">
+                        <div class="pattern-name">Doji</div>
+                        <div class="pattern-desc">Open and close nearly equal, creating a cross. Shows indecision in the market.</div>
+                    </div>
+                    <div class="pattern-item">
+                        <div class="pattern-name">Engulfing</div>
+                        <div class="pattern-desc">Larger candle fully contains the previous candle's body. Signal reversal.</div>
+                    </div>
+                </div>
+                
+                <h3>Interactive: Build Your Own Candle</h3>
+                <div class="interactive-demo">
+                    <div class="slider-control">
+                        <label>Open Price: $<span id="openVal">100</span></label>
+                        <input type="range" min="80" max="120" value="100" id="openPrice" oninput="updateCandle()">
+                    </div>
+                    <div class="slider-control">
+                        <label>Close Price: $<span id="closeVal">110</span></label>
+                        <input type="range" min="80" max="120" value="110" id="closePrice" oninput="updateCandle()">
+                    </div>
+                    <div class="slider-control">
+                        <label>High Price: $<span id="highVal">115</span></label>
+                        <input type="range" min="80" max="120" value="115" id="highPrice" oninput="updateCandle()">
+                    </div>
+                    <div class="slider-control">
+                        <label>Low Price: $<span id="lowVal">95</span></label>
+                        <input type="range" min="80" max="120" value="95" id="lowPrice" oninput="updateCandle()">
+                    </div>
+                    
+                    <div id="customCandleChart" class="chart-container"></div>
+                    <div id="candleInfo" style="background: #0d0d15; padding: 15px; border-radius: 5px; margin-top: 15px; color: #00ffff;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SUPPORT & RESISTANCE TAB -->
+        <div id="support-resistance" class="content">
+            <div class="section">
+                <h2>Support & Resistance Levels</h2>
+                <p style="margin-bottom: 20px;">Support and Resistance are fundamental concepts in technical analysis. They represent price levels where the asset historically struggles to break past.</p>
+                
+                <div class="explanation">
+                    <strong>📌 What You Need to Know:</strong>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li><strong>Support:</strong> A price level where the asset tends to stop falling and bounce back up (floor)</li>
+                        <li><strong>Resistance:</strong> A price level where the asset tends to stop rising and fall back down (ceiling)</li>
+                    </ul>
+                </div>
+                
+                <h3>Why Do They Matter?</h3>
+                <div class="key-points">
+                    <ul>
+                        <li>Traders use these levels to <strong>identify entry and exit points</strong></li>
+                        <li>They help predict <strong>potential price movements</strong></li>
+                        <li>More times a price touches a level, the <strong>stronger that level</strong> becomes</li>
+                        <li>When support breaks, it often becomes <strong>new resistance</strong> (and vice versa)</li>
+                    </ul>
+                </div>
+                
+                <h3>Support & Resistance Chart</h3>
+                <div id="supportResistanceChart" class="chart-container"></div>
+                
+                <h3>Interactive Example</h3>
+                <div class="interactive-demo">
+                    <p style="margin-bottom: 15px;">Adjust support and resistance levels to see how price reacts:</p>
+                    <div class="slider-control">
+                        <label>Support Level: $<span id="supportVal">100</span></label>
+                        <input type="range" min="80" max="100" value="100" id="supportLevel" oninput="updateSupportResistance()">
+                    </div>
+                    <div class="slider-control">
+                        <label>Resistance Level: $<span id="resistanceVal">140</span></label>
+                        <input type="range" min="140" max="160" value="140" id="resistanceLevel" oninput="updateSupportResistance()">
+                    </div>
+                    
+                    <div id="interactiveSRChart" class="chart-container"></div>
+                </div>
+                
+                <h3>Real-World Example</h3>
+                <div class="explanation">
+                    Imagine a stock bounces off the $50 level 3 times without breaking below. This $50 level becomes a <strong>strong support</strong>. 
+                    <br><br>
+                    If the price breaks below $50, traders watch for a potential new support lower. Meanwhile, $50 becomes potential <strong>resistance</strong> on bounces back up.
+                </div>
+            </div>
+        </div>
+        
+        <!-- BREAKOUTS TAB -->
+        <div id="breakouts" class="content">
+            <div class="section">
+                <h2>Breakouts: Understanding Price Breakthroughs</h2>
+                <p style="margin-bottom: 20px;">A breakout occurs when price breaks through an established support or resistance level with conviction, often signaling the beginning of a new trend.</p>
+                
+                <div class="explanation">
+                    <strong>📌 Breakout Definition:</strong>
+                    <ul style="margin-left: 20px; margin-top: 10px;">
+                        <li>Price moves <strong>above resistance</strong> (bullish breakout)</li>
+                        <li>Price moves <strong>below support</strong> (bearish breakout)</li>
+                        <li>Usually accompanied by <strong>high volume</strong></li>
+                        <li>Often marks the <strong>start of a new trend</strong></li>
+                    </ul>
+                </div>
+                
+                <h3>Types of Breakouts</h3>
+                <div class="candle-types">
+                    <div class="candle-card">
+                        <div class="candle-label">Bullish Breakout</div>
+                        <div style="background: #1e1e2e; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                            <p style="color: #00ff00; font-weight: bold;">↗️ Price breaks ABOVE Resistance</p>
+                            <p style="color: #a0a0a0; margin-top: 10px; font-size: 0.9em;">Signals uptrend. Traders often enter LONG positions.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="candle-card">
+                        <div class="candle-label">Bearish Breakout</div>
+                        <div style="background: #1e1e2e; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                            <p style="color: #ff0000; font-weight: bold;">↙️ Price breaks BELOW Support</p>
+                            <p style="color: #a0a0a0; margin-top: 10px; font-size: 0.9em;">Signals downtrend. Traders often enter SHORT positions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Breakout Visualization</h3>
+                <div id="breakoutChart" class="chart-container"></div>
+                
+                <h3>Key Breakout Signals</h3>
+                <div class="key-points">
+                    <ul>
+                        <li><strong>Volume Surge:</strong> Strong breakouts are confirmed by high trading volume</li>
+                        <li><strong>Clean Break:</strong> Price should close decisively through the level</li>
+                        <li><strong>Pullback:</strong> After breakout, price often "retests" the level before continuing</li>
+                        <li><strong>Risk:</strong> False breakouts (fakeouts) can trap traders - always use stop losses</li>
+                    </ul>
+                </div>
+                
+                <h3>Interactive: Spot the Breakout</h3>
+                <div class="interactive-demo">
+                    <div class="slider-control">
+                        <label>Select Volatility Level: <span id="volVal">Normal</span></label>
+                        <input type="range" min="0" max="2" step="1" value="1" id="volatility" oninput="updateBreakout()">
+                    </div>
+                    
+                    <div id="breakoutInteractiveChart" class="chart-container"></div>
+                    <div id="breakoutInfo" style="background: #0d0d15; padding: 15px; border-radius: 5px; margin-top: 15px; color: #00ffff;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- QUIZ TAB -->
+        <div id="quiz" class="content">
+            <div class="section">
+                <h2>📝 Test Your Knowledge</h2>
+                
+                <div class="quiz">
+                    <div class="quiz-question">
+                        <h3 style="color: #00ffff; margin-bottom: 15px;">Question 1: What does a long lower wick on a candle indicate?</h3>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1a" name="q1" value="a">
+                            <label for="q1a">A) The price opened very high</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1b" name="q1" value="b">
+                            <label for="q1b">B) Buyers rejected lower prices and pushed price back up</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q1c" name="q1" value="c">
+                            <label for="q1c">C) The market is in a downtrend</label>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="checkAnswer('q1', 'b', 'Correct! A long lower wick shows that sellers pushed price down, but buyers came in and rejected those lower prices, creating a reversal signal.')">Check Answer</button>
+                    <div id="result1" class="result"></div>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question">
+                        <h3 style="color: #00ffff; margin-bottom: 15px;">Question 2: What is support?</h3>
+                        <div class="quiz-option">
+                            <input type="radio" id="q2a" name="q2" value="a">
+                            <label for="q2a">A) A price level where buyers tend to buy, stopping the fall</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q2b" name="q2" value="b">
+                            <label for="q2b">B) The highest price ever reached</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q2c" name="q2" value="c">
+                            <label for="q2c">C) Customer support for your broker</label>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="checkAnswer('q2', 'a', 'Correct! Support is where buyers historically step in, preventing further declines.')">Check Answer</button>
+                    <div id="result2" class="result"></div>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question">
+                        <h3 style="color: #00ffff; margin-bottom: 15px;">Question 3: What does a breakout typically signal?</h3>
+                        <div class="quiz-option">
+                            <input type="radio" id="q3a" name="q3" value="a">
+                            <label for="q3a">A) The end of the market</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q3b" name="q3" value="b">
+                            <label for="q3b">B) The beginning of a new trend or strong momentum move</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q3c" name="q3" value="c">
+                            <label for="q3c">C) That support and resistance don't work</label>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="checkAnswer('q3', 'b', 'Correct! Breakouts typically mark the start of a new trend with momentum behind it.')">Check Answer</button>
+                    <div id="result3" class="result"></div>
+                </div>
+                
+                <div class="quiz">
+                    <div class="quiz-question">
+                        <h3 style="color: #00ffff; margin-bottom: 15px;">Question 4: When a resistance level breaks upward, it often becomes the new:</h3>
+                        <div class="quiz-option">
+                            <input type="radio" id="q4a" name="q4" value="a">
+                            <label for="q4a">A) New resistance level</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q4b" name="q4" value="b">
+                            <label for="q4b">B) Support level on pullbacks</label>
+                        </div>
+                        <div class="quiz-option">
+                            <input type="radio" id="q4c" name="q4" value="c">
+                            <label for="q4c">C) Irrelevant to traders</label>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="checkAnswer('q4', 'b', 'Correct! When resistance breaks, it typically becomes support on pullbacks - think of it as a \"flip\" of roles.')">Check Answer</button>
+                    <div id="result4" class="result"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Tab switching
+        function switchTab(tabName) {
+            const contents = document.querySelectorAll('.content');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            contents.forEach(c => c.classList.remove('active'));
+            buttons.forEach(b => b.classList.remove('active'));
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Initialize charts when tabs are switched
+            setTimeout(() => {
+                if (tabName === 'support-resistance' && !window.srChartInitialized) {
+                    initSupportResistanceChart();
+                    initInteractiveSRChart();
+                    window.srChartInitialized = true;
+                }
+                if (tabName === 'breakouts' && !window.breakoutChartInitialized) {
+                    initBreakoutChart();
+                    initBreakoutInteractiveChart();
+                    window.breakoutChartInitialized = true;
+                }
+            }, 100);
+        }
+        
+        // Generate realistic price data
+        function generatePriceData(startPrice, volatility, trend) {
+            const data = [];
+            let price = startPrice;
+            for (let i = 0; i < 50; i++) {
+                const change = (Math.random() - 0.5) * volatility + trend;
+                price += change;
+                data.push(Math.round(price * 100) / 100);
+            }
+            return data;
+        }
+        
+        // Candlestick interactive
+        function updateCandle() {
+            const open = parseFloat(document.getElementById('openPrice').value);
+            const close = parseFloat(document.getElementById('closePrice').value);
+            const high = parseFloat(document.getElementById('highPrice').value);
+            const low = parseFloat(document.getElementById('lowPrice').value);
+            
+            document.getElementById('openVal').textContent = open;
+            document.getElementById('closeVal').textContent = close;
+            document.getElementById('highVal').textContent = high;
+            document.getElementById('lowVal').textContent = low;
+            
+            const isBullish = close >= open;
+            const candleColor = isBullish ? '#00ff00' : '#ff0000';
+            const range = high - low;
+            const scale = 200 / range;
+            
+            const candleHTML = `
+                <svg viewBox="0 0 100 250" style="width: 100%; height: 100%;">
+                    <!-- Scale line -->
+                    <line x1="50" y1="${250 - (high - low) * scale - 20}" x2="50" y2="230" stroke="#666" stroke-width="1"/>
+                    
+                    <!-- High/Low wick -->
+                    <line x1="50" y1="${250 - (high - low) * scale - 20}" x2="50" y2="${250 - (Math.max(open, close) - low) * scale - 20}" stroke="${candleColor}" stroke-width="2"/>
+                    <line x1="50" y1="${250 - (Math.min(open, close) - low) * scale - 20}" x2="50" y2="230" stroke="${candleColor}" stroke-width="2"/>
+                    
+                    <!-- Body -->
+                    <rect x="30" y="${250 - (Math.max(open, close) - low) * scale - 20}" width="40" height="${Math.abs(close - open) * scale || 5}" fill="${candleColor}" stroke="${candleColor}" stroke-width="1"/>
+                    
+                    <!-- Labels -->
+                    <text x="80" y="${250 - (high - low) * scale - 20}" font-size="10" fill="#00ffff">H: $${high}</text>
+                    <text x="80" y="${250 - (Math.max(open, close) - low) * scale - 20}" font-size="10" fill="#00ffff">O: $${open}</text>
+                    <text x="80" y="${250 - (Math.min(open, close) - low) * scale - 20}" font-size="10" fill="#00ffff">C: $${close}</text>
+                    <text x="80" y="235" font-size="10" fill="#00ffff">L: $${low}</text>
+                </svg>
+            `;
+            
+            document.getElementById('customCandleChart').innerHTML = candleHTML;
+            
+            const info = `
+                <strong>📊 Candle Analysis:</strong><br>
+                Type: <strong>${isBullish ? '🟢 BULLISH' : '🔴 BEARISH'}</strong><br>
+                Body Size: $${Math.abs(close - open).toFixed(2)}<br>
+                Lower Wick: $${(Math.min(open, close) - low).toFixed(2)}<br>
+                Upper Wick: $${(high - Math.max(open, close)).toFixed(2)}<br>
+                Total Range: $${(high - low).toFixed(2)}
+            `;
+            
+            document.getElementById('candleInfo').innerHTML = info;
+        }
+        
+        // Support & Resistance Charts
+        function initSupportResistanceChart() {
+            const ctx = document.getElementById('supportResistanceChart').getContext('2d');
+            const priceData = generatePriceData(110, 3, 0);
+            
+            const datasets = [
+                {
+                    label: 'Price',
+                    data: priceData,
+                    borderColor: '#00d4ff',
+                    backgroundColor: '#00d4ff22',
+                    borderWidth: 2,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 0
+                },
+                {
+                    label: 'Support',
+                    data: Array(50).fill(100),
+                    borderColor: '#00ff00',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    fill: false
+                },
+                {
+                    label: 'Resistance',
+                    data: Array(50).fill(140),
+                    borderColor: '#ff0000',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    fill: false
+                }
+            ];
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 50}, (_, i) => i + 1),
+                    datasets: datasets
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#e0e0e0' } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: { color: '#a0a0a0' },
+                            grid: { color: '#3d3d5c' }
+                        },
+                        x: {
+                            ticks: { color: '#a0a0a0' },
+                            grid: { color: '#3d3d5c' }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function initInteractiveSRChart() {
+            window.interactiveSRChart = null;
+            updateSupportResistance();
+        }
+        
+        function updateSupportResistance() {
+            const support = parseFloat(document.getElementById('supportLevel').value);
+            const resistance = parseFloat(document.getElementById('resistanceLevel').value);
+            
+            document.getElementById('supportVal').textContent = support;
+            document.getElementById('resistanceVal').textContent = resistance;
+            
+            const priceData = generatePriceData(120, 3, 0);
+            
+            const ctx = document.getElementById('interactiveSRChart').getContext('2d');
+            
+            if (window.interactiveSRChart) {
+                window.interactiveSRChart.destroy();
+            }
+            
+            window.interactiveSRChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 50}, (_, i) => i + 1),
+                    datasets: [
+                        {
+                            label: 'Price',
+                            data: priceData,
+                            borderColor: '#00d4ff',
+                            backgroundColor: '#00d4ff22',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0
+                        },
+                        {
+                            label: `Support ($${support})`,
+                            data: Array(50).fill(support),
+                            borderColor: '#00ff00',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            fill: false
+                        },
+                        {
+                            label: `Resistance ($${resistance})`,
+                            data: Array(50).fill(resistance),
+                            borderColor: '#ff0000',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#e0e0e0' } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: { color: '#a0a0a0' },
+                            grid: { color: '#3d3d5c' }
+                        },
+                        x: {
+                            ticks: { color: '#a0a0a0' },
+                            grid: { color: '#3d3d5c' }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Breakout Charts
+        function initBreakoutChart() {
+            const ctx = document.getElementById('breakoutChart').getContext('2d');
+            const priceData = generatePriceData(100, 2, 0.08);
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 50}, (_, i) => i + 1),
+                    datasets: [
+                        {
+                            label: 'Price',
+                            data: priceData,
+                            borderColor: '#00d4ff',
+                            backgroundColor: '#00d4ff22',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Resistance',
+                            data: Array(50).fill(120),
+                            borderColor: '#ff0000',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#e0e0e0' } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: { color: '#a0a0a0' },
+                            grid: { color: '#3d3d5c' }
+                        },
+                        x: {
+                            ticks: { color: '#a0a0a0' },
+                            grid: { color: '#3d3d5c' }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function initBreakoutInteractiveChart() {
+            window.breakoutInteractiveChart = null;
+            updateBreakout();
+        }
+        
+        function updateBreakout() {
+            const volIndex = parseInt(document.getElementById('volatility').value);
+            const volLabels = ['Low', 'Normal', 'High'];
+            const volatilities = [1, 2.5, 4];
+            
+            document.getElementById('volVal').textContent = volLabels[volIndex];
+            
+            const priceData = generatePriceData(100, volatilities[volIndex], 0.1);
+            
+            const ctx = document.getElementById('breakoutInteractiveChart').getContext('2d');
+            
+            if (window.breakoutInteractiveChart) {
+                window.breakoutInteractiveChart.destroy();
+            }
+            
+            const resistanceLevel = 120;
+            
+            window.breakoutInteractiveChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Array.from({length: 50}, (_, i) => i + 1),
+                    datasets: [
+                        {
+                            label: 'Price',
+                            data: priceData,
+                            borderColor: '#00d4ff',
+                            backgroundColor: '#00d4ff22',
+                            borderWidth: 2,
+                            fill: true,
+                            tension: 0.4,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Resistance',
+                            data: Array(50).fill(resistanceLevel),
+                            borderColor: '#ff6b00',
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            fill: false
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { labels: { color: '#e0e0e0' } }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: { color: '#a0a0a0' },
+                            grid: { color: '#3d3d5c' }
+                        },
+                        x: {
+                            ticks: { color: '#a0a0a0' },
+                            grid: { color: '#3d3d5c' }
+                        }
+                    }
+                }
+            });
+            
+            const maxPrice = Math.max(...priceData);
+            const minPrice = Math.min(...priceData);
+            const hasBreakout = maxPrice > resistanceLevel;
+            
+            let infoText = `<strong>Volatility Level:</strong> ${volLabels[volIndex]}<br>`;
+            infoText += `<strong>Price Range:</strong> $${minPrice.toFixed(2)} - $${maxPrice.toFixed(2)}<br>`;
+            infoText += `<strong>Resistance Level:</strong> $${resistanceLevel}<br>`;
+            if (hasBreakout) {
+                infoText += `<strong style="color: #00ff00;">✓ BREAKOUT DETECTED!</strong> Price broke above resistance!`;
+            } else {
+                infoText += `<strong style="color: #ffaa00;">No breakout yet. Price respecting resistance.</strong>`;
+            }
+            
+            document.getElementById('breakoutInfo').innerHTML = infoText;
+        }
+        
+        // Quiz answers
+        function checkAnswer(questionId, correctAnswer, message) {
+            const selected = document.querySelector(`input[name="${questionId}"]:checked`);
+            const resultDiv = document.getElementById(`result${questionId.slice(-1)}`);
+            
+            if (!selected) {
+                resultDiv.innerHTML = '<strong style="color: #ffaa00;">Please select an answer first!</strong>';
+                resultDiv.classList.add('show');
+                return;
+            }
+            
+            if (selected.value === correctAnswer) {
+                resultDiv.innerHTML = message;
+                resultDiv.classList.add('show', 'correct');
+            } else {
+                resultDiv.innerHTML = '<strong>Incorrect. Try again!</strong><br>' + message;
+                resultDiv.classList.add('show', 'incorrect');
+            }
+        }
+        
+        // Initialize first chart
+        window.addEventListener('load', () => {
+            updateCandle();
+        });
+    </script>
+</body>
+</html>
