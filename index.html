@@ -1688,10 +1688,174 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="41" data-title="Glossary">
+    <div class="page" data-page="41" data-title="Open Interest">
+      <div class="page-inner">
+        <section id="openinterest">
+      <div class="section-head"><span class="num">40</span><h2>Open Interest</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="openinterest"><span>mark read</span></label></div>
+      <p class="deck">Volume tells you how many contracts changed hands today. Open Interest tells you how many are still sitting open right now.</p>
+
+      <p><b>Open Interest (OI)</b> is a running balance of outstanding futures contracts &mdash; it rises when a fresh buyer and fresh seller both open new positions, and falls when an existing long and existing short both close out. Unlike volume, it doesn't reset each day. Reading price alongside OI: price up with OI up means new longs are actually driving the move &mdash; a healthier signal than price up with OI down, which usually means short sellers are just covering (buying back to close), not new buyers stepping in. The same logic mirrors on the way down.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Price</th><th>Open Interest</th><th>What's likely happening</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">Up</td><td class="mono">Up</td><td>New longs driving the move &mdash; <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--bull-soft)] text-[var(--bull)]">healthy</span></td></tr>
+            <tr><td class="mono">Up</td><td class="mono">Down</td><td>Short covering, not fresh buying &mdash; less durable</td></tr>
+            <tr><td class="mono">Down</td><td class="mono">Up</td><td>New shorts driving the move &mdash; <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--bear-soft)] text-[var(--bear)]">healthy downtrend</span></td></tr>
+            <tr><td class="mono">Down</td><td class="mono">Down</td><td>Longs closing out &mdash; possible exhaustion</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Volume is like counting every bet placed at a betting shop today, including ones already cashed out. Open interest is how many bets are still open and unsettled right now. If the number of open bets keeps growing, fresh money keeps entering the game. If it shrinks while price still moves, the old bettors are just leaving &mdash; nobody new is showing up.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang volume ay parang pagbilang ng lahat ng pusta ngayong araw, kasama na yung na-cash out na. Ang open interest ay kung ilang pusta ang bukas pa at hindi pa nase-settle. Kung patuloy na tumataas ang bukas na pusta, may bagong perang pumapasok. Kung bumababa habang gumagalaw pa ang presyo, yung mga luma lang ang umaalis &mdash; walang bagong dumarating.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>A breakout on rising volume (Section 07) <i>and</i> rising open interest is a stronger version of the same signal &mdash; it means real new participants are entering, not just existing positions swapping hands.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="42" data-title="Contango & Backwardation">
+      <div class="page-inner">
+        <section id="basis">
+      <div class="section-head"><span class="num">41</span><h2>Contango, Backwardation &amp; the Basis</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="basis"><span>mark read</span></label></div>
+      <p class="deck">CME BTC1! rarely trades at the exact same price as spot Bitcoin &mdash; the gap between them is called the basis, and its direction says something.</p>
+
+      <p>Basis = futures price minus spot price. <b>Contango</b> is futures trading <i>above</i> spot (positive basis) &mdash; the normal state for most of Bitcoin futures' history, reflecting financing cost and general bullish expectation. <b>Backwardation</b> is futures trading <i>below</i> spot (negative basis) &mdash; rarer, and often a sign of unusual near-term stress or heavy demand to short the futures contract specifically. Because a futures contract must converge exactly to spot at expiration, the basis mechanically shrinks toward zero as expiration approaches &mdash; the same convergence that drives the contract rollover in Section 14.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="Two lines, spot price and futures price, with the futures line sitting above spot for most of the timeline (contango), narrowing until the two converge at expiration.">
+          <line x1="0" y1="175" x2="640" y2="175" stroke="currentColor" stroke-opacity="0.25"/>
+          <polyline points="20,120 200,110 380,100 500,95 620,90" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="40" y="105" class="mono" font-size="10" fill="var(--ink-soft)">spot</text>
+          <polyline points="20,80 200,78 380,80 500,84 620,90" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <text x="40" y="65" class="mono" font-size="10" fill="var(--accent)">futures</text>
+          <line x1="620" y1="10" x2="620" y2="175" stroke="currentColor" stroke-opacity="0.3" stroke-dasharray="3 4"/>
+          <text x="620" y="195" text-anchor="middle" class="mono" font-size="10">expiration &mdash; must converge</text>
+          <line x1="200" y1="78" x2="200" y2="110" stroke="var(--accent)" stroke-dasharray="2 3"/>
+          <text x="240" y="95" class="mono" font-size="9.5" fill="var(--accent)">the basis</text>
+        </svg>
+        <figcaption>Futures trading above spot (contango) is the usual state; the gap narrows on its own as the contract nears expiration.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like preordering a concert ticket months early versus buying at the door tonight. The preorder ("futures") usually costs a bit more than today's door price ("spot") because of anticipation and the cost of holding the reservation &mdash; but by the actual night of the concert, both prices have to match exactly.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang pag-preorder ng ticket ng konsyerto ilang buwan bago, kumpara sa pagbili sa pinto mismong gabi. Karaniwang mas mahal ang preorder ("futures") kaysa sa presyo ngayon ("spot") dahil sa inaasahan at gastos ng paghawak ng reserbasyon &mdash; pero pagdating ng aktwal na gabi, kailangang magkapareho na ang dalawang presyo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This is also why a fresh quarterly contract can open at a slightly different price than the one it replaces during rollover (Section 14) &mdash; it's pricing in a different amount of time until its own convergence date.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="43" data-title="CME Price Limits">
+      <div class="page-inner">
+        <section id="limits">
+      <div class="section-head"><span class="num">42</span><h2>CME Price Limits &amp; Circuit Breakers</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="limits"><span>mark read</span></label></div>
+      <p class="deck">Unlike spot crypto, CME Bitcoin futures can hit a wall mid-move &mdash; a built-in speed bump spot markets don't have.</p>
+
+      <p>CME futures markets carry exchange-mandated <b>price limits</b>: if price moves too far too fast from a reference level, trading can be temporarily restricted to a narrower range or paused outright, giving the market a cooling-off period before resuming. Spot crypto exchanges have no equivalent &mdash; they can move without limit straight through a panic, 24/7. The practical implication: in a genuinely extreme event, a stop-loss sitting in the futures market could fail to fill at the expected price if a limit triggers, or your position could simply be stuck until trading resumes.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a highway that automatically closes for a few minutes if traffic starts moving dangerously fast in one direction, giving everyone a chance to slow down before it reopens &mdash; versus a road with no speed limit and no ability to close at all.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang highway na kusang nagsasara ng ilang minuto kapag sobrang bilis ng takbo ng trapiko sa isang direksyon, para makapaghinahon ang lahat bago muling buksan &mdash; kumpara sa kalsadang walang speed limit at hindi kayang isara kahit kailan.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This is a real, if rare, reason a stop-loss can behave unexpectedly on CME futures specifically &mdash; one more argument for the position-sizing math in Section 17 rather than assuming any single stop will always fill exactly where you drew it.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="44" data-title="Options Basics">
+      <div class="page-inner">
+        <section id="options">
+      <div class="section-head"><span class="num">43</span><h2>Options Basics &amp; Hedging</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="options"><span>mark read</span></label></div>
+      <p class="deck">CME also lists options on Bitcoin futures &mdash; a different tool for a different job: limiting downside without necessarily closing the trade.</p>
+
+      <p>A <b>call</b> option gives the right (not the obligation) to buy the futures contract at a set <b>strike</b> price before expiration; a <b>put</b> gives the right to sell. Buying a put against an existing long futures position is a classic hedge: if price falls, the put gains value to offset the futures loss, and the most you can lose on the hedge itself is capped at the premium you paid for it. Unlike a stop-loss, which exits the position entirely and can be hunted (Section 05), a protective put stays in place through a temporary wick and simply costs a known amount upfront.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="A payoff diagram showing an unprotected long futures position losing value in a straight diagonal line as price falls, versus the same position combined with a protective put, which flattens into a floor below a certain price instead of continuing to lose." >
+          <line x1="20" y1="30" x2="20" y2="200" stroke="currentColor" stroke-opacity="0.3"/>
+          <line x1="20" y1="115" x2="620" y2="115" stroke="currentColor" stroke-opacity="0.3"/>
+          <line x1="60" y1="40" x2="580" y2="190" stroke="var(--bear)" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="580" y="205" text-anchor="end" class="mono" font-size="10" fill="var(--bear)">futures alone &mdash; loss keeps growing</text>
+          <polyline points="60,40 340,115 580,140" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+          <text x="420" y="105" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)" font-weight="700">futures + put &mdash; loss floors out</text>
+          <line x1="340" y1="115" x2="340" y2="200" stroke="currentColor" stroke-opacity="0.3" stroke-dasharray="2 3"/>
+          <text x="340" y="215" text-anchor="middle" class="mono" font-size="9.5">strike price</text>
+        </svg>
+        <figcaption>Below the strike, the put's gain offsets the futures' loss dollar for dollar &mdash; the combined position's downside flattens instead of continuing straight down.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like buying travel insurance for a trip you already booked. You still keep the trip (the futures position), but if something goes wrong, the insurance (the put) pays out to offset the damage &mdash; and the most you can lose is the cost of the insurance itself.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang pagbili ng travel insurance para sa biyaheng na-book mo na. Tuloy pa rin ang biyahe (ang futures position), pero kung may masamang mangyari, magbabayad ang insurance (ang put) para matakpan ang pinsala &mdash; at ang pinakamalaki mong malulugi ay ang bayad sa insurance mismo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Options pricing has its own vocabulary &mdash; premium, strike, expiration, implied volatility &mdash; well beyond one page. Treat this section as knowing the concept exists, not a complete options education.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="45" data-title="Backtesting Walkthrough">
+      <div class="page-inner">
+        <section id="backtesting">
+      <div class="section-head"><span class="num">44</span><h2>Backtesting Walkthrough</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="backtesting"><span>mark read</span></label></div>
+      <p class="deck">Section 21 gave you the expectancy formula. This is how you actually go get the numbers to put into it.</p>
+
+      <p>Write the exact rule set down first &mdash; entry trigger, stop rule, exit rule &mdash; vague rules produce unreliable results. Then scroll a chart backward in time (or use a proper replay tool) so you genuinely can't see what happens next. Move forward one candle at a time, marking every instance the entry rule would have triggered, and record entry, stop, and exit for each one exactly per the written rules. After 30&ndash;50-plus instances, compute win rate and average R the same way Section 21 does. The biggest threat is hindsight bias &mdash; it's easy to unconsciously only "notice" the setups that would have worked when scanning a finished chart. Disciplined bar-by-bar replay is what keeps a backtest honest.</p>
+
+      <div class="readout">
+<span class="c">$</span> backtest --rules written --bars 1D<br>
+[ ] entry / stop / exit rules written down, no ambiguity<br>
+[ ] replaying bar-by-bar, not scanning the finished chart<br>
+[ ] every triggered instance logged, win or lose<br>
+[ ] 30+ instances before trusting the win rate<br>
+[ ] win rate &amp; avg R computed &mdash; run Section 21's formula
+      </div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like practicing free throws with a version of yourself who doesn't know yet if the ball goes in. Testing a rule by scrolling forward one moment at a time &mdash; instead of looking at the whole finished chart first &mdash; is the only way to know if the rule really works, rather than just noticing the shots that happened to land.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang nagsasanay ng free throw gamit ang bersyon ng sarili mo na hindi pa alam kung papasok ang bola. Ang pagsubok sa rule sa pamamagitan ng dahan-dahang pag-scroll pasulong &mdash; hindi pagtingin agad sa buong tapos nang chart &mdash; ang tanging paraan para malaman kung talagang gumagana ito, hindi lang napansin ang mga pagkakataong pumasok.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Log backtested trades in the same format as live demo trades in Section 26 &mdash; keeping the format identical makes it trivial to compare backtested expectancy against what you're actually producing live.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="46" data-title="Market Makers">
+      <div class="page-inner">
+        <section id="marketmakers">
+      <div class="section-head"><span class="num">45</span><h2>Market Makers &amp; the Other Side of Your Trade</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="marketmakers"><span>mark read</span></label></div>
+      <p class="deck">Every position has a counterparty. On a regulated futures exchange, professional market makers are often exactly that.</p>
+
+      <p><b>Market makers</b> are firms that continuously post both a bid and an ask (Section 20), profiting from the spread rather than betting on direction &mdash; their job is to always be willing to trade, providing the liquidity retail orders fill against. That's different from a large directional trader deliberately hunting a stop (Section 05). Much of the routine order-filling on the other side of a small trade is just market makers doing their job, not a conspiracy. Practically, this reframes the "liquidity grab" language: sometimes a wick beyond a level is a deliberate hunt, sometimes it's just market-maker quotes reacting mechanically to a burst of orders &mdash; either way, the response is the same: respect the zone, don't take it personally.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a lemonade stand owner who's happy to both buy your empty cups back and sell you lemonade all day, earning a small profit on the difference each time, no matter whether lemonade prices are rising or falling. They're not betting on where lemonade is headed &mdash; they profit just from always being available on both sides.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang tindero ng lemonade na masaya bumili pabalik ng basyong baso mo at magbenta rin ng lemonade sa iyo buong araw, kumikita ng kaunti sa pagkakaiba kada beses, tumaas man o bumaba ang presyo ng lemonade ngayon. Hindi sila nagtataya kung saan patutungo ang presyo &mdash; kumikita lang sila dahil laging bukas sila sa magkabilang panig.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This doesn't mean liquidity grabs (Section 05) aren't real &mdash; it means not every wick beyond a level is a deliberate hunt. Judge by what happens next (a hard reversal that holds, versus a tag-and-continue) rather than assuming intent.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="47" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">40</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">46</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -1738,6 +1902,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
         <div><dt>Scaling Out</dt><dd>Closing part of a position at a first target while letting the remainder ride toward a further one, often with a trailing stop.</dd></div>
         <div><dt>Halving</dt><dd>A scheduled event roughly every four years that cuts Bitcoin's new-issuance rate in half — historically associated with (not a guarantee of) major long-term price cycles.</dd></div>
         <div><dt>Section 1256 Contract</dt><dd>A US tax category covering regulated futures like CME Bitcoin futures — gains/losses get blanket 60% long-term / 40% short-term treatment and are marked to market at year-end, regardless of actual holding period.</dd></div>
+        <div><dt>Open Interest</dt><dd>The total number of outstanding (not yet closed) futures contracts — a running balance, unlike volume, that rises with fresh positioning and falls as positions close.</dd></div>
+        <div><dt>Contango / Backwardation</dt><dd>Contango is futures trading above spot price; backwardation is futures trading below it. The gap (the basis) shrinks to zero as a contract nears expiration.</dd></div>
+        <div><dt>Price Limit / Circuit Breaker</dt><dd>An exchange-mandated pause or range restriction triggered when price moves too far too fast — a mechanic CME futures have that unregulated 24/7 spot crypto exchanges don't.</dd></div>
+        <div><dt>Call / Put Option</dt><dd>A call is the right (not obligation) to buy at a set strike price before expiration; a put is the right to sell. Buying a put against a long position is a classic hedge.</dd></div>
+        <div><dt>Market Maker</dt><dd>A firm that continuously quotes both a bid and an ask, profiting from the spread rather than betting on direction, and providing the liquidity retail orders trade against.</dd></div>
       </dl>
     </section>
       </div>
@@ -1752,7 +1921,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 40 read</span>
+      <span id="progressLabel" class="mono">0 / 46 read</span>
     </div>
     <ol id="tocList">
       <li><a href="#letter"><span class="n mono">—</span> Before You Start</a></li>
@@ -1795,7 +1964,13 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
       <li><a href="#halving"><span class="n mono">37</span> Halving Cycles</a></li>
       <li><a href="#taxes"><span class="n mono">38</span> Futures Tax Basics</a></li>
       <li><a href="#review"><span class="n mono">39</span> Trade Review Ritual</a></li>
-      <li><a href="#glossary"><span class="n mono">40</span> Glossary</a></li>
+      <li><a href="#openinterest"><span class="n mono">40</span> Open Interest</a></li>
+      <li><a href="#basis"><span class="n mono">41</span> Contango &amp; Basis</a></li>
+      <li><a href="#limits"><span class="n mono">42</span> CME Price Limits</a></li>
+      <li><a href="#options"><span class="n mono">43</span> Options Basics</a></li>
+      <li><a href="#backtesting"><span class="n mono">44</span> Backtesting</a></li>
+      <li><a href="#marketmakers"><span class="n mono">45</span> Market Makers</a></li>
+      <li><a href="#glossary"><span class="n mono">46</span> Glossary</a></li>
     </ol>
   </nav>
 
