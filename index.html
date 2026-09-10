@@ -8,28 +8,51 @@
   <link rel="stylesheet" href="/src/styles/main.css">
 </head>
 <body>
-<div class="sheet">
+<div class="reader">
 
-  <header class="masthead">
+  <div class="reader-bar">
+    <button type="button" id="tocToggle" class="reader-btn" aria-label="Open table of contents">
+      <span class="reader-btn-icon">&#9776;</span> Contents
+    </button>
+    <div class="reader-bar-center">
+      <span id="pageIndicator" class="mono">Cover</span>
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="pageProgressFill"></div></div>
+    </div>
+    <button type="button" id="themeToggle" class="reader-btn theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+      <span class="theme-toggle-icon" aria-hidden="true">&#9680;</span>
+    </button>
+  </div>
+
+  <div class="page-viewport" id="pageViewport">
+    <button type="button" class="edge-zone left" id="edgeLeft" aria-label="Previous page">
+      <span class="edge-arrow">&lsaquo;</span>
+      <span class="edge-peek" id="prevPeek"></span>
+    </button>
+    <button type="button" class="edge-zone right" id="edgeRight" aria-label="Next page">
+      <span class="edge-peek" id="nextPeek"></span>
+      <span class="edge-arrow">&rsaquo;</span>
+    </button>
+
+    <div class="page active" data-page="0" data-title="Cover">
+      <div class="page-inner cover-inner">
+        <header class="masthead">
     <div>
       <p class="kicker">Field Notes &middot; Vol. 1 &middot; Reading the Tape</p>
       <h1>The Tape Reader's<br><em>Notebook</em></h1>
       <p class="sub">A ground-up refresher on price action, volume, and market structure — before you touch a demo account again.</p>
     </div>
-    <div class="masthead-controls">
-      <div class="ticket">
-        <span>CME:BTC1!</span>
-        <span class="px dn">78,635</span>
-        <span class="dn">−1.77%</span>
-      </div>
-      <button type="button" id="themeToggle" class="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
-        <span class="theme-toggle-icon" aria-hidden="true">◐</span>
-        <span class="theme-toggle-label">Theme</span>
-      </button>
+    <div class="ticket">
+      <span>CME:BTC1!</span>
+      <span class="px dn">78,635</span>
+      <span class="dn">−1.77%</span>
     </div>
   </header>
-
-  <section class="letter" id="letter">
+        <button type="button" id="beginReading" class="begin-btn">Begin Reading &rarr;</button>
+      </div>
+    </div>
+    <div class="page" data-page="1" data-title="Before You Start">
+      <div class="page-inner">
+        <section class="letter" id="letter">
     <p class="kicker">Before You Start</p>
     <h2>A Word From Your Mentor</h2>
     <p class="open">Two years in, and you chose to come back to page one on purpose. That's rarer than it sounds — most people who lose money trading just change the symbol and repeat the same mistake faster. Read this once now, and again in three months when you've forgotten it.</p>
@@ -63,55 +86,11 @@
 
     <div class="sig"><span>— written for you, before the first demo trade</span><span>2026-09-07</span></div>
   </section>
-
-  <nav class="rail" aria-label="Chapters">
-    <div class="rail-head">Watchlist / Contents</div>
-    <div class="rail-progress">
-      <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFill"></div></div>
-      <span id="progressLabel" class="mono">0 / 33 read</span>
+      </div>
     </div>
-    <ol>
-      <li><a href="#letter"><span class="n mono">—</span> Before You Start</a></li>
-      <li><a href="#candles"><span class="n mono">01</span> Candle Anatomy</a></li>
-      <li><a href="#patterns"><span class="n mono">02</span> Candle Patterns</a></li>
-      <li><a href="#structure"><span class="n mono">03</span> Trend &amp; Structure</a></li>
-      <li><a href="#sr"><span class="n mono">04</span> Support &amp; Resistance</a></li>
-      <li><a href="#liquidity"><span class="n mono">05</span> Liquidity &amp; Stop Hunts</a></li>
-      <li><a href="#chartpatterns"><span class="n mono">06</span> Chart Patterns</a></li>
-      <li><a href="#volume"><span class="n mono">07</span> Reading Volume</a></li>
-      <li><a href="#gaps"><span class="n mono">08</span> CME Gaps</a></li>
-      <li><a href="#wyckoff"><span class="n mono">09</span> Accumulation</a></li>
-      <li><a href="#mas"><span class="n mono">10</span> Moving Averages &amp; Bands</a></li>
-      <li><a href="#fibonacci"><span class="n mono">11</span> Fibonacci</a></li>
-      <li><a href="#momentum"><span class="n mono">12</span> RSI &amp; MACD</a></li>
-      <li><a href="#timeframes"><span class="n mono">13</span> Timeframes</a></li>
-      <li><a href="#ordertypes"><span class="n mono">14</span> Orders &amp; Futures</a></li>
-      <li><a href="#styles"><span class="n mono">15</span> Trading Styles</a></li>
-      <li><a href="#psychology"><span class="n mono">16</span> Psychology</a></li>
-      <li><a href="#risk"><span class="n mono">17</span> Position Sizing</a></li>
-      <li><a href="#leverage"><span class="n mono">18</span> Leverage &amp; Margin</a></li>
-      <li><a href="#vwap"><span class="n mono">19</span> VWAP</a></li>
-      <li><a href="#orderbook"><span class="n mono">20</span> Order Book</a></li>
-      <li><a href="#expectancy"><span class="n mono">21</span> Expectancy</a></li>
-      <li><a href="#macro"><span class="n mono">22</span> Macro &amp; Correlation</a></li>
-      <li><a href="#news"><span class="n mono">23</span> News Events</a></li>
-      <li><a href="#chart"><span class="n mono">24</span> Read This Chart</a></li>
-      <li><a href="#plan"><span class="n mono">25</span> Trading Plan</a></li>
-      <li><a href="#journal"><span class="n mono">26</span> Demo Journal</a></li>
-      <li><a href="#elliott"><span class="n mono">27</span> Elliott Wave</a></li>
-      <li><a href="#harmonics"><span class="n mono">28</span> Harmonic Patterns</a></li>
-      <li><a href="#sessions"><span class="n mono">29</span> Trading Sessions</a></li>
-      <li><a href="#confluence"><span class="n mono">30</span> Confluence</a></li>
-      <li><a href="#quiz"><span class="n mono">31</span> Knowledge Check</a></li>
-      <li><a href="#ichimoku"><span class="n mono">32</span> Ichimoku Cloud</a></li>
-      <li><a href="#glossary"><span class="n mono">33</span> Glossary</a></li>
-    </ol>
-  </nav>
-
-  <main>
-
-    <!-- 01 CANDLES -->
-    <section id="candles">
+    <div class="page" data-page="2" data-title="Candle Anatomy">
+      <div class="page-inner">
+        <section id="candles">
       <div class="section-head"><span class="num">01</span><h2>Anatomy of a Candle</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="candles"><span>mark read</span></label></div>
       <p class="deck">Every candle is a four-number argument between buyers and sellers, settled over one time period: open, high, low, close.</p>
 
@@ -175,9 +154,11 @@
 
       <div class="note"><b>Field note</b>Timeframe changes the story, not the rules. A daily candle is 288 five-minute candles fighting it out. Always know what timeframe you're reading before you react to a shape.</div>
     </section>
-
-    <!-- 02 PATTERNS -->
-    <section id="patterns">
+      </div>
+    </div>
+    <div class="page" data-page="3" data-title="Candle Patterns">
+      <div class="page-inner">
+        <section id="patterns">
       <div class="section-head"><span class="num">02</span><h2>Candlestick Patterns Worth Knowing</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="patterns"><span>mark read</span></label></div>
       <p class="deck">A handful of shapes recur often enough to earn names. They mean nothing in isolation — context (trend, location, volume) is what makes them worth watching.</p>
 
@@ -228,9 +209,11 @@
 
       <div class="note"><b>Field note</b>None of these patterns work as a standalone trigger. A hammer at the bottom of a range means something; a hammer in the middle of chop means nothing. Location first, shape second. The "Buy / Sell" labels on that second sheet are exactly the oversimplification this field note is warning about — a shooting star in the middle of an uptrend is not an automatic "Sell" button, it's one clue that needs company (location, volume, structure) before it means anything.</div>
     </section>
-
-    <!-- 03 STRUCTURE -->
-    <section id="structure">
+      </div>
+    </div>
+    <div class="page" data-page="4" data-title="Trend &amp; Structure">
+      <div class="page-inner">
+        <section id="structure">
       <div class="section-head"><span class="num">03</span><h2>Trend &amp; Market Structure</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="structure"><span>mark read</span></label></div>
       <p class="deck">Trend isn't a slope you eyeball — it's a sequence of highs and lows you can point to.</p>
 
@@ -279,9 +262,11 @@
         <div class="card"><h4>CHoCH <span class="font-mono text-[10.5px] uppercase tracking-wide px-1.5 py-0.5 rounded-sm bg-[var(--panel-2)] text-[var(--ink-soft)]">warning</span></h4><p><b>Change of Character</b> — the first higher-low or lower-high fails. Doesn't confirm reversal, but tells you to stop assuming continuation.</p></div>
       </div>
     </section>
-
-    <!-- 04 S/R -->
-    <section id="sr">
+      </div>
+    </div>
+    <div class="page" data-page="5" data-title="Support &amp; Resistance">
+      <div class="page-inner">
+        <section id="sr">
       <div class="section-head"><span class="num">04</span><h2>Support &amp; Resistance</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="sr"><span>mark read</span></label></div>
       <p class="deck">Think in zones, not lines. Price rarely respects a level to the exact tick.</p>
 
@@ -315,9 +300,11 @@
 
       <div class="note"><b>Field note</b>Draw zones with the wicks, not just the closes — the wick is where the market actually rejected. A zone drawn only from closing prices is often too narrow to mean anything on a retest.</div>
     </section>
-
-    <!-- 05 LIQUIDITY -->
-    <section id="liquidity">
+      </div>
+    </div>
+    <div class="page" data-page="6" data-title="Liquidity &amp; Stop Hunts">
+      <div class="page-inner">
+        <section id="liquidity">
       <div class="section-head"><span class="num">05</span><h2>Liquidity &amp; Stop Hunts</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="liquidity"><span>mark read</span></label></div>
       <p class="deck">Every obvious high or low has orders parked just beyond it &mdash; and price knows exactly where they're sitting.</p>
 
@@ -350,9 +337,11 @@
 
       <div class="note"><b>Field note</b>This is the same mechanic you've already met twice under different names &mdash; the Wyckoff Spring in Section 09 and the role-reversal retest in Section 04. "Liquidity grab" is just the name for what's actually happening underneath both: a brief move beyond an obvious level to collect the orders resting there.</div>
     </section>
-
-    <!-- 06 CHART PATTERNS -->
-    <section id="chartpatterns">
+      </div>
+    </div>
+    <div class="page" data-page="7" data-title="Chart Patterns">
+      <div class="page-inner">
+        <section id="chartpatterns">
       <div class="section-head"><span class="num">06</span><h2>Chart Patterns</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="chartpatterns"><span>mark read</span></label></div>
       <p class="deck">Zoom out from a single candle to a whole shape, and price tends to repeat a handful of them — because the crowd behind the tape repeats the same behaviors.</p>
 
@@ -377,9 +366,11 @@
 
       <div class="note"><b>Field note</b>Treat the entry/stop/target lines drawn on both sheets as illustrations of where those three things <i>tend</i> to sit relative to the pattern — not fixed rules to copy onto your own chart. Your actual stop still comes from Section 04's zones (beyond the pattern's own high or low), and your position size still comes from the mentor letter's 1% math. A pattern tells you a shape formed; it doesn't set your risk for you.</div>
     </section>
-
-    <!-- 07 VOLUME -->
-    <section id="volume">
+      </div>
+    </div>
+    <div class="page" data-page="8" data-title="Reading Volume">
+      <div class="page-inner">
+        <section id="volume">
       <div class="section-head"><span class="num">07</span><h2>Reading Volume</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="volume"><span>mark read</span></label></div>
       <p class="deck">Price tells you what happened. Volume tells you how much conviction was behind it.</p>
 
@@ -425,9 +416,11 @@
         <figcaption>The volume spike lands right at the swing high, then dries up through the pullback — sellers showed up once, hard, and buyers' pause afterward lacked conviction.</figcaption>
       </figure>
     </section>
-
-    <!-- 08 CME GAPS -->
-    <section id="gaps">
+      </div>
+    </div>
+    <div class="page" data-page="9" data-title="CME Gaps">
+      <div class="page-inner">
+        <section id="gaps">
       <div class="section-head"><span class="num">08</span><h2>CME Gaps — Specific to Bitcoin Futures</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="gaps"><span>mark read</span></label></div>
       <p class="deck">This one matters directly for the chart you screenshotted: <span class="mono">CME:BTC1!</span> trades on exchange hours. Spot Bitcoin never sleeps.</p>
 
@@ -469,9 +462,11 @@
 
       <div class="note"><b>Field note</b>Gap-fill is a tendency traders lean on, not a law of physics. Treat an open gap as a magnet worth marking on your chart — never as a trade signal by itself. Combine it with structure and volume before acting.</div>
     </section>
-
-    <!-- 09 WYCKOFF -->
-    <section id="wyckoff">
+      </div>
+    </div>
+    <div class="page" data-page="10" data-title="Accumulation">
+      <div class="page-inner">
+        <section id="wyckoff">
       <div class="section-head"><span class="num">09</span><h2>Spotting Accumulation</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="wyckoff"><span>mark read</span></label></div>
       <p class="deck">Big buyers can't fill a position in one candle without moving price against themselves — so they build it quietly, inside a range. Wyckoff's schematic is the classic map of what that looks like.</p>
 
@@ -526,9 +521,11 @@
 
       <div class="note"><b>Field note</b>Distribution at tops is this schematic flipped upside down: PSY, buying climax, AR down, upthrust (a spring that fails upward instead), then markdown. Same logic, opposite direction.</div>
     </section>
-
-    <!-- 10 MOVING AVERAGES & BOLLINGER BANDS -->
-    <section id="mas">
+      </div>
+    </div>
+    <div class="page" data-page="11" data-title="Moving Averages &amp; Bands">
+      <div class="page-inner">
+        <section id="mas">
       <div class="section-head"><span class="num">10</span><h2>Moving Averages &amp; Bollinger Bands</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="mas"><span>mark read</span></label></div>
       <p class="deck">Two overlays worth turning on from that indicator search dialog you screenshotted. Both are just math on top of price — the skill is knowing what the math is telling you.</p>
 
@@ -587,9 +584,11 @@
 
       <div class="note"><b>Field note</b>From the dialog in your screenshot: type "Moving Average" into that search bar and add it twice — once set to length 20, once to length 200 — then search "Bollinger Bands" and add that too. All three live under the <b>Technicals</b> tab you already had open.</div>
     </section>
-
-    <!-- 11 FIBONACCI -->
-    <section id="fibonacci">
+      </div>
+    </div>
+    <div class="page" data-page="12" data-title="Fibonacci">
+      <div class="page-inner">
+        <section id="fibonacci">
       <div class="section-head"><span class="num">11</span><h2>Fibonacci Retracement &amp; Extension</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="fibonacci"><span>mark read</span></label></div>
       <p class="deck">A pullback almost never retraces 100% of a move &mdash; and certain partial levels keep getting tested, because enough traders are watching the same ones.</p>
 
@@ -626,10 +625,11 @@
 
       <div class="note"><b>Field note</b>Fib levels are among the most self-fulfilling tools in this notebook &mdash; useful precisely because so many people draw the same lines, not because of any hidden law of markets. Treat a fib zone as a place to look for confirmation (a candle pattern, a volume shift, a structure retest) rather than a signal on its own.</div>
     </section>
-
-
-    <!-- 12 MOMENTUM -->
-    <section id="momentum">
+      </div>
+    </div>
+    <div class="page" data-page="13" data-title="RSI &amp; MACD">
+      <div class="page-inner">
+        <section id="momentum">
       <div class="section-head"><span class="num">12</span><h2>Momentum: RSI &amp; MACD</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="momentum"><span>mark read</span></label></div>
       <p class="deck">Price tells you where the market went. Momentum tells you how hard it's still trying to get there.</p>
 
@@ -667,10 +667,11 @@
 
       <div class="note"><b>Field note</b>Both indicators lag price &mdash; they're built from it, not ahead of it. "Overbought" in a strong uptrend can stay overbought for weeks. Use RSI and MACD to confirm what structure and volume are already telling you, not to fight an obvious trend on your own.</div>
     </section>
-
-
-    <!-- 13 TIMEFRAMES -->
-    <section id="timeframes">
+      </div>
+    </div>
+    <div class="page" data-page="14" data-title="Timeframes">
+      <div class="page-inner">
+        <section id="timeframes">
       <div class="section-head"><span class="num">13</span><h2>Timeframes &amp; Top-Down Analysis</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="timeframes"><span>mark read</span></label></div>
       <p class="deck">The same candle can be an entire trend on one timeframe and a single blip on another &mdash; always know which map you're holding.</p>
 
@@ -713,10 +714,11 @@
 
       <div class="note"><b>Field note</b>If your 15-minute chart and your Daily chart disagree, the Daily wins the argument. A perfect-looking lower-timeframe setup against the higher-timeframe trend is a lower-probability trade, not a free pass to ignore the bigger picture.</div>
     </section>
-
-
-    <!-- 14 ORDER TYPES & FUTURES MECHANICS -->
-    <section id="ordertypes">
+      </div>
+    </div>
+    <div class="page" data-page="15" data-title="Orders &amp; Futures">
+      <div class="page-inner">
+        <section id="ordertypes">
       <div class="section-head"><span class="num">14</span><h2>Order Types &amp; Futures Mechanics</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="ordertypes"><span>mark read</span></label></div>
       <p class="deck">Two different things worth knowing cold: the buttons you'll actually click, and what makes a continuous futures symbol like BTC1! behave the way it does.</p>
 
@@ -752,10 +754,11 @@
 
       <div class="note"><b>Field note</b>If you ever place a real order (not just study the chart), check which specific expiration month you're actually trading &mdash; the continuous BTC1! chart is for reading history, not for clicking buttons on.</div>
     </section>
-
-
-    <!-- 15 TRADING STYLES -->
-    <section id="styles">
+      </div>
+    </div>
+    <div class="page" data-page="16" data-title="Trading Styles">
+      <div class="page-inner">
+        <section id="styles">
       <div class="section-head"><span class="num">15</span><h2>Trading Styles</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="styles"><span>mark read</span></label></div>
       <p class="deck">How long you hold a trade should be a decision you made on purpose, not an accident of whatever chart happened to be open.</p>
 
@@ -779,10 +782,11 @@
 
       <div class="note"><b>Field note</b>Pick the style that matches your actual schedule, not the one that looks most exciting online. A swing trader with a 9-to-5 job staring at 1-minute charts on lunch break is set up to make exhausted, emotional decisions in a style that was never built for that little attention.</div>
     </section>
-
-
-    <!-- 16 PSYCHOLOGY -->
-    <section id="psychology">
+      </div>
+    </div>
+    <div class="page" data-page="17" data-title="Psychology">
+      <div class="page-inner">
+        <section id="psychology">
       <div class="section-head"><span class="num">16</span><h2>Trading Psychology</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="psychology"><span>mark read</span></label></div>
       <p class="deck">The chart doesn't move your account balance. Your reaction to the chart does.</p>
 
@@ -821,9 +825,11 @@
 
       <div class="note"><b>Field note</b>Notice which of these five you personally lean toward &mdash; most traders have one or two favorites. Write it at the top of your journal (Section 26) and check for it specifically, the same way you'd check a blind spot before changing lanes.</div>
     </section>
-
-    <!-- 17 POSITION SIZING & RISK OF RUIN -->
-    <section id="risk">
+      </div>
+    </div>
+    <div class="page" data-page="18" data-title="Position Sizing">
+      <div class="page-inner">
+        <section id="risk">
       <div class="section-head"><span class="num">17</span><h2>Position Sizing &amp; Risk of Ruin</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="risk"><span>mark read</span></label></div>
       <p class="deck">A profitable strategy can still bust an account if the bet size is wrong. This is the math the "1% rule" in the mentor letter is actually protecting you from.</p>
 
@@ -886,10 +892,11 @@
 
       <div class="note"><b>Field note</b>A losing streak of 10 in a row is not rare or unlucky &mdash; it's a normal, expected event over hundreds of trades, even for a good strategy. Size for the losing streak you know is coming, not for the win you hope is next.</div>
     </section>
-
-
-    <!-- 18 LEVERAGE & MARGIN -->
-    <section id="leverage">
+      </div>
+    </div>
+    <div class="page" data-page="19" data-title="Leverage &amp; Margin">
+      <div class="page-inner">
+        <section id="leverage">
       <div class="section-head"><span class="num">18</span><h2>Leverage &amp; Margin</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="leverage"><span>mark read</span></label></div>
       <p class="deck">Futures are traded on margin by default &mdash; a small deposit controls a much bigger position. That cuts both ways, always.</p>
 
@@ -923,10 +930,11 @@
 
       <div class="note"><b>Field note</b>Higher leverage means your stop-loss distance (in price) has to be tighter for the same dollar risk from the mentor letter's math &mdash; it doesn't let you skip that math, it makes getting it wrong more expensive, faster.</div>
     </section>
-
-
-    <!-- 19 VWAP -->
-    <section id="vwap">
+      </div>
+    </div>
+    <div class="page" data-page="20" data-title="VWAP">
+      <div class="page-inner">
+        <section id="vwap">
       <div class="section-head"><span class="num">19</span><h2>VWAP (Volume-Weighted Average Price)</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="vwap"><span>mark read</span></label></div>
       <p class="deck">The average price everyone actually traded at today, weighted by how much volume happened at each level &mdash; not just a plain average of the high and low.</p>
 
@@ -952,10 +960,11 @@
 
       <div class="note"><b>Field note</b>VWAP is an intraday tool by design &mdash; it resets every session, so it means the most on lower timeframes (5m&ndash;1H). On the Daily chart you've been practicing on, MA20 from Section 10 is doing a similar job.</div>
     </section>
-
-
-    <!-- 20 ORDER BOOK & BID-ASK SPREAD -->
-    <section id="orderbook">
+      </div>
+    </div>
+    <div class="page" data-page="21" data-title="Order Book">
+      <div class="page-inner">
+        <section id="orderbook">
       <div class="section-head"><span class="num">20</span><h2>Order Book &amp; Bid-Ask Spread</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="orderbook"><span>mark read</span></label></div>
       <p class="deck">Behind every candle is a live list of everyone's current offers &mdash; the order book is where that list lives.</p>
 
@@ -987,10 +996,11 @@
 
       <div class="note"><b>Field note</b>A wider-than-usual spread is itself information &mdash; it often shows up right before or during high-impact news (Section 23), when market makers pull back because they don't want to get caught quoting a stale price.</div>
     </section>
-
-
-    <!-- 21 EXPECTANCY -->
-    <section id="expectancy">
+      </div>
+    </div>
+    <div class="page" data-page="22" data-title="Expectancy">
+      <div class="page-inner">
+        <section id="expectancy">
       <div class="section-head"><span class="num">21</span><h2>Expectancy: Do You Have an Edge?</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="expectancy"><span>mark read</span></label></div>
       <p class="deck">Win rate alone tells you almost nothing. What matters is win rate multiplied by how big your average win and loss actually are.</p>
 
@@ -1016,10 +1026,11 @@
 
       <div class="note"><b>Field note</b>Your demo journal (Section 26) is how you actually measure your own numbers instead of guessing them. After enough logged trades, compute your real win rate and average R &mdash; that's your real edge, not the one you assumed you had.</div>
     </section>
-
-
-    <!-- 22 MACRO & CORRELATION -->
-    <section id="macro">
+      </div>
+    </div>
+    <div class="page" data-page="23" data-title="Macro &amp; Correlation">
+      <div class="page-inner">
+        <section id="macro">
       <div class="section-head"><span class="num">22</span><h2>Macro Context &amp; Correlation</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="macro"><span>mark read</span></label></div>
       <p class="deck">BTC1! doesn't trade in a vacuum &mdash; the watchlist panel you started with (SPX, NDQ, DJI, VIX, DXY) sitting right above your chart wasn't decoration.</p>
 
@@ -1046,10 +1057,11 @@
 
       <div class="note"><b>Field note</b>You don't need to trade DXY or VIX to benefit from watching them &mdash; a quick glance at the same watchlist panel you already have open is enough context before trusting a setup on BTC1! alone.</div>
     </section>
-
-
-    <!-- 23 NEWS EVENTS & ECONOMIC CALENDAR -->
-    <section id="news">
+      </div>
+    </div>
+    <div class="page" data-page="24" data-title="News Events">
+      <div class="page-inner">
+        <section id="news">
       <div class="section-head"><span class="num">23</span><h2>News Events &amp; the Economic Calendar</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="news"><span>mark read</span></label></div>
       <p class="deck">A perfect technical setup can still get blown through in seconds by a scheduled headline &mdash; know when those headlines are coming.</p>
 
@@ -1073,9 +1085,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
       <div class="note"><b>Field note</b>You don't have to trade the news to be affected by it &mdash; simply holding a position through a high-impact release means your stop can get tested by pure volatility that has nothing to do with your setup. Knowing the calendar is free; not knowing it isn't.</div>
     </section>
-
-    <!-- 24 READ THIS CHART -->
-    <section id="chart">
+      </div>
+    </div>
+    <div class="page" data-page="25" data-title="Read This Chart">
+      <div class="page-inner">
+        <section id="chart">
       <div class="section-head"><span class="num">24</span><h2>Practice: Read Your Own Chart</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="chart"><span>mark read</span></label></div>
       <p class="deck">This is your actual BTC1! daily chart, with EMA200, EMA20, and Bollinger Bands added — annotated with what actually matters on it. Read as an exercise, not a call on where price goes next.</p>
 
@@ -1132,9 +1146,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
       <div class="note"><b>Field note</b>Answering that checklist honestly, in writing, before you place a demo trade is the entire point of this notebook. If you can't fill it out, you don't have a read yet — you have a guess.</div>
     </section>
-
-    <!-- 25 TRADING PLAN -->
-    <section id="plan">
+      </div>
+    </div>
+    <div class="page" data-page="26" data-title="Trading Plan">
+      <div class="page-inner">
+        <section id="plan">
       <div class="section-head"><span class="num">25</span><h2>Your Trading Plan</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="plan"><span>mark read</span></label></div>
       <p class="deck">Write your rules down once, while you're calm &mdash; so a stressed, in-the-moment version of you has something to check against instead of improvising.</p>
 
@@ -1153,9 +1169,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
       <div class="note"><b>Field note</b>Re-saving overwrites the plan below &mdash; that's fine, plans should evolve as you learn. What matters is that a written version exists before you trade, not that it's perfect on the first try.</div>
     </section>
-
-    <!-- 26 JOURNAL -->
-    <section id="journal">
+      </div>
+    </div>
+    <div class="page" data-page="27" data-title="Demo Journal">
+      <div class="page-inner">
+        <section id="journal">
       <div class="section-head"><span class="num">26</span><h2>Demo Trade Journal</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="journal"><span>mark read</span></label></div>
       <p class="deck">Relearning on a demo only works if you review it. Log every idea here — saved locally in this browser, just for you.</p>
 
@@ -1177,9 +1195,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
       <div id="journalTable"></div>
     </section>
-
-    <!-- 27 ELLIOTT WAVE -->
-    <section id="elliott">
+      </div>
+    </div>
+    <div class="page" data-page="28" data-title="Elliott Wave">
+      <div class="page-inner">
+        <section id="elliott">
       <div class="section-head"><span class="num">27</span><h2>Elliott Wave Theory</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="elliott"><span>mark read</span></label></div>
       <p class="deck">A trend rarely moves in one straight push &mdash; it tends to unfold in a repeating rhythm of five waves forward, three waves back.</p>
 
@@ -1214,10 +1234,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
       <div class="note"><b>Field note</b>Ten different traders can count ten different waves on the same chart in real time &mdash; the count is usually only obvious after the fact. Use Elliott Wave to think about rhythm and where a move might be tiring, never as a precise entry trigger by itself.</div>
     </section>
-
-
-    <!-- 28 HARMONIC PATTERNS -->
-    <section id="harmonics">
+      </div>
+    </div>
+    <div class="page" data-page="29" data-title="Harmonic Patterns">
+      <div class="page-inner">
+        <section id="harmonics">
       <div class="section-head"><span class="num">28</span><h2>Harmonic Patterns</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="harmonics"><span>mark read</span></label></div>
       <p class="deck">A more precise cousin of the Fibonacci tool from Section 11 &mdash; patterns built from exact, measured ratios instead of a general shape.</p>
 
@@ -1248,10 +1269,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
       <div class="note"><b>Field note</b>Harmonic patterns are precise enough that most traders use dedicated scanning tools rather than drawing them by eye. Treat this section as knowing the vocabulary and the idea behind it, not a requirement to spot one manually.</div>
     </section>
-
-
-    <!-- 29 TRADING SESSIONS -->
-    <section id="sessions">
+      </div>
+    </div>
+    <div class="page" data-page="30" data-title="Trading Sessions">
+      <div class="page-inner">
+        <section id="sessions">
       <div class="section-head"><span class="num">29</span><h2>Trading Sessions &amp; Best Times to Trade</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="sessions"><span>mark read</span></label></div>
       <p class="deck">Crypto trades around the clock, but activity isn't spread evenly across the day &mdash; some hours are the mall at closing time, others are the mall on Black Friday.</p>
 
@@ -1280,10 +1302,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
       <div class="note"><b>Field note</b>This connects directly to Section 08's CME gaps &mdash; the quietest stretch of all is the CME weekend closure itself, when only spot crypto is even moving.</div>
     </section>
-
-
-    <!-- 30 CONFLUENCE -->
-    <section id="confluence">
+      </div>
+    </div>
+    <div class="page" data-page="31" data-title="Confluence">
+      <div class="page-inner">
+        <section id="confluence">
       <div class="section-head"><span class="num">30</span><h2>Confluence: Stacking Your Edges</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="confluence"><span>mark read</span></label></div>
       <p class="deck">No single tool in this notebook is reliable by itself. The real signal shows up when several of them agree, at the same price, without you forcing it.</p>
 
@@ -1310,10 +1333,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
       <div class="note"><b>Field note</b>This is exactly what the Section 24 checklist is for &mdash; it's not a formality, it's how you check for confluence on purpose instead of noticing it by accident. The more boxes genuinely check out at the same price, the more that zone earned your attention.</div>
     </section>
-
-
-    <!-- 31 KNOWLEDGE CHECK -->
-    <section id="quiz">
+      </div>
+    </div>
+    <div class="page" data-page="32" data-title="Knowledge Check">
+      <div class="page-inner">
+        <section id="quiz">
       <div class="section-head"><span class="num">31</span><h2>Knowledge Check</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="quiz"><span>mark read</span></label></div>
       <p class="deck">Ten questions pulled from across the notebook. No pressure &mdash; wrong answers just point you back to the section worth a re-read.</p>
 
@@ -1393,9 +1417,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
         <div id="quizScore" class="readout" style="display:none;"></div>
       </div>
     </section>
-
-    <!-- 32 ICHIMOKU CLOUD -->
-    <section id="ichimoku">
+      </div>
+    </div>
+    <div class="page" data-page="33" data-title="Ichimoku Cloud">
+      <div class="page-inner">
+        <section id="ichimoku">
       <div class="section-head"><span class="num">32</span><h2>Ichimoku Cloud</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="ichimoku"><span>mark read</span></label></div>
       <p class="deck">Every tool so far describes the past or the present. This is the one indicator in the notebook that draws a projection of the future, right on the chart.</p>
 
@@ -1429,9 +1455,11 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
 
       <div class="note"><b>Field note</b>Ichimoku is a complete system on its own — some traders use only its five lines and nothing else. Treat it here as one more input for the Section 30 confluence check, not a replacement for everything before it.</div>
     </section>
-
-    <!-- 33 GLOSSARY -->
-    <section id="glossary">
+      </div>
+    </div>
+    <div class="page" data-page="34" data-title="Glossary">
+      <div class="page-inner">
+        <section id="glossary">
       <div class="section-head"><span class="num">33</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
@@ -1475,14 +1503,64 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
         <div><dt>Tenkan-sen / Kijun-sen</dt><dd>Ichimoku's fast (9-period) and slow (26-period) midpoint lines — their crossover behaves like the MA golden/death cross from Section 10.</dd></div>
       </dl>
     </section>
+      </div>
+    </div>
+  </div>
 
-  </main>
+  <div class="toc-backdrop" id="tocBackdrop" hidden></div>
+  <nav class="toc-drawer" id="tocDrawer" aria-label="Table of contents" hidden>
+    <div class="toc-drawer-head">
+      <span>Watchlist / Contents</span>
+      <button type="button" id="tocClose" aria-label="Close contents">&times;</button>
+    </div>
+    <div class="rail-progress">
+      <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
+      <span id="progressLabel" class="mono">0 / 33 read</span>
+    </div>
+    <ol id="tocList">
+      <li><a href="#letter"><span class="n mono">—</span> Before You Start</a></li>
+      <li><a href="#candles"><span class="n mono">01</span> Candle Anatomy</a></li>
+      <li><a href="#patterns"><span class="n mono">02</span> Candle Patterns</a></li>
+      <li><a href="#structure"><span class="n mono">03</span> Trend &amp; Structure</a></li>
+      <li><a href="#sr"><span class="n mono">04</span> Support &amp; Resistance</a></li>
+      <li><a href="#liquidity"><span class="n mono">05</span> Liquidity &amp; Stop Hunts</a></li>
+      <li><a href="#chartpatterns"><span class="n mono">06</span> Chart Patterns</a></li>
+      <li><a href="#volume"><span class="n mono">07</span> Reading Volume</a></li>
+      <li><a href="#gaps"><span class="n mono">08</span> CME Gaps</a></li>
+      <li><a href="#wyckoff"><span class="n mono">09</span> Accumulation</a></li>
+      <li><a href="#mas"><span class="n mono">10</span> Moving Averages &amp; Bands</a></li>
+      <li><a href="#fibonacci"><span class="n mono">11</span> Fibonacci</a></li>
+      <li><a href="#momentum"><span class="n mono">12</span> RSI &amp; MACD</a></li>
+      <li><a href="#timeframes"><span class="n mono">13</span> Timeframes</a></li>
+      <li><a href="#ordertypes"><span class="n mono">14</span> Orders &amp; Futures</a></li>
+      <li><a href="#styles"><span class="n mono">15</span> Trading Styles</a></li>
+      <li><a href="#psychology"><span class="n mono">16</span> Psychology</a></li>
+      <li><a href="#risk"><span class="n mono">17</span> Position Sizing</a></li>
+      <li><a href="#leverage"><span class="n mono">18</span> Leverage &amp; Margin</a></li>
+      <li><a href="#vwap"><span class="n mono">19</span> VWAP</a></li>
+      <li><a href="#orderbook"><span class="n mono">20</span> Order Book</a></li>
+      <li><a href="#expectancy"><span class="n mono">21</span> Expectancy</a></li>
+      <li><a href="#macro"><span class="n mono">22</span> Macro &amp; Correlation</a></li>
+      <li><a href="#news"><span class="n mono">23</span> News Events</a></li>
+      <li><a href="#chart"><span class="n mono">24</span> Read This Chart</a></li>
+      <li><a href="#plan"><span class="n mono">25</span> Trading Plan</a></li>
+      <li><a href="#journal"><span class="n mono">26</span> Demo Journal</a></li>
+      <li><a href="#elliott"><span class="n mono">27</span> Elliott Wave</a></li>
+      <li><a href="#harmonics"><span class="n mono">28</span> Harmonic Patterns</a></li>
+      <li><a href="#sessions"><span class="n mono">29</span> Trading Sessions</a></li>
+      <li><a href="#confluence"><span class="n mono">30</span> Confluence</a></li>
+      <li><a href="#quiz"><span class="n mono">31</span> Knowledge Check</a></li>
+      <li><a href="#ichimoku"><span class="n mono">32</span> Ichimoku Cloud</a></li>
+      <li><a href="#glossary"><span class="n mono">33</span> Glossary</a></li>
+    </ol>
+  </nav>
 
-  <footer>
+  <footer class="reader-footer">
     Notebook for demo practice only — not trade advice. Verify every idea against live price action before risking anything beyond a simulated account.
   </footer>
 
 </div>
+
 <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>

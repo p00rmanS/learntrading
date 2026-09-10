@@ -13,7 +13,7 @@ export function initProgress() {
   const checks = document.querySelectorAll('.progress-check');
   if (!checks.length) return;
 
-  const fill = document.getElementById('progressFill');
+  const fill = document.getElementById('progressFillDrawer');
   const label = document.getElementById('progressLabel');
   const total = checks.length;
 

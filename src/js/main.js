@@ -4,6 +4,7 @@ import { initPlan } from './plan.js';
 import { initQuiz } from './quiz.js';
 import { initTheme } from './theme.js';
 import { initProgress } from './progress.js';
+import { initReader } from './reader.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initJournal();
@@ -12,4 +13,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initQuiz();
   initTheme();
   initProgress();
+  initReader();
 });
