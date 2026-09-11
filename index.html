@@ -1953,10 +1953,194 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="50" data-title="Glossary">
+    <div class="page" data-page="50" data-title="Short Selling">
+      <div class="page-inner">
+        <section id="shorting">
+      <div class="section-head"><span class="num">49</span><h2>Short Selling &amp; Borrow Mechanics</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="shorting"><span>mark read</span></label></div>
+      <p class="deck">Going short in stocks isn't just "the opposite of long" &mdash; you're borrowing something you don't own, and that borrowing has its own costs and risks.</p>
+
+      <p>To short a stock, a broker lends you shares (borrowed from another client's holdings) which you immediately sell; later you buy them back ("cover") and return them, profiting if the price fell. Unlike futures, where long and short are perfectly symmetric contract positions, stock shorting requires shares to actually be <b>borrowable</b> &mdash; popular short targets can become "hard to borrow," carrying a fee for as long as the position stays open, or become unavailable entirely. Risk is theoretically unlimited: a stock can keep rising indefinitely, unlike falling to zero being the floor for a long. A <b>short squeeze</b> happens when a heavily-shorted stock rallies hard, forcing shorts to buy back to cover &mdash; adding fuel to the very rally that's hurting them.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="Two payoff diagrams side by side: a long position with loss capped at total loss but unlimited upside, and a short position with gain capped at total gain but theoretically unlimited loss as price rises." >
+          <line x1="20" y1="110" x2="300" y2="110" stroke="currentColor" stroke-opacity="0.3"/>
+          <polyline points="40,190 160,110 280,30" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+          <text x="160" y="205" text-anchor="middle" class="mono" font-size="10">LONG</text>
+          <text x="280" y="20" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bull)">unlimited upside</text>
+          <text x="45" y="200" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">loss capped at 100%</text>
+
+          <line x1="360" y1="110" x2="620" y2="110" stroke="currentColor" stroke-opacity="0.3"/>
+          <polyline points="380,30 480,110 620,195" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
+          <text x="480" y="20" text-anchor="middle" class="mono" font-size="10">SHORT</text>
+          <text x="600" y="210" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bear)" font-weight="700">unlimited loss</text>
+          <text x="400" y="45" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">gain capped at 100%</text>
+        </svg>
+        <figcaption>A long's worst case is losing everything. A short's worst case has no ceiling &mdash; the asymmetry that makes borrow availability and squeezes worth respecting.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like borrowing a friend's bicycle to sell today, planning to buy an identical one back later, cheaper, and return it &mdash; profiting from the price drop. But if that bike suddenly becomes rare and expensive, you could end up paying way more than you sold it for, with no real ceiling on how bad it gets.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang paghiram ng bisikleta ng kaibigan mo para ibenta ngayon, may plano bumili ng kaparehong bisikleta mamaya nang mas mura at ibalik sa kanya &mdash; kikita ka sa pagbaba ng presyo. Pero kung biglang naging bihira at mahal bilhin ulit ang bisikleta, baka kailanganin mong magbayad nang sobrang laki, at walang tunay na "kisame" kung gaano kalala maging ito.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>A short squeeze is Section 05's liquidity grab wearing a different costume &mdash; stops and forced buybacks stacked above a heavily-shorted price level, ready to be triggered.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="51" data-title="Beta & Sector Correlation">
+      <div class="page-inner">
+        <section id="beta">
+      <div class="section-head"><span class="num">50</span><h2>Beta &amp; Sector Correlation</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="beta"><span>mark read</span></label></div>
+      <p class="deck">Not every stock move is about that company &mdash; sometimes it's just the whole market, or the whole sector, dragging it along.</p>
+
+      <p><b>Beta</b> measures how much a stock tends to move relative to a broad index like the S&amp;P 500 &mdash; a beta of 1.5 means it tends to move about 1.5&times; as much as the index, same direction; a beta near zero means it moves mostly independently. Stocks in the same sector (all banks, all semiconductor makers) often move together because they share the same macro exposures &mdash; interest rates for banks, chip demand cycles for semis. Checking a sector ETF before trading an individual stock in that sector can matter as much as the stock's own chart. Diversifying across genuinely <i>uncorrelated</i> names reduces risk far more than owning many stocks that are secretly all high-beta and same-sector.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="A stock's price line moving in the same direction as a broader index line but with larger swings, illustrating a beta greater than one." >
+          <line x1="0" y1="175" x2="640" y2="175" stroke="currentColor" stroke-opacity="0.25"/>
+          <polyline points="20,110 140,95 260,120 380,80 500,100 620,70" fill="none" stroke="var(--ink-soft)" stroke-width="2"/>
+          <text x="590" y="60" class="mono" font-size="10" fill="var(--ink-soft)">index</text>
+          <polyline points="20,140 140,105 260,160 380,60 500,110 620,30" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <text x="590" y="20" class="mono" font-size="10" fill="var(--accent)" font-weight="700">stock &middot; beta ~1.5</text>
+        </svg>
+        <figcaption>Same direction, bigger swings &mdash; the stock is amplifying the index's moves rather than marching to its own beat.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a flock of birds flying in formation &mdash; most turn together when the leader (the market or sector) turns, even if a couple of birds have their own slightly exaggerated wobble (higher beta). Watching just one bird without watching the flock's direction misses most of the story.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang grupo ng ibong lumilipad nang magkasama &mdash; karamihan ay lumiliko nang sabay kapag lumiko ang pinuno (ang market o sector), kahit may ilang ibong mas malaki ang sariling wobble (mas mataas na beta). Ang panonood lang sa isang ibon nang hindi tinitingnan ang direksyon ng buong flock ay nawawala ang karamihan ng kwento.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This is Section 22's macro correlation idea, scaled down from "the whole market" to "this one sector" &mdash; the same instinct to zoom out before trusting a single chart.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="52" data-title="IPOs & New Listings">
+      <div class="page-inner">
+        <section id="ipos">
+      <div class="section-head"><span class="num">51</span><h2>IPOs &amp; New Listings</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="ipos"><span>mark read</span></label></div>
+      <p class="deck">A stock with no trading history yet breaks almost every rule in this notebook &mdash; there's no chart to read until one exists.</p>
+
+      <p>An <b>IPO</b> (Initial Public Offering) is a company's first sale of shares to the public; a <b>SPAC</b> is an alternate route to going public by merging into an already-listed shell company. Freshly listed stocks have no meaningful support/resistance history (Section 04) and no established average-volume baseline (Section 07), so early price discovery can be extremely volatile with no anchor. A <b>lock-up period</b> (commonly 90&ndash;180 days) restricts insiders from selling immediately after listing &mdash; its expiration is a scheduled, predictable event that can add sudden new selling pressure, in the same spirit as an earnings date (Section 46) but specific to newly public companies.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="A freshly listed stock showing wide, erratic candles in its first days that settle into a calmer, more normal range over following weeks, followed by a volatility spike at the lock-up expiration date." >
+          <line x1="0" y1="175" x2="640" y2="175" stroke="currentColor" stroke-opacity="0.25"/>
+          <g stroke="currentColor" stroke-width="1.6">
+            <line x1="40" y1="40" x2="40" y2="160"/><rect x="32" y="60" width="16" height="70" fill="var(--bull)"/>
+            <line x1="90" y1="30" x2="90" y2="150"/><rect x="82" y="45" width="16" height="80" fill="var(--bear)"/>
+            <line x1="140" y1="60" x2="140" y2="170"/><rect x="132" y="90" width="16" height="60" fill="var(--bull)"/>
+            <line x1="220" y1="90" x2="220" y2="140"/><rect x="212" y="100" width="16" height="30" fill="var(--bear)"/>
+            <line x1="290" y1="95" x2="290" y2="135"/><rect x="282" y="105" width="16" height="22" fill="var(--bull)"/>
+            <line x1="360" y1="100" x2="360" y2="130"/><rect x="352" y="108" width="16" height="16" fill="var(--bear)"/>
+          </g>
+          <line x1="480" y1="10" x2="480" y2="180" stroke="var(--accent)" stroke-dasharray="3 4"/>
+          <text x="480" y="195" text-anchor="middle" class="mono" font-size="10" fill="var(--accent)">lock-up expires</text>
+          <g stroke="currentColor" stroke-width="1.6">
+            <line x1="480" y1="70" x2="480" y2="160"/><rect x="472" y="90" width="16" height="55" fill="var(--bear)"/>
+            <line x1="540" y1="100" x2="540" y2="150"/><rect x="532" y="110" width="16" height="30" fill="var(--bear)"/>
+          </g>
+        </svg>
+        <figcaption>Wild first days settling down &mdash; then a second, predictable volatility event when insiders are finally allowed to sell.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like moving into a brand new subdivision with no map yet &mdash; everyone's still figuring out which streets are good and which aren't, so the "rules of the road" that work in an established neighborhood don't quite apply yet.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang paglipat sa bagong subdivision na wala pang mapa &mdash; nagbabahagi pa ang lahat kung saan ang magaganda at hindi magandang kalye, kaya hindi pa masyadong angkop ang mga "tuntunin sa daan" na gumagana sa lumang subdivision.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Most of this notebook assumes an established chart with real history behind it. A stock with only a few months of trading history is the exception &mdash; treat the first pattern you see on it with real suspicion.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="53" data-title="ETFs">
+      <div class="page-inner">
+        <section id="etfs">
+      <div class="section-head"><span class="num">52</span><h2>ETFs: Trading a Whole Market at Once</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="etfs"><span>mark read</span></label></div>
+      <p class="deck">An ETF lets you buy an entire basket of stocks, a sector, or even a strategy, in one single trade.</p>
+
+      <p>An <b>Exchange-Traded Fund (ETF)</b> holds a basket of underlying assets &mdash; SPY holds all S&amp;P 500 stocks &mdash; and trades on an exchange just like a single stock, with its own live price, volume, and chart that every tool in this notebook applies to directly. ETFs exist for broad indices, specific sectors, commodities, bonds, and even leveraged or inverse strategies that amplify or invert the underlying's daily move. Trading an ETF is a way to express a view on an entire sector or market (tying back to Section 50's beta idea) without taking on one company's individual risk.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like buying a fruit basket instead of picking one single fruit &mdash; you get a mix, so one bad piece doesn't ruin everything, but you also don't get the full upside if just one fruit turns out amazing.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang pagbili ng basket ng prutas imbes na isang piraso lang &mdash; may pagkakahalo-halo ka, kaya hindi masisira ng isang masamang piraso ang lahat, pero hindi mo rin makukuha ang buong benepisyo kung isang prutas lang pala ang naging sobrang sarap.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>A 2x leveraged ETF does not simply double the underlying's return over weeks or months &mdash; it resets daily, and that compounding can produce surprising results in a choppy, sideways market. Treat these as short-term tools, not buy-and-hold positions.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="54" data-title="Central Bank Policy">
+      <div class="page-inner">
+        <section id="centralbanks">
+      <div class="section-head"><span class="num">53</span><h2>Central Bank Policy &amp; Key Economic Indicators</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="centralbanks"><span>mark read</span></label></div>
+      <p class="deck">In forex, one institution's decision can move a currency more in ten minutes than a week of chart patterns.</p>
+
+      <p>Central banks &mdash; the Federal Reserve for USD, the ECB for EUR, the BOJ for JPY &mdash; set the interest rate that anchors their currency's value. Higher rates generally attract capital seeking yield, strengthening a currency (tying to Section 37's carry trade); rate cuts do the opposite. Scheduled rate decisions and the "forward guidance" commentary that comes with them are among the highest-impact events in forex, often dwarfing the generic news events already covered in Section 23. Key indicators that feed into those decisions and move currencies on their own release: <b>CPI</b> (inflation), <b>GDP</b> (growth), and <b>PMI</b> (a forward-looking survey of business activity) &mdash; each released on a regular calendar, per country.</p>
+
+      <div class="readout">
+<span class="c">$</span> fx-calendar --week thisweek<br>
+WED  2:00pm ET   Fed Rate Decision + Press Conference ... HIGH impact<br>
+THU  8:30am ET   US CPI (Inflation) ..................... HIGH impact<br>
+FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
+<br>
+[ ] any open forex position through a rate decision this week?<br>
+[ ] wider spreads expected &mdash; still comfortable with the size?
+      </div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a landlord who can raise or lower rent city-wide with one announcement &mdash; everyone renting there (holding that currency) reacts to that single decision more than to any one building's condition (any one company's news).</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang panginoong-maylupa na kayang taasan o babaan ang upa sa buong lungsod sa isang anunsyo lang &mdash; mas malaki ang reaksyon ng lahat ng umuupa doon (may hawak ng currency na iyon) kaysa sa balita ng iisang gusali (balita ng iisang kumpanya).</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Treat a central bank rate decision the same way Section 23 treats any high-impact news event &mdash; know the date, and think twice about holding a position straight through it.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="55" data-title="Currency Correlation">
+      <div class="page-inner">
+        <section id="fxcorrelation">
+      <div class="section-head"><span class="num">54</span><h2>Currency Correlation</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="fxcorrelation"><span>mark read</span></label></div>
+      <p class="deck">Trading three "different" pairs that are all secretly the same bet is a common way to accidentally triple your risk.</p>
+
+      <p>Some currency pairs move in a strong, persistent relationship. EUR/USD and GBP/USD often move together &mdash; both simply reflect "USD weaker" or "USD stronger." AUD/USD and NZD/USD often correlate closely, sharing similar commodity-linked economies. Trading multiple positions that are all secretly betting on the same underlying move multiplies real exposure far beyond what sizing each trade individually suggests &mdash; the position-sizing math from Section 17 assumes independent trades, and correlated positions quietly break that assumption.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 180" role="img" aria-label="Two currency pair price lines, EUR/USD and GBP/USD, moving in near lockstep across the same timeline, illustrating strong positive correlation." >
+          <line x1="0" y1="155" x2="640" y2="155" stroke="currentColor" stroke-opacity="0.25"/>
+          <polyline points="20,110 120,90 220,120 320,70 420,100 520,60 620,85" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="590" y="72" class="mono" font-size="10">EUR/USD</text>
+          <polyline points="20,120 120,102 220,130 320,84 420,112 520,74 620,97" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-dasharray="5 3"/>
+          <text x="590" y="112" class="mono" font-size="10" fill="var(--accent)">GBP/USD</text>
+        </svg>
+        <figcaption>Two different tickers, one underlying bet &mdash; both are really just "USD weaker" trades wearing different labels.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like thinking you spread your bets across three different horses in a race, but two of the "different" horses are actually litter-mates that always run at almost the exact same pace &mdash; you didn't really diversify, you just bet three times on the same outcome.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang akala mo nag-iba-iba ka ng pusta sa tatlong magkaibang kabayo sa karera, pero dalawa sa mga "magkaibang" kabayo pala ay magkapatid na palaging halos magkasabay tumakbo &mdash; hindi mo talaga na-diversify, tatlong beses ka lang nagpusta sa parehong resulta.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Before stacking multiple forex positions, check whether they're actually independent bets or the same bet wearing different tickers &mdash; Section 17's 1% rule assumes risk doesn't stack silently like this.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="56" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">49</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">55</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -2013,6 +2197,13 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
         <div><dt>Base / Quote Currency</dt><dd>In a pair like EUR/USD, the base (EUR) is what's being bought or sold; the quote (USD) is what it's priced in.</dd></div>
         <div><dt>Carry Trade</dt><dd>Holding a high-interest-rate currency funded by borrowing a low-interest-rate one, earning the rate differential as long as the exchange rate doesn't move against it enough to erase the gain.</dd></div>
         <div><dt>Earnings Report</dt><dd>A public company's quarterly results release — often a stock's single biggest scheduled volatility event, the equivalent of Section 23's news calendar but specific to one stock.</dd></div>
+        <div><dt>Short Squeeze</dt><dd>A sharp rally in a heavily-shorted stock that forces short sellers to buy back shares to cover, adding fuel to the very rally hurting them.</dd></div>
+        <div><dt>Borrow Fee / Hard to Borrow</dt><dd>The cost (or unavailability) of the shares a broker must lend you to open a short position — popular short targets can become expensive or impossible to borrow.</dd></div>
+        <div><dt>Beta</dt><dd>A measure of how much a stock tends to move relative to a broad index — beta above 1 amplifies the index's moves, beta near 0 moves mostly independently.</dd></div>
+        <div><dt>IPO / SPAC / Lock-Up Period</dt><dd>An IPO is a company's first public share sale; a SPAC reaches the public market by merging into an existing shell company. A lock-up period (commonly 90–180 days) delays insiders from selling, and its expiration is a predictable volatility event.</dd></div>
+        <div><dt>ETF (Exchange-Traded Fund)</dt><dd>A basket of underlying assets — an index, sector, commodity, or strategy — that trades on an exchange with its own live price and chart, like a single stock.</dd></div>
+        <div><dt>Central Bank Rate Decision</dt><dd>A scheduled announcement (Fed, ECB, BOJ, etc.) setting the interest rate anchoring a currency's value — often the highest-impact scheduled event in forex.</dd></div>
+        <div><dt>Currency Correlation</dt><dd>The tendency of certain currency pairs (EUR/USD and GBP/USD, for example) to move together, meaning multiple "different" positions can secretly be the same underlying bet.</dd></div>
       </dl>
     </section>
       </div>
@@ -2027,7 +2218,7 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 49 read</span>
+      <span id="progressLabel" class="mono">0 / 55 read</span>
     </div>
     <ol id="tocList">
       <li><a href="#letter"><span class="n mono">—</span> Before You Start</a></li>
@@ -2079,7 +2270,13 @@ FRI  08:30 ET   Non-Farm Payrolls (NFP) ...... HIGH impact<br>
       <li><a href="#stocks"><span class="n mono">46</span> Stock Market Basics</a></li>
       <li><a href="#forex"><span class="n mono">47</span> Forex Market Basics</a></li>
       <li><a href="#comparing"><span class="n mono">48</span> Comparing Markets</a></li>
-      <li><a href="#glossary"><span class="n mono">49</span> Glossary</a></li>
+      <li><a href="#shorting"><span class="n mono">49</span> Short Selling</a></li>
+      <li><a href="#beta"><span class="n mono">50</span> Beta &amp; Sector Correlation</a></li>
+      <li><a href="#ipos"><span class="n mono">51</span> IPOs &amp; New Listings</a></li>
+      <li><a href="#etfs"><span class="n mono">52</span> ETFs</a></li>
+      <li><a href="#centralbanks"><span class="n mono">53</span> Central Bank Policy</a></li>
+      <li><a href="#fxcorrelation"><span class="n mono">54</span> Currency Correlation</a></li>
+      <li><a href="#glossary"><span class="n mono">55</span> Glossary</a></li>
     </ol>
   </nav>
 
