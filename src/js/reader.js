@@ -1,6 +1,8 @@
 // E-book style reader: one lesson per screen, edge hover/click to flip,
-// a table-of-contents drawer, and a resume-where-you-left-off bookmark.
+// swipe on touch devices, a table-of-contents drawer, and a
+// resume-where-you-left-off bookmark.
 const STORE = 'tape_reader_page_v1';
+const HINT_STORE = 'tape_reader_hint_seen_v1';
 
 export function initReader() {
   const viewport = document.getElementById('pageViewport');
@@ -22,6 +24,10 @@ export function initReader() {
   const tocBackdrop = document.getElementById('tocBackdrop');
   const tocLinks = Array.from(document.querySelectorAll('#tocList a[href^="#"]'));
   const beginBtn = document.getElementById('beginReading');
+  const hint = document.getElementById('onboardingHint');
+  const hintDismiss = document.getElementById('onboardingDismiss');
+
+  const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   let current = 0;
 
@@ -35,11 +41,24 @@ export function initReader() {
   function showPage(index, opts) {
     opts = opts || {};
     index = Math.max(0, Math.min(total - 1, index));
-    pages[current]?.classList.remove('active');
+    if (index === current && !opts.force) return;
+
+    const direction = index > current ? 1 : (index < current ? -1 : 0);
+    const oldPage = pages[current];
     current = index;
     const page = pages[current];
+
+    if (direction !== 0 && !reduceMotion) {
+      page.style.transition = 'none';
+      page.style.transform = 'translateX(' + (direction * 24) + 'px)';
+      void page.offsetWidth; // force reflow so the transition below actually animates
+      page.style.transition = '';
+    }
+
+    if (oldPage && oldPage !== page) oldPage.classList.remove('active');
     page.classList.add('active');
     if (!opts.keepScroll) page.scrollTop = 0;
+    requestAnimationFrame(() => { page.style.transform = 'translateX(0)'; });
 
     if (pageIndicator) pageIndicator.textContent = labelFor(current);
     if (progressFill) progressFill.style.width = Math.round((current / (total - 1)) * 100) + '%';
@@ -55,6 +74,7 @@ export function initReader() {
     });
 
     try { localStorage.setItem(STORE, String(current)); } catch (e) {}
+    dismissHint();
   }
 
   function next() { showPage(current + 1); }
@@ -100,7 +120,46 @@ export function initReader() {
     else if (e.key === 'Escape') closeToc();
   });
 
+  // touch swipe: horizontal drag clearly bigger than vertical = page flip,
+  // otherwise leave it alone so normal vertical scrolling still works.
+  let touchStartX = 0;
+  let touchStartY = 0;
+  viewport.addEventListener('touchstart', (e) => {
+    const t = e.changedTouches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+  }, { passive: true });
+  viewport.addEventListener('touchend', (e) => {
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+      if (dx < 0) next(); else prev();
+    }
+  }, { passive: true });
+
+  // first-visit hint
+  function dismissHint() {
+    if (!hint || !hint.classList.contains('visible')) return;
+    hint.classList.remove('visible');
+    try { localStorage.setItem(HINT_STORE, '1'); } catch (e) {}
+  }
+  hintDismiss?.addEventListener('click', dismissHint);
+  let hintSeen = false;
+  try { hintSeen = localStorage.getItem(HINT_STORE) === '1'; } catch (e) {}
+  if (hint && !hintSeen) {
+    setTimeout(() => {
+      // force a reflow before toggling the class, or the opacity/transform
+      // transition can fail to kick off on its very first trigger
+      hint.style.transition = 'none';
+      void hint.offsetHeight;
+      hint.style.transition = '';
+      hint.classList.add('visible');
+    }, 900);
+    setTimeout(dismissHint, 9000);
+  }
+
   let saved = 0;
   try { saved = parseInt(localStorage.getItem(STORE) || '0', 10) || 0; } catch (e) {}
-  showPage(saved, { keepScroll: false });
+  showPage(saved, { keepScroll: false, force: true });
 }
