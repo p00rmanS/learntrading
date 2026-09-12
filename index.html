@@ -2312,10 +2312,204 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="62" data-title="Glossary">
+    <div class="page" data-page="62" data-title="Volume Profile & VPOC">
+      <div class="page-inner">
+        <section id="volumeprofile">
+      <div class="section-head"><span class="num">61</span><h2>Volume Profile &amp; Value Area</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="volumeprofile"><span>mark read</span></label></div>
+      <p class="deck">Section 07's volume bars show how much traded over time. Volume Profile turns that sideways &mdash; showing how much traded at each price.</p>
+
+      <p>A <b>Volume Profile</b> plots volume horizontally against price for a chosen period, revealing <i>where</i> trading activity actually concentrated. The single price with the most volume is the <b>Point of Control (POC)</b>. The <b>Value Area</b> &mdash; typically the range holding 70% of total volume &mdash; marks where consensus "fair value" formed. Price often gravitates back toward the POC after moving away, functioning as another support/resistance tool alongside pivots (Section 34) and Fibonacci (Section 11). Price that moves cleanly out of the value area on strong volume is often signaling a genuine shift in consensus, not just noise.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="A horizontal volume histogram beside a price chart, with the widest bar marking the point of control and a shaded band around it marking the value area containing most of the volume." >
+          <line x1="140" y1="10" x2="140" y2="200" stroke="currentColor" stroke-opacity="0.25"/>
+          <rect x="60" y="115" width="80" height="70" fill="var(--accent)" opacity="0.15"/>
+          <g fill="var(--ink-soft)">
+            <rect x="110" y="30" width="30" height="14"/>
+            <rect x="90" y="48" width="50" height="14"/>
+            <rect x="70" y="66" width="70" height="14"/>
+            <rect x="50" y="84" width="90" height="14"/>
+            <rect x="35" y="102" width="105" height="14" fill="var(--accent)"/>
+            <rect x="45" y="120" width="95" height="14" fill="var(--accent)"/>
+            <rect x="60" y="138" width="80" height="14" fill="var(--accent)"/>
+            <rect x="80" y="156" width="60" height="14"/>
+            <rect x="100" y="174" width="40" height="14"/>
+          </g>
+          <text x="42" y="132" text-anchor="end" class="mono" font-size="9.5" fill="var(--accent)" font-weight="700">POC</text>
+          <polyline points="180,150 240,120 300,140 360,90 420,110 480,70 540,100 600,60" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="590" y="50" class="mono" font-size="10">price</text>
+        </svg>
+        <figcaption>The widest bar (POC) marks the most-traded price; the shaded band around it is the value area price keeps returning to.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like looking at footprints in the sand after a full day at the beach. Instead of knowing <i>when</i> people walked by (volume over time), you can see <i>where</i> most people actually stood and gathered (volume by price) &mdash; that well-trodden spot is where the crowd agreed to hang out.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang pagtingin sa bakas ng paa sa buhangin pagkatapos ng buong araw sa dalampasigan. Imbes na malaman kung KAILAN dumaan ang mga tao (volume sa paglipas ng oras), makikita mo kung SAAN talaga natipon ang karamihan (volume sa bawat presyo) &mdash; yung matapak na lugar ang pinagkasunduang tambayan ng grupo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Treat the POC and value-area edges the same way Section 04 treats any support/resistance zone &mdash; worth watching, confirmed by what price actually does there, not a guarantee by itself.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="63" data-title="Portfolio Heat">
+      <div class="page-inner">
+        <section id="portfolioheat">
+      <div class="section-head"><span class="num">62</span><h2>Portfolio Heat: Sizing Across Multiple Trades</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="portfolioheat"><span>mark read</span></label></div>
+      <p class="deck">Section 17's 1% rule is about one trade. What happens when five are open at once?</p>
+
+      <p><b>Portfolio heat</b> is the total percentage of an account at risk across every currently open position combined. Five separate trades each risking 1% sounds disciplined in isolation &mdash; but if several hit their stops the same day (which correlated positions, per Section 54, make more likely than expected), that's a real multi-percent hit at once, and if any of those positions are secretly correlated, the effective risk is higher than the simple sum suggests. A common professional guideline caps total portfolio heat somewhere around 3&ndash;6% across all open positions, sizing new trades down as more positions are already live.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="A stacked bar showing five separate one percent risk trades stacking to five percent total portfolio heat, approaching a heat ceiling line drawn at six percent." >
+          <line x1="20" y1="180" x2="620" y2="180" stroke="currentColor" stroke-opacity="0.3"/>
+          <line x1="20" y1="60" x2="620" y2="60" stroke="var(--bear)" stroke-dasharray="4 3"/>
+          <text x="560" y="52" class="mono" font-size="10" fill="var(--bear)" font-weight="700">heat ceiling &middot; 6%</text>
+          <g>
+            <rect x="80" y="156" width="60" height="24" fill="var(--bull)"/>
+            <rect x="80" y="132" width="60" height="24" fill="var(--bull)" opacity="0.85"/>
+            <rect x="80" y="108" width="60" height="24" fill="var(--bull)" opacity="0.7"/>
+            <rect x="80" y="84" width="60" height="24" fill="var(--accent)" opacity="0.85"/>
+            <rect x="80" y="60" width="60" height="24" fill="var(--bear)" opacity="0.85"/>
+          </g>
+          <text x="110" y="200" text-anchor="middle" class="mono" font-size="10">5 open trades</text>
+          <text x="260" y="72" class="mono" font-size="10">1% + 1% + 1% + 1% + 1% = 5% heat</text>
+        </svg>
+        <figcaption>Each trade alone looks fine at 1%. Stacked, they're already close to a sensible ceiling for total account risk.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like five people each deciding it's fine to carry one plate at a family buffet, not realizing the table itself has a weight limit. One plate each is fine &mdash; but if everyone piles on at once, the table can still collapse even though no single plate was too heavy.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang limang tao na paisa-isang nagdesisyon na okay lang magdala ng isang plato sa buffet ng pamilya, hindi napapansin na may limitasyon din pala sa bigat ang mismong mesa. Okay ang isang plato bawat isa, pero kung sabay-sabay nilang ilalagay, pwede pa ring gumuho ang mesa kahit walang isang platong sobrang bigat.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Before opening a new position, add up the risk on everything already open, accounting for Section 54's correlation check. The 1% rule per trade doesn't protect you if the total keeps stacking unchecked.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="64" data-title="Personal Circuit Breakers">
+      <div class="page-inner">
+        <section id="circuitbreakers">
+      <div class="section-head"><span class="num">63</span><h2>Personal Circuit Breakers</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="circuitbreakers"><span>mark read</span></label></div>
+      <p class="deck">Section 42 covers the exchange's circuit breakers. This is about building your own, before the exchange's version ever needs to kick in.</p>
+
+      <p>A personal circuit breaker is a pre-committed rule that stops all trading once an account hits a set drawdown threshold &mdash; for example, "-5% in a week means stop until Monday and review," or "-10% in a month means back to demo until three consecutive profitable review weeks" (Section 39). Unlike the mentor letter's "two losses ends the day" rule, which catches a single bad session, this operates on a longer timeframe and catches the slower bleed of a strategy quietly not working, or a trader quietly drifting from their own plan, before it becomes a much bigger hole. The rule only works if it's decided in advance, in writing, while calm &mdash; not negotiated with yourself in the moment.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="An account equity curve declining and crossing a dashed weekly drawdown threshold line, with a marker showing where trading stopped as soon as that line was breached." >
+          <line x1="0" y1="175" x2="640" y2="175" stroke="currentColor" stroke-opacity="0.25"/>
+          <line x1="0" y1="120" x2="640" y2="120" stroke="var(--accent)" stroke-dasharray="4 3"/>
+          <text x="10" y="112" class="mono" font-size="10" fill="var(--accent)">-5% weekly threshold</text>
+          <polyline points="20,60 100,75 180,65 260,95 340,110 420,105 480,125" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
+          <circle cx="480" cy="125" r="5" fill="var(--bear)"/>
+          <text x="480" y="145" text-anchor="middle" class="mono" font-size="10" fill="var(--bear)" font-weight="700">threshold hit &mdash; stop</text>
+          <line x1="480" y1="125" x2="620" y2="125" stroke="currentColor" stroke-opacity="0.3" stroke-dasharray="2 3"/>
+          <text x="600" y="115" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">no trades until review</text>
+        </svg>
+        <figcaption>The line is decided in advance. The moment it's crossed, the rule executes itself &mdash; no negotiation in the moment required.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a smoke detector that's set and tested before a fire ever starts. By the time you can smell smoke yourself, it's already a bigger problem than the alarm was built to catch early.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang smoke detector na naka-set at nasubok na bago pa man magkaroon ng sunog. Sa oras na maaamoy mo na mismo ang usok, mas malaki na ang problema kaysa sa dapat sanang naabutan ng alarm nang maaga.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Write your specific thresholds into the Section 25 trading plan now, while calm. A circuit breaker decided mid-drawdown isn't a circuit breaker &mdash; it's just another emotional decision wearing a rule's costume.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="65" data-title="Trading vs. Investing">
+      <div class="page-inner">
+        <section id="tradingvsinvesting">
+      <div class="section-head"><span class="num">64</span><h2>Trading vs. Investing: Two Different Games</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="tradingvsinvesting"><span>mark read</span></label></div>
+      <p class="deck">Every technique in this notebook assumes you're trading. Quietly switching to "investing" mid-trade is one of the most common ways a small loss becomes a large one.</p>
+
+      <p>Trading and investing are different games with different time horizons and different definitions of success. Trading &mdash; the entire focus of this notebook &mdash; works on technical structure, a defined stop, and a plan measured in days to months. Investing works on business fundamentals (Section 60), a horizon of years, and deliberately rides out volatility that would stop a trade out. The trap: a trade goes against plan, the stop should have triggered, and the trader tells themselves "I'll just hold this long-term now" &mdash; retroactively reclassifying a failed trade as an investment to avoid admitting the loss. That isn't investing. It's Section 16's sunk-cost holding wearing a respectable label.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like calling a wrong turn on a road trip "just a scenic route" instead of admitting you took a wrong turn. Relabeling it doesn't change that you're now somewhere you didn't plan to be, with different costs than if you'd meant to go there from the start.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang tinawag mong "scenic route lang" yung maling liko sa road trip, imbes na aminin na nagkamali ka ng liko. Hindi mababago ng panibagong pangalan na nasa lugar ka ngayon na hindi mo talaga plano puntahan, na may kaakibat na ibang gastos kaysa kung sinadya mo talagang pumunta doon.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>If a position only became a "long-term investment" after it started losing, it isn't one &mdash; it's Section 16's sunk-cost holding with a rebrand. Decide which game you're playing before the trade, not after it goes wrong.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="66" data-title="Pre-Market Routine">
+      <div class="page-inner">
+        <section id="premarketroutine">
+      <div class="section-head"><span class="num">65</span><h2>The Pre-Market Routine</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="premarketroutine"><span>mark read</span></label></div>
+      <p class="deck">Most of what separates a consistent trader from a chaotic one happens before the first trade of the day, not during it.</p>
+
+      <p>A pre-market routine turns the scattered checks throughout this notebook into one repeatable sequence, run before trading starts &mdash; not after something already looks interesting on the chart. Running the same sequence daily, in the same order, turns "reading the market" from a vague feeling into a repeatable checklist, the same instinct behind Section 24's chart checklist applied to the whole session instead of one chart.</p>
+
+      <div class="readout">
+<span class="c">$</span> pre-market --routine daily<br>
+[ ] economic calendar checked for today/this week (Sections 23, 53)<br>
+[ ] higher timeframe bias confirmed (Section 13)<br>
+[ ] correlated markets &amp; risk sentiment scanned (Sections 22, 50, 54)<br>
+[ ] any open CME gap or unusual overnight move? (Section 08)<br>
+[ ] trading plan rules re-read once, before the first trade (Section 25)
+      </div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a pilot's pre-flight checklist &mdash; not because every flight has a problem, but because running the exact same checks in the exact same order, every single time, is what catches the rare day something actually is off before takeoff.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang pre-flight checklist ng piloto &mdash; hindi dahil laging may problema sa bawat flight, kundi dahil ang pag-uulit ng eksaktong parehong tsek sa parehong ayos, tuwing-tuwina, ang siyang nakakahuli sa bihirang araw na may talagang mali bago pa man lumipad.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Run this before the market opens, not after something already looks interesting on the chart &mdash; a routine only protects you if it happens on schedule, not just when you remember to do it.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="67" data-title="Margin Calls: The Math">
+      <div class="page-inner">
+        <section id="margincalls">
+      <div class="section-head"><span class="num">66</span><h2>Margin Calls: The Actual Math</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="margincalls"><span>mark read</span></label></div>
+      <p class="deck">Section 18 explained that leverage amplifies moves. This is the exact arithmetic behind the moment a broker actually calls.</p>
+
+      <p>Two numbers matter: <b>Initial Margin</b> (the deposit required to open a leveraged position) and <b>Maintenance Margin</b> (the minimum equity required to keep it open, usually lower than initial margin). As a losing position's value falls, account equity falls with it; once equity drops below the maintenance margin level, a margin call triggers &mdash; a demand to deposit more funds immediately, or the position gets force-liquidated by the broker, often at a worse price than the trader would have chosen. Worked example: $1,000 initial margin on a position with a $700 maintenance requirement &mdash; a loss that brings account equity down to $699 triggers the call, well before the account reaches zero.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="An account equity line dropping from the initial margin level down through the maintenance margin threshold, with the margin call triggering exactly at that threshold, well above zero." >
+          <line x1="0" y1="180" x2="640" y2="180" stroke="currentColor" stroke-opacity="0.3"/>
+          <text x="600" y="192" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">$0</text>
+          <line x1="0" y1="40" x2="640" y2="40" stroke="currentColor" stroke-opacity="0.3" stroke-dasharray="3 3"/>
+          <text x="80" y="32" class="mono" font-size="10">initial margin &middot; $1,000</text>
+          <line x1="0" y1="110" x2="640" y2="110" stroke="var(--bear)" stroke-dasharray="4 3"/>
+          <text x="90" y="102" class="mono" font-size="10" fill="var(--bear)" font-weight="700">maintenance margin &middot; $700</text>
+          <polyline points="20,40 150,55 280,75 400,95 480,108" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="480" cy="108" r="5" fill="var(--bear)"/>
+          <text x="480" y="130" text-anchor="middle" class="mono" font-size="10" fill="var(--bear)" font-weight="700">margin call &middot; $699</text>
+          <line x1="480" y1="108" x2="620" y2="160" stroke="currentColor" stroke-opacity="0.3" stroke-dasharray="2 3"/>
+          <text x="600" y="172" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">forced liquidation if unmet</text>
+        </svg>
+        <figcaption>The call fires the instant equity crosses the maintenance line &mdash; not when the account is actually out of money.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a landlord who doesn't wait for you to owe zero dollars before acting. The moment your deposit on file drops below an agreed minimum cushion, they call demanding you top it back up immediately &mdash; well before you're actually broke.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang panginoong-maylupa na hindi naghihintay hanggang maubos ang lahat ng pera mo bago kumilos. Sa sandaling bumaba ang naka-deposito mo sa ibaba ng napagkasunduang minimum na kolintahan, tatawagan ka niya agad para dagdagan ito, bago ka pa man talagang mawalan ng lahat.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This is exactly why Section 17's position sizing matters more than Section 18's leverage limit alone &mdash; correct sizing keeps a normal losing streak from ever getting near the maintenance margin line in the first place.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="68" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">61</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">67</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -2384,6 +2578,10 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
         <div><dt>Pattern Day Trader (PDT)</dt><dd>A FINRA rule requiring at least $25,000 equity in a US margin account that executes 4+ day trades within 5 rolling business days — doesn't apply to futures accounts.</dd></div>
         <div><dt>First Notice Date</dt><dd>The date after which a physically-settled commodity futures contract can trigger actual delivery obligations if not closed or rolled — irrelevant to cash-settled contracts like CME Bitcoin futures.</dd></div>
         <div><dt>P/E Ratio</dt><dd>Price-to-earnings ratio — how much investors pay per dollar of a company's profit, a basic fundamental-analysis metric for comparing similar stocks.</dd></div>
+        <div><dt>Volume Profile / POC / Value Area</dt><dd>A histogram of volume by price rather than by time. The Point of Control (POC) is the single most-traded price; the Value Area is the range holding roughly 70% of total volume.</dd></div>
+        <div><dt>Portfolio Heat</dt><dd>The total percentage of an account at risk across every currently open position combined — not just any single trade's individual risk.</dd></div>
+        <div><dt>Personal Circuit Breaker</dt><dd>A pre-committed rule that halts all trading once an account hits a set drawdown threshold over a longer window (a week, a month) than a single bad day.</dd></div>
+        <div><dt>Initial Margin / Maintenance Margin</dt><dd>Initial margin is the deposit required to open a leveraged position; maintenance margin is the lower minimum equity required to keep it open — falling below it triggers a margin call.</dd></div>
       </dl>
     </section>
       </div>
@@ -2398,7 +2596,7 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 61 read</span>
+      <span id="progressLabel" class="mono">0 / 67 read</span>
     </div>
     <ol id="tocList">
       <li><a href="#letter"><span class="n mono">—</span> Before You Start</a></li>
@@ -2462,7 +2660,13 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       <li><a href="#demotolivepsych"><span class="n mono">58</span> Demo to Live</a></li>
       <li><a href="#commodities"><span class="n mono">59</span> Commodity Futures</a></li>
       <li><a href="#fundamentals"><span class="n mono">60</span> Fundamental Analysis</a></li>
-      <li><a href="#glossary"><span class="n mono">61</span> Glossary</a></li>
+      <li><a href="#volumeprofile"><span class="n mono">61</span> Volume Profile</a></li>
+      <li><a href="#portfolioheat"><span class="n mono">62</span> Portfolio Heat</a></li>
+      <li><a href="#circuitbreakers"><span class="n mono">63</span> Personal Circuit Breakers</a></li>
+      <li><a href="#tradingvsinvesting"><span class="n mono">64</span> Trading vs. Investing</a></li>
+      <li><a href="#premarketroutine"><span class="n mono">65</span> Pre-Market Routine</a></li>
+      <li><a href="#margincalls"><span class="n mono">66</span> Margin Calls: The Math</a></li>
+      <li><a href="#glossary"><span class="n mono">67</span> Glossary</a></li>
     </ol>
   </nav>
 

@@ -74,15 +74,14 @@ export function initReader() {
     });
 
     try { localStorage.setItem(STORE, String(current)); } catch (e) {}
-    dismissHint();
   }
 
-  function next() { showPage(current + 1); }
-  function prev() { showPage(current - 1); }
+  function next() { showPage(current + 1); dismissHint(); }
+  function prev() { showPage(current - 1); dismissHint(); }
 
   edgeLeft?.addEventListener('click', prev);
   edgeRight?.addEventListener('click', next);
-  beginBtn?.addEventListener('click', () => showPage(1));
+  beginBtn?.addEventListener('click', () => { showPage(1); dismissHint(); });
 
   function openToc() {
     tocDrawer.hidden = false;
@@ -108,6 +107,7 @@ export function initReader() {
       const idx = pages.findIndex((p) => p.id === targetId || p.querySelector('#' + CSS.escape(targetId)));
       if (idx !== -1) showPage(idx);
       closeToc();
+      dismissHint();
     });
   });
 
@@ -139,16 +139,20 @@ export function initReader() {
   }, { passive: true });
 
   // first-visit hint
+  let hintShowTimer = null;
+  let hintHideTimer = null;
   function dismissHint() {
+    clearTimeout(hintShowTimer);
+    clearTimeout(hintHideTimer);
+    try { localStorage.setItem(HINT_STORE, '1'); } catch (e) {}
     if (!hint || !hint.classList.contains('visible')) return;
     hint.classList.remove('visible');
-    try { localStorage.setItem(HINT_STORE, '1'); } catch (e) {}
   }
   hintDismiss?.addEventListener('click', dismissHint);
   let hintSeen = false;
   try { hintSeen = localStorage.getItem(HINT_STORE) === '1'; } catch (e) {}
   if (hint && !hintSeen) {
-    setTimeout(() => {
+    hintShowTimer = setTimeout(() => {
       // force a reflow before toggling the class, or the opacity/transform
       // transition can fail to kick off on its very first trigger
       hint.style.transition = 'none';
@@ -156,7 +160,7 @@ export function initReader() {
       hint.style.transition = '';
       hint.classList.add('visible');
     }, 900);
-    setTimeout(dismissHint, 9000);
+    hintHideTimer = setTimeout(dismissHint, 9000);
   }
 
   let saved = 0;
