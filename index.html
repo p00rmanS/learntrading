@@ -2137,10 +2137,185 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="56" data-title="Glossary">
+    <div class="page" data-page="56" data-title="Prop Firms & Funded Accounts">
+      <div class="page-inner">
+        <section id="propfirms">
+      <div class="section-head"><span class="num">55</span><h2>Prop Firms &amp; Funded Accounts</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="propfirms"><span>mark read</span></label></div>
+      <p class="deck">A prop firm lets you trade their capital instead of your own &mdash; for a fee, and under rules stricter than any broker's default settings.</p>
+
+      <p>A funded-account program typically runs two phases. The <b>evaluation</b> (or "challenge") has you trade under specific profit targets and drawdown limits to prove your process, on a fee you pay upfront. Pass, and the <b>funded phase</b> allocates capital and pays you a split of profits &mdash; often 70&ndash;90% to the trader &mdash; as long as you keep following the rules. Common ways to fail: exceeding a maximum daily loss, exceeding the overall maximum drawdown, or holding through a restricted news event the firm prohibits. The appeal is trading with more size than a small personal account could support; the cost is the evaluation fee itself, usually non-refundable on a fail &mdash; and a business model where the firm profits partly from failed evaluations, not only successful traders.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="A two-phase funnel: an evaluation phase branching into pass or fail, with the pass path leading to a funded phase that splits profits between trader and firm." >
+          <rect x="30" y="70" width="150" height="60" fill="var(--panel-2)" stroke="var(--rule-strong)"/>
+          <text x="105" y="105" text-anchor="middle" class="mono" font-size="11">EVALUATION</text>
+          <line x1="180" y1="90" x2="280" y2="60" stroke="var(--bull)" stroke-width="2"/>
+          <text x="260" y="45" class="mono" font-size="10" fill="var(--bull)">pass</text>
+          <line x1="180" y1="110" x2="280" y2="150" stroke="var(--bear)" stroke-width="2"/>
+          <text x="260" y="170" class="mono" font-size="10" fill="var(--bear)">fail &mdash; lose the fee</text>
+          <rect x="280" y="30" width="160" height="60" fill="var(--bull-soft)" stroke="var(--bull)"/>
+          <text x="360" y="65" text-anchor="middle" class="mono" font-size="11">FUNDED ACCOUNT</text>
+          <line x1="440" y1="60" x2="540" y2="60" stroke="currentColor"/>
+          <text x="590" y="45" text-anchor="middle" class="mono" font-size="10">trader</text>
+          <text x="590" y="80" text-anchor="middle" class="mono" font-size="10">firm</text>
+        </svg>
+        <figcaption>Pass the evaluation, and profits split between trader and firm &mdash; fail, and the fee is gone regardless.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like auditioning for a chauffeur job by driving a rental car under strict rules first &mdash; don't speed, don't run red lights, park exactly right. Pass the audition and they hand you the keys to a real car and pay you to drive it, keeping a cut of what you earn.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang audition para sa trabahong chauffeur &mdash; nagmamaneho ka muna ng rental car sa ilalim ng mahigpit na tuntunin (huwag bumilis, huwag lumagpas sa pulang ilaw, tamang pagpark). Kapag pumasa ka, ibibigay sa iyo ang susi ng tunay na kotse at babayaran ka para magmaneho, may hawak silang bahagi ng kikitain mo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>A prop firm's daily-loss and max-drawdown rules are just someone else's version of Section 17's 1% rule, enforced with a hard cutoff instead of self-discipline. Failing an evaluation under those rules is useful information about your own process either way.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="57" data-title="Slippage & Execution">
+      <div class="page-inner">
+        <section id="slippage">
+      <div class="section-head"><span class="num">56</span><h2>Slippage &amp; Execution Quality</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="slippage"><span>mark read</span></label></div>
+      <p class="deck">The price you see on the screen and the price you actually get filled at are not always the same number.</p>
+
+      <p><b>Slippage</b> is the gap between the expected price of a trade and the price it actually executes at. It shows up most in fast-moving or thin markets &mdash; a market order during a news spike (Section 23) or a CME gap open (Section 08) can fill several points worse than the last quoted price, because the order "walks" through several levels of the order book (Section 20) before it's fully filled. Limit orders avoid price slippage but risk not filling at all. Expect wider effective costs around scheduled high-impact events, and size positions knowing a stop might fill worse than its exact drawn price in extreme conditions &mdash; the same concern behind Section 42's price limits.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="An order book depth ladder where a large market order eats through several ask price levels, with the average fill price landing worse than the best available price." >
+          <text x="320" y="20" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">ASKS</text>
+          <rect x="250" y="30" width="30" height="16" fill="var(--bear)" opacity="0.4"/><text x="245" y="41" text-anchor="end" class="mono" font-size="10">78,320 &middot; best</text>
+          <rect x="250" y="55" width="60" height="16" fill="var(--bear)" opacity="0.55"/><text x="245" y="66" text-anchor="end" class="mono" font-size="10">78,340</text>
+          <rect x="250" y="80" width="90" height="16" fill="var(--bear)" opacity="0.7"/><text x="245" y="91" text-anchor="end" class="mono" font-size="10">78,360</text>
+          <rect x="250" y="105" width="120" height="16" fill="var(--bear)"/><text x="245" y="116" text-anchor="end" class="mono" font-size="10">78,380</text>
+          <line x1="250" y1="30" x2="370" y2="121" stroke="var(--accent)" stroke-width="2" stroke-dasharray="3 3"/>
+          <text x="450" y="70" class="mono" font-size="10" fill="var(--accent)" font-weight="700">order fills across</text>
+          <text x="450" y="86" class="mono" font-size="10" fill="var(--accent)" font-weight="700">all 4 levels</text>
+          <text x="450" y="140" class="mono" font-size="10.5">expected: 78,320</text>
+          <text x="450" y="158" class="mono" font-size="10.5" fill="var(--bear)" font-weight="700">avg fill: 78,355 &mdash; slippage</text>
+        </svg>
+        <figcaption>A market order big enough to eat through several price levels fills at a worse average price than the one first quoted.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like ordering the last known price of a popular item online, but by the time your order actually processes, the cheap stock sold out and you get charged the next-tier price instead. The gap between what you expected and what you actually paid is the slippage.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang nag-order ka online sa huling nakitang presyo ng paborito mong produkto, pero pagdating ng checkout, naubos na yung mura at na-charge ka na sa susunod na mas mataas na presyo. Ang agwat sa pagitan ng inaasahan mo at ang aktwal na binayaran mo ang slippage.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This is exactly why Section 14 flagged market orders as fastest but riskiest on thin liquidity &mdash; slippage is that risk showing up as an actual number on your fill.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="58" data-title="Pattern Day Trader Rule">
+      <div class="page-inner">
+        <section id="pdt">
+      <div class="section-head"><span class="num">57</span><h2>The Pattern Day Trader (PDT) Rule</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="pdt"><span>mark read</span></label></div>
+      <p class="deck">In the US, a stock account under $25,000 can get flagged and frozen for trading too actively &mdash; a rule that doesn't exist for the futures account this notebook started on.</p>
+
+      <p>FINRA's <b>Pattern Day Trader</b> rule applies to margin accounts trading US stocks: execute 4 or more day trades (opening and closing the same position within one day) within any 5 rolling business days, and if those trades are more than 6% of your total activity in that window, the account gets flagged as PDT &mdash; which then requires at least <b>$25,000</b> in equity to keep day trading, or the account gets restricted from day trading entirely. This doesn't apply to futures accounts like the CME BTC1! chart this notebook started on, or to cash accounts that skip margin (though cash accounts carry their own settlement-timing restrictions instead). A small stock account has to either trade less often, accept a cash account's limitations, or trade an instrument that doesn't carry this restriction at all.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a library that lets you borrow books freely, but if you check out and return more than 3 books the same day, too many times in a week, they start requiring a bigger deposit before letting you keep doing that &mdash; a rule that only applies to that one library's system, not a different library across town with different rules.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang aklatan na malayang nagpapahiram ng libro, pero kung sobra ka nang mag-checkout at magsauli ng higit sa 3 libro sa parehong araw, paulit-ulit sa loob ng isang linggo, hihingan ka nila ng mas malaking deposito &mdash; tuntunin na para lang sa aklatang iyon, hindi sa ibang aklatan sa kabilang bayan na may ibang patakaran.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This is exactly the kind of account-rule difference Section 48 warned about &mdash; the chart-reading skills transfer between stocks and futures, this specific restriction does not.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="59" data-title="Demo to Live Psychology">
+      <div class="page-inner">
+        <section id="demotolivepsych">
+      <div class="section-head"><span class="num">58</span><h2>Trading Psychology: Demo to Live</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="demotolivepsych"><span>mark read</span></label></div>
+      <p class="deck">Everything in Section 16 is true on a demo account. Real money adds one variable no demo can simulate: it actually hurts to lose it.</p>
+
+      <p>A concrete graduation protocol: don't go live until backtested-plus-demo expectancy (Sections 21 and 44) is consistently positive across 50-plus instances. When you do go live, size at 10&ndash;25% of what you'd normally risk for the first month &mdash; specifically to practice executing the plan under real emotion, not to maximize returns yet. Expect execution to get <i>worse</i> before it gets better: hesitating on entries you'd have taken on demo, or exiting early out of fear, is the normal pattern the tiny size exists to surface cheaply. Only scale size back up once live execution actually matches demo execution &mdash; not before.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="A staircase showing position size starting small on live trading while execution quality temporarily dips below the demo baseline, then size increasing only after execution recovers to match demo." >
+          <line x1="0" y1="175" x2="640" y2="175" stroke="currentColor" stroke-opacity="0.25"/>
+          <line x1="0" y1="60" x2="640" y2="60" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+          <text x="10" y="52" class="mono" font-size="10" fill="var(--ink-soft)">demo execution quality</text>
+          <polyline points="20,60 180,60 180,130 340,130 340,90 500,90 500,65 620,65" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <text x="100" y="45" class="mono" font-size="9.5">demo</text>
+          <text x="260" y="150" class="mono" font-size="9.5" fill="var(--bear)">live &middot; tiny size &middot; execution dips</text>
+          <text x="420" y="105" class="mono" font-size="9.5">live &middot; recovering</text>
+          <text x="560" y="55" class="mono" font-size="9.5" fill="var(--bull)" font-weight="700">size scaled back up</text>
+        </svg>
+        <figcaption>Size should follow proven execution upward &mdash; not the other way around.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a pilot who trained perfectly in a flight simulator, then flies their first real solo flight with an instructor sitting right there, in deliberately calm weather. Not because the simulator lied, but because real flight adds real consequences that need to be proven out gradually, somewhere lower-stakes, before flying commercial passengers.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang piloto na perpekto ang training sa flight simulator, pero sa unang tunay na solo flight niya, may kasamang instructor at sinasadyang kalmado ang panahon. Hindi dahil nagsinungaling ang simulator, kundi dahil ang tunay na paglipad ay may tunay na kahihinatnan na kailangang subukan nang unti-unti, sa mas ligtas na sitwasyon muna, bago magdala ng tunay na pasahero.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This is the mentor letter's warning turned into an actual protocol. Skipping the tiny-size phase isn't efficiency &mdash; it's skipping the one experiment that tells you whether your plan survives contact with real fear and greed.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="60" data-title="Commodity Futures">
+      <div class="page-inner">
+        <section id="commodities">
+      <div class="section-head"><span class="num">59</span><h2>Commodity Futures Basics</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="commodities"><span>mark read</span></label></div>
+      <p class="deck">BTC1! isn't the only future on your watchlist &mdash; gold and oil futures run on the same mechanics, with their own personalities.</p>
+
+      <p>Commodity futures like Gold (GC) and Crude Oil (CL) &mdash; both visible on the original watchlist screenshot this notebook started from &mdash; share the same core mechanics as CME Bitcoin futures: contract specs, margin, expiration, rollover (Section 14). Their price drivers differ sharply, though. Gold often behaves as a "safe haven" that strengthens during risk-off periods and inflation fears, sometimes moving opposite risk assets including BTC (tying to Section 22's correlation idea). Oil is driven heavily by OPEC+ supply decisions and growth-demand expectations. And unlike cash-settled BTC futures, some commodity contracts involve genuine physical delivery mechanics if held past a "First Notice Date" &mdash; a detail traders actively avoid by rolling or closing well before expiration.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Different family members react differently to the same news at dinner. One relative (gold) gets cautious and hoards resources when there's bad news on TV. Another (oil) mostly reacts to whether the family farm actually produced more or less this season &mdash; not really to the news itself.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Iba-iba ang reaksyon ng bawat miyembro ng pamilya sa parehong balita sa hapag-kainan. Yung isang kamag-anak (gold) ay nagiging maingat at nag-iimbak kapag may masamang balita sa TV. Yung isa naman (oil) ay mas apektado kung talagang tumaas o bumaba ang ani ng bukid ngayong season, hindi masyado sa balita mismo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Check a specific contract's delivery terms before holding it near expiration. CME Bitcoin futures are cash-settled (Section 14), but some commodity contracts genuinely expect a delivery arrangement if you don't close or roll in time.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="61" data-title="Fundamental Analysis">
+      <div class="page-inner">
+        <section id="fundamentals">
+      <div class="section-head"><span class="num">60</span><h2>Fundamental Analysis Basics</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="fundamentals"><span>mark read</span></label></div>
+      <p class="deck">Everything in this notebook so far reads price. This is a quick look at reading the actual business underneath a stock instead.</p>
+
+      <p><b>Fundamental analysis</b> evaluates a company's underlying financial health rather than its chart. Beginner-level metrics worth knowing: the <b>P/E ratio</b> (price-to-earnings &mdash; how much investors pay per dollar of profit, useful for comparing similar companies, less useful alone); revenue and earnings growth (is the business actually growing); and debt levels (a heavily indebted company is more fragile in a downturn). None of this predicts tomorrow's candle &mdash; a great company can have an overextended, technically weak chart, and a struggling company can have a strong short-term technical setup. Most professional stock traders use both lenses together: fundamentals to decide what's worth watching at all, technicals to decide when and where to actually enter and exit.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="Two overlapping circles, one labeled fundamentals deciding what to watch and one labeled technicals deciding when to enter, overlapping in the middle on the actual trade decision." >
+          <circle cx="240" cy="100" r="100" fill="var(--bull)" opacity="0.15" stroke="var(--bull)"/>
+          <circle cx="400" cy="100" r="100" fill="var(--accent)" opacity="0.15" stroke="var(--accent)"/>
+          <text x="170" y="60" text-anchor="middle" class="mono" font-size="11" fill="var(--bull)">FUNDAMENTALS</text>
+          <text x="170" y="76" text-anchor="middle" class="mono" font-size="9.5">what to watch</text>
+          <text x="470" y="60" text-anchor="middle" class="mono" font-size="11" fill="var(--accent)">TECHNICALS</text>
+          <text x="470" y="76" text-anchor="middle" class="mono" font-size="9.5">when to enter</text>
+          <text x="320" y="105" text-anchor="middle" class="mono" font-size="10.5" font-weight="700">the actual</text>
+          <text x="320" y="121" text-anchor="middle" class="mono" font-size="10.5" font-weight="700">trade decision</text>
+        </svg>
+        <figcaption>Fundamentals narrow the watchlist; everything from Section 01 onward decides the actual entry and exit.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like choosing a restaurant (fundamentals &mdash; is the food actually good, is the kitchen well-run) versus choosing exactly when to walk in and sit down (technicals &mdash; is there a table open right now). A great restaurant with a two-hour wait right now might not be worth entering yet; a mediocre restaurant with an open table isn't a good choice just because it's easy to walk into.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang pagpili ng restaurant (fundamentals &mdash; masarap ba talaga ang pagkain, maayos ba ang kusina) kumpara sa eksaktong oras ng pagpasok (technicals &mdash; may bakanteng mesa ba ngayon). Ang magandang restaurant na may dalawang oras na paghihintay ngayon ay baka hindi pa dapat pasukan. Ang katamtamang restaurant na may bakanteng mesa ay hindi rin maganda kung dahil lang madaling pumasok.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>This notebook is technical-analysis-heavy on purpose. Fundamentals decide the watchlist; everything from Section 01 onward is what actually decides the trade.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="62" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">55</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">61</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -2204,6 +2379,11 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
         <div><dt>ETF (Exchange-Traded Fund)</dt><dd>A basket of underlying assets — an index, sector, commodity, or strategy — that trades on an exchange with its own live price and chart, like a single stock.</dd></div>
         <div><dt>Central Bank Rate Decision</dt><dd>A scheduled announcement (Fed, ECB, BOJ, etc.) setting the interest rate anchoring a currency's value — often the highest-impact scheduled event in forex.</dd></div>
         <div><dt>Currency Correlation</dt><dd>The tendency of certain currency pairs (EUR/USD and GBP/USD, for example) to move together, meaning multiple "different" positions can secretly be the same underlying bet.</dd></div>
+        <div><dt>Prop Firm / Funded Account</dt><dd>A firm that allocates its own capital to traders who pass a rules-based evaluation, splitting profits in exchange for the trader following strict daily-loss and drawdown limits.</dd></div>
+        <div><dt>Slippage</dt><dd>The difference between a trade's expected price and its actual fill price, worst in fast-moving or thin markets where a market order "walks" through several order-book levels.</dd></div>
+        <div><dt>Pattern Day Trader (PDT)</dt><dd>A FINRA rule requiring at least $25,000 equity in a US margin account that executes 4+ day trades within 5 rolling business days — doesn't apply to futures accounts.</dd></div>
+        <div><dt>First Notice Date</dt><dd>The date after which a physically-settled commodity futures contract can trigger actual delivery obligations if not closed or rolled — irrelevant to cash-settled contracts like CME Bitcoin futures.</dd></div>
+        <div><dt>P/E Ratio</dt><dd>Price-to-earnings ratio — how much investors pay per dollar of a company's profit, a basic fundamental-analysis metric for comparing similar stocks.</dd></div>
       </dl>
     </section>
       </div>
@@ -2218,7 +2398,7 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 55 read</span>
+      <span id="progressLabel" class="mono">0 / 61 read</span>
     </div>
     <ol id="tocList">
       <li><a href="#letter"><span class="n mono">—</span> Before You Start</a></li>
@@ -2276,7 +2456,13 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       <li><a href="#etfs"><span class="n mono">52</span> ETFs</a></li>
       <li><a href="#centralbanks"><span class="n mono">53</span> Central Bank Policy</a></li>
       <li><a href="#fxcorrelation"><span class="n mono">54</span> Currency Correlation</a></li>
-      <li><a href="#glossary"><span class="n mono">55</span> Glossary</a></li>
+      <li><a href="#propfirms"><span class="n mono">55</span> Prop Firms</a></li>
+      <li><a href="#slippage"><span class="n mono">56</span> Slippage &amp; Execution</a></li>
+      <li><a href="#pdt"><span class="n mono">57</span> PDT Rule</a></li>
+      <li><a href="#demotolivepsych"><span class="n mono">58</span> Demo to Live</a></li>
+      <li><a href="#commodities"><span class="n mono">59</span> Commodity Futures</a></li>
+      <li><a href="#fundamentals"><span class="n mono">60</span> Fundamental Analysis</a></li>
+      <li><a href="#glossary"><span class="n mono">61</span> Glossary</a></li>
     </ol>
   </nav>
 
