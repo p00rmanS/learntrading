@@ -23,6 +23,8 @@ export function initReader() {
   const tocDrawer = document.getElementById('tocDrawer');
   const tocBackdrop = document.getElementById('tocBackdrop');
   const tocLinks = Array.from(document.querySelectorAll('#tocList a[href^="#"]'));
+  const tocFilter = document.getElementById('tocFilter');
+  const tocEmpty = document.getElementById('tocEmpty');
   const beginBtn = document.getElementById('beginReading');
   const hint = document.getElementById('onboardingHint');
   const hintDismiss = document.getElementById('onboardingDismiss');
@@ -83,6 +85,18 @@ export function initReader() {
   edgeRight?.addEventListener('click', next);
   beginBtn?.addEventListener('click', () => { showPage(1); dismissHint(); });
 
+  function filterToc(query) {
+    const q = query.trim().toLowerCase();
+    let visible = 0;
+    tocLinks.forEach((a) => {
+      const match = !q || a.textContent.toLowerCase().includes(q);
+      a.closest('li').hidden = !match;
+      if (match) visible++;
+    });
+    if (tocEmpty) tocEmpty.hidden = visible !== 0;
+  }
+  tocFilter?.addEventListener('input', () => filterToc(tocFilter.value));
+
   function openToc() {
     tocDrawer.hidden = false;
     tocBackdrop.hidden = false;
@@ -90,11 +104,13 @@ export function initReader() {
       tocDrawer.classList.add('open');
       tocBackdrop.classList.add('open');
     });
+    if (tocFilter) requestAnimationFrame(() => tocFilter.focus());
   }
   function closeToc() {
     tocDrawer.classList.remove('open');
     tocBackdrop.classList.remove('open');
     setTimeout(() => { tocDrawer.hidden = true; tocBackdrop.hidden = true; }, 250);
+    if (tocFilter && tocFilter.value) { tocFilter.value = ''; filterToc(''); }
   }
   tocToggle?.addEventListener('click', openToc);
   tocClose?.addEventListener('click', closeToc);
@@ -112,31 +128,43 @@ export function initReader() {
   });
 
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeToc(); return; }
     const tag = document.activeElement?.tagName;
     const typing = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT';
     if (typing) return;
     if (e.key === 'ArrowRight') next();
     else if (e.key === 'ArrowLeft') prev();
-    else if (e.key === 'Escape') closeToc();
   });
 
-  // touch swipe: horizontal drag clearly bigger than vertical = page flip,
-  // otherwise leave it alone so normal vertical scrolling still works.
-  let touchStartX = 0;
-  let touchStartY = 0;
-  viewport.addEventListener('touchstart', (e) => {
-    const t = e.changedTouches[0];
-    touchStartX = t.clientX;
-    touchStartY = t.clientY;
-  }, { passive: true });
-  viewport.addEventListener('touchend', (e) => {
-    const t = e.changedTouches[0];
-    const dx = t.clientX - touchStartX;
-    const dy = t.clientY - touchStartY;
+  // swipe via Pointer Events, covering touch, mouse-drag, and pen in one
+  // listener. Touch keeps the original whole-viewport behavior (a quick
+  // touch-drag never starts a text selection, so swiping from anywhere on
+  // the page reads naturally). A mouse drag is scoped to start outside the
+  // readable text (.page-inner) so click-dragging to select and copy a
+  // passage is never hijacked into a page flip — only dragging from the
+  // page's outer margin, the reader bar, or an edge zone triggers it.
+  let dragStartX = 0;
+  let dragStartY = 0;
+  let dragActive = false;
+  viewport.addEventListener('pointerdown', (e) => {
+    if (e.pointerType === 'mouse') {
+      if (e.button !== 0) return;
+      if (e.target.closest('.page-inner')) return;
+    }
+    dragStartX = e.clientX;
+    dragStartY = e.clientY;
+    dragActive = true;
+  });
+  viewport.addEventListener('pointerup', (e) => {
+    if (!dragActive) return;
+    dragActive = false;
+    const dx = e.clientX - dragStartX;
+    const dy = e.clientY - dragStartY;
     if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
       if (dx < 0) next(); else prev();
     }
-  }, { passive: true });
+  });
+  viewport.addEventListener('pointercancel', () => { dragActive = false; });
 
   // first-visit hint
   let hintShowTimer = null;

@@ -298,6 +298,17 @@ a{color:var(--accent);}
 .rail-progress-fill{height:100%; width:0%; background:var(--bull); transition:width .2s;}
 .rail-progress span{font-size:10.5px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.05em;}
 
+/* ---- TOC filter ---- */
+.toc-filter-wrap{padding:8px 12px; border-bottom:1px solid var(--rule); background:var(--panel-2);}
+#tocFilter{
+  width:100%; font-size:12.5px; padding:7px 10px;
+  border:1px solid var(--rule-strong); border-radius:2px;
+  background:var(--paper); color:var(--ink);
+}
+#tocFilter::placeholder{color:var(--ink-soft);}
+.toc-empty{padding:14px 12px; margin:0; font-size:12.5px; color:var(--ink-soft); font-style:italic;}
+.toc-drawer li[hidden]{display:none;}
+
 /* ---- mark-as-read checkbox ---- */
 .mark-read{
   margin-left:auto;
@@ -350,6 +361,9 @@ section.is-read .section-head .num{color:var(--bull);}
   border-top:1px solid var(--rule-strong);
   background:var(--panel-2);
   text-align:center;
+}
+@media (max-width:520px){
+  .reader-footer{padding:5px 12px; font-size:9.5px; line-height:1.4;}
 }
 
 /* ---- first-visit onboarding hint ---- */
@@ -464,6 +478,10 @@ figcaption{
   max-width:60ch;
 }
 .note b{color:var(--accent); font-family:"IBM Plex Mono",monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:4px;}
+
+/* ---- pro tip aside (a .note variant, bull-colored) ---- */
+.note.pro-tip{border-left-color:var(--bull); background:var(--bull-soft);}
+.note.pro-tip b{color:var(--bull);}
 
 /* ---- ELI5 + Taglish box ---- */
 .simple{
