@@ -3661,10 +3661,343 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="97" data-title="Acronym Cheat Sheet">
+    <div class="page" data-page="97" data-title="Bitcoin Mining &amp; Hash Rate">
+      <div class="page-inner">
+        <section id="mining">
+      <div class="section-head"><span class="num">96</span><h2>Bitcoin Mining &amp; Hash Rate</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="mining"><span>mark read</span></label></div>
+      <p class="deck">Section 37 covered the halving's effect on new supply. This is the machinery underneath it &mdash; the competition that actually secures the network and decides who gets that new supply.</p>
+
+      <p>Bitcoin <b>mining</b> is computers ("miners") repeatedly guessing at a cryptographic puzzle &mdash; proof-of-work &mdash; racing to be first to add the next block to the chain. The winner earns the <b>block subsidy</b> (newly minted BTC, cut in half every 210,000 blocks per Section 37) plus every transaction fee included in that block. <b>Hash rate</b> is the network's combined computational power, measured in hashes per second across every miner running at once &mdash; the higher it climbs, the more expensive and impractical a 51% attack becomes, since an attacker would need to out-compute the majority of all that power combined, not just a single machine.</p>
+
+      <p>The network automatically re-targets mining <b>difficulty</b> every 2,016 blocks (roughly two weeks at the intended pace) to keep the average block time near 10 minutes no matter how much hash rate joins or leaves &mdash; more miners competing pushes difficulty up at the next adjustment; miners shutting off (often because a falling price makes mining unprofitable against electricity and hardware costs) lets it fall back down. A sharp, sustained hash rate decline during a falling market &mdash; sometimes called <b>miner capitulation</b> &mdash; is watched by some as a capitulation signal in the same spirit as Wyckoff's selling climax (Section 09): the least-efficient miners forced offline near a cycle low. It's no more a precise timing tool than any other single read in this notebook, but it's a real, verifiable data point that price action alone doesn't show.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="A hash rate line generally climbing over time in steps, with one sharp drop during a period of falling price marked as miner capitulation, followed by a difficulty adjustment that brings the drop back toward the prior trend.">
+          <line x1="20" y1="190" x2="620" y2="190" stroke="currentColor" stroke-opacity="0.25"/>
+          <polyline points="30,170 120,150 200,120 260,100 300,175 340,160 420,90 500,70 580,45" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <text x="60" y="150" class="mono" font-size="10" fill="var(--accent)">hash rate</text>
+          <rect x="270" y="150" width="60" height="35" fill="var(--bear)" opacity="0.15"/>
+          <text x="300" y="205" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bear)">miner capitulation</text>
+          <text x="420" y="75" text-anchor="middle" class="mono" font-size="9" fill="var(--ink-soft)">difficulty falls, then hash rate recovers</text>
+        </svg>
+        <figcaption>Hash rate generally trends up over the network's life, but drops hard when mining stops being profitable &mdash; the difficulty adjustment is what lets it recover.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Mining is like a huge, ongoing raffle where everyone buys tickets by doing work, and whoever draws the winning number first gets the prize and gets to add the next page to a shared notebook. Hash rate is just how many people are currently playing the raffle at once &mdash; the more players, the harder it would be for any one cheater to control the outcome.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang mining ay parang malaking patuloy na raffle kung saan bumibili ng tiket ang lahat sa pamamagitan ng trabaho, at ang unang makakuha ng tamang numero ang nananalo at ang magdadagdag ng susunod na pahina sa isang sinasahod na notebook. Ang hash rate ay kung ilan ang kasalukuyang naglalaro sa raffle &mdash; mas marami ang manlalaro, mas mahirap para sa isang manloloko na kontrolin ang resulta.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Hash rate and difficulty are public, verifiable network data &mdash; the same on-chain-adjacent instinct as Section 83's metrics, just describing the miners securing the ledger instead of the holders trading on top of it.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="98" data-title="DeFi &amp; Liquidity Pools">
+      <div class="page-inner">
+        <section id="defi">
+      <div class="section-head"><span class="num">97</span><h2>DeFi Basics: Liquidity Pools, AMMs &amp; Impermanent Loss</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="defi"><span>mark read</span></label></div>
+      <p class="deck">Section 20's order book assumes a human or a market maker quoting both sides. DeFi replaces that with a formula and a pool of tokens &mdash; no order book, no market maker, no counterparty to actually meet.</p>
+
+      <p><b>DeFi</b> (decentralized finance) recreates trading, lending, and borrowing using self-executing code (smart contracts) instead of a centralized exchange or bank. Its most common trading venue is an <b>Automated Market Maker (AMM)</b>, which replaces the order book from Section 20 entirely: instead of matching a buyer with a seller, traders swap directly against a shared <b>liquidity pool</b> of two tokens, priced by a formula &mdash; the most common being the constant-product rule, where price shifts automatically as the ratio of the two tokens in the pool changes with every trade. Anyone can become a <b>liquidity provider (LP)</b> by depositing an equal value of both tokens into the pool, earning a cut of every trading fee proportional to their share &mdash; the DeFi equivalent of the market maker in Section 45, just automated and open to the public instead of a licensed firm.</p>
+
+      <p>The risk unique to this setup is <b>impermanent loss</b>: because the pool's formula automatically rebalances the two tokens as their price ratio moves, an LP ends up holding relatively more of whichever token fell and less of whichever rose &mdash; underperforming compared to simply holding both tokens outright. A textbook example: if one pooled token doubles in price relative to the other, an LP has lost roughly 5.7% compared to just holding, even though the trading fees earned may partly or fully offset it. It's called "impermanent" because that loss only becomes real if withdrawn at that divergent price; if the ratio drifts back to where it started, the loss disappears along with it &mdash; but a large, permanent divergence makes it permanent in practice too.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="A liquidity pool holding two tokens in balance, with a trader swapping one token for the other through the pool's pricing formula instead of an order book, and a comparison bar showing a liquidity provider's pool value falling behind simply holding both tokens after one token's price doubles.">
+          <circle cx="180" cy="100" r="70" fill="var(--panel-2)" stroke="var(--rule-strong)"/>
+          <text x="180" y="90" text-anchor="middle" class="mono" font-size="11" font-weight="700">POOL</text>
+          <text x="180" y="108" text-anchor="middle" class="mono" font-size="10">Token A &amp; Token B</text>
+          <line x1="260" y1="100" x2="360" y2="100" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrDefi)"/>
+          <text x="310" y="90" text-anchor="middle" class="mono" font-size="9.5" fill="var(--accent)">swap</text>
+          <defs><marker id="arrDefi" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/></marker></defs>
+          <text x="400" y="30" text-anchor="middle" class="mono" font-size="10" font-weight="700">LP OUTCOME AFTER TOKEN A 2x's</text>
+          <rect x="420" y="60" width="70" height="110" fill="var(--bull)"/>
+          <text x="455" y="52" text-anchor="middle" class="mono" font-size="10" font-weight="700">just held</text>
+          <rect x="520" y="70" width="70" height="100" fill="var(--bear)"/>
+          <text x="555" y="62" text-anchor="middle" class="mono" font-size="10" font-weight="700" fill="var(--bear)">~5.7% behind</text>
+          <text x="555" y="188" text-anchor="middle" class="mono" font-size="9.5">in the pool</text>
+        </svg>
+        <figcaption>The pool keeps working automatically, but an LP quietly ends up holding less of the winning token than if they'd just held both from the start.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A liquidity pool is like a community fruit-swap bin where anyone can trade apples for oranges at a rate the bin itself calculates. Adding your own fruit to the bin earns you a small toll from every swap &mdash; but if apples suddenly become way more valuable outside the bin, you'll find you're quietly left holding more oranges and fewer apples than if you'd just kept your own basket at home.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang liquidity pool ay parang komunidad na palitan ng prutas kung saan kahit sino ay maaaring magpalit ng mansanas sa kahel, sa rate na kinakalkula mismo ng bin. Ang paglalagay ng sarili mong prutas sa bin ay kumikita ng maliit na toll sa bawat palitan &mdash; pero kung biglang tumaas ang halaga ng mansanas sa labas ng bin, mapapansin mong mas marami kang kahel at mas kaunting mansanas kaysa kung iningatan mo na lang ang sarili mong basket sa bahay.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Yield farming stacks a reward token on top of these trading fees to boost the advertised return &mdash; but it doesn't remove impermanent loss, and an advertised yield funded mostly by an inflationary reward token (Section 98's tokenomics) can mask a pool that's actually losing value in real terms.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="99" data-title="Tokenomics &amp; Supply Schedules">
+      <div class="page-inner">
+        <section id="tokenomics">
+      <div class="section-head"><span class="num">98</span><h2>Tokenomics: Supply, Emissions &amp; Unlocks</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="tokenomics"><span>mark read</span></label></div>
+      <p class="deck">Not every crypto asset shares Bitcoin's fixed 21 million cap. A token's supply design changes what its price actually means &mdash; and can hide risk a market cap number alone won't show.</p>
+
+      <p>Three supply numbers matter, and they're not the same thing: <b>circulating supply</b> is what's actually in public hands and tradable right now; <b>total supply</b> is everything created so far, including tokens still locked or held by the team; <b>max supply</b> is the hard cap that will ever exist, if the asset has one at all &mdash; Bitcoin's is 21 million, while plenty of tokens have no cap and mint new supply indefinitely (inflationary by design). A project's <b>emission schedule</b> describes the rate new tokens enter circulation over time: Bitcoin's is disinflationary via the halving (Section 37), cutting the rate every four years; other tokens mint a constant percentage annually, or release everything up front.</p>
+
+      <p>Many projects allocate a large share of total supply to the team, early investors, and a foundation, locked under a <b>vesting schedule</b> with a <b>cliff</b> &mdash; a fixed date before which none of it unlocks, followed by gradual or lump-sum releases afterward. A large unlock date is a foreseeable, calendar-visible event that can create sustained sell pressure, the token equivalent of the IPO lock-up expiration from Section 51. This is exactly why <b>market cap</b> (price &times; circulating supply) and <b>Fully Diluted Valuation</b>, or FDV, (price &times; max or total supply) can tell very different stories: a token can look cheap on market cap while its FDV reveals that most of the supply is still locked and waiting to eventually hit the market.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="A supply timeline showing a token's circulating supply as a small filled portion of its total future supply, with a large token-unlock cliff marked at a future date after which a big new batch of tokens becomes tradable, alongside a market cap versus fully diluted valuation comparison.">
+          <text x="160" y="20" text-anchor="middle" class="mono" font-size="11" font-weight="700">SUPPLY OVER TIME</text>
+          <line x1="30" y1="130" x2="300" y2="130" stroke="currentColor" stroke-opacity="0.3"/>
+          <rect x="30" y="100" width="90" height="30" fill="var(--bull)"/>
+          <text x="75" y="150" text-anchor="middle" class="mono" font-size="9">circulating now</text>
+          <rect x="120" y="70" width="60" height="60" fill="var(--bear)" opacity="0.5"/>
+          <text x="150" y="150" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">cliff unlock</text>
+          <rect x="180" y="40" width="100" height="90" fill="var(--panel-2)" stroke="var(--rule-strong)"/>
+          <text x="230" y="150" text-anchor="middle" class="mono" font-size="9" fill="var(--ink-soft)">locked, later</text>
+          <text x="480" y="20" text-anchor="middle" class="mono" font-size="11" font-weight="700">MARKET CAP vs FDV</text>
+          <rect x="420" y="140" width="60" height="30" fill="var(--bull)"/>
+          <text x="450" y="185" text-anchor="middle" class="mono" font-size="10">market cap</text>
+          <rect x="500" y="60" width="60" height="110" fill="var(--bear)" opacity="0.6"/>
+          <text x="530" y="185" text-anchor="middle" class="mono" font-size="10" fill="var(--bear)">FDV</text>
+          <text x="490" y="45" text-anchor="middle" class="mono" font-size="9" fill="var(--ink-soft)">looks cheap, isn't necessarily</text>
+        </svg>
+        <figcaption>Same token, two very different pictures &mdash; market cap prices only what's tradable today; FDV prices what exists once every locked token eventually unlocks.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Imagine a raffle where only 100 of 1,000 total tickets have been printed and handed out so far, with the other 900 locked in a drawer to be released later. Judging the raffle's value by only the 100 tickets already out is like market cap; remembering the other 900 are coming eventually is like FDV &mdash; and the day that drawer opens is worth marking on your calendar in advance.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Isipin mo ang raffle kung saan 100 lang sa 1,000 kabuuang tiket ang naimprenta at naipamahagi sa ngayon, at ang natitirang 900 ay nakalock sa drawer na ilalabas sa hinaharap. Ang paghusga sa halaga ng raffle batay lang sa 100 tiket na labas na ay parang market cap; ang pag-alala na darating pa ang isa pang 900 ay parang FDV &mdash; at ang araw na bubuksan ang drawer na iyon ay dapat markahan mo nang maaga sa kalendaryo.</div>
+      </div>
+
+      <div class="note pro-tip"><b>Pro Tip</b>Before trading any token beyond BTC1!, check its unlock schedule specifically, not just its current chart &mdash; a chart pattern forming right before a large scheduled unlock carries a real, foreseeable headwind most price-only analysis won't show you.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="100" data-title="Tilt">
+      <div class="page-inner">
+        <section id="tilt">
+      <div class="section-head"><span class="num">99</span><h2>Tilt: Recognizing It and Getting Out Before It Costs You</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="tilt"><span>mark read</span></label></div>
+      <p class="deck">Section 16 covered the psychological traps in general. This is the one specific, in-the-moment state worth learning to catch before it wrecks a session &mdash; a term borrowed straight from poker.</p>
+
+      <p><b>Tilt</b> is a temporary emotional state, usually triggered by a loss, a missed setup, or a string of both, in which decision-making measurably degrades right afterward &mdash; and the dangerous part is that it rarely feels like impaired judgment from the inside; it feels like conviction. Concrete tells: sizing up right after a loss without recalculating anything (colliding with Section 17's 1% rule), entering without running the Section 24 checklist, moving a stop that was already set, or refreshing the chart every few seconds with a physical urge to "do something" to fix the last trade. Revenge trading (Section 16) is tilt's most damaging output, but tilt itself starts earlier and quieter than that &mdash; it's a state, not yet an action, which is exactly why it's catchable before it becomes one.</p>
+
+      <p>A workable protocol treats tilt as its own trigger, separate from the daily-loss threshold in Section 63's circuit breaker: pre-commit to specific behavioral tells (not P&amp;L numbers) that mean "stop now" &mdash; catching yourself sizing up after a loss, skipping the checklist, or feeling the urge to immediately re-enter a symbol that just stopped you out. When any of those tells shows up, the rule is to close the platform for a fixed period, not to negotiate with yourself about whether this particular instance is different. Section 63 catches the damage after a bad stretch of P&amp;L; this catches the state that usually causes it, often before a single extra dollar is lost.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="A timeline showing a losing trade followed by rising emotional intensity, crossing a tilt threshold where behavioral tells appear such as sizing up or skipping the checklist, with a stop point marked before a revenge trade would otherwise occur.">
+          <line x1="20" y1="160" x2="620" y2="160" stroke="currentColor" stroke-opacity="0.25"/>
+          <path d="M20,150 L150,140 L200,60 L280,40 L360,25" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
+          <circle cx="150" cy="140" r="5" fill="var(--bear)"/>
+          <text x="150" y="180" text-anchor="middle" class="mono" font-size="9.5">the losing trade</text>
+          <line x1="200" y1="70" x2="620" y2="70" stroke="var(--accent)" stroke-dasharray="4 3"/>
+          <text x="560" y="60" text-anchor="middle" class="mono" font-size="10" fill="var(--accent)">tilt threshold</text>
+          <text x="220" y="50" class="mono" font-size="9" fill="var(--bear)">sizing up, skipping checklist...</text>
+          <circle cx="280" cy="40" r="6" fill="var(--bull)"/>
+          <text x="280" y="20" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)" font-weight="700">catch it here, close the platform</text>
+        </svg>
+        <figcaption>The window to act is between the trigger and the next click &mdash; the whole point of pre-committed tells is not needing to think clearly in the exact moment you're least able to.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Tilt is like the moment right after stubbing your toe hard, when you feel like kicking the same table leg even harder to "get back" at it &mdash; obviously not a good next move, but it doesn't feel that way for the next few seconds. The fix isn't willpower in that exact moment; it's deciding, calmly beforehand, that stubbing your toe means you sit down for a minute, no exceptions, before doing anything else.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang tilt ay parang sandali pagkatapos madapa ang paa mo nang malakas, na gusto mong sipain pa nang mas malakas ang mismong mesa para "makaganti" &mdash; malinaw na hindi maganda ang susunod na galaw, pero hindi iyon pakiramdam sa loob ng ilang segundo. Ang solusyon ay hindi willpower sa mismong sandaling iyon; ito ay ang desisyong ginawa mo nang kalmado bago pa mangyari &mdash; na kapag nadapa ang paa mo, uupo ka muna nang isang minuto, walang exception, bago gumawa ng anumang iba.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Journal the tell, not just the trade (Section 26) &mdash; "caught myself about to size up after the EURUSD stop-out, closed the platform for 20 minutes" is exactly the kind of entry that makes the next tilt episode easier to catch sooner.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="101" data-title="The Plateau">
+      <div class="page-inner">
+        <section id="plateau">
+      <div class="section-head"><span class="num">100</span><h2>The Plateau: When Practice Stops Producing Visible Improvement</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="plateau"><span>mark read</span></label></div>
+      <p class="deck">Early progress in any skill tends to feel fast and obvious. Then, often right when it matters most, the visible improvement seems to stop &mdash; a well-documented phase, not a sign the whole thing stopped working.</p>
+
+      <p>Skill-acquisition research across chess, music, and sport describes a common shape: quick, visible early gains, followed by a stretch where results flatten out despite continued, honest practice &mdash; a <b>plateau</b>. In trading, this often shows up right after the early wins from learning candles, structure, and basic risk management: results hover around breakeven or mildly negative for a stretch that can run for weeks of screen time, even though the trader is doing everything "right" on paper. The instinct at this point is almost always to conclude the whole approach doesn't work and go searching for a different system or a new indicator &mdash; often the worst move available, because a plateau is frequently the visible surface of pattern recognition and instinct quietly consolidating underneath, not yet ready to show up in results.</p>
+
+      <p>The practical distinction that actually matters: is expectancy (Section 21) flat-but-stable across a large enough sample, or is it trending down? A flat, noisy-but-stable expectancy over 30-50-plus trades, reviewed honestly (Section 39), usually means the plateau is real and the fix is narrowing focus &mdash; fewer setups, more repetitions on exactly those, not more tools. A genuinely trending-down expectancy over the same sample size is a different problem entirely and deserves the backtesting scrutiny from Section 44 and Section 86, not patience.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="A skill or expectancy curve rising quickly at first, then flattening into a long noisy plateau before eventually rising again, contrasted with a second curve that plateaus and then continues trending downward instead of recovering.">
+          <line x1="20" y1="170" x2="620" y2="170" stroke="currentColor" stroke-opacity="0.3"/>
+          <path d="M20,160 C 80,100 140,60 200,55 C 280,50 340,58 420,52 C 460,50 500,20 580,10" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+          <text x="300" y="40" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)">real plateau &mdash; flat, then breaks upward</text>
+          <path d="M20,160 C 80,100 140,60 200,55 C 280,58 340,90 420,120 C 460,140 500,150 580,165" fill="none" stroke="var(--bear)" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="480" y="145" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bear)">trending down &mdash; a real problem, not a plateau</text>
+        </svg>
+        <figcaption>Same flat-looking stretch in the middle &mdash; only a large enough sample size reveals which one you're actually in.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Learning to ride a bike often looks like fast progress, then a frustrating stretch where you keep wobbling the exact same amount every single day, right before it suddenly clicks and you're just riding. The wobbly stretch feels like failure while it's happening, but it's usually your balance quietly rewiring itself in the background, not proof that you can't learn to ride.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang pag-aaral mag-bike ay kadalasang mabilis sa umpisa, tapos may nakaka-frustrate na yugto kung saan pareho ka lang ng pagkakayugyog araw-araw, bago biglang ma-click ito at nakakasakay ka na lang. Pakiramdam bigo ka habang nangyayari ang mayugyog na yugto, pero karaniwan ay tahimik na inaayos lang nito sa likod ang iyong balanse, hindi patunay na hindi mo talaga kayang matutunan sumakay.</div>
+      </div>
+
+      <div class="note pro-tip"><b>Pro Tip</b>When results flatten, resist the urge to add a new indicator or system &mdash; instead cut your active setups down to the one or two you know best and rack up more repetitions on exactly those before touching anything else.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="102" data-title="Trading Through a Drawdown">
+      <div class="page-inner">
+        <section id="drawdownpsych">
+      <div class="section-head"><span class="num">101</span><h2>Trading Through a Drawdown: The Psychology of a Losing Stretch</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="drawdownpsych"><span>mark read</span></label></div>
+      <p class="deck">Section 63 gave you a mechanical rule for when a drawdown gets too deep. This is what's actually happening in your head on the way there &mdash; and why a real edge makes losing streaks a certainty, not a warning sign by itself.</p>
+
+      <p>A <b>drawdown</b> is a decline from an account's peak equity to a subsequent low point, usually expressed as a percentage. The uncomfortable statistical fact worth internalizing early: even a strategy with genuine positive expectancy (Section 21) will produce losing streaks and drawdowns purely from variance, over any large enough sample &mdash; a real edge shows up in the long-run average, not in the guarantee that no bad stretch ever happens. The psychological trap runs in exactly the opposite direction from overfitting (Section 86): where overfitting means trusting a backtest too much because it looks clean, this is doubting a live, working process too quickly because a normal-looking drawdown feels personal and permanent in the moment it's happening.</p>
+
+      <p>The practical fix is pre-committing to a distinction before the drawdown starts, not during it: did the process actually break (rules ignored, sizing crept up, setups changed mid-stretch), or did the process hold and only the outcome, within the range variance predicts, went against you? Section 39's honest trade review is the only tool that actually answers this &mdash; a drawdown accompanied by clean process review is very different from one where the honest answer is "I stopped following my own rules three trades in." Confusing the two in either direction &mdash; abandoning a genuinely working process out of impatience, or excusing a genuinely broken one as "just variance" &mdash; is the actual danger, not the drawdown itself.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="An equity curve rising overall but dipping into a drawdown partway through, with two possible interpretations branching from the same dip: one where the process held and the curve later recovers, and one where the process broke down and the curve continues falling." >
+          <line x1="20" y1="170" x2="620" y2="170" stroke="currentColor" stroke-opacity="0.3"/>
+          <path d="M20,150 C 100,120 160,100 220,110 C 280,120 320,160 360,175" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="360" cy="175" r="5" fill="var(--accent)"/>
+          <text x="360" y="192" text-anchor="middle" class="mono" font-size="9.5" fill="var(--accent)">the drawdown</text>
+          <path d="M360,175 C 420,190 460,150 520,90 C 550,60 570,40 600,25" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+          <text x="560" y="45" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bull)">process held &mdash; recovers</text>
+          <path d="M360,175 C 420,185 480,195 600,200" fill="none" stroke="var(--bear)" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="540" y="190" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">process broke &mdash; keeps sliding</text>
+        </svg>
+        <figcaption>The dip itself looks identical either way &mdash; only an honest process review, not the P&amp;L line, tells you which path you're actually on.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A skilled free-throw shooter still misses several shots in a row sometimes, purely by chance, even while doing everything correctly &mdash; that's not proof their form suddenly broke. The actual question after a rough stretch isn't "did I miss," it's "was my form still right on each shot" &mdash; and only watching the actual shots, not just the scoreboard, answers that.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang magaling na free-throw shooter ay minsan nakakapalpak pa rin nang paulit-ulit, dahil lang sa tsansa, kahit tama ang lahat ng ginagawa niya &mdash; hindi iyon patunay na biglang nasira ang porma niya. Ang totoong tanong pagkatapos ng magulong yugto ay hindi "nakapalpak ba ako," kundi "tama pa rin ba ang porma ko sa bawat shot" &mdash; at ang pagmasid lang sa aktwal na mga shot, hindi sa scoreboard lang, ang sumasagot doon.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Section 63's circuit breaker still applies as the hard stop regardless of which story turns out to be true &mdash; this lesson is about how to think clearly on the way there, not a replacement for having that mechanical limit in place at all.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="103" data-title="Order Flow &amp; Footprint Charts">
+      <div class="page-inner">
+        <section id="orderflow">
+      <div class="section-head"><span class="num">102</span><h2>Order Flow &amp; Footprint Charts: Volume at Price, by Side</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="orderflow"><span>mark read</span></label></div>
+      <p class="deck">Time &amp; Sales (Section 72) shows every trade as it happens, one line at a time. A footprint chart takes that same raw data and stacks it directly onto the candle it belongs to.</p>
+
+      <p>A <b>footprint chart</b> breaks each individual candle open, showing exactly how much volume traded at the bid versus the ask at every price level inside that candle &mdash; instead of one OHLC box, you get a small ladder of buy/sell volume printed at each price the candle touched. The single most-used number derived from it is <b>delta</b>: volume that lifted the ask minus volume that hit the bid, at a given price or across the whole candle. Strongly positive delta means aggressive buyers dominated at that price or candle; strongly negative delta means aggressive sellers did &mdash; a more granular version of the aggressor-side read Section 72 introduced.</p>
+
+      <p>One specific pattern worth knowing: <b>absorption</b>, where a large volume prints at a price level but price barely moves &mdash; meaning a large passive order (often institutional, Section 70) is quietly absorbing all that aggressive flow without giving up the level. Absorption showing up right at an obvious support or resistance zone (Section 04) is read as a sign that the level may hold; the same volume with price actually moving through it easily is read as the opposite. This is a genuinely advanced, data-heavy tool &mdash; it needs true order-level data most commonly available on futures platforms, and it's rarely standardized or even available on typical retail spot crypto charts, so treat it as a specialized add-on to the tools already covered, not a required one.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="A single candle broken into a footprint ladder showing bid volume and ask volume printed at each price level within that candle, with one price level highlighted where unusually large volume traded on both sides without price moving through it, labeled as absorption.">
+          <text x="320" y="20" text-anchor="middle" class="mono" font-size="11" font-weight="700">ONE CANDLE, FOOTPRINT VIEW</text>
+          <line x1="300" y1="40" x2="300" y2="210" stroke="currentColor" stroke-opacity="0.3"/>
+          <g class="mono" font-size="10">
+            <text x="230" y="55" text-anchor="end" fill="var(--bear)">120</text><text x="370" y="55" fill="var(--bull)">85</text>
+            <text x="230" y="80" text-anchor="end" fill="var(--bear)">95</text><text x="370" y="80" fill="var(--bull)">110</text>
+            <rect x="200" y="90" width="240" height="26" fill="var(--accent)" opacity="0.18"/>
+            <text x="230" y="108" text-anchor="end" fill="var(--bear)" font-weight="700">340</text><text x="370" y="108" fill="var(--bull)" font-weight="700">360</text>
+            <text x="230" y="133" text-anchor="end" fill="var(--bear)">60</text><text x="370" y="133" fill="var(--bull)">140</text>
+            <text x="230" y="158" text-anchor="end" fill="var(--bear)">40</text><text x="370" y="158" fill="var(--bull)">180</text>
+          </g>
+          <text x="460" y="108" class="mono" font-size="10" fill="var(--accent)" font-weight="700">&larr; absorption: huge volume, price barely moved</text>
+          <text x="230" y="30" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bear)">hit the bid</text>
+          <text x="370" y="30" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bull)">lifted the ask</text>
+        </svg>
+        <figcaption>Same single candle, exploded into every trade that built it &mdash; the highlighted row shows a level absorbing heavy two-sided volume without giving ground.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>If a regular candle is a final score, a footprint chart is the full play-by-play that produced it. Absorption is like a defensive wall getting hit by wave after wave of attackers without ever being pushed back &mdash; the scoreboard alone wouldn't show you how hard that wall actually held.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Kung ang regular na candle ay parang final score, ang footprint chart ay ang buong play-by-play na nagbunga nito. Ang absorption ay parang depensang pader na tinatamaan ng sunud-sunod na alon ng umaatake nang hindi natutulak paatras &mdash; hindi ipapakita ng scoreboard lang kung gaano talaga katatag ang paderna iyon.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Don't chase this tool before the fundamentals in Sections 01&ndash;24 are solid &mdash; footprint data adds granularity to a read you can already make with structure, volume, and the order book; it doesn't replace needing that read in the first place.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="104" data-title="Market Profile (TPO)">
+      <div class="page-inner">
+        <section id="marketprofile">
+      <div class="section-head"><span class="num">103</span><h2>Market Profile (TPO): Initial Balance, Single Prints &amp; Value Migration</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="marketprofile"><span>mark read</span></label></div>
+      <p class="deck">Volume Profile (Section 61) builds its shape from traded volume. Market Profile builds a similar-looking shape from something completely different: how much time price spent at each level.</p>
+
+      <p><b>Market Profile</b>, built from <b>Time Price Opportunity (TPO)</b> data, divides a session into fixed brackets (traditionally 30 minutes each, lettered A, B, C&hellip;) and marks every price level touched during each bracket &mdash; stack enough letters at each price and a bell-like distribution emerges, the same visual shape as Volume Profile's POC and value area (Section 61), just built from time spent rather than volume traded. The <b>Initial Balance</b> is the range set in the first hour of the session (the first two TPO letters) &mdash; a reference range for the rest of the day: staying inside it all session suggests a balanced, rotational day; extending well beyond it in one direction suggests a trend day is developing.</p>
+
+      <p>A <b>single print</b> is a price level touched by only one TPO letter, visited briefly and never revisited that session &mdash; often the mark of a fast, low-acceptance move where the market didn't spend meaningful time agreeing that price was fair there. Like a CME gap (Section 08) or resting liquidity (Section 05), single prints can act as a magnet the market later returns to "fill" once conditions change. Watching whether a session's value area shifts up, down, or overlaps with the prior session's &mdash; called <b>value migration</b> &mdash; tells you whether the market is accepting higher or lower prices as fair over time, a read this notebook's Volume Profile chapter makes with volume instead of time.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="A market profile chart made of stacked letters at each price level forming a bell-shaped distribution, with the first hour's initial balance range marked near the middle of that distribution, and one thin single-print row near the top marking a price briefly visited and never revisited.">
+          <text x="320" y="20" text-anchor="middle" class="mono" font-size="11" font-weight="700">TPO LETTERS BY PRICE</text>
+          <g class="mono" font-size="11">
+            <text x="280" y="50">D</text>
+            <text x="260" y="72">C</text><text x="280" y="72">D</text>
+            <text x="240" y="94">B</text><text x="260" y="94">C</text><text x="280" y="94">D</text><text x="300" y="94">E</text>
+            <text x="220" y="116">A</text><text x="240" y="116">B</text><text x="260" y="116">C</text><text x="280" y="116">D</text><text x="300" y="116">E</text><text x="320" y="116">F</text>
+            <text x="220" y="138">A</text><text x="240" y="138">B</text><text x="260" y="138">C</text><text x="280" y="138">D</text><text x="300" y="138">E</text>
+            <text x="240" y="160">B</text><text x="260" y="160">C</text><text x="280" y="160">D</text>
+            <text x="260" y="182">C</text>
+          </g>
+          <line x1="200" y1="100" x2="340" y2="100" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <line x1="200" y1="128" x2="340" y2="128" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="3 3"/>
+          <text x="400" y="118" class="mono" font-size="9.5" fill="var(--accent)">&larr; initial balance (first hour)</text>
+          <text x="400" y="52" class="mono" font-size="9.5" fill="var(--bear)">&larr; single print &mdash; visited once, briefly</text>
+        </svg>
+        <figcaption>Each letter is one 30-minute period, not one trade &mdash; the shape looks like Volume Profile, but it's measuring time spent, not size traded.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Volume Profile is like counting how many people bought lunch from each food stall. Market Profile is like counting how many separate half-hour periods any stall had at least one customer, regardless of how many people it sold to in each &mdash; a different way of measuring popularity that often points to the same busy stalls, but not always.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang Volume Profile ay parang pagbibilang kung ilan ang bumili ng lunch sa bawat food stall. Ang Market Profile ay parang pagbibilang kung ilang hiwalay na kalahating oras ang may kahit isang customer sa isang stall, kahit gaano karami ang naibenta nito sa bawat isa &mdash; ibang paraan ng pagsukat ng popularidad na kadalasang tumuturo sa parehong abalang stall, pero hindi palagi.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Treat Initial Balance and Volume Profile's value area as two independent lenses on the same session &mdash; agreement between them is exactly the kind of confluence Section 30 describes; disagreement is a reason to slow down, not to pick whichever one supports the trade you already wanted.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="105" data-title="Multi-Timeframe Confluence Walkthrough">
+      <div class="page-inner">
+        <section id="mtfconfluence">
+      <div class="section-head"><span class="num">104</span><h2>Multi-Timeframe Confluence: A Worked Walkthrough</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="mtfconfluence"><span>mark read</span></label></div>
+      <p class="deck">Section 13 taught top-down analysis and Section 30 taught confluence separately. This is the two of them run together on one actual setup, start to finish.</p>
+
+      <p>Start on the <b>Weekly</b>: it exists only to answer one question &mdash; what's the broad regime, bullish, bearish, or range-bound (Section 03)? Nothing here is an entry signal, only context. Drop to the <b>Daily</b> and mark the current structure and the nearest meaningful support/resistance zone (Section 04) inside that weekly regime &mdash; this is usually where a Fibonacci level (Section 11) or a prior swing lines up with that zone, the first layer of confluence. Narrow further to the <b>4H or 1H</b> to see exactly how price is approaching that zone right now: is it arriving with momentum, or already losing steam (Section 12's divergence)? This step turns a wide daily zone into a specific, tradeable price band.</p>
+
+      <p>Only the final step, on a <b>15-minute or 5-minute</b> chart, actually triggers anything: a specific candlestick signal (Section 02) or a volume-confirmed reaction (Section 07) at that exact zone, once price is already there. The rule that makes this whole funnel work is strict and one-directional: the higher timeframe sets the bias, and the lower timeframe only supplies the timing of an entry that agrees with it &mdash; a perfect-looking 5-minute reversal candle against a clear Daily uptrend is not a confluence setup, it's the exact "ignoring the higher timeframe trend" mistake Section 13 already warned about, wearing a more convincing-looking lower-timeframe disguise.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 260" role="img" aria-label="A funnel narrowing from Weekly at the top, setting broad bias, down through Daily marking a structure zone, down through 4-hour narrowing to a specific price band, down to a 15-minute chart at the bottom where an actual entry signal triggers only if it agrees with every wider timeframe above it.">
+          <path d="M60,30 L580,30 L460,90 L180,90 Z" fill="var(--panel-2)" stroke="var(--rule-strong)"/>
+          <text x="320" y="65" text-anchor="middle" class="mono" font-size="11" font-weight="700">WEEKLY &mdash; broad bias only</text>
+          <path d="M180,95 L460,95 L400,140 L240,140 Z" fill="var(--panel-2)" stroke="var(--rule-strong)"/>
+          <text x="320" y="122" text-anchor="middle" class="mono" font-size="10.5" font-weight="700">DAILY &mdash; structure zone + fib</text>
+          <path d="M240,145 L400,145 L370,185 L270,185 Z" fill="var(--panel-2)" stroke="var(--rule-strong)"/>
+          <text x="320" y="169" text-anchor="middle" class="mono" font-size="10" font-weight="700">4H &mdash; narrows the exact band</text>
+          <path d="M270,190 L370,190 L350,225 L290,225 Z" fill="var(--bull)"/>
+          <text x="320" y="212" text-anchor="middle" class="mono" font-size="9.5" font-weight="700" fill="var(--accent-ink)">15M &mdash; entry trigger</text>
+          <text x="320" y="245" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">each level narrows the last &mdash; none skip ahead of the one above it</text>
+        </svg>
+        <figcaption>Bias flows down through the funnel; a lower-timeframe signal that contradicts a wider one above it doesn't get to skip the line.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like planning a trip: you first pick the country (Weekly), then the city (Daily), then the neighborhood (4H), and only then the exact restaurant (15-minute entry). Picking a great-looking restaurant in the wrong city just because it has good reviews is exactly the mistake of trading a perfect lower-timeframe signal against the higher-timeframe trend.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang pagpaplano ng biyahe: pinipili mo muna ang bansa (Weekly), tapos ang lungsod (Daily), tapos ang kapitbahayan (4H), at saka lang ang eksaktong restawran (15-minute entry). Ang pagpili ng magandang restawran sa maling lungsod dahil lang maganda ang reviews nito ay eksaktong kamalian ng pag-trade ng perpektong lower-timeframe signal laban sa higher-timeframe trend.</div>
+      </div>
+
+      <div class="note pro-tip"><b>Pro Tip</b>Write down the Weekly and Daily read in your plan (Section 25) before dropping to any lower timeframe &mdash; deciding bias after you've already spotted an exciting 15-minute candle is how confluence quietly turns into confirmation bias (Section 16) instead.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="106" data-title="Acronym Cheat Sheet">
       <div class="page-inner">
         <section id="acronyms">
-      <div class="section-head"><span class="num">96</span><h2>Acronym Cheat Sheet</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="acronyms"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">105</span><h2>Acronym Cheat Sheet</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="acronyms"><span>mark read</span></label></div>
       <p class="deck">Ninety-plus sections deep, and the acronyms have been piling up. One page, scannable, grouped by topic &mdash; just the letters and what they stand for, no re-explaining.</p>
 
       <p>Trading and finance run on acronyms partly out of real necessity &mdash; a trading floor or a fast-moving chat needs "PDT" faster than "Pattern Day Trader" &mdash; and partly because every specialty loves its own shorthand. The Glossary (the last page of this notebook) has the full definitions; this page is purely for fast lookup once you already know roughly what something means and just need the letters to click.</p>
@@ -3791,10 +4124,10 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="98" data-title="Beginner Mistakes Checklist">
+    <div class="page" data-page="107" data-title="Beginner Mistakes Checklist">
       <div class="page-inner">
         <section id="beginnermistakes">
-      <div class="section-head"><span class="num">97</span><h2>Common Beginner Mistakes: A Quick-Reference Checklist</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="beginnermistakes"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">106</span><h2>Common Beginner Mistakes: A Quick-Reference Checklist</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="beginnermistakes"><span>mark read</span></label></div>
       <p class="deck">Ninety-plus sections of individual lessons. This is the condensed list of what actually sinks most beginners, cross-referenced back to exactly where each fix lives.</p>
 
       <p>Every mistake below has its own full lesson elsewhere in this notebook &mdash; this page exists purely so the whole list is visible in one place, the way a pilot's pre-flight checklist puts everything in one spot instead of scattered across ten manuals. Read it once now, and again after any bad trading week, since most of these come back to visit even after they've been "learned" once.</p>
@@ -3828,10 +4161,10 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="99" data-title="Glossary">
+    <div class="page" data-page="108" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">98</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">107</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -3971,6 +4304,20 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
         <div><dt>Rule of 72</dt><dd>A mental-math shortcut: divide 72 by an annual percentage rate to estimate how many years it takes to double (or, applied to inflation, to halve).</dd></div>
         <div><dt>Tax-Loss Harvesting</dt><dd>Deliberately selling a losing position to realize the loss for tax purposes, offsetting realized gains elsewhere and reducing the total tax owed.</dd></div>
         <div><dt>Wash-Sale Rule</dt><dd>A US tax rule disallowing a claimed loss if a substantially identical security is bought back within 30 days before or after the sale.</dd></div>
+        <div><dt>Hash Rate / Mining Difficulty</dt><dd>Hash rate is Bitcoin's combined mining computational power; difficulty is the network's auto-adjusting puzzle target, retargeted every 2,016 blocks to keep block time near 10 minutes.</dd></div>
+        <div><dt>Miner Capitulation</dt><dd>A sharp, sustained hash rate decline during a falling market as unprofitable miners shut off — watched by some as a capitulation signal similar to a Wyckoff selling climax.</dd></div>
+        <div><dt>DeFi (Decentralized Finance) / AMM</dt><dd>DeFi recreates trading and lending with smart contracts instead of a centralized intermediary; an Automated Market Maker (AMM) prices trades against a liquidity pool via a formula instead of an order book.</dd></div>
+        <div><dt>Impermanent Loss</dt><dd>The underperformance a liquidity provider experiences versus simply holding both pooled tokens, caused by the pool automatically rebalancing as the two tokens' price ratio diverges.</dd></div>
+        <div><dt>Circulating / Total / Max Supply</dt><dd>Circulating supply is tokens actually tradable now; total supply includes locked or unreleased tokens; max supply is the hard cap that will ever exist, if any.</dd></div>
+        <div><dt>Vesting Cliff / Token Unlock</dt><dd>A fixed date before which none of a team or investor's locked token allocation can be sold, followed by scheduled releases — a foreseeable event that can create sell pressure.</dd></div>
+        <div><dt>Fully Diluted Valuation (FDV)</dt><dd>Price multiplied by max (or total) supply rather than circulating supply — can reveal a token is far more expensive than its market cap alone suggests.</dd></div>
+        <div><dt>Tilt</dt><dd>A temporary emotional state, usually triggered by a loss, in which decision-making measurably degrades — the precursor state that often leads into revenge trading.</dd></div>
+        <div><dt>The Plateau</dt><dd>A stretch where results stop visibly improving despite continued honest practice — often pattern recognition consolidating rather than proof the approach has stopped working.</dd></div>
+        <div><dt>Drawdown</dt><dd>A decline from an account's peak equity to a subsequent low point — a mathematical certainty for any strategy over a large enough sample, not proof the edge is broken.</dd></div>
+        <div><dt>Footprint Chart / Delta</dt><dd>A footprint chart shows bid versus ask volume at every price level inside one candle; delta is ask volume minus bid volume, a granular read of aggressor-side pressure.</dd></div>
+        <div><dt>Absorption</dt><dd>Unusually large volume trading at a price level with little resulting price movement, suggesting a large passive order is absorbing aggressive flow without giving up the level.</dd></div>
+        <div><dt>Market Profile / TPO / Initial Balance</dt><dd>Market Profile plots Time Price Opportunity — how many fixed time-brackets touched each price. Initial Balance is the range set in the session's first hour.</dd></div>
+        <div><dt>Single Print</dt><dd>A price level touched by only one TPO period and never revisited that session — a fast, low-acceptance move that can act as a magnet for price later.</dd></div>
       </dl>
     </section>
       </div>
@@ -3985,7 +4332,7 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 98 read</span>
+      <span id="progressLabel" class="mono">0 / 107 read</span>
     </div>
     <div class="toc-filter-wrap">
       <input type="search" id="tocFilter" class="mono" placeholder="Filter lessons&hellip;" aria-label="Filter lessons by title">
@@ -4088,9 +4435,18 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       <li><a href="#btcdominance"><span class="n mono">93</span> Bitcoin Dominance</a></li>
       <li><a href="#compounding"><span class="n mono">94</span> Compound Interest</a></li>
       <li><a href="#taxlossharvesting"><span class="n mono">95</span> Tax-Loss Harvesting</a></li>
-      <li><a href="#acronyms"><span class="n mono">96</span> Acronym Cheat Sheet</a></li>
-      <li><a href="#beginnermistakes"><span class="n mono">97</span> Beginner Mistakes</a></li>
-      <li><a href="#glossary"><span class="n mono">98</span> Glossary</a></li>
+      <li><a href="#mining"><span class="n mono">96</span> Mining &amp; Hash Rate</a></li>
+      <li><a href="#defi"><span class="n mono">97</span> DeFi &amp; Liquidity Pools</a></li>
+      <li><a href="#tokenomics"><span class="n mono">98</span> Tokenomics</a></li>
+      <li><a href="#tilt"><span class="n mono">99</span> Tilt</a></li>
+      <li><a href="#plateau"><span class="n mono">100</span> The Plateau</a></li>
+      <li><a href="#drawdownpsych"><span class="n mono">101</span> Drawdown Psychology</a></li>
+      <li><a href="#orderflow"><span class="n mono">102</span> Order Flow &amp; Footprint</a></li>
+      <li><a href="#marketprofile"><span class="n mono">103</span> Market Profile (TPO)</a></li>
+      <li><a href="#mtfconfluence"><span class="n mono">104</span> MTF Confluence Walkthrough</a></li>
+      <li><a href="#acronyms"><span class="n mono">105</span> Acronym Cheat Sheet</a></li>
+      <li><a href="#beginnermistakes"><span class="n mono">106</span> Beginner Mistakes</a></li>
+      <li><a href="#glossary"><span class="n mono">107</span> Glossary</a></li>
     </ol>
   </nav>
 

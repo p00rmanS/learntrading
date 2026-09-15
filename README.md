@@ -5,7 +5,7 @@ An interactive trading-education notebook: candles, market structure, indicators
 ## Project structure
 
 ```
-index.html              content + markup for all 98 lessons, one <section> per <div class="page">
+index.html              content + markup for all 107 lessons, one <section> per <div class="page">
 src/
   styles/
     main.css            Tailwind directives + design tokens (@layer base)
