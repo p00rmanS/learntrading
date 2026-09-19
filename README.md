@@ -35,6 +35,14 @@ npm run preview   # serve the production build locally
 
 The production build uses `vite-plugin-singlefile` to inline the compiled CSS, JS, and images into one `dist/index.html` — useful if you want to hand the whole notebook to someone (or publish it somewhere) as a single file, without maintaining a separate bundled copy by hand.
 
+## Deploying
+
+It's a static site: build command `npm run build`, publish directory `dist` (a single self-contained `index.html`, images included). No server, environment variables or redirects needed.
+
+- **Netlify** — import the GitHub repo; `netlify.toml` already sets the build command, publish directory and Node 22.
+- **Vercel** — import the repo and keep the auto-detected **Vite** preset (build `npm run build`, output `dist`).
+- **Lovable** — not a fit: it only supports React/TypeScript/Vite projects, and this one is vanilla JS.
+
 ## Notes for future edits
 
 - Every lesson lives in `index.html` as a `<section id="...">` wrapped in its own `<div class="page">`, in reading order, linked from the `<ol id="tocList">` drawer (opened via the "Contents" button, filterable by title). Adding a lesson means: a new `.page`/`.section` block with the next sequential `<span class="num">`, a matching `<li>` in `#tocList`, and (if it's the last lesson before the glossary) bumping the glossary's own number and the `0 / N read` label in the drawer — `progress.js` computes the live count itself, so only that one static label needs updating by hand.
