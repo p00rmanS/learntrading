@@ -4358,10 +4358,364 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
     </section>
       </div>
     </div>
-    <div class="page" data-page="115" data-title="Acronym Cheat Sheet">
+    <div class="page" data-page="115" data-title="Stochastic Oscillator">
+      <div class="page-inner">
+        <section id="stochastic">
+      <div class="section-head"><span class="num">114</span><h2>The Stochastic Oscillator: Where Price Closed Inside Its Range</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="stochastic"><span>mark read</span></label></div>
+      <p class="deck">RSI (Section 12) compares up-moves to down-moves. The Stochastic asks a simpler question: inside the last few candles' high-to-low range, where did price actually close?</p>
+
+      <p>The <b>Stochastic Oscillator</b>, developed by George Lane, compares the latest close to the highest high and lowest low over a lookback window, commonly 14 periods: <b>%K</b> = (close &minus; lowest low) &divide; (highest high &minus; lowest low) &times; 100. The result runs from 0 to 100 &mdash; a reading of 100 means price closed at the very top of its recent range, 0 means the very bottom. A second line, <b>%D</b>, is a short moving average of %K (commonly 3 periods) and acts as the signal line. The logic behind it: in an uptrend, closes tend to cluster near the top of the range, and in a downtrend near the bottom, so a close that starts slipping toward the middle is an early hint that momentum is cooling. Conventionally, readings above 80 are called overbought and below 20 oversold, and the classic signal is %K crossing %D while inside one of those zones. Most platforms default to a smoothed "slow" version (14, 3, 3), because the raw "fast" line is very noisy.</p>
+
+      <p>The same warning that applies to RSI applies here, and then some: in a strong trend the Stochastic can sit above 80 for a long time while price keeps climbing, so "overbought" is a description, not a sell signal (Section 12). It works best in two specific jobs. First, in a ranging market (low ADX, Section 107), where fading the edges is the whole game. Second, as a timing tool inside a trend already identified on a higher timeframe (Section 13): in an uptrend, wait for the Stochastic to dip into the oversold zone during a pullback and then turn back up, instead of buying the first green candle. Divergence (Section 12) and hidden divergence (Section 106) can be read from it exactly as from RSI, and like every oscillator it belongs inside Section 30's confluence check, not on its own.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="A price line moving in a range above, and below it a Stochastic oscillator with %K and %D lines moving between an overbought line at 80 and an oversold line at 20, with a bullish crossover marked after both lines dipped below 20.">
+          <polyline points="30,80 100,50 160,45 220,70 280,95 340,100 400,70 460,45 520,60 580,85" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="30" y="22" class="mono" font-size="10" fill="var(--ink-soft)">price</text>
+          <line x1="20" y1="136" x2="620" y2="136" stroke="var(--bear)" stroke-dasharray="4 3" opacity="0.7"/>
+          <text x="622" y="139" class="mono" font-size="9" fill="var(--bear)">80</text>
+          <line x1="20" y1="184" x2="620" y2="184" stroke="var(--bull)" stroke-dasharray="4 3" opacity="0.7"/>
+          <text x="622" y="187" class="mono" font-size="9" fill="var(--bull)">20</text>
+          <polyline points="30,165 100,145 160,135 220,150 280,180 340,190 400,165 460,135 520,140 580,175" fill="none" stroke="var(--ink-soft)" stroke-width="1.8" stroke-dasharray="3 3"/>
+          <polyline points="30,160 100,130 160,128 220,160 280,190 340,192 400,150 460,125 520,150 580,185" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+          <circle cx="372" cy="170" r="5" fill="var(--bull)"/>
+          <text x="372" y="210" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bull)">%K crosses above %D from below 20</text>
+          <text x="120" y="122" class="mono" font-size="9.5" fill="var(--accent)">%K</text>
+        </svg>
+        <figcaption>Same story as price, compressed into a 0&ndash;100 band &mdash; the crossover only means something when it happens at an extreme and agrees with the bigger picture.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Imagine marking the lowest and highest water level of the last two weeks on a wall during rainy season. The Stochastic simply tells you where the water is right now between those two marks &mdash; near the top mark, near the bottom mark, or somewhere in the middle. It doesn't tell you whether it's about to rain more; it only tells you where you are in the recent range.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Isipin mong minarkahan mo sa dingding ang pinakamababa at pinakamataas na lebel ng tubig-baha nitong nakaraang dalawang linggo. Ang Stochastic ay nagsasabi lang kung nasaan ang tubig ngayon sa pagitan ng dalawang markang iyon &mdash; malapit sa itaas, malapit sa ibaba, o nasa gitna. Hindi nito sinasabi kung uulan pa; sinasabi lang nito kung nasaan ka sa loob ng kamakailang saklaw.</div>
+      </div>
+
+      <div class="note pro-tip"><b>Pro Tip</b>Pick one oscillator and learn its personality on your own charts instead of stacking RSI, Stochastic, and MACD together &mdash; three tools built from the same closing prices mostly repeat each other, which feels like confirmation but isn't independent evidence (Section 30).</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="116" data-title="Trend-Following vs Mean-Reversion">
+      <div class="page-inner">
+        <section id="strategyfamilies">
+      <div class="section-head"><span class="num">115</span><h2>Trend-Following vs Mean-Reversion: Two Ways to Win</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="strategyfamilies"><span>mark read</span></label></div>
+      <p class="deck">Almost every setup in this notebook belongs to one of two families that make money in opposite ways. Knowing which one you're running tells you what its good days, and its bad stretches, are supposed to look like.</p>
+
+      <p><b>Trend-following</b> buys strength and sells weakness: moving average crossovers (Section 10), breakouts, and trailing stops (Section 36) all belong here. Its typical shape is a win rate commonly well under 50%, with winners much larger than losers, and long, frustrating stretches of small losses between big trends. A famous example is the Turtle Traders, a group trained in the 1980s by Richard Dennis and William Eckhardt to trade a rules-based breakout system built around buying new multi-week highs (a Donchian-channel breakout). <b>Mean-reversion</b> does the reverse: it fades stretched moves back toward an average, using Bollinger Bands (Section 10), oscillator extremes (Sections 12 and 114), or VWAP (Section 19). Its typical shape is a win rate commonly well above 50%, with small average winners and an occasional large loss when an "extreme" turns out to be the start of a brand-new trend.</p>
+
+      <p>Neither family is better. Expectancy (Section 21) can be identical; what differs is what the strategy asks of you psychologically. Trend-following demands the patience to sit through a long losing streak (Section 101); mean-reversion demands the discipline to take the rare big loss without turning it into a disaster, which makes a hard stop non-negotiable (Section 35). The family also has to match the market regime: trend tools bleed in sideways chop, mean-reversion tools get run over in strong trends, and ADX (Section 107) and structure (Section 03) are how you check which one you're in. Win rate and payoff size trade off against each other, which is exactly the W and R in the Kelly formula (Section 109) &mdash; so judging a strategy by win rate alone misses half the picture.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="Two sets of trade outcome bars. Trend-following shows many small losses and a few large wins. Mean-reversion shows many small wins and one large loss.">
+          <text x="160" y="20" text-anchor="middle" class="mono" font-size="11" font-weight="700">TREND-FOLLOWING</text>
+          <line x1="20" y1="120" x2="300" y2="120" stroke="currentColor" stroke-opacity="0.3"/>
+          <g>
+            <rect x="30" y="120" width="18" height="14" fill="var(--bear)"/><rect x="56" y="120" width="18" height="14" fill="var(--bear)"/><rect x="82" y="120" width="18" height="14" fill="var(--bear)"/>
+            <rect x="108" y="55" width="18" height="65" fill="var(--bull)"/>
+            <rect x="134" y="120" width="18" height="14" fill="var(--bear)"/><rect x="160" y="120" width="18" height="14" fill="var(--bear)"/>
+            <rect x="186" y="75" width="18" height="45" fill="var(--bull)"/>
+            <rect x="212" y="120" width="18" height="14" fill="var(--bear)"/><rect x="238" y="120" width="18" height="14" fill="var(--bear)"/><rect x="264" y="120" width="18" height="14" fill="var(--bear)"/>
+          </g>
+          <text x="160" y="170" text-anchor="middle" class="mono" font-size="9.5">few wins, but big ones</text>
+          <text x="160" y="186" text-anchor="middle" class="mono" font-size="9.5" fill="var(--ink-soft)">long stretches of small losses</text>
+
+          <text x="480" y="20" text-anchor="middle" class="mono" font-size="11" font-weight="700">MEAN-REVERSION</text>
+          <line x1="340" y1="120" x2="620" y2="120" stroke="currentColor" stroke-opacity="0.3"/>
+          <g>
+            <rect x="350" y="106" width="18" height="14" fill="var(--bull)"/><rect x="376" y="106" width="18" height="14" fill="var(--bull)"/><rect x="402" y="106" width="18" height="14" fill="var(--bull)"/>
+            <rect x="428" y="106" width="18" height="14" fill="var(--bull)"/><rect x="454" y="106" width="18" height="14" fill="var(--bull)"/>
+            <rect x="480" y="120" width="18" height="65" fill="var(--bear)"/>
+            <rect x="506" y="106" width="18" height="14" fill="var(--bull)"/><rect x="532" y="106" width="18" height="14" fill="var(--bull)"/><rect x="558" y="106" width="18" height="14" fill="var(--bull)"/><rect x="584" y="106" width="18" height="14" fill="var(--bull)"/>
+          </g>
+          <text x="480" y="215" text-anchor="middle" class="mono" font-size="9.5">many small wins</text>
+          <text x="480" y="231" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bear)">one big loss can erase them</text>
+        </svg>
+        <figcaption>Both can have the same expectancy &mdash; the experience of running them is completely different, which is why picking one you can actually stomach matters as much as picking one that works.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Trend-following is like fishing with a big net that comes up empty most days, but occasionally brings in a huge catch that pays for everything. Mean-reversion is like collecting small coins from a vending machine over and over &mdash; steady, until the one day the machine tips over on you. Both can make the same money in a year, but one feels like waiting and the other feels like nervously collecting.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang trend-following ay parang pangingisda gamit ang malaking lambat na walang laman halos araw-araw, pero paminsan-minsan ay may napakalaking huli na sapat para bayaran ang lahat. Ang mean-reversion ay parang pangongolekta ng maliliit na barya sa vending machine nang paulit-ulit &mdash; tuloy-tuloy, hanggang sa araw na matumba sa iyo ang makina. Pareho silang puwedeng kumita ng parehong halaga sa isang taon, pero ang isa ay pakiramdam na paghihintay at ang isa ay pakiramdam na kinakabahang pangongolekta.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>The most expensive mistake here is running a mean-reversion style with a trend-follower's loose stop, or the reverse &mdash; always ask which family a setup belongs to before deciding how wide its stop and how big its target should be.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="117" data-title="R-Multiples">
+      <div class="page-inner">
+        <section id="rmultiples">
+      <div class="section-head"><span class="num">116</span><h2>R-Multiples: Thinking in Risk Units</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="rmultiples"><span>mark read</span></label></div>
+      <p class="deck">Dollar profit depends on account size and position size. R-multiples strip both away, so a trade on any instrument, at any size, can be compared on one scale.</p>
+
+      <p><b>1R</b> is the amount you risk on a trade, the distance from your entry to your stop (Sections 17 and 35) expressed in dollars. A trade that makes twice its risk is <b>+2R</b>; a trade stopped out exactly at its planned stop is <b>&minus;1R</b>. The idea was popularized by trading-psychology author Van Tharp. If you risk $100 per trade (1% of a $10,000 account) and a trade makes $250, that's +2.5R. The payoff of thinking this way is that expectancy (Section 21) becomes a clean number: win rate &times; average win in R, minus loss rate &times; average loss in R. A strategy that wins 40% of the time with an average winner of +2.5R and loses 60% of the time at &minus;1R has an expectancy of 0.40 &times; 2.5 &minus; 0.60 &times; 1 = <b>+0.4R per trade</b>.</p>
+
+      <p>Journaling in R (Section 26) makes every trade comparable across instruments, position sizes, and months, and it exposes self-deception: a +$300 trade where $1,000 was risked is only +0.3R, a mediocre trade that merely looks big in dollars. R is only as honest as your stop, though. Widening a stop after entry (Section 16) quietly increases the risk you took, so the real R of that trade is bigger than the one you wrote down, and slippage (Section 56) can turn a planned &minus;1R into &minus;1.2R. Track the R you actually lost, not the R you intended to.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 200" role="img" aria-label="Ten trades plotted as bars in R-multiples: six losses of minus one R and four winners of plus 2.5R, plus 3R, plus 2R and plus 2.5R, netting plus 4R over ten trades for an average of plus 0.4R per trade.">
+          <line x1="20" y1="100" x2="620" y2="100" stroke="currentColor" stroke-opacity="0.35"/>
+          <g>
+            <rect x="40" y="100" width="36" height="20" fill="var(--bear)"/>
+            <rect x="95" y="100" width="36" height="20" fill="var(--bear)"/>
+            <rect x="150" y="50" width="36" height="50" fill="var(--bull)"/>
+            <rect x="205" y="100" width="36" height="20" fill="var(--bear)"/>
+            <rect x="260" y="40" width="36" height="60" fill="var(--bull)"/>
+            <rect x="315" y="100" width="36" height="20" fill="var(--bear)"/>
+            <rect x="370" y="100" width="36" height="20" fill="var(--bear)"/>
+            <rect x="425" y="60" width="36" height="40" fill="var(--bull)"/>
+            <rect x="480" y="100" width="36" height="20" fill="var(--bear)"/>
+            <rect x="535" y="50" width="36" height="50" fill="var(--bull)"/>
+          </g>
+          <g class="mono" font-size="9.5" text-anchor="middle">
+            <text x="58" y="135">&minus;1R</text><text x="113" y="135">&minus;1R</text><text x="168" y="42" fill="var(--bull)">+2.5R</text><text x="223" y="135">&minus;1R</text><text x="278" y="32" fill="var(--bull)">+3R</text>
+            <text x="333" y="135">&minus;1R</text><text x="388" y="135">&minus;1R</text><text x="443" y="52" fill="var(--bull)">+2R</text><text x="498" y="135">&minus;1R</text><text x="553" y="42" fill="var(--bull)">+2.5R</text>
+          </g>
+          <text x="320" y="175" text-anchor="middle" class="mono" font-size="10.5" fill="var(--accent)" font-weight="700">10 trades &middot; 40% win rate &middot; net +4R &middot; expectancy +0.4R</text>
+        </svg>
+        <figcaption>Six losing trades, four winners, and the account is still clearly profitable &mdash; once every trade is measured in R, a 40% win rate stops looking scary.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>R is like measuring every road trip in "tanks of gas" instead of pesos or kilometers. A short trip that burned a whole tank and a long trip that burned a whole tank are both "one tank," so you can fairly compare them even though the distances and costs were different. Winning "two tanks' worth" or losing "one tank" tells you the real story, whatever the peso number said.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang R ay parang pagsukat ng bawat biyahe sa "tangke ng gasolina" imbes na piso o kilometro. Ang maikling biyaheng umubos ng isang tangke at ang mahabang biyaheng umubos din ng isang tangke ay parehong "isang tangke," kaya patas silang maikukumpara kahit magkaiba ang layo at gastos. Ang pagkapanalo ng "dalawang tangke" o pagkatalo ng "isang tangke" ang nagsasabi ng totoong kuwento, anuman ang numerong piso.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>A 40% win rate with +2.5R winners is a better business than a 70% win rate with +0.3R winners and &minus;1R losers &mdash; R-multiples make that obvious at a glance in a way win rate alone never will.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="118" data-title="Scaling In & Pyramiding">
+      <div class="page-inner">
+        <section id="pyramiding">
+      <div class="section-head"><span class="num">117</span><h2>Scaling In, Pyramiding &amp; Breakeven Stops</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="pyramiding"><span>mark read</span></label></div>
+      <p class="deck">Section 36 covered getting out in pieces. The mirror question is getting in in pieces, and one version of it is among the most reliable ways to destroy an account.</p>
+
+      <p><b>Scaling in</b> means building a position in stages instead of all at once, and it comes in two opposite flavors. <b>Averaging down</b>, adding to a position that's losing, is the dangerous one: it breaks the original risk plan (Section 17), enlarges the position exactly when the thesis is being contradicted, and is Section 16's sunk-cost trap with extra size. <b>Pyramiding</b> is the reverse: adding to a position that's <i>winning</i>, only after it has proven itself, typically with a smaller size on each add so the average entry stays well away from the current price and a normal pullback can't erase the whole gain. The rule that keeps pyramiding safe is that combined risk must never exceed the original plan (Sections 17 and 62): each time you add, you raise the stop so the whole position's worst case stays inside the original 1R.</p>
+
+      <p>A worked example: buy 4 units at 100 with a stop at 95 (risk $20). Price rallies to 110; add 2 units and raise the stop on everything to 105. If stopped, the first 4 units make 4 &times; $5 = +$20 and the 2 added units lose 2 &times; $5 = &minus;$10, for a net <b>+$10</b>, so the larger position can no longer lose money. A related idea, the <b>breakeven stop</b>, moves a stop to the entry price once a trade is in profit. It feels safe, but normal pullbacks (Section 33's ATR) often retest the entry before the trend continues, so it can stop you out for nothing repeatedly; placing the stop by structure (Section 35) usually beats moving it to entry the moment you're slightly ahead. Remember that every extra entry also adds commissions and spread (Section 85).</p>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="A rising price staircase with an initial buy of four units at 100 and an add of two units at 110, with a stop line starting at 95 and stepping up to 105 after the add, so that the stop sits above the average entry.">
+          <polyline points="30,200 120,170 200,160 270,120 340,130 420,90 520,60 600,45" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <circle cx="120" cy="170" r="5" fill="var(--bull)"/>
+          <text x="120" y="155" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bull)">buy 4 @ 100</text>
+          <circle cx="270" cy="120" r="5" fill="var(--accent)"/>
+          <text x="270" y="105" text-anchor="middle" class="mono" font-size="9.5" fill="var(--accent)">add 2 @ 110</text>
+          <path d="M120,195 L270,195 L270,145 L600,145" fill="none" stroke="var(--bear)" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="195" y="212" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bear)">stop 95</text>
+          <text x="450" y="162" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bear)">stop raised to 105 &mdash; worst case now +$10</text>
+        </svg>
+        <figcaption>The add is funded by the first trade's cushion &mdash; that's what separates pyramiding from simply doubling down.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Averaging down is like seeing your tower of blocks start to lean and adding even more blocks to the leaning side, hoping that fixes it. Pyramiding is like adding a new, smaller floor only after the tower has proven it can stand &mdash; and each time you add one, you also add more support underneath, so a gust of wind can't bring the whole thing down.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang averaging down ay parang nakikita mong humihilig na ang tore mo ng blocks tapos dinadagdagan mo pa ng blocks ang gilid na humihilig, umaasang maaayos nito. Ang pyramiding ay parang pagdagdag ng bago at mas maliit na palapag lang pagkatapos mapatunayang kaya na ng tore na tumayo &mdash; at sa bawat dagdag, dinadagdagan mo rin ng suporta sa ilalim, para hindi mabuwal ang lahat ng isang hangin lang.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Write your add-on rules in your plan before the trade (Section 25): what proves the trade, how big each add is, where the stop moves. Deciding mid-trade, with money moving, is how pyramiding quietly becomes averaging down.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="119" data-title="Performance Metrics">
+      <div class="page-inner">
+        <section id="performancemetrics">
+      <div class="section-head"><span class="num">118</span><h2>Measuring Your Edge: Profit Factor, Drawdown &amp; Sharpe</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="performancemetrics"><span>mark read</span></label></div>
+      <p class="deck">Win rate alone says almost nothing. A handful of standard numbers tell you whether results are good, how bumpy the ride was, and whether you could actually live through it.</p>
+
+      <p><b>Profit factor</b> is gross profits divided by gross losses: above 1 means a strategy made money overall, and the higher the better, though a very high number from a tiny sample proves little (Section 86). <b>Maximum drawdown</b> (Section 101) is the largest peak-to-trough decline in equity, and it deserves more respect than its simple definition suggests because of recovery math: a 10% loss needs an 11.1% gain to get back to even, a 20% loss needs 25%, a 33% loss needs 50%, and a 50% loss needs a full 100%. Losses cost more to repair than gains pay, which is the quantitative reason behind Section 17's small-risk rule.</p>
+
+      <p>Risk-adjusted ratios compare return to risk. The <b>Sharpe ratio</b> is the return above the risk-free rate divided by the standard deviation of returns, so it measures return per unit of total volatility; the <b>Sortino ratio</b> is similar but only penalizes downside volatility, since upside "volatility" isn't what anyone is worried about; the <b>Calmar ratio</b> divides annualized return by maximum drawdown. Higher is better for all three, but every one is backward-looking, needs a large sample to mean anything, and has a blind spot: standard deviation understates rare, catastrophic losses, so a strategy that quietly sells insurance against crashes can show a beautiful Sharpe right up until it blows up (Section 119). Use these numbers to compare your own strategies honestly, not to prove a strategy is safe.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 230" role="img" aria-label="A bar chart of the gain needed to recover from a loss: a 10 percent loss needs an 11 percent gain, a 20 percent loss needs 25 percent, a 33 percent loss needs 50 percent, and a 50 percent loss needs a 100 percent gain.">
+          <line x1="40" y1="190" x2="600" y2="190" stroke="currentColor" stroke-opacity="0.35"/>
+          <g>
+            <rect x="80" y="175" width="60" height="15" fill="var(--bull)"/>
+            <rect x="200" y="155" width="60" height="35" fill="var(--bull)"/>
+            <rect x="320" y="120" width="60" height="70" fill="var(--accent)"/>
+            <rect x="440" y="50" width="60" height="140" fill="var(--bear)"/>
+          </g>
+          <g class="mono" font-size="10.5" text-anchor="middle">
+            <text x="110" y="168" font-weight="700">+11%</text><text x="230" y="148" font-weight="700">+25%</text><text x="350" y="113" font-weight="700">+50%</text><text x="470" y="43" font-weight="700" fill="var(--bear)">+100%</text>
+            <text x="110" y="210" fill="var(--ink-soft)">after &minus;10%</text><text x="230" y="210" fill="var(--ink-soft)">after &minus;20%</text><text x="350" y="210" fill="var(--ink-soft)">after &minus;33%</text><text x="470" y="210" fill="var(--ink-soft)">after &minus;50%</text>
+          </g>
+          <text x="320" y="24" text-anchor="middle" class="mono" font-size="11" font-weight="700">GAIN NEEDED TO GET BACK TO EVEN</text>
+        </svg>
+        <figcaption>The deeper the hole, the disproportionately steeper the climb out &mdash; the real reason a drawdown is more than just a number.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>If you lose half your allowance, you don't need to earn half back to be even &mdash; you need to double what's left. That's why avoiding big losses matters more than chasing big wins: a hole always takes more digging out of than it took to fall into. The other numbers are just report-card grades for how smooth or bumpy your ride was getting there.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Kung nawala sa iyo ang kalahati ng baon mo, hindi sapat na kumita ng kalahati para bumalik sa dati &mdash; kailangan mong i-doble ang natira. Kaya mas mahalaga ang pag-iwas sa malaking lugi kaysa paghabol ng malaking panalo: ang butas ay laging mas mahirap hukayin palabas kaysa sa pagkahulog dito. Ang iba pang numero ay parang grado lang kung gaano kakinis o kagaspang ang biyahe mo papunta roon.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Compute these from your journal (Section 26) every quarter in your review ritual (Section 39), and compare them to what you assumed when you wrote your plan &mdash; a gap between assumed and actual max drawdown is exactly the early warning Section 63's circuit breakers exist to act on.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="120" data-title="Tail Risk & Fat Tails">
+      <div class="page-inner">
+        <section id="tailrisk">
+      <div class="section-head"><span class="num">119</span><h2>Tail Risk &amp; Fat Tails: When "Rare" Isn't</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="tailrisk"><span>mark read</span></label></div>
+      <p class="deck">Most everyday risk math assumes outcomes cluster neatly around an average. Real markets keep producing moves that math says should practically never happen.</p>
+
+      <p>The classic bell curve (the normal distribution) treats extreme moves as vanishingly rare. Actual financial returns have <b>fat tails</b>: extreme moves happen far more often than a bell curve predicts, which is what <b>tail risk</b> refers to. Two well-documented examples: on October 19, 1987, the Dow fell roughly 22.6% in a single day; and on January 15, 2015, the Swiss National Bank suddenly removed its cap on the franc against the euro, sending the franc surging by as much as roughly 30% at the extreme within minutes. Many retail forex accounts went negative that day, and several brokers went bankrupt or needed rescue. Neither event was predicted by a bell-curve view of risk, and both happened once in a market history that was supposed to make them nearly impossible.</p>
+
+      <p>The practical lessons are specific. A stop-loss (Section 35) is an instruction, not a guarantee: in a gap, a stop becomes a market order (Section 14) and fills wherever the market actually is, which can be far worse than the stop price (Section 56). So "I risk 1%" (Section 17) describes the plan, not the worst case. Defenses that matter: moderate leverage (Sections 18 and 90); never running a strategy that wins small and often but carries unlimited risk on the rare bad day, such as selling naked options (the mean-reversion trap from Section 115 taken to its limit); defined-risk structures like the spreads in Section 111; keeping money outside the trading account; and remembering that in a real crash, diversification (Section 88) weakens because correlations spike and things that were "different bets" fall together.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 230" role="img" aria-label="Two distribution curves compared: a thin-tailed bell curve in which extreme moves almost never occur, and a fat-tailed curve with a slightly lower peak but visibly thicker tails where extreme moves are much more likely, with the left tail highlighted.">
+          <line x1="30" y1="190" x2="610" y2="190" stroke="currentColor" stroke-opacity="0.35"/>
+          <path d="M30,190 C 150,190 200,40 320,40 C 440,40 490,190 610,190" fill="none" stroke="var(--ink-soft)" stroke-width="2" stroke-dasharray="4 3"/>
+          <path d="M30,172 C 130,184 190,70 320,70 C 450,70 510,184 610,172" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
+          <rect x="30" y="165" width="80" height="25" fill="var(--bear)" opacity="0.15"/>
+          <text x="70" y="156" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bear)">fat tail</text>
+          <text x="320" y="30" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">bell curve (what the math assumes)</text>
+          <text x="320" y="62" text-anchor="middle" class="mono" font-size="10" fill="var(--bear)">real markets</text>
+          <text x="320" y="214" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">extreme moves are far more common than the bell curve says</text>
+        </svg>
+        <figcaption>The two curves look nearly identical in the middle &mdash; all the danger is out in the thin-looking edges.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a weather forecast that says a typhoon strong enough to flatten your street "basically never happens" &mdash; and then it happens twice in your lifetime. You don't stop going outside, but you also don't build your house assuming the forecast was right about the rare days. You build it so that even the "impossible" storm doesn't wipe out everything you own.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang weather forecast na nagsasabing ang bagyong kayang magpatag sa kalye ninyo ay "halos hindi nangyayari" &mdash; tapos nangyari ito nang dalawang beses sa buhay mo. Hindi ka titigil sa paglabas ng bahay, pero hindi mo rin itatayo ang bahay mo na parang tama ang forecast sa mga bihirang araw. Itatayo mo ito para kahit ang "imposibleng" bagyo ay hindi mawawala ang lahat ng pag-aari mo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Ask "what is the worst gap I could realistically take on this position, and can I survive it?" before sizing any trade held overnight or through news (Section 23) &mdash; the answer is rarely the number on your stop.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="121" data-title="Liquidation Cascades">
+      <div class="page-inner">
+        <section id="liquidations">
+      <div class="section-head"><span class="num">120</span><h2>Liquidation Cascades: When Forced Sellers Feed Each Other</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="liquidations"><span>mark read</span></label></div>
+      <p class="deck">Section 66 showed one trader's margin call. In crypto derivatives, thousands of them can land inside the same minute &mdash; and each one makes the next more likely.</p>
+
+      <p>Every leveraged position has a liquidation price (Section 66), and exchanges close it automatically when price reaches it. A liquidated long is a <b>forced market sell</b>, which pushes price down, which pushes the next layer of longs to their own liquidation prices, which forces more selling: a <b>liquidation cascade</b>. The mirror image, forced buying squeezing shorts upward, is a short squeeze. These pockets of clustered liquidations are liquidity (Section 05), and "liquidation heatmaps" try to estimate where they sit. Crowded leverage leaves visible fingerprints: <b>open interest</b> (Section 40) climbing while <b>funding</b> (Section 67) becomes extreme on one side tells you many positions are leaning the same way, which is the fuel. When the cascade finishes, open interest drops sharply as positions are wiped out, often called a "flush."</p>
+
+      <p>Many derivatives exchanges maintain an <b>insurance fund</b> that absorbs the loss when a liquidated position can't be closed at its bankruptcy price, and if that fund is insufficient, <b>auto-deleveraging (ADL)</b> can force-close profitable opposing positions to cover the gap. Two defenses sit in your own hands. First, margin mode: <b>isolated margin</b> limits the loss to the margin assigned to that single position, while <b>cross margin</b> uses your whole account balance as collateral, so one bad position can consume everything. Second, leverage low enough that your liquidation price sits far beyond your stop (Sections 18 and 35), so your own planned exit happens first and costs less than an exchange liquidation, which typically carries an extra fee. Wicks that sweep a liquidity cluster and instantly reverse (Sections 05 and 105) are what a finished cascade often looks like on a chart.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 240" role="img" aria-label="A price line falling in steps as each step triggers a layer of long liquidations that push price lower, with an open interest line dropping sharply alongside it and a flush labeled at the bottom.">
+          <polyline points="30,40 130,50 200,80 240,95 300,140 340,150 400,200 440,210 520,170 600,150" fill="none" stroke="currentColor" stroke-width="2.5"/>
+          <text x="30" y="26" class="mono" font-size="10" fill="var(--ink-soft)">price</text>
+          <g fill="var(--bear)">
+            <circle cx="240" cy="95" r="5"/><circle cx="340" cy="150" r="5"/><circle cx="440" cy="210" r="5"/>
+          </g>
+          <text x="240" y="82" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">longs liquidated</text>
+          <text x="340" y="137" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">more liquidated</text>
+          <text x="440" y="228" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">the flush</text>
+          <polyline points="30,80 130,60 200,70 240,100 300,130 340,150 400,180 440,195 520,190 600,185" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="4 3"/>
+          <text x="560" y="175" text-anchor="middle" class="mono" font-size="9" fill="var(--accent)">open interest</text>
+        </svg>
+        <figcaption>Each forced sale hands the next trader their liquidation price &mdash; the cascade ends only when the leverage that fueled it has been erased.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It's like a row of dominoes where each domino isn't just knocked over but also gets thrown hard at the next one. Everyone standing in line borrowed a little to stand there, and when the first falls, it forces the next to fall, which forces the one after. Only when the whole row is flat does the noise stop &mdash; and the dominoes you stood behind with a thick cushion of your own were the ones still standing.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang hanay ng dominoes kung saan ang bawat domino ay hindi lang natutumba kundi ibinabato pa nang malakas sa susunod. Lahat ng nakatayo sa pila ay umutang nang kaunti para makatayo roon, at kapag natumba ang una, napipilitang matumba ang susunod, at ang kasunod pa nito. Kapag patag na ang buong hanay lang humihinto ang ingay &mdash; at ang mga dominoes na may makapal na sariling sapin ang natirang nakatayo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Rising open interest plus extreme funding in one direction doesn't tell you when a flush comes, only that the fuel is stacked &mdash; it's a reason to cut leverage and widen your margin of safety, not a timing signal.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="122" data-title="Ethereum & Smart Contracts">
+      <div class="page-inner">
+        <section id="ethereum">
+      <div class="section-head"><span class="num">121</span><h2>Ethereum, Smart Contracts &amp; Gas Fees</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="ethereum"><span>mark read</span></label></div>
+      <p class="deck">Bitcoin's job is to be digital money. Ethereum's is to be a global computer &mdash; and that difference is what makes DeFi, most stablecoins and most tokens possible.</p>
+
+      <p><b>Ethereum</b> is a blockchain that runs <b>smart contracts</b>: programs stored on-chain that execute exactly as written when their conditions are met, with no company able to switch them off. <b>ETH</b> is its native currency, and every action on the network (a transfer, a swap on an AMM from Section 97, minting a token) costs a transaction fee called <b>gas</b>, paid in ETH, which rises when the network is busy. Since September 2022, an upgrade known as the Merge moved Ethereum from proof-of-work (Section 96) to <b>proof-of-stake</b>: validators lock up ETH as collateral (32 ETH to run a validator directly), earn rewards for validating, and can be penalized, or "slashed," for misbehaving, so there is no mining. Since the EIP-1559 upgrade in August 2021, part of every fee, the base fee, is burned, so in busy periods more ETH can be destroyed than issued (tying to the supply ideas in Section 98). Most stablecoins (Section 82) and DeFi tokens live as contracts on Ethereum or on <b>Layer-2</b> networks that batch many transactions together and settle them back to it for cheaper fees.</p>
+
+      <p>For a trader, ETH behaves as a higher-beta cousin of Bitcoin (Section 50): correlated with BTC, but with its own drivers, including network activity and gas demand, staking yield, DeFi usage, and the <b>ETH/BTC ratio</b>, which works like the relative-strength read in Section 93's dominance idea. Smart contracts also add a risk Bitcoin mostly doesn't: <b>code risk</b>. A bug or exploit in a contract can drain funds with no bank to reverse it, a deeper version of the custody risk in Section 81. And approving a malicious contract to spend your tokens, a "token approval," can let it empty your wallet later, one of the main tricks in Section 122.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 220" role="img" aria-label="A flow from a user wallet sending a transaction and paying gas in ETH to a smart contract that runs on-chain code automatically, producing a result such as a swap, a loan, or a minted token, with part of the fee burned.">
+          <rect x="20" y="70" width="150" height="70" fill="var(--panel-2)" stroke="var(--rule-strong)"/>
+          <text x="95" y="100" text-anchor="middle" class="mono" font-size="11" font-weight="700">YOUR WALLET</text>
+          <text x="95" y="120" text-anchor="middle" class="mono" font-size="9.5">signs a transaction</text>
+          <line x1="170" y1="105" x2="235" y2="105" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrEth)"/>
+          <text x="203" y="94" text-anchor="middle" class="mono" font-size="9" fill="var(--accent)">+ gas (ETH)</text>
+          <rect x="240" y="60" width="170" height="90" fill="var(--bull-soft)" stroke="var(--bull)"/>
+          <text x="325" y="95" text-anchor="middle" class="mono" font-size="11" font-weight="700">SMART CONTRACT</text>
+          <text x="325" y="115" text-anchor="middle" class="mono" font-size="9.5">code on-chain, runs as written</text>
+          <text x="325" y="132" text-anchor="middle" class="mono" font-size="9.5" fill="var(--bear)">bug = funds at risk</text>
+          <line x1="410" y1="105" x2="475" y2="105" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrEth)"/>
+          <rect x="480" y="70" width="140" height="70" fill="var(--panel-2)" stroke="var(--rule-strong)"/>
+          <text x="550" y="100" text-anchor="middle" class="mono" font-size="11" font-weight="700">RESULT</text>
+          <text x="550" y="120" text-anchor="middle" class="mono" font-size="9.5">swap &middot; loan &middot; token</text>
+          <defs><marker id="arrEth" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="var(--accent)"/></marker></defs>
+          <text x="320" y="190" text-anchor="middle" class="mono" font-size="10" fill="var(--ink-soft)">no company in the middle &mdash; and no one to call if it goes wrong</text>
+        </svg>
+        <figcaption>A smart contract is a vending machine: put in the right inputs plus a fee, and it does exactly what it was coded to do &mdash; including when the code has a flaw.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Bitcoin is like digital cash. Ethereum is like a giant public vending machine anyone can program &mdash; you drop in a coin and the right button, and it dispenses exactly what the program says, with no shopkeeper involved. The tiny fee you pay each time (gas) pays the people running the machine, and the machine is only as trustworthy as the person who wrote its instructions.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang Bitcoin ay parang digital na pera. Ang Ethereum ay parang malaking pampublikong vending machine na kahit sino ay puwedeng mag-program &mdash; maglalagay ka ng barya at ng tamang button, at ilalabas nito eksakto ang sinasabi ng program, walang tindero sa gitna. Ang maliit na bayad tuwing gamit (gas) ay pambayad sa mga nagpapatakbo ng makina, at ang makina ay kasing-tiwala lang ng taong sumulat ng mga tagubilin nito.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Before using any DeFi app, check whether its contracts have been independently audited and how long they've survived real use &mdash; an audit lowers risk but never removes it, and a brand-new contract holding lots of money deserves extra suspicion.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="123" data-title="Scams & Red Flags">
+      <div class="page-inner">
+        <section id="scams">
+      <div class="section-head"><span class="num">122</span><h2>Scams &amp; Red Flags: Rug Pulls, Pump-and-Dumps &amp; Fake Gurus</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="scams"><span>mark read</span></label></div>
+      <p class="deck">A lot of money in this world is lost not to bad trades, but to people who never intended to give it back. The patterns repeat, which means they're learnable.</p>
+
+      <p>The common ones: <b>guaranteed or "risk-free" returns</b> &mdash; no legitimate trading product guarantees profit, and compounding (Section 94) makes the math easy to check, since 5% a week would turn $1,000 into roughly twelve to thirteen times that in a single year. A <b>pump-and-dump</b> is coordinated hype around a thinly traded coin or penny stock (Section 75): promoters buy first, push the crowd in, and sell into the buying they caused. A <b>rug pull</b> is a crypto project whose creators drain the liquidity pool (Section 97) or dump their token allocation (Section 98) and vanish. <b>Fake gurus and signal sellers</b> show screenshot results that can't be verified and usually earn from course sales or broker referral fees rather than trading. <b>Impersonation and phishing</b> uses fake support staff, copycat exchange or wallet sites, and "helpful" strangers who message you after you post about a problem. <b>Romance or "pig-butchering" investment scams</b> build a friendship online, then steer you to a fake trading app showing fake profits. And <b>recovery scams</b> target people who have already been robbed, offering to retrieve the money for an upfront fee.</p>
+
+      <p>Red flags worth memorizing: guaranteed returns, urgency ("only today"), secrecy, pressure to deposit more, withdrawals that suddenly need a "fee" or "tax" paid first, anyone asking for your seed phrase (a legitimate wallet or support team never will, Section 81), and anything unregistered. Check registration instead of trusting the pitch (Section 77): in the US, the NFA's BASIC database and FINRA's BrokerCheck let you look up firms and individuals, and prop firms (Section 55) deserve the same scrutiny, starting with proof that real payouts happen. If something already went wrong, stop sending money, preserve screenshots and transaction records, and report it to the relevant regulator and your local authorities; anyone who contacts you offering to recover funds is almost certainly the second scam.</p>
+
+      <figure>
+        <svg viewBox="0 0 640 250" role="img" aria-label="A checklist of six scam red flags: guaranteed returns, artificial urgency, secrecy, pressure to deposit more, fees required before withdrawal, and requests for your seed phrase.">
+          <g class="mono" font-size="11">
+            <rect x="40" y="20" width="560" height="30" fill="var(--bear-soft)" stroke="var(--bear)"/><text x="60" y="40" fill="var(--bear)" font-weight="700">!</text><text x="85" y="40">"Guaranteed" or "risk-free" returns</text>
+            <rect x="40" y="58" width="560" height="30" fill="var(--bear-soft)" stroke="var(--bear)"/><text x="60" y="78" fill="var(--bear)" font-weight="700">!</text><text x="85" y="78">Urgency: "only today," "spots almost gone"</text>
+            <rect x="40" y="96" width="560" height="30" fill="var(--bear-soft)" stroke="var(--bear)"/><text x="60" y="116" fill="var(--bear)" font-weight="700">!</text><text x="85" y="116">Secrecy: "don't tell anyone, they'll want in"</text>
+            <rect x="40" y="134" width="560" height="30" fill="var(--bear-soft)" stroke="var(--bear)"/><text x="60" y="154" fill="var(--bear)" font-weight="700">!</text><text x="85" y="154">Pressure to deposit more to "unlock" profits</text>
+            <rect x="40" y="172" width="560" height="30" fill="var(--bear-soft)" stroke="var(--bear)"/><text x="60" y="192" fill="var(--bear)" font-weight="700">!</text><text x="85" y="192">Withdrawal needs a "fee" or "tax" paid first</text>
+            <rect x="40" y="210" width="560" height="30" fill="var(--bear-soft)" stroke="var(--bear)"/><text x="60" y="230" fill="var(--bear)" font-weight="700">!</text><text x="85" y="230">Anyone asking for your seed phrase or password</text>
+          </g>
+        </svg>
+        <figcaption>Any one of these is reason to stop; two or more together is a scam until proven otherwise.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A scam is like a stranger who says "Give me your bike and I'll bring you back two bikes by tomorrow, but don't tell your parents and decide right now." Every part of that offer &mdash; the too-good promise, the rush, the secret &mdash; is there to stop you from stopping and asking someone you trust. The real defense is simply being willing to say "Let me check first," every single time.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang scam ay parang estrangherong magsasabing "Ibigay mo sa akin ang bisikleta mo at ibabalik ko sa iyo ang dalawang bisikleta bukas, pero huwag mong sabihin sa magulang mo at magdesisyon ka na ngayon." Bawat bahagi ng alok na iyon &mdash; ang sobrang gandang pangako, ang pagmamadali, ang sikreto &mdash; ay nandoon para pigilan kang huminto at magtanong sa pinagkakatiwalaan mo. Ang tunay na depensa ay ang pagiging handang magsabi ng "Susuriin ko muna," sa bawat pagkakataon.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Treat this lesson as a standing rule, not a one-time read: anyone who contacts you first about money, trading, or "helping" with a problem should be assumed hostile until you've verified them through a channel you found yourself.</div>
+    </section>
+      </div>
+    </div>
+    <div class="page" data-page="124" data-title="Acronym Cheat Sheet">
       <div class="page-inner">
         <section id="acronyms">
-      <div class="section-head"><span class="num">114</span><h2>Acronym Cheat Sheet</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="acronyms"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">123</span><h2>Acronym Cheat Sheet</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="acronyms"><span>mark read</span></label></div>
       <p class="deck">Ninety-plus sections deep, and the acronyms have been piling up. One page, scannable, grouped by topic &mdash; just the letters and what they stand for, no re-explaining.</p>
 
       <p>Trading and finance run on acronyms partly out of real necessity &mdash; a trading floor or a fast-moving chat needs "PDT" faster than "Pattern Day Trader" &mdash; and partly because every specialty loves its own shorthand. The Glossary (the last page of this notebook) has the full definitions; this page is purely for fast lookup once you already know roughly what something means and just need the letters to click.</p>
@@ -4488,10 +4842,10 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="116" data-title="Beginner Mistakes Checklist">
+    <div class="page" data-page="125" data-title="Beginner Mistakes Checklist">
       <div class="page-inner">
         <section id="beginnermistakes">
-      <div class="section-head"><span class="num">115</span><h2>Common Beginner Mistakes: A Quick-Reference Checklist</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="beginnermistakes"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">124</span><h2>Common Beginner Mistakes: A Quick-Reference Checklist</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="beginnermistakes"><span>mark read</span></label></div>
       <p class="deck">Ninety-plus sections of individual lessons. This is the condensed list of what actually sinks most beginners, cross-referenced back to exactly where each fix lives.</p>
 
       <p>Every mistake below has its own full lesson elsewhere in this notebook &mdash; this page exists purely so the whole list is visible in one place, the way a pilot's pre-flight checklist puts everything in one spot instead of scattered across ten manuals. Read it once now, and again after any bad trading week, since most of these come back to visit even after they've been "learned" once.</p>
@@ -4525,10 +4879,10 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="117" data-title="Glossary">
+    <div class="page" data-page="126" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">116</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">125</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -4698,6 +5052,23 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
         <div><dt>Dual Mandate</dt><dd>The US Federal Reserve's statutory goal of both price stability and maximum employment — unlike many central banks, which treat price stability as the primary or sole goal.</dd></div>
         <div><dt>Trader Tax Status (TTS)</dt><dd>A facts-and-circumstances IRS determination that a trader's activity is a business, allowing trading expenses to be deducted — not a simple checkbox or dollar threshold.</dd></div>
         <div><dt>Section 475(f) Mark-to-Market Election</dt><dd>An election available to TTS traders converting capital gains/losses to ordinary income/loss, removing the wash-sale rule and the $3,000 loss cap, at the cost of long-term capital gains rates.</dd></div>
+        <div><dt>Stochastic Oscillator (%K / %D)</dt><dd>A 0–100 oscillator showing where the latest close sits within the high–low range of a lookback window (commonly 14 periods); %D is a short moving average of %K used as the signal line, with 80/20 as the conventional overbought/oversold zones.</dd></div>
+        <div><dt>Trend-Following</dt><dd>A strategy family that buys strength and sells weakness — typically a win rate well under 50% with winners much larger than losers and long stretches of small losses between big trends.</dd></div>
+        <div><dt>Mean-Reversion</dt><dd>A strategy family that fades stretched moves back toward an average — typically a win rate above 50% with small winners and an occasional large loss when an extreme becomes a new trend.</dd></div>
+        <div><dt>R-Multiple (1R)</dt><dd>A trade result expressed in units of the amount risked from entry to stop — +2R means the trade made twice its risk, −1R means it was stopped out at the planned stop.</dd></div>
+        <div><dt>Pyramiding vs Averaging Down</dt><dd>Pyramiding adds to a winning position, usually in shrinking size while raising the stop; averaging down adds to a losing position and breaks the original risk plan.</dd></div>
+        <div><dt>Breakeven Stop</dt><dd>Moving a stop-loss to the entry price once a trade is in profit — it removes the risk of a loss but can be triggered repeatedly by normal pullbacks.</dd></div>
+        <div><dt>Profit Factor</dt><dd>Gross profits divided by gross losses — above 1 means a strategy made money overall, though a high figure from a small sample proves little.</dd></div>
+        <div><dt>Sharpe / Sortino / Calmar Ratio</dt><dd>Risk-adjusted return measures: Sharpe divides excess return by total volatility, Sortino by downside volatility only, and Calmar divides annualized return by maximum drawdown.</dd></div>
+        <div><dt>Fat Tails / Tail Risk</dt><dd>The tendency of real markets to produce extreme moves far more often than a bell curve predicts, so rare catastrophic events must be planned for rather than assumed away.</dd></div>
+        <div><dt>Liquidation Cascade</dt><dd>A chain reaction in leveraged markets where forced liquidations push price toward the next layer of liquidation prices, triggering more forced selling (or buying).</dd></div>
+        <div><dt>Isolated vs Cross Margin</dt><dd>Isolated margin limits a position's possible loss to the margin assigned to it; cross margin uses the whole account balance as collateral, so one position can consume everything.</dd></div>
+        <div><dt>Insurance Fund / Auto-Deleveraging (ADL)</dt><dd>Safety mechanisms on many derivatives exchanges: an insurance fund absorbs losses from positions that can't be closed at bankruptcy price, and ADL can force-close profitable opposing positions if the fund runs out.</dd></div>
+        <div><dt>Smart Contract</dt><dd>A program stored on a blockchain that executes exactly as written when its conditions are met, with no intermediary able to switch it off — and no one to reverse it if its code has a flaw.</dd></div>
+        <div><dt>Gas / Proof-of-Stake</dt><dd>Gas is the transaction fee paid in ETH to use Ethereum, rising with network demand; proof-of-stake replaced mining in 2022, with validators locking up ETH as collateral instead.</dd></div>
+        <div><dt>Layer-2</dt><dd>A network built on top of Ethereum that batches many transactions together and settles them back to it, offering cheaper fees.</dd></div>
+        <div><dt>Pump-and-Dump / Rug Pull</dt><dd>A pump-and-dump hypes a thinly traded asset so promoters can sell into the crowd's buying; a rug pull is a crypto project whose creators drain liquidity or dump their tokens and disappear.</dd></div>
+        <div><dt>Token Approval</dt><dd>Permission you grant a smart contract to spend a specified token from your wallet — a malicious approval can let a scam contract drain it later.</dd></div>
       </dl>
     </section>
       </div>
@@ -4712,7 +5083,7 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 116 read</span>
+      <span id="progressLabel" class="mono">0 / 125 read</span>
     </div>
     <div class="toc-filter-wrap">
       <input type="search" id="tocFilter" class="mono" placeholder="Filter lessons&hellip;" aria-label="Filter lessons by title">
@@ -4833,9 +5204,18 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       <li><a href="#optionsstrategies"><span class="n mono">111</span> Options Strategies</a></li>
       <li><a href="#labormarket"><span class="n mono">112</span> Employment Data</a></li>
       <li><a href="#tradingbusiness"><span class="n mono">113</span> Trading as a Business</a></li>
-      <li><a href="#acronyms"><span class="n mono">114</span> Acronym Cheat Sheet</a></li>
-      <li><a href="#beginnermistakes"><span class="n mono">115</span> Beginner Mistakes</a></li>
-      <li><a href="#glossary"><span class="n mono">116</span> Glossary</a></li>
+      <li><a href="#stochastic"><span class="n mono">114</span> Stochastic Oscillator</a></li>
+      <li><a href="#strategyfamilies"><span class="n mono">115</span> Trend vs Mean-Reversion</a></li>
+      <li><a href="#rmultiples"><span class="n mono">116</span> R-Multiples</a></li>
+      <li><a href="#pyramiding"><span class="n mono">117</span> Scaling In &amp; Pyramiding</a></li>
+      <li><a href="#performancemetrics"><span class="n mono">118</span> Performance Metrics</a></li>
+      <li><a href="#tailrisk"><span class="n mono">119</span> Tail Risk &amp; Fat Tails</a></li>
+      <li><a href="#liquidations"><span class="n mono">120</span> Liquidation Cascades</a></li>
+      <li><a href="#ethereum"><span class="n mono">121</span> Ethereum &amp; Smart Contracts</a></li>
+      <li><a href="#scams"><span class="n mono">122</span> Scams &amp; Red Flags</a></li>
+      <li><a href="#acronyms"><span class="n mono">123</span> Acronym Cheat Sheet</a></li>
+      <li><a href="#beginnermistakes"><span class="n mono">124</span> Beginner Mistakes</a></li>
+      <li><a href="#glossary"><span class="n mono">125</span> Glossary</a></li>
     </ol>
   </nav>
 
