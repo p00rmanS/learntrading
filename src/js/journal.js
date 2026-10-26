@@ -16,9 +16,9 @@ export function initJournal() {
       var rr = risk > 0 ? (reward / risk).toFixed(2) : '—';
       var plClass = r.result > 0 ? 'pl-pos' : (r.result < 0 ? 'pl-neg' : '');
       html += '<tr>' +
-        '<td class="mono">' + r.date + '</td>' +
+        '<td class="mono">' + esc(r.date) + '</td>' +
         '<td class="mono">' + esc(r.symbol) + '</td>' +
-        '<td>' + r.side + '</td>' +
+        '<td>' + esc(r.side) + '</td>' +
         '<td class="mono">' + r.entry + '</td>' +
         '<td class="mono">' + r.stop + '</td>' +
         '<td class="mono">' + r.target + '</td>' +

@@ -7,6 +7,7 @@ import { viteSingleFile } from 'vite-plugin-singlefile';
 // as a single file (e.g. publishing it as an Artifact) without hand-
 // maintaining a second, bundled copy.
 export default defineConfig({
+  base: './',
   plugins: [viteSingleFile()],
   server: {
     port: process.env.PORT ? Number(process.env.PORT) : 5173,
