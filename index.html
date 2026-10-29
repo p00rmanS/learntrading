@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#181c15" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Tape Reader's Notebook">
-  <meta property="og:description" content="125 bite-sized trading lessons with plain-English and Taglish explainers, a risk calculator, journal and quiz.">
+  <meta property="og:description" content="134 bite-sized trading lessons with plain-English and Taglish explainers, a risk calculator, journal and quiz.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c231f'/%3E%3Cpath d='M9 22V14M16 24V8M23 20V12' stroke='%23d9a545' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Archivo:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="/src/styles/main.css">
@@ -4879,10 +4879,297 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="126" data-title="Glossary">
+    <div class="page" data-page="126" data-title="Fair Value Gaps & Imbalances">
+      <div class="page-inner">
+        <section id="fvg">
+      <div class="section-head"><span class="num">125</span><h2>Fair Value Gaps &amp; Imbalances</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="fvg"><span>mark read</span></label></div>
+      <p class="deck">Sometimes price moves so fast it skips over a stretch of prices without trading there. Traders call that skipped stretch a fair value gap, and it&rsquo;s one of the more popular &mdash; and more over-hyped &mdash; zones on modern charts.</p>
+
+      <p>A <b>fair value gap (FVG)</b>, also called an <b>imbalance</b>, is a three-candle footprint. Take any three consecutive candles. If the <i>low of candle 3</i> sits above the <i>high of candle 1</i>, the big middle candle moved so quickly that no candle&rsquo;s range overlaps that slice of prices &mdash; a <b>bullish FVG</b>. The mirror (candle 3&rsquo;s high below candle 1&rsquo;s low) is a <b>bearish FVG</b>. The idea is that one side was so dominant in that move that trading in the gap was thin or one-sided, so price sometimes returns to &ldquo;rebalance&rdquo; it.</p>
+
+      <p>This is not the same as the CME gap from Section 08 or an overnight stock gap. Those are holes between sessions on the chart; an FVG forms <i>inside</i> a continuous market, and the candles around it still touch. How you use it: mark the zone between candle 1&rsquo;s high and candle 3&rsquo;s low, then watch what happens if price pulls back into it. A reaction there &mdash; wicks rejecting, a hold at the zone&rsquo;s midpoint &mdash; is the reason to pay attention. A clean close through the entire gap means that zone has failed.</p>
+
+      <p>Be honest about the evidence: the &ldquo;gaps always fill&rdquo; claim is repeated far more often than it is tested. Plenty of gaps never get revisited, and in strong trends price may leave a dozen behind. Treat an FVG as a <b>zone of interest</b>, not a prediction. It is strongest when it lines up with structure (Section 04), a higher-timeframe level (Section 13), or an impulsive move that broke a swing high or low &mdash; the confluence stack from Section 30. Your stop still goes beyond the invalidation point, not &ldquo;just past the gap.&rdquo;</p>
+
+      <figure>
+        <svg viewBox="0 0 520 220" role="img" aria-label="Three-candle bullish fair value gap: a small candle, a large green candle, and a third candle whose low stays above the first candle's high, leaving an untraded gap. Price later pulls back into that gap and bounces.">
+  <rect x="60" y="95" width="420" height="30" fill="var(--bull)" opacity="0.18"/>
+  <line x1="60" y1="125" x2="480" y2="125" stroke="var(--bull)" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="60" y1="95" x2="480" y2="95" stroke="var(--bull)" stroke-width="1" stroke-dasharray="4 3"/>
+  <line x1="80" y1="125" x2="80" y2="160" stroke="var(--bull)" stroke-width="2"/><rect x="71" y="130" width="18" height="20" fill="var(--bull)"/><line x1="130" y1="58" x2="130" y2="135" stroke="var(--bull)" stroke-width="2"/><rect x="121" y="65" width="18" height="65" fill="var(--bull)"/><line x1="180" y1="50" x2="180" y2="95" stroke="var(--bull)" stroke-width="2"/><rect x="171" y="60" width="18" height="30" fill="var(--bull)"/>
+  <line x1="250" y1="50" x2="250" y2="90" stroke="var(--bear)" stroke-width="2"/><rect x="241" y="55" width="18" height="30" fill="var(--bear)"/><line x1="300" y1="80" x2="300" y2="118" stroke="var(--bear)" stroke-width="2"/><rect x="291" y="85" width="18" height="20" fill="var(--bear)"/><line x1="350" y1="55" x2="350" y2="120" stroke="var(--bull)" stroke-width="2"/><rect x="341" y="60" width="18" height="40" fill="var(--bull)"/><line x1="400" y1="28" x2="400" y2="65" stroke="var(--bull)" stroke-width="2"/><rect x="391" y="35" width="18" height="25" fill="var(--bull)"/>
+  <text x="80" y="180" text-anchor="middle" class="mono" font-size="10" >1</text><text x="130" y="180" text-anchor="middle" class="mono" font-size="10" >2</text><text x="180" y="180" text-anchor="middle" class="mono" font-size="10" >3</text>
+  <text x="22" y="122" class="mono" font-size="9">high of 1</text><text x="22" y="92" class="mono" font-size="9">low of 3</text>
+  <text x="440" y="112" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)" font-weight="700">FVG zone</text>
+  <text x="300" y="150" text-anchor="middle" class="mono" font-size="9">pullback tags the gap</text>
+</svg>
+        <figcaption>Bullish FVG: candle 3&rsquo;s low stays above candle 1&rsquo;s high, so the shaded slice was never traded through. The later pullback into that zone is where you watch for a reaction &mdash; not where you assume one.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Imagine a kid sprinting up a staircase so fast that they skip a few steps entirely. The skipped steps are the gap. Sometimes the kid comes back to walk on them; sometimes they never do.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Isipin mong batang mabilis na umaakyat ng hagdan at may mga baitang na nalaktawan. Ang mga nalaktawang baitang ang &ldquo;gap.&rdquo; Minsan bumabalik siya para tapakan iyon; minsan hindi na.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Higher-timeframe gaps matter more than 1-minute ones. A gap on a 1m chart is noise most of the time; a daily or 4H gap carries far more participants behind it.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="127" data-title="Supply & Demand Zones and Order Blocks">
+      <div class="page-inner">
+        <section id="orderblocks">
+      <div class="section-head"><span class="num">126</span><h2>Supply &amp; Demand Zones and Order Blocks</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="orderblocks"><span>mark read</span></label></div>
+      <p class="deck">Support and resistance don&rsquo;t have to be thin lines. Many traders mark them as zones where a big move began &mdash; supply and demand zones, and their close cousin, the order block.</p>
+
+      <p>A <b>demand zone</b> is the small consolidation (the &ldquo;base&rdquo;) from which price exploded upward; a <b>supply zone</b> is the base it dropped from. The logic is the same as Section 04&rsquo;s role reversal, just focused on the <i>origin</i> of the move instead of an obvious swing: if heavy buying started there once, some buyers who missed it, or who are still holding, may defend it on a return. A zone is drawn as a rectangle, not a line &mdash; from the base&rsquo;s low to its high, or the candle&rsquo;s body to its wick.</p>
+
+      <p>An <b>order block</b> is the most specific version: the <i>last opposite-colored candle</i> before an impulsive move that breaks structure. The last down candle before a rally that takes out a prior swing high is a bullish order block; the last up candle before a breakdown is a bearish one. The proposed story is that large participants were still accumulating inside that candle, and unfilled orders may remain when price comes back. That story is a hypothesis &mdash; nobody sees the order book of other traders (Section 20), so you are inferring, not observing.</p>
+
+      <p>Quality filters that keep this from becoming zone-drawing for its own sake: (1) the move <i>away</i> should be fast and decisive, ideally breaking a swing; (2) the zone is <b>fresh</b> &mdash; the first return is the most reliable, and each retest uses it up; (3) it sits with the higher-timeframe trend (Section 13); (4) there&rsquo;s room to the next opposing level for a decent R:R (Section 36). If price closes cleanly through the whole zone, it&rsquo;s invalid &mdash; and that failure is exactly where your stop belongs, as in Section 35.</p>
+
+      <figure>
+        <svg viewBox="0 0 520 220" role="img" aria-label="An order block: the last bearish candle before a strong rally that breaks a prior swing high. Price later returns to that candle's body and bounces.">
+  <rect x="108" y="140" width="360" height="22" fill="var(--bull)" opacity="0.2"/>
+  <line x1="30" y1="105" x2="270" y2="105" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="60" y="98" text-anchor="middle" class="mono" font-size="9">prior swing high</text>
+  <line x1="50" y1="112" x2="50" y2="140" stroke="var(--bull)" stroke-width="2"/><rect x="41" y="120" width="18" height="15" fill="var(--bull)"/><line x1="80" y1="122" x2="80" y2="155" stroke="var(--bear)" stroke-width="2"/><rect x="71" y="130" width="18" height="20" fill="var(--bear)"/>
+  <line x1="120" y1="135" x2="120" y2="167" stroke="var(--bear)" stroke-width="2"/><rect x="111" y="140" width="18" height="22" fill="var(--bear)"/>
+  <line x1="170" y1="84" x2="170" y2="164" stroke="var(--bull)" stroke-width="2"/><rect x="161" y="90" width="18" height="70" fill="var(--bull)"/><line x1="220" y1="44" x2="220" y2="100" stroke="var(--bull)" stroke-width="2"/><rect x="211" y="50" width="18" height="45" fill="var(--bull)"/>
+  <line x1="280" y1="50" x2="280" y2="90" stroke="var(--bear)" stroke-width="2"/><rect x="271" y="55" width="18" height="30" fill="var(--bear)"/><line x1="330" y1="80" x2="330" y2="158" stroke="var(--bear)" stroke-width="2"/><rect x="321" y="85" width="18" height="50" fill="var(--bear)"/><line x1="380" y1="95" x2="380" y2="155" stroke="var(--bull)" stroke-width="2"/><rect x="371" y="100" width="18" height="50" fill="var(--bull)"/><line x1="430" y1="55" x2="430" y2="105" stroke="var(--bull)" stroke-width="2"/><rect x="421" y="60" width="18" height="40" fill="var(--bull)"/>
+  <text x="120" y="190" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)" font-weight="700">order block</text>
+  <text x="120" y="205" text-anchor="middle" class="mono" font-size="9">(last down candle)</text>
+  <text x="190" y="40" text-anchor="middle" class="mono" font-size="9">impulse breaks structure</text>
+  <text x="380" y="190" text-anchor="middle" class="mono" font-size="9">retest holds</text>
+</svg>
+        <figcaption>The last down candle before a rally that breaks the prior swing high is marked as a demand zone / order block. The later pullback tests it: holding supports the idea, a close through the whole box ends it.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Think of a spring that was squashed flat in one spot before it shot upward. The spot where it was squashed is where it is most likely to be stuck again if you push it back down.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang spring na pinindot sa isang lugar bago tumalbog pataas. Ang lugar na iyon ang pinakamalamang na magsilbing sandalan ulit kapag bumalik ang presyo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Zones get drawn after the fact, and hindsight always finds one. Only count zones you marked <i>before</i> price returned to them &mdash; and log whether they worked in the journal (Section 26).</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="128" data-title="False Breakouts & How to Trade Them">
+      <div class="page-inner">
+        <section id="falsebreakouts">
+      <div class="section-head"><span class="num">127</span><h2>False Breakouts &amp; How to Trade Them</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="falsebreakouts"><span>mark read</span></label></div>
+      <p class="deck">Price pokes through an obvious level, everybody piles in &mdash; and then it snaps back. False breakouts are among the most common ways a beginner pays tuition.</p>
+
+      <p>A <b>false breakout</b> (or fakeout) is a move beyond a clear level &mdash; range highs, a swing, a trendline &mdash; that fails to hold and returns back inside within a few candles. You already met the extreme versions: the Spring and Upthrust in Section 09, and the stop-hunt wick in Section 05. The mechanics are the same: breakouts attract buyers entering on the break, plus breakout-triggered orders and stops sitting just beyond the level. If there is no real follow-through behind that burst, the move runs out of fuel and those late entrants become the supply that pushes price back.</p>
+
+      <p>Clues that a break is more likely to fail: it happens on <b>weak or falling volume</b> (Section 07); the candle closes back near its own low (for an upside break) with a long upper wick; it fires into a higher-timeframe level that runs the other way; or it arrives right at a news release (Section 23), when spreads and wicks distort everything. A clean break tends to show a strong close beyond the level, expanding volume and often a retest from the other side that holds.</p>
+
+      <p>Two sane ways to trade it. <b>Be the confirmer:</b> do not enter on the first touch. Wait for a candle <i>close</i> beyond the level and then a retest that holds &mdash; you give up some of the move to avoid many of the traps. <b>Be the fader:</b> enter in the opposite direction only <i>after</i> price closes back inside the range, put the stop just beyond the wick extreme, and target the other side of the range. Either way the invalidation is concrete, so you can size it with Section 17&rsquo;s math. Fading a breakout before it fails is just guessing.</p>
+
+      <figure>
+        <svg viewBox="0 0 520 220" role="img" aria-label="A false breakout: price repeatedly stalls under a resistance line, spikes above it, then closes back inside the range and falls away.">
+  <line x1="20" y1="80" x2="500" y2="80" stroke="var(--bear)" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <text x="60" y="72" text-anchor="middle" class="mono" font-size="9">range resistance</text>
+  <polyline points="30,140 70,95 110,130 150,92 190,125 230,88 270,60 300,105 340,125 390,160 440,175 490,190" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <circle cx="270" cy="60" r="5" fill="var(--bear)"/>
+  <text x="270" y="48" text-anchor="middle" class="mono" font-size="10" fill="var(--bear)" font-weight="700">spike above</text>
+  <text x="318" y="98" text-anchor="middle" class="mono" font-size="9">closes back inside</text>
+  <text x="400" y="200" text-anchor="middle" class="mono" font-size="9">trapped longs sell</text>
+</svg>
+        <figcaption>Price stalls at resistance, spikes through, and closes back inside the range. The fade entry comes after the failure is visible &mdash; with a stop beyond the spike.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It is like a crowd rushing through a door that suddenly turns out to be painted on the wall. Everyone who sprinted through has to turn around at the same time.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang maraming taong nagmamadaling pumasok sa pinto na pala&rsquo;y pinta lang sa pader. Lahat ng tumakbo papasok ay sabay-sabay na babalik.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>If you keep getting stopped out by breakouts that reverse, don&rsquo;t flip to always fading them. Check your data first: log the volume and the close of each break, and see what actually separates your winners from the traps.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="129" data-title="OBV & Money Flow: Volume Indicators">
+      <div class="page-inner">
+        <section id="obv">
+      <div class="section-head"><span class="num">128</span><h2>OBV &amp; Money Flow: Volume Indicators</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="obv"><span>mark read</span></label></div>
+      <p class="deck">Volume bars tell you how much traded. Volume indicators try to tell you whether that volume was mostly buying or mostly selling &mdash; with some clear limits.</p>
+
+      <p><b>On-Balance Volume (OBV)</b>, introduced by Joseph Granville in the 1960s, is a running total. On each bar, if the close is above the previous close, add that bar&rsquo;s volume; if below, subtract it; if unchanged, add nothing. The absolute number is meaningless (it depends on where the chart starts). What matters is the <i>shape</i>: is OBV making higher highs along with price, or lagging behind it?</p>
+
+      <p>How it is used: <b>confirmation</b> &mdash; a breakout that takes price and OBV to new highs together has volume behind it, while a price high with a flat or falling OBV is the same kind of divergence you saw with RSI in Section 12, but on volume. OBV breaking out of a range <i>before</i> price does is sometimes read as accumulation (Section 09). Close relatives work on the same idea with more detail: the <b>Accumulation/Distribution line</b> weights volume by where the candle closes inside its range, and <b>Chaikin Money Flow</b> averages that over a window.</p>
+
+      <p>The limits are real. OBV gives a bar&rsquo;s entire volume to whichever side the <i>close</i> was on, so a tiny up-tick on huge volume counts the same as a big rally on that volume. Spot crypto volume is scattered across many exchanges and some of it is inflated or wash-traded, so a single venue&rsquo;s OBV can mislead. Like every indicator, it&rsquo;s one input for the confluence check in Section 30, not a signal on its own.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Day</th><th>Close vs. prior</th><th>Volume</th><th>OBV change</th><th>OBV</th></tr></thead><tbody>
+<tr><td class="mono">1</td><td>start</td><td class="mono">—</td><td class="mono">—</td><td class="mono">0</td></tr>
+<tr><td class="mono">2</td><td>higher</td><td class="mono">100</td><td class="mono">+100</td><td class="mono">100</td></tr>
+<tr><td class="mono">3</td><td>lower</td><td class="mono">150</td><td class="mono">&minus;150</td><td class="mono">&minus;50</td></tr>
+<tr><td class="mono">4</td><td>higher</td><td class="mono">80</td><td class="mono">+80</td><td class="mono">30</td></tr>
+<tr><td class="mono">5</td><td>unchanged</td><td class="mono">120</td><td class="mono">0</td><td class="mono">30</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Picture a tug-of-war scoreboard that adds points to the &ldquo;up&rdquo; team every day buyers win and subtracts them when sellers win, weighted by how many people showed up.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang scoreboard ng tug-of-war: dagdag-puntos sa &ldquo;pataas&rdquo; na koponan kapag nanalo ang mga bumibili, bawas kapag nanalo ang nagbebenta &mdash; depende sa dami ng sumali.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>The slope and divergences matter, not the number. If OBV and price disagree, that is a question to investigate, not a trade by itself.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="130" data-title="VIX & Implied Volatility">
+      <div class="page-inner">
+        <section id="vix">
+      <div class="section-head"><span class="num">129</span><h2>VIX &amp; Implied Volatility</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="vix"><span>mark read</span></label></div>
+      <p class="deck">ATR (Section 33) tells you how much price has moved. Implied volatility tells you how much the options market <i>expects</i> it to move &mdash; and the VIX is the best-known headline version.</p>
+
+      <p>The <b>VIX</b> (Cboe Volatility Index) is derived from prices of S&amp;P 500 index options and expresses the market&rsquo;s expected volatility over the next 30 days, annualized, in percentage points. A VIX of 20 implies roughly a 20% annualized move for the S&amp;P 500. Dividing by about 16 (the square root of 252 trading days) gives a rough expected <i>daily</i> move: 20 &divide; 16 &asymp; 1.25%. Dividing by about 3.5 (&radic;12) gives a rough one-month move: 20 &divide; 3.5 &asymp; 5.8%. These are one-standard-deviation estimates, not guarantees.</p>
+
+      <p>This is <b>implied</b> volatility &mdash; priced into options (Section 43, and the vega Greek in Section 80) &mdash; versus <b>realized</b> volatility, which is what actually happened. Implied tends to run above realized most of the time because option sellers charge a premium for taking the risk; it jumps when fear rises, which is why VIX is called the fear gauge and usually rises when stocks fall sharply. It also tends to revert: spikes fade, and long calm stretches eventually end. Neither &ldquo;VIX is low, so a crash is due&rdquo; nor &ldquo;VIX is high, so buy&rdquo; is a reliable timing rule.</p>
+
+      <p>How to use it: as <b>context</b>, in the same spirit as Section 22. A rising VIX means the market is paying up for protection, so expect wider stops, bigger gaps and more stop-hunts &mdash; shrink your size accordingly (Section 17). You cannot trade the VIX itself; VIX futures and the ETPs built on them carry roll costs from contango (Section 41) and tend to decay over time, so they are tools for short-term views, not long-term holds. Crypto has its own version: Deribit&rsquo;s DVOL index tracks implied volatility for bitcoin and ether options.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>VIX level</th><th>Rough reading</th><th>Rough 1-day expected move</th></tr></thead><tbody>
+<tr><td class="mono">below 15</td><td>Calm / complacent</td><td class="mono">&lt; 1%</td></tr>
+<tr><td class="mono">15 &ndash; 20</td><td>Normal</td><td class="mono">~1 &ndash; 1.25%</td></tr>
+<tr><td class="mono">20 &ndash; 30</td><td>Elevated worry</td><td class="mono">~1.25 &ndash; 1.9%</td></tr>
+<tr><td class="mono">30+</td><td>Stress / fear</td><td class="mono">1.9%+</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>The VIX is like a weather forecast for market storms. It does not tell you it will rain tomorrow &mdash; it tells you how nervous the forecasters are about the sky.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang VIX ay parang weather forecast para sa bagyo ng market. Hindi nito sinasabing uulan bukas &mdash; sinasabi lang nito kung gaano kakabado ang mga nagtataya sa langit.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>The bands above are rules of thumb that traders use, not official thresholds, and they shift over the years. Use them for rough orientation only.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="131" data-title="Relative Strength: Picking the Strongest Asset">
+      <div class="page-inner">
+        <section id="relativestrength">
+      <div class="section-head"><span class="num">130</span><h2>Relative Strength: Picking the Strongest Asset</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="relativestrength"><span>mark read</span></label></div>
+      <p class="deck">A rising chart can still be a laggard. Relative strength asks the better question: is this asset beating its benchmark, or just riding the tide?</p>
+
+      <p><b>Relative strength</b> compares one asset&rsquo;s performance with another&rsquo;s. The simplest tool is a <b>ratio chart</b>: divide the asset&rsquo;s price by a benchmark&rsquo;s price (for example, a stock divided by the S&amp;P 500 index, or ETH divided by BTC) and chart the result. A rising ratio line means the asset is outperforming &mdash; even on days both are falling, if it falls less. A falling ratio means it&rsquo;s lagging.</p>
+
+      <p><b>Naming warning:</b> the RSI in Section 12 is the &ldquo;Relative Strength <i>Index</i>,&rdquo; and it measures an asset&rsquo;s momentum against <i>its own</i> recent history. It does not compare anything to a benchmark. They share a word, not a method.</p>
+
+      <p>Why traders care: leaders tend to hold up better in pullbacks and break out earlier when the market turns up, while laggards often break down first. So in a market you want to be long, favor assets whose ratio is rising; if you want to short, the weak ones with falling ratios are the natural candidates. It is also the engine behind sector rotation: comparing sector ETFs (Section 52) shows where money is flowing, tied to the business cycle in Section 87. In crypto, a rising ETH/BTC line is how traders spot risk appetite moving out the curve, linked to Bitcoin dominance in Section 93.</p>
+
+      <p>The caveats: relative strength is backward-looking, leaders can reverse hard when the whole market turns, and a high-beta name (Section 50) will outrun the benchmark in uptrends simply because it&rsquo;s more volatile, not because it is better. Use the ratio as a filter that builds your watchlist, then let structure and your plan decide the actual entry.</p>
+
+      <figure>
+        <svg viewBox="0 0 520 240" role="img" aria-label="Top panel shows an asset and a benchmark both rising, with the asset rising faster. Bottom panel shows the ratio of asset to benchmark trending up, which is the relative strength line.">
+  <text x="260" y="16" text-anchor="middle" class="mono" font-size="10" font-weight="700">PRICES: both rise, asset rises faster</text>
+  <polyline points="30,100 110,95 190,85 270,75 350,62 430,50 500,40" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+  <polyline points="30,100 110,98 190,94 270,90 350,84 430,78 500,72" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="470" y="33" text-anchor="middle" class="mono" font-size="10" fill="var(--bull)">asset</text><text x="470" y="92" text-anchor="middle" class="mono" font-size="10" >benchmark</text>
+  <text x="260" y="140" text-anchor="middle" class="mono" font-size="10" font-weight="700">RATIO (asset / benchmark): the relative strength line</text>
+  <polyline points="30,215 110,210 190,200 270,186 350,170 430,152 500,138" fill="none" stroke="var(--accent)" stroke-width="2.5"/>
+  <text x="260" y="232" text-anchor="middle" class="mono" font-size="9">rising line = outperforming, even on days both fall</text>
+</svg>
+        <figcaption>Both lines rise, but the asset climbs faster. Dividing the asset by the benchmark turns that outperformance into a single trending line.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>In a race where everyone is getting faster, the question is not &ldquo;who is running?&rdquo; but &ldquo;who is running faster than the others?&rdquo;</p>
+        <div class="tl"><b>Sa Tagalog:</b> Sa karera kung saan lahat ay bumibilis, ang tanong ay hindi &ldquo;sino ang tumatakbo?&rdquo; kundi &ldquo;sino ang mas mabilis kaysa sa iba?&rdquo;</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Always say which benchmark you are measuring against. An asset can beat the S&amp;P 500 and still lag its own sector.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="132" data-title="Seasonality & Calendar Effects">
+      <div class="page-inner">
+        <section id="seasonality">
+      <div class="section-head"><span class="num">131</span><h2>Seasonality &amp; Calendar Effects</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="seasonality"><span>mark read</span></label></div>
+      <p class="deck">Markets seem to like certain months, weekdays and hours. Some of that is real structure; a lot of it is noise dressed up as a pattern.</p>
+
+      <p><b>Seasonality</b> is the tendency for returns or volatility to repeat on a calendar. Some cases have a plausible mechanism: <b>time of day</b> (liquidity and volatility concentrate at the open and the session overlaps in Section 29), <b>month-end and quarter-end</b> rebalancing by funds, <b>scheduled events</b> such as earnings seasons and central-bank meetings (Sections 23 and 53), and <b>options expiration</b> weeks when hedging flows can pin or whip prices (Section 43). Volatility seasonality is generally sturdier than directional seasonality.</p>
+
+      <p>Directional folklore &mdash; &ldquo;Sell in May,&rdquo; the January effect, a year-end &ldquo;Santa rally,&rdquo; &ldquo;Uptober&rdquo; in crypto &mdash; is much shakier. Averages over past decades can look tidy, but the effects are small relative to the year-to-year variation, they have weakened as they became famous, and with enough calendar slices you will always find some that look significant by chance. That is the overfitting trap from Section 86 in a different costume.</p>
+
+      <p>A sensible use: seasonality is a <b>tiebreaker</b>, never a thesis. If a setup already passes your plan and a known high-volatility window is coming, size down or skip. If you want to test a calendar idea, treat it like any other strategy (Section 44): define the rule first, test it on data it was not discovered on, include costs (Section 85), and ask how many different patterns you checked before this one &ldquo;worked.&rdquo;</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Ice cream sells more in summer, and that has an obvious reason. A claim that your stock only goes up on Tuesdays in months that start with J needs a much better reason.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Mas maraming nabibiling ice cream tuwing tag-init, at may malinaw na dahilan. Pero ang sinasabing tumataas lang ang stock tuwing Martes sa mga buwang nagsisimula sa J? Kailangan ng mas matinong paliwanag.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Before trusting a calendar pattern, write down the mechanism in one sentence. If you cannot, treat it as a coincidence until tested.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="133" data-title="Centralized vs. Decentralized Exchanges">
+      <div class="page-inner">
+        <section id="cexdex">
+      <div class="section-head"><span class="num">132</span><h2>Centralized vs. Decentralized Exchanges</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="cexdex"><span>mark read</span></label></div>
+      <p class="deck">In crypto you can trade on a company&rsquo;s platform or directly against a smart contract. The two have different risks, and you should know which one you&rsquo;re on.</p>
+
+      <p>A <b>centralized exchange (CEX)</b> &mdash; Coinbase, Binance, Kraken and similar &mdash; runs an order book (Section 20) on its own servers. You deposit funds, and what you see is a balance in that company&rsquo;s database. It is fast, offers leverage, perpetual futures (Section 67), support staff and fiat on-ramps, and typically requires identity verification. The core risk is <b>custody</b>: while your coins sit there, the exchange holds them, so you carry its counterparty risk (Section 81). Failures such as FTX in 2022 showed customers can be unable to withdraw.</p>
+
+      <p>A <b>decentralized exchange (DEX)</b> trades through smart contracts on a blockchain (Section 121), usually via liquidity pools and an automated market maker instead of an order book (Section 97). Your wallet connects directly, so you keep custody until the swap executes. No account or KYC is needed. The trade-offs are different, not absent: network <b>gas fees</b>, price impact and slippage on thin pools (Section 56), exposure to <b>MEV</b> (bots reordering transactions to profit from yours), smart-contract bugs, and a flood of counterfeit and rug-pull tokens (Section 122) because anyone can list anything.</p>
+
+      <p>Neither is &ldquo;safe&rdquo; &mdash; the risks just change shape. On a CEX you trust a company; on a DEX you trust code and your own key hygiene, and a single approval to a malicious contract can drain a wallet. Practical habits: keep only trading capital on exchanges; verify token contract addresses from official sources before swapping; set a slippage limit; and start with small amounts on any venue you haven&rsquo;t used. Remember too that availability and rules vary by country.</p>
+
+      <div class="tablewrap"><table><thead><tr><th></th><th>CEX</th><th>DEX</th></tr></thead><tbody>
+<tr><td>Who holds your funds</td><td>The exchange</td><td>You (until the swap)</td></tr>
+<tr><td>Pricing</td><td>Order book</td><td>Usually liquidity pool (AMM)</td></tr>
+<tr><td>Account / KYC</td><td>Usually required</td><td>Wallet only</td></tr>
+<tr><td>Main risks</td><td>Insolvency, hacks, freezes</td><td>Contract bugs, scam tokens, MEV, key theft</td></tr>
+<tr><td>Costs</td><td>Trading fees, spread</td><td>Gas + pool fees + price impact</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A CEX is like leaving your money with a bank teller who trades for you. A DEX is like a vending machine: you keep control of your coins until you drop them in, but there is nobody to call if you press the wrong button.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang CEX ay parang iniwan mo ang pera mo sa teller ng bangko na siyang magte-trade para sa iyo. Ang DEX ay parang vending machine: hawak mo ang pera hanggang ihulog mo, pero wala kang matatawagan kung nagkamali ka ng pindot.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>The old crypto line &ldquo;not your keys, not your coins&rdquo; is about custody only. Holding your own keys removes exchange risk and adds the full responsibility of securing them.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="134" data-title="Trader Health & Performance Habits">
+      <div class="page-inner">
+        <section id="traderhealth">
+      <div class="section-head"><span class="num">133</span><h2>Trader Health &amp; Performance Habits</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="traderhealth"><span>mark read</span></label></div>
+      <p class="deck">Your brain is the trading instrument. Poor sleep, long screen sessions and skipped meals show up in your results the same way a bad stop does.</p>
+
+      <p>Section 16 covers psychology as a set of biases, but there is a physical layer underneath. <b>Sleep loss</b> is well documented to hurt attention, working memory and emotional regulation &mdash; exactly the abilities needed to follow a plan when a position moves against you. <b>Decision fatigue</b> is the tendency for judgment to degrade after many consecutive choices, which is why the 11th setup of the day looks better than it deserves. Long sessions, constant price-watching and caffeine on an empty stomach all push in the same direction: more impulsive, less patient.</p>
+
+      <p>Build a few rules the same way you built the circuit breakers in Section 63. A simple pre-session check is <b>HALT</b>: am I <i>Hungry, Angry, Lonely or Tired</i>? If any is true, trade smaller or not at all. Add a hard stop to screen time (many traders cap active sessions at a few hours), scheduled breaks away from the chart, movement or exercise most days, and a fixed end-of-day shutdown so the market doesn&rsquo;t leak into every waking hour. If you trade a session that falls overnight in your time zone (Section 29), protect your sleep first &mdash; it is not worth an edge you can&rsquo;t execute while exhausted.</p>
+
+      <p>Track it. Add three one-tap fields to your journal (Section 26): hours slept, a 1&ndash;5 mood score, and whether you followed your plan. After a month the data will tell you how much a bad night costs, which is far more convincing than advice. If trading is producing persistent anxiety, compulsive checking or trouble sleeping, treat that as a real signal rather than a character flaw, and talk to someone you trust or a professional. This lesson is general education, not medical advice.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A race car needs fuel, tires and rest in the garage. Driving it flat out with a flat tire isn&rsquo;t brave &mdash; it just crashes sooner.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang race car ay nangangailangan ng gasolina, gulong at pahinga sa garahe. Hindi katapangan ang pagmamaneho nang butas ang gulong &mdash; mas mabilis lang itong sasalpok.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>The best risk rule costs nothing: if you slept badly or are upset, cut size in half or sit out. Missing one day is cheap.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="135" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">125</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">134</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -5069,6 +5356,19 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
         <div><dt>Layer-2</dt><dd>A network built on top of Ethereum that batches many transactions together and settles them back to it, offering cheaper fees.</dd></div>
         <div><dt>Pump-and-Dump / Rug Pull</dt><dd>A pump-and-dump hypes a thinly traded asset so promoters can sell into the crowd's buying; a rug pull is a crypto project whose creators drain liquidity or dump their tokens and disappear.</dd></div>
         <div><dt>Token Approval</dt><dd>Permission you grant a smart contract to spend a specified token from your wallet — a malicious approval can let a scam contract drain it later.</dd></div>
+      
+        <div><dt>FVG (Fair Value Gap)</dt><dd>A three-candle imbalance where the third candle&rsquo;s range does not overlap the first&rsquo;s, leaving a stretch of prices that was skipped. Treated as a zone to watch, not a guaranteed fill.</dd></div>
+        <div><dt>Order Block</dt><dd>The last opposite-colored candle before an impulsive move that breaks structure, marked as a zone where price may react on a return.</dd></div>
+        <div><dt>Supply / Demand Zone</dt><dd>The base from which price dropped (supply) or rallied (demand), drawn as a rectangle. Freshest on the first retest.</dd></div>
+        <div><dt>False Breakout</dt><dd>A move beyond a clear level that fails to hold and closes back inside, trapping late entrants.</dd></div>
+        <div><dt>OBV (On-Balance Volume)</dt><dd>A running total that adds volume on up-closes and subtracts it on down-closes. The slope and divergences matter, not the number.</dd></div>
+        <div><dt>Implied Volatility</dt><dd>The move the options market expects, backed out of option prices. Contrast with realized volatility, which is what actually happened.</dd></div>
+        <div><dt>VIX</dt><dd>Cboe&rsquo;s index of expected 30-day S&amp;P 500 volatility, derived from index option prices and quoted as an annualized percentage.</dd></div>
+        <div><dt>Relative Strength</dt><dd>Performance of one asset versus another or a benchmark, often charted as a ratio. Not the same as the RSI oscillator.</dd></div>
+        <div><dt>Seasonality</dt><dd>A tendency for returns or volatility to repeat on a calendar cycle. Volatility patterns are sturdier than directional ones.</dd></div>
+        <div><dt>CEX / DEX</dt><dd>Centralized exchange (company holds your funds and runs an order book) versus decentralized exchange (smart-contract trading from your own wallet).</dd></div>
+        <div><dt>MEV (Maximal Extractable Value)</dt><dd>Profit that bots or validators extract by reordering or inserting transactions around yours on a blockchain.</dd></div>
+        <div><dt>HALT</dt><dd>A pre-session check: am I Hungry, Angry, Lonely or Tired? If yes, trade smaller or not at all.</dd></div>
       </dl>
     </section>
       </div>
@@ -5083,7 +5383,7 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 125 read</span>
+      <span id="progressLabel" class="mono">0 / 134 read</span>
     </div>
     <div class="toc-filter-wrap">
       <input type="search" id="tocFilter" class="mono" placeholder="Filter lessons&hellip;" aria-label="Filter lessons by title">
@@ -5215,7 +5515,16 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       <li><a href="#scams"><span class="n mono">122</span> Scams &amp; Red Flags</a></li>
       <li><a href="#acronyms"><span class="n mono">123</span> Acronym Cheat Sheet</a></li>
       <li><a href="#beginnermistakes"><span class="n mono">124</span> Beginner Mistakes</a></li>
-      <li><a href="#glossary"><span class="n mono">125</span> Glossary</a></li>
+      <li><a href="#fvg"><span class="n mono">125</span> Fair Value Gaps</a></li>
+      <li><a href="#orderblocks"><span class="n mono">126</span> Supply, Demand &amp; Order Blocks</a></li>
+      <li><a href="#falsebreakouts"><span class="n mono">127</span> False Breakouts</a></li>
+      <li><a href="#obv"><span class="n mono">128</span> OBV &amp; Money Flow</a></li>
+      <li><a href="#vix"><span class="n mono">129</span> VIX &amp; Implied Volatility</a></li>
+      <li><a href="#relativestrength"><span class="n mono">130</span> Relative Strength</a></li>
+      <li><a href="#seasonality"><span class="n mono">131</span> Seasonality</a></li>
+      <li><a href="#cexdex"><span class="n mono">132</span> CEX vs DEX</a></li>
+      <li><a href="#traderhealth"><span class="n mono">133</span> Trader Health</a></li>
+      <li><a href="#glossary"><span class="n mono">134</span> Glossary</a></li>
     </ol>
   </nav>
 
