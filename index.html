@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#181c15" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Tape Reader's Notebook">
-  <meta property="og:description" content="134 bite-sized trading lessons with plain-English and Taglish explainers, a risk calculator, journal and quiz.">
+  <meta property="og:description" content="143 bite-sized trading lessons with plain-English and Taglish explainers, a risk calculator, journal and quiz.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c231f'/%3E%3Cpath d='M9 22V14M16 24V8M23 20V12' stroke='%23d9a545' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Archivo:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="/src/styles/main.css">
@@ -5166,10 +5166,302 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="135" data-title="Glossary">
+    <div class="page" data-page="135" data-title="Stock Gaps: Gap-and-Go vs. Gap Fill">
+      <div class="page-inner">
+        <section id="stockgaps">
+      <div class="section-head"><span class="num">134</span><h2>Stock Gaps: Gap-and-Go vs. Gap Fill</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="stockgaps"><span>mark read</span></label></div>
+      <p class="deck">Stocks don&rsquo;t trade overnight in the regular session, so news piles up and the next open can jump well above or below the last close. What happens next depends on why it gapped.</p>
+
+      <p>A <b>gap</b> is a space on the chart between one session&rsquo;s close and the next session&rsquo;s open where no regular-hours trading occurred. Earnings (Section 91), guidance, analyst changes, deals and macro news (Section 23) are the usual causes; pre-market trading (Section 65) shows the early tell. This is different from the CME weekend gap in Section 08 and from the three-candle imbalance in Section 125: the gap here is a real hole between sessions.</p>
+
+      <p>Traders sort gaps by the story behind them. A <b>gap-and-go</b> happens when a real catalyst, strong relative volume (Section 07) and buyers who keep absorbing supply let price hold above the gap and extend. A <b>gap fill</b> happens when the news is minor or already priced in and the opening spike fades back toward the prior close. Older terminology also separates <i>breakaway</i> gaps (out of a base), <i>runaway</i> gaps (mid-trend continuation) and <i>exhaustion</i> gaps (late-trend blow-offs), but you can only name those in hindsight.</p>
+
+      <p>A practical approach: don&rsquo;t chase the first print. Let the opening minutes set a range (the opening range in Section 135 gives you a framework), then judge whether price is holding above or below key levels with volume. Gaps also hurt stops: a stop below a gap-down becomes a market order and fills wherever the market opens (Section 14), possibly far worse than your stop. That is another reason position size, not hope, is your protection (Section 17). The claim that all gaps eventually fill is not reliable &mdash; many never do.</p>
+
+      <figure>
+        <svg viewBox="0 0 520 220" role="img" aria-label="Two outcomes after a stock gaps up at the open. Left: gap-and-go, where price holds above the gap and keeps rising. Right: gap fill, where price fades back down to the previous close.">
+  <line x1="20" y1="150" x2="500" y2="150" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="24" y="165" text-anchor="start" class="mono" font-size="9">previous close</text>
+  <line x1="50" y1="112" x2="50" y2="155" stroke="var(--bull)" stroke-width="2"/><rect x="41" y="120" width="18" height="30" fill="var(--bull)"/>
+  <rect x="64" y="100" width="12" height="50" fill="var(--accent)" opacity="0.25"/>
+  <text x="70" y="92" text-anchor="middle" class="mono" font-size="9">gap</text>
+  <text x="135" y="20" text-anchor="middle" class="mono" font-size="10" font-weight="700">GAP-AND-GO</text>
+  <polyline points="80,100 110,86 140,92 175,66 210,52 240,40" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+  <text x="160" y="190" text-anchor="middle" class="mono" font-size="9">catalyst + heavy volume,</text><text x="160" y="203" text-anchor="middle" class="mono" font-size="9">holds above the gap</text>
+  <text x="385" y="20" text-anchor="middle" class="mono" font-size="10" font-weight="700">GAP FILL</text>
+  <polyline points="290,100 320,88 345,98 375,120 410,140 440,150" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
+  <text x="375" y="190" text-anchor="middle" class="mono" font-size="9">no catalyst, fades</text><text x="375" y="203" text-anchor="middle" class="mono" font-size="9">back to the prior close</text>
+</svg>
+        <figcaption>Same gap, two outcomes. What separates them is usually the catalyst, the volume and whether price holds the gap area &mdash; not the gap itself.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A stock that opens way up is like a kid jumping off a diving board. Either they have a real push behind them and keep going, or it was just a bounce and they land back where they started.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang stock na biglang tumaas pagbukas ay parang batang tumalon sa diving board. Maaaring may tunay siyang lakas at tuloy-tuloy ang taas, o isang talbog lang at babalik din sa pinagsimulan.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Never size a gap trade as if your stop will fill at your price. Gaps are where the gap between &ldquo;planned risk&rdquo; and &ldquo;actual loss&rdquo; shows up.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="136" data-title="The Opening Range Breakout">
+      <div class="page-inner">
+        <section id="openingrange">
+      <div class="section-head"><span class="num">135</span><h2>The Opening Range Breakout</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="openingrange"><span>mark read</span></label></div>
+      <p class="deck">The first minutes after a market opens are chaotic. The opening range breakout turns that chaos into a simple, rule-based box with a clear stop.</p>
+
+      <p>The <b>opening range (OR)</b> is the high and low of the first N minutes after the open &mdash; commonly 5, 15, 30 or 60. For US stocks that means the clock starts at the 9:30 a.m. Eastern open; for futures and crypto you pick a session start from Section 29. The setup: go long if price breaks and holds above the range high, short if it breaks below the range low. The initial stop goes at the opposite side of the range (or its midpoint for a tighter version).</p>
+
+      <p>The logic is that the open gathers overnight orders and news, so the range marks where the day&rsquo;s first fight happened. A break out of it with volume shows one side took control. A shorter range is more sensitive and gives more trades; a longer one filters noise but has a farther stop. Match it to the instrument&rsquo;s speed, and think of the range width in ATR terms (Section 33): if the range is already most of a typical day&rsquo;s move, the breakout may have little room left and the R:R (Section 36) will be poor.</p>
+
+      <p>Weaknesses to know: it&rsquo;s prone to the false breakouts in Section 127 on choppy days; wide spreads and fast moves at the open make slippage bigger (Section 56); and it is only worth trading in liquid names. Test it before you trust it (Section 44) &mdash; with costs included (Section 85) and the same rules every day. Many traders add filters such as a trade only in the direction of the higher-timeframe bias (Section 13), or skip the first break and wait for a retest.</p>
+
+      <figure>
+        <svg viewBox="0 0 520 220" role="img" aria-label="Opening range breakout: price trades in a box formed by the first minutes after the open, then breaks above the top of the box and continues higher. A stop sits below the box.">
+  <rect x="40" y="90" width="150" height="55" fill="var(--accent)" opacity="0.2"/>
+  <line x1="40" y1="90" x2="480" y2="90" stroke="var(--bull)" stroke-width="1.2" stroke-dasharray="5 3"/>
+  <line x1="40" y1="145" x2="480" y2="145" stroke="var(--bear)" stroke-width="1.2" stroke-dasharray="5 3"/>
+  <text x="115" y="80" text-anchor="middle" class="mono" font-size="9">opening range</text>
+  <text x="430" y="84" text-anchor="middle" class="mono" font-size="9" fill="var(--bull)">range high</text>
+  <text x="430" y="160" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">range low = stop</text>
+  <polyline points="45,115 70,100 95,135 120,105 150,138 185,110 215,85 245,70 290,60 340,48 400,40" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <circle cx="215" cy="85" r="5" fill="var(--bull)"/>
+  <text x="215" y="190" text-anchor="middle" class="mono" font-size="9" fill="var(--bull)" font-weight="700">entry on break</text>
+  <text x="115" y="190" text-anchor="middle" class="mono" font-size="9">first 15-30 min</text>
+</svg>
+        <figcaption>The shaded box is the first part of the session. A break above its high with follow-through is the entry; the opposite side of the box is the invalidation.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>The first few minutes of the day are like two teams warming up. The opening range marks where they scrimmaged. When one team pushes out of that area, the game has probably started.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang unang ilang minuto ng araw ay parang warm-up ng dalawang koponan. Ang opening range ang lugar kung saan sila nag-scrimmage. Kapag may koponang lumabas doon, malamang nagsimula na ang laro.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Fix the rules (range length, entry trigger, stop, target) before the session, and then stick to them. Changing the range length after a loss is just curve-fitting in real time.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="137" data-title="Market Breadth: How Many Stocks Are Participating?">
+      <div class="page-inner">
+        <section id="breadth">
+      <div class="section-head"><span class="num">136</span><h2>Market Breadth: How Many Stocks Are Participating?</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="breadth"><span>mark read</span></label></div>
+      <p class="deck">An index can hit a new high while most of its stocks stall. Breadth indicators measure how broad a move really is.</p>
+
+      <p><b>Market breadth</b> counts participation rather than price. The classic measure is the <b>advance-decline (A/D) line</b>: each day, subtract the number of declining stocks from advancing ones and add the result to a running total. Others include the <b>percentage of stocks above their 50- or 200-day moving average</b> (Section 10), the <b>new highs minus new lows</b> count, and <b>up volume versus down volume</b> (Section 7&rsquo;s idea, applied market-wide).</p>
+
+      <p>The reason this matters is index construction. Cap-weighted indices (Section 73) let a handful of mega-cap stocks lift the headline number even when the median stock is flat or falling. When the index makes a new high but the A/D line, or the share of stocks above their averages, fails to confirm, the rally is <b>narrow</b>. That can mean fragility &mdash; but it can also persist for a long time. Breadth divergences are a caution flag, not a sell signal, and they resemble the oscillator divergence in Section 12 in that they warn without timing.</p>
+
+      <p>Healthy advances tend to show broad participation: a rising A/D line, an expanding count of stocks above the 200-day average, and sector rotation (Section 130) rather than one theme doing all the work. Use breadth as context for how aggressive to be, in the same way you use VIX (Section 129) and macro (Section 22): when breadth is weak, demand cleaner setups and trim size. The crypto parallel is checking how many of the top coins are above their own averages, alongside Bitcoin dominance (Section 93).</p>
+
+      <figure>
+        <svg viewBox="0 0 520 240" role="img" aria-label="Top panel: a stock index making higher highs. Bottom panel: the advance-decline line failing to confirm, rolling over while the index keeps rising, which signals narrowing participation.">
+  <text x="260" y="16" text-anchor="middle" class="mono" font-size="10" font-weight="700">INDEX: new highs</text>
+  <polyline points="30,100 110,85 190,70 270,55 350,42 430,32 500,26" fill="none" stroke="var(--bull)" stroke-width="2.5"/>
+  <text x="260" y="138" text-anchor="middle" class="mono" font-size="10" font-weight="700">ADVANCE-DECLINE LINE: fewer stocks participating</text>
+  <polyline points="30,215 110,195 190,175 250,168 310,176 380,190 440,200 500,208" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
+  <text x="250" y="160" text-anchor="middle" class="mono" font-size="9">peaks early</text>
+  <text x="260" y="234" text-anchor="middle" class="mono" font-size="9">index up, breadth down = narrowing rally (a caution, not a timer)</text>
+</svg>
+        <figcaption>The index prints higher highs while the A/D line peaks earlier and rolls over. Fewer stocks are carrying the move &mdash; a narrow rally.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>If only three kids in a class of thirty are doing well, the class average can still look good. Breadth checks how many kids are actually passing.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Kung tatlong bata lang sa tatlumpu ang magaling, maganda pa rin ang average ng klase. Sinusuri ng breadth kung ilan talaga ang pumapasa.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Narrow breadth can last months. Treat it as a reason to be pickier, not as an instruction to short.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="138" data-title="Reading a Cash Flow Statement">
+      <div class="page-inner">
+        <section id="cashflow">
+      <div class="section-head"><span class="num">137</span><h2>Reading a Cash Flow Statement</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="cashflow"><span>mark read</span></label></div>
+      <p class="deck">Profit is an accounting opinion; cash is a fact. The cash flow statement shows whether a company&rsquo;s earnings turn into actual money.</p>
+
+      <p>The <b>cash flow statement</b> is the third core financial statement beside the income statement (Section 91) and balance sheet (Section 92). It reconciles profit with the change in cash and splits it into three parts: <b>operating</b> (cash from running the business), <b>investing</b> (buying or selling equipment, property, other businesses and securities), and <b>financing</b> (borrowing, repaying debt, issuing shares, buybacks and dividends, Section 74).</p>
+
+      <p>Why it matters: net income includes accounting estimates and timing (revenue booked before it&rsquo;s collected, costs spread over years). Cash from operations is harder to flatter. A healthy company usually converts earnings into operating cash flow over time. <b>Free cash flow (FCF)</b> = operating cash flow minus capital expenditures &mdash; the cash left to pay down debt, return to shareholders or reinvest. Growing FCF is a strong quality signal; positive earnings with shrinking or negative operating cash flow is a red flag worth investigating.</p>
+
+      <p>Read the pieces together: heavy investing outflows can mean growth spending, not weakness; financing inflows that fund losses mean the company is relying on outside capital and may dilute holders. Compare across several years, not one quarter, and against peers in the same industry. This is investing-side analysis (Section 60, 64), useful for building a watchlist; it does not replace price structure for timing. The numbers below are illustrative, not from any real company.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Illustrative line</th><th>Year 1</th><th>Year 2</th><th>Read</th></tr></thead><tbody>
+<tr><td>Net income</td><td class="mono">$100M</td><td class="mono">$120M</td><td>Rising</td></tr>
+<tr><td>Cash from operations</td><td class="mono">$110M</td><td class="mono">$70M</td><td>Falling &mdash; why?</td></tr>
+<tr><td>Capital expenditures</td><td class="mono">$40M</td><td class="mono">$45M</td><td>Steady</td></tr>
+<tr><td><b>Free cash flow</b></td><td class="mono">$70M</td><td class="mono">$25M</td><td>Weakening despite higher profit</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Profit is the score you tell your friends; cash is the money actually in your pocket. A shop can &ldquo;sell&rdquo; a lot on credit and still not have enough cash to pay rent.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang profit ay ang score na ikinukuwento mo; ang cash ay ang perang talagang nasa bulsa mo. Maaaring maraming &ldquo;benta&rdquo; ang tindahan pero pautang pala, kaya walang pambayad sa renta.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>The most useful single habit: whenever net income rises, check whether operating cash flow rose with it. If not, find out why before you trust the story.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="139" data-title="Dollar-Cost Averaging vs. Lump Sum">
+      <div class="page-inner">
+        <section id="dca">
+      <div class="section-head"><span class="num">138</span><h2>Dollar-Cost Averaging vs. Lump Sum</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="dca"><span>mark read</span></label></div>
+      <p class="deck">Should you invest a pile of money all at once or in steady slices? The honest answer is a trade-off between expected return and regret.</p>
+
+      <p><b>Dollar-cost averaging (DCA)</b> means investing a fixed amount at regular intervals &mdash; say $100 every month &mdash; regardless of price. When prices are low you buy more units; when high, fewer. Over time your average cost per unit sits below the simple average of the prices you paid, as the example shows: 55 units for $400 is about $7.27 each, versus an average price of $7.75.</p>
+
+      <p>The trade-off: markets tend to rise over long periods, so money waiting on the sideline to be invested spends time out of the market. Studies of historical US and other markets, often cited from Vanguard research, found lump-sum investing came out ahead roughly two-thirds of the time for that reason. DCA&rsquo;s advantage is behavioral: it spreads the risk of putting everything in right before a drop, removes the pressure to time an entry, and fits how most people actually earn &mdash; in paychecks.</p>
+
+      <p>Limits: DCA does not make a bad asset good, does not beat a falling market, and costs more if each purchase carries fees (Section 85). It is an <b>investing</b> tool (Section 64), not a trading entry method. Combined with compounding (Section 94), a regular plan into a diversified fund (Section 52, 88) is a boring but effective default. Applied to volatile assets like crypto, the same math holds, but the risk of a permanent loss (Section 122) is also bigger, so size what you invest to what you could lose.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Month</th><th>Price</th><th>Invested</th><th>Units bought</th></tr></thead><tbody>
+<tr><td class="mono">1</td><td class="mono">$10</td><td class="mono">$100</td><td class="mono">10.0</td></tr>
+<tr><td class="mono">2</td><td class="mono">$8</td><td class="mono">$100</td><td class="mono">12.5</td></tr>
+<tr><td class="mono">3</td><td class="mono">$5</td><td class="mono">$100</td><td class="mono">20.0</td></tr>
+<tr><td class="mono">4</td><td class="mono">$8</td><td class="mono">$100</td><td class="mono">12.5</td></tr>
+<tr><td><b>Total</b></td><td class="mono">avg price $7.75</td><td class="mono">$400</td><td class="mono">55.0 &rarr; avg cost $7.27</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Buying a little each week is like filling a bucket with a cup instead of dumping a whole tub at once. You might fill it a bit slower, but you won&rsquo;t spill it all if you trip.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang paunti-unting pagbili ay parang pagpuno ng timba gamit ang tasa sa halip na isang buong batya nang sabay. Medyo mas matagal, pero hindi ka matatapon ang lahat kung madapa ka.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Pick the plan that you will actually stick with through a falling market. The mathematically better plan you abandon in a panic is the worse plan.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="140" data-title="Algorithmic Trading & Bots">
+      <div class="page-inner">
+        <section id="algotrading">
+      <div class="section-head"><span class="num">139</span><h2>Algorithmic Trading &amp; Bots</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="algotrading"><span>mark read</span></label></div>
+      <p class="deck">A bot never gets scared or greedy &mdash; and it will run a bug at full speed. Automation magnifies whatever is inside it.</p>
+
+      <p><b>Algorithmic trading</b> means rules executed by software. It spans several very different things: <i>execution algorithms</i> that slice large orders (TWAP, VWAP &mdash; Section 19) to limit price impact; <i>market-making and high-frequency</i> firms (Section 45) that post quotes and trade on tiny edges and speed; <i>systematic strategies</i> that follow tested rules (Section 115); and <i>retail bots</i> such as grid, DCA or signal-following bots on crypto exchanges and brokers.</p>
+
+      <p>The appeal is discipline: no hesitation, no revenge trading (Section 99), 24-hour attention, and perfectly consistent rules. The risks are just as real. A bot executes a <b>bug</b> as faithfully as a good idea: in 2012 Knight Capital lost roughly $440 million in under an hour because of a faulty software deployment. It also executes an <b>overfit</b> strategy (Section 86) that looked brilliant in backtests, and it&rsquo;s exposed to exchange outages, API changes, and slippage and costs (Sections 56, 85) the simulation ignored.</p>
+
+      <p>If you automate, build the safety first: a hard cap on position size and daily loss (Section 63), a <b>kill switch</b> you can hit from your phone, logging of every order, alerts on unexpected behavior, and weeks of paper trading before live money. Start tiny. And treat marketing for &ldquo;AI trading bots&rdquo; promising guaranteed or fixed returns as a red flag (Section 122) &mdash; no one can guarantee returns, and the product is usually the scam. This is educational, not a recommendation to use any bot or service.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A robot that follows your recipe will cook the same dish perfectly every time &mdash; including when the recipe says a cup of salt instead of a teaspoon.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang robot na sumusunod sa recipe mo ay luluto nang tama palagi &mdash; kahit na ang recipe ay nagsasabing isang tasa ng asin sa halip na isang kutsarita.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Before any bot trades real money, you should be able to explain in one sentence what it does, when it stops, and what the worst loss it can take in a day is.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="141" data-title="Volatility-Adjusted Position Sizing">
+      <div class="page-inner">
+        <section id="atrsizing">
+      <div class="section-head"><span class="num">140</span><h2>Volatility-Adjusted Position Sizing</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="atrsizing"><span>mark read</span></label></div>
+      <p class="deck">The same 1% risk should buy fewer shares in a wild market and more in a quiet one. ATR lets the market set the stop distance, and the stop distance sets your size.</p>
+
+      <p>Section 17 sizes a position from your risk amount and stop distance; Section 33 introduced ATR as a measure of typical movement. Combine them: set the stop at a multiple of ATR (commonly 1.5&ndash;3&times;, as in Section 35), then <b>position size = dollar risk &divide; stop distance</b>. A volatile instrument gets a wider stop and therefore a smaller size; a calm one gets a tighter stop and a larger size. The dollar risk per trade stays the same either way &mdash; that is the point.</p>
+
+      <p>Example: $10,000 account, 1% risk = $100. Stock A has ATR $2; with a 2&times;ATR stop the stop is $4 away, so size = 100 &divide; 4 = 25 shares. Stock B has ATR $4: the stop is $8 away, so size = 100 &divide; 8 = 12.5 shares (12). If you used a fixed 25 shares on both, Stock B would risk about $200 &mdash; double &mdash; on the same &ldquo;1% rule.&rdquo; You can run these numbers in the calculator in Section 17 by entering the ATR-based stop price.</p>
+
+      <p>Cautions: ATR is backward-looking, so it understates risk right before a volatility spike; a stop sized to ATR can still be jumped by a gap (Section 134), and a very wide ATR stop may make the trade&rsquo;s R:R (Section 36) unattractive, in which case the right move is to skip it. Also add up risk across positions (Section 62) &mdash; volatility sizing makes each trade equal, not the whole book safe.</p>
+
+      <div class="tablewrap"><table><thead><tr><th></th><th>Stock A</th><th>Stock B</th></tr></thead><tbody>
+<tr><td>Risk per trade (1% of $10k)</td><td class="mono">$100</td><td class="mono">$100</td></tr>
+<tr><td>ATR</td><td class="mono">$2</td><td class="mono">$4</td></tr>
+<tr><td>Stop distance (2&times; ATR)</td><td class="mono">$4</td><td class="mono">$8</td></tr>
+<tr><td><b>Position size</b></td><td class="mono">25 shares</td><td class="mono">12 shares</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Walking a dog on a short leash in a crowd and a long leash in an empty field: you adjust how much room to give based on how wild things are, so you never lose the same amount of control.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang tali ng aso: maikli sa mataong lugar, mahaba sa bakanteng bukid. Inaayos mo ang luwag batay sa gulo ng paligid.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Rounding down matters: always round the share count down, never up, so your real risk stays at or below your limit.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="142" data-title="The Pullback Entry Playbook">
+      <div class="page-inner">
+        <section id="pullbackplaybook">
+      <div class="section-head"><span class="num">141</span><h2>The Pullback Entry Playbook</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="pullbackplaybook"><span>mark read</span></label></div>
+      <p class="deck">Buying strength feels exciting; buying a controlled dip inside an uptrend usually gives a better price and a closer stop. Here is a complete, repeatable version.</p>
+
+      <p>A <b>pullback entry</b> joins an existing trend after a temporary counter-move instead of chasing the breakout. The playbook has five steps. <b>1. Trend:</b> confirm a higher-timeframe uptrend with higher highs and higher lows (Sections 3 and 13), or a clear regime (Section 142). <b>2. Zone:</b> mark where a healthy dip would likely stop &mdash; prior breakout level, support or demand zone (Sections 4, 126), a rising moving average (Section 10) or a Fibonacci retracement (Section 11).</p>
+
+      <p><b>3. Trigger:</b> wait for evidence the dip is ending: a rejection candle (Section 2), a higher low, a momentum turn (Section 12) or hidden bullish divergence (Section 106). Don&rsquo;t buy just because price touched the zone. <b>4. Stop:</b> beyond the pullback&rsquo;s low or the invalidating structure (Section 35), sized with Section 17. <b>5. Target:</b> at least the prior high first (Section 36), then trail the rest if the trend resumes. If R:R to the prior high is under about 1.5, skip.</p>
+
+      <p>What invalidates it: a pullback that breaks the prior higher low (structure has changed), that happens on heavier volume than the advance (Section 7), or that grinds back too slowly with no reaction. For short setups, mirror everything. Pullback trading is not immune to failure &mdash; sometimes the dip becomes the reversal &mdash; which is why the stop and the checklist (Section 24) matter more than the pattern. Log each trade in your journal (Section 26) and judge it by the process, not the one outcome.</p>
+
+      <figure>
+        <svg viewBox="0 0 520 230" role="img" aria-label="Pullback entry in an uptrend: price makes a higher high, pulls back to a support zone and prior breakout area, shows a rejection candle, and the trader enters with a stop beneath the pullback low and a target at the prior high.">
+  <rect x="190" y="120" width="140" height="28" fill="var(--bull)" opacity="0.18"/>
+  <text x="260" y="168" text-anchor="middle" class="mono" font-size="9" fill="var(--bull)" font-weight="700">pullback zone</text>
+  <polyline points="30,190 80,150 120,160 170,100 210,60 250,90 290,125 330,115 370,80 420,50 470,30" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <line x1="210" y1="60" x2="470" y2="60" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3"/>
+  <text x="440" y="54" text-anchor="middle" class="mono" font-size="9">target: prior high</text>
+  <circle cx="330" cy="115" r="5" fill="var(--bull)"/>
+  <text x="330" y="100" text-anchor="middle" class="mono" font-size="9" fill="var(--bull)" font-weight="700">entry</text>
+  <line x1="290" y1="135" x2="400" y2="135" stroke="var(--bear)" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="380" y="150" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">stop below pullback low</text>
+</svg>
+        <figcaption>Uptrend, pullback into a prepared zone, trigger on the turn, stop beneath the pullback low, first target at the prior high.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>When a ball bounces up a staircase, it climbs, drops back a step, then climbs again. The pullback is catching it just after it drops back, when it is about to climb.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang bolang tumatalbog pataas ng hagdan: aakyat, babalik ng isang baitang, aakyat ulit. Ang pullback ay ang paghuli sa bola pagkatapos nitong bumaba, bago ito muling umakyat.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Write the zone, trigger, stop and target before you enter. If any of the four is blank, you are guessing.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="143" data-title="Market Regimes: Trending, Ranging & Volatile">
+      <div class="page-inner">
+        <section id="regimes">
+      <div class="section-head"><span class="num">142</span><h2>Market Regimes: Trending, Ranging &amp; Volatile</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="regimes"><span>mark read</span></label></div>
+      <p class="deck">Most strategies work in one kind of market and bleed in another. Identifying the regime first keeps you from using the wrong tool.</p>
+
+      <p>A <b>market regime</b> is the broad character of price behavior over a period. A useful simple split: <b>trending</b> (sustained directional moves, pullbacks stay shallow), <b>ranging</b> (price oscillates between support and resistance without progress), and <b>high-volatility / low-volatility</b> states that cut across both &mdash; a fast, whippy range is a different animal from a quiet one. Section 115 already showed that trend-following and mean-reversion thrive in different regimes; this lesson is about telling which one you are in.</p>
+
+      <p>Simple, imperfect tools: <b>ADX</b> (Section 107) above roughly 25 hints at a trend, below ~20 at a range; the slope and spacing of moving averages (Section 10); <b>Bollinger Band width</b> and ATR (Section 33) for volatility; whether price is making clean higher highs and lows (Section 3) or repeatedly failing at the same levels (Section 127); and breadth and VIX (Sections 136, 129) for the broad market. No single tool is the regime &mdash; you&rsquo;re forming a judgment.</p>
+
+      <p>How to use it: match setups to regime (pullbacks and breakouts when trending, fades at range edges when ranging, smaller size and wider stops when volatility is high), and use a regime filter as a rule &mdash; for example, &ldquo;no breakout trades when ADX is below 20.&rdquo; Two warnings: regimes shift without notice, and the label is always clearer in hindsight; and don&rsquo;t flip strategy after two or three losing trades, since normal variance (Section 21) can look like a regime change. Review a few dozen trades before concluding anything (Section 39).</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Regime</th><th>Tends to look like</th><th>Setups that fit</th></tr></thead><tbody>
+<tr><td>Trending</td><td>HH/HL or LH/LL, shallow dips, ADX rising</td><td>Pullbacks, breakouts, trailing stops</td></tr>
+<tr><td>Ranging</td><td>Repeated rejection at the same levels, flat MAs</td><td>Fades at range edges, smaller targets</td></tr>
+<tr><td>High volatility</td><td>Large ATR, gaps, long wicks</td><td>Smaller size, wider stops, or sit out</td></tr>
+<tr><td>Low volatility</td><td>Tight ranges, narrow bands</td><td>Prepare for expansion; patience</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>You wouldn&rsquo;t wear flip-flops to a hike or a raincoat to the beach. The regime is the weather &mdash; check it before you pick the gear.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Hindi ka magsusuot ng tsinelas sa pag-akyat ng bundok o kapote sa dalampasigan. Ang regime ang panahon &mdash; tingnan muna bago pumili ng gamit.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Write one line in your pre-market routine (Section 65): &ldquo;Regime today: trending / ranging / volatile &mdash; so I will only trade ___.&rdquo;</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="144" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">134</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">143</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -5369,6 +5661,17 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
         <div><dt>CEX / DEX</dt><dd>Centralized exchange (company holds your funds and runs an order book) versus decentralized exchange (smart-contract trading from your own wallet).</dd></div>
         <div><dt>MEV (Maximal Extractable Value)</dt><dd>Profit that bots or validators extract by reordering or inserting transactions around yours on a blockchain.</dd></div>
         <div><dt>HALT</dt><dd>A pre-session check: am I Hungry, Angry, Lonely or Tired? If yes, trade smaller or not at all.</dd></div>
+              <div><dt>Gap-and-Go</dt><dd>A gap at the open backed by a catalyst and strong volume that holds and extends, as opposed to a gap fill.</dd></div>
+        <div><dt>Opening Range (OR)</dt><dd>The high and low of the first N minutes of a session (often 5&ndash;60). Breakouts of it are a classic rule-based setup.</dd></div>
+        <div><dt>Advance-Decline Line</dt><dd>A running total of advancing minus declining stocks, used to judge how broad a market move is.</dd></div>
+        <div><dt>Market Breadth</dt><dd>How many securities participate in a move, measured by A/D line, % above moving averages, new highs/lows and up/down volume.</dd></div>
+        <div><dt>Free Cash Flow (FCF)</dt><dd>Operating cash flow minus capital expenditures: cash left after running and maintaining the business.</dd></div>
+        <div><dt>DCA (Dollar-Cost Averaging)</dt><dd>Investing a fixed amount at regular intervals regardless of price.</dd></div>
+        <div><dt>Algo / Bot</dt><dd>Software that executes trading rules automatically. Amplifies both good rules and bugs.</dd></div>
+        <div><dt>Kill Switch</dt><dd>A manual or automatic control that immediately stops an automated strategy and cancels its orders.</dd></div>
+        <div><dt>Volatility-Adjusted Sizing</dt><dd>Setting position size from an ATR-based stop so each trade risks the same dollar amount.</dd></div>
+        <div><dt>Pullback Entry</dt><dd>Entering with the trend after a temporary counter-move into a prepared zone, rather than chasing the breakout.</dd></div>
+        <div><dt>Market Regime</dt><dd>The broad character of price action over a period: trending, ranging, high-volatility or low-volatility.</dd></div>
       </dl>
     </section>
       </div>
@@ -5383,7 +5686,7 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 134 read</span>
+      <span id="progressLabel" class="mono">0 / 143 read</span>
     </div>
     <div class="toc-filter-wrap">
       <input type="search" id="tocFilter" class="mono" placeholder="Filter lessons&hellip;" aria-label="Filter lessons by title">
@@ -5524,7 +5827,16 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       <li><a href="#seasonality"><span class="n mono">131</span> Seasonality</a></li>
       <li><a href="#cexdex"><span class="n mono">132</span> CEX vs DEX</a></li>
       <li><a href="#traderhealth"><span class="n mono">133</span> Trader Health</a></li>
-      <li><a href="#glossary"><span class="n mono">134</span> Glossary</a></li>
+      <li><a href="#stockgaps"><span class="n mono">134</span> Stock Gaps</a></li>
+      <li><a href="#openingrange"><span class="n mono">135</span> Opening Range Breakout</a></li>
+      <li><a href="#breadth"><span class="n mono">136</span> Market Breadth</a></li>
+      <li><a href="#cashflow"><span class="n mono">137</span> Cash Flow Statement</a></li>
+      <li><a href="#dca"><span class="n mono">138</span> DCA vs Lump Sum</a></li>
+      <li><a href="#algotrading"><span class="n mono">139</span> Algo Trading &amp; Bots</a></li>
+      <li><a href="#atrsizing"><span class="n mono">140</span> Volatility-Based Sizing</a></li>
+      <li><a href="#pullbackplaybook"><span class="n mono">141</span> Pullback Playbook</a></li>
+      <li><a href="#regimes"><span class="n mono">142</span> Market Regimes</a></li>
+      <li><a href="#glossary"><span class="n mono">143</span> Glossary</a></li>
     </ol>
   </nav>
 
