@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#181c15" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Tape Reader's Notebook">
-  <meta property="og:description" content="170 bite-sized trading lessons with plain-English and Taglish explainers, a risk calculator, journal and quiz.">
+  <meta property="og:description" content="179 bite-sized trading lessons with plain-English and Taglish explainers, a risk calculator, journal and quiz.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c231f'/%3E%3Cpath d='M9 22V14M16 24V8M23 20V12' stroke='%23d9a545' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Archivo:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="/src/styles/main.css">
@@ -6251,10 +6251,267 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="171" data-title="Glossary">
+    <div class="page" data-page="171" data-title="Options Exercise, Assignment & Expiration Risk">
+      <div class="page-inner">
+        <section id="optionsassignment">
+      <div class="section-head"><span class="num">170</span><h2>Options Exercise, Assignment &amp; Expiration Risk</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="optionsassignment"><span>mark read</span></label></div>
+      <p class="deck">Buying an option has limited risk. Selling one comes with an obligation that can arrive at inconvenient moments. Know the mechanics before you hold anything near expiry.</p>
+
+      <p>The holder of an option has the <b>right</b> to <b>exercise</b>; the seller (writer) has the <b>obligation</b> if it&rsquo;s exercised, which is called <b>assignment</b>. A standard US equity option controls 100 shares (Section 43). <b>American-style</b> options, which include most stock and ETF options, can be exercised any time up to expiration; <b>European-style</b> options, which include many index options, can be exercised only at expiry. When a stock option is exercised, shares actually change hands (<b>physical settlement</b>); many index options are <b>cash-settled</b> instead, paying the difference in dollars.</p>
+
+      <p><b>Early assignment</b> is the surprise to watch for. It is more likely with short in-the-money options, particularly short calls just before an ex-dividend date (Section 74) and deep in-the-money short puts. In a spread (Section 111) you can be assigned on the short leg while the long leg remains, leaving a stock position you didn&rsquo;t intend. At expiration, options even slightly in the money are typically exercised automatically, so a long call that is $0.01 in the money can turn into a 100-share purchase you may not have the cash to hold.</p>
+
+      <p><b>Pin risk</b> is the uncertainty when the stock closes very near a strike: you won&rsquo;t know until after the close whether a short option will be assigned, and the stock can move in the after-hours market. Practical rules: close or roll positions before expiration unless you truly intend to own or deliver the shares; know your account&rsquo;s buying power and what happens if assigned (Sections 66, 147); keep an eye on dividend dates; prefer cash-settled products if you want to avoid delivery; and be aware that expiration days, especially triple witching, bring extra volume and odd price action (Section 156). Check your broker&rsquo;s specific policies, since they differ.</p>
+
+      <div class="tablewrap"><table><thead><tr><th></th><th>American style</th><th>European style</th></tr></thead><tbody>
+<tr><td>Exercisable</td><td>Any time until expiry</td><td>Only at expiry</td></tr>
+<tr><td>Typical products</td><td>Stock and ETF options</td><td>Many index options</td></tr>
+<tr><td>Early assignment risk</td><td>Yes</td><td>No</td></tr>
+<tr><td>Settlement</td><td>Usually physical shares</td><td>Often cash</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Selling an option is like promising to sell your bike to whoever shows up with the right amount. If you promised, you must hand it over even if you wanted to keep riding it that day.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang pagbebenta ng option ay parang pangakong ibebenta mo ang bisikleta mo sa sinumang magdala ng tamang halaga. Kapag nangako ka, kailangan mo itong ibigay kahit gusto mo pang gamitin ngayong araw.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>If you are not sure what happens to a position at expiration, close it the day before. Few things are worth an accidental 100-share position.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="172" data-title="Value at Risk & Stress Testing">
+      <div class="page-inner">
+        <section id="valueatrisk">
+      <div class="section-head"><span class="num">171</span><h2>Value at Risk &amp; Stress Testing</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="valueatrisk"><span>mark read</span></label></div>
+      <p class="deck">Banks use one number to summarize how much they could lose on a normal bad day. It is useful &mdash; and famously says nothing about the really bad days.</p>
+
+      <p><b>Value at Risk (VaR)</b> states a loss level you do not expect to exceed over a set horizon at a set confidence. A one-day 95% VaR of $330 means that on 95 out of 100 days, the loss should be less than $330; on the other roughly 5 days (about one in twenty) it will be <i>at least that much</i>. A simple version assumes returns follow a bell curve: VaR &asymp; z &times; daily volatility &times; position value, where z is about 1.65 for 95% and 2.33 for 99%. For a $10,000 position with 2% daily volatility, that is 1.65 &times; 2% &times; $10,000 &asymp; $330 (95%) or $466 (99%).</p>
+
+      <p>The weakness is built in: VaR describes where the bad tail <i>starts</i>, not how deep it goes. It relies on past data, assumes a distribution that usually understates fat tails (Section 119), and treats correlations as stable when they spike in a crisis (Section 151). Risk models based on VaR failed to warn firms before 2008. A complementary number is <b>expected shortfall</b> (also called CVaR), the <i>average</i> loss on the days beyond the VaR line, which at least looks inside the tail.</p>
+
+      <p><b>Stress testing</b> fills the gap with scenarios instead of statistics: &ldquo;What if my positions gap down 15% overnight? What if correlations all go to one? What if my exchange freezes withdrawals?&rdquo; A <i>reverse stress test</i> asks the opposite: what would have to happen for me to lose a set amount, such as 25% of the account? For an individual trader, the practical version is simple: add up the loss across all open positions in a bad case (Section 62), assume stops slip (Section 56), and check it against your drawdown limit (Section 63). If the answer scares you, reduce the size.</p>
+
+      <figure>
+        <svg viewBox="0 0 520 230" role="img" aria-label="Distribution of daily returns shaped like a bell curve. A vertical line marks the 95 percent Value at Risk, with the worst 5 percent of outcomes shaded in the left tail. Value at Risk says nothing about how bad losses inside the shaded area can be.">
+  <polygon points="40.0,190 40.0,189.9 51.0,189.9 62.0,189.8 73.0,189.5 84.0,189.1 95.0,188.3 106.0,187.0 117.0,184.9 128.0,181.6 139.0,176.7 150.0,169.7 161.0,160.3 169.5,151.2 169.5,190" fill="var(--bear)" opacity="0.35"/>
+  <polyline points="40.0,189.9 51.0,189.9 62.0,189.8 73.0,189.5 84.0,189.1 95.0,188.3 106.0,187.0 117.0,184.9 128.0,181.6 139.0,176.7 150.0,169.7 161.0,160.3 172.0,148.3 183.0,133.7 194.0,117.0 205.0,99.0 216.0,81.1 227.0,64.7 238.0,51.5 249.0,43.0 260.0,40.0 271.0,43.0 282.0,51.5 293.0,64.7 304.0,81.1 315.0,99.0 326.0,117.0 337.0,133.7 348.0,148.3 359.0,160.3 370.0,169.7 381.0,176.7 392.0,181.6 403.0,184.9 414.0,187.0 425.0,188.3 436.0,189.1 447.0,189.5 458.0,189.8 469.0,189.9 480.0,189.9" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <line x1="20" y1="190" x2="500" y2="190" stroke="currentColor" stroke-width="1"/>
+  <line x1="169.5" y1="60" x2="169.5" y2="190" stroke="var(--bear)" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="169.5" y="52" text-anchor="middle" class="mono" font-size="10" fill="var(--bear)" font-weight="700">95% VaR</text>
+  <text x="80" y="160" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">worst 5% of days:</text><text x="80" y="173" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">VaR is silent on how bad</text>
+  <text x="260" y="212" text-anchor="middle" class="mono" font-size="9">95% of days: loss smaller than VaR</text>
+</svg>
+        <figcaption>The shaded left tail is the worst 5% of days. VaR marks where it starts; it doesn&rsquo;t say how far the tail extends &mdash; which is where the real damage happens.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>VaR is like saying &ldquo;it rarely rains harder than this on a normal day.&rdquo; Useful &mdash; but it does not tell you how big the biggest storm of the year can be.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang VaR ay parang sinasabing &ldquo;bihirang lumakas ang ulan nang higit dito sa karaniwang araw.&rdquo; Kapaki-pakinabang, pero hindi nito sinasabi kung gaano kalaki ang pinakamalakas na bagyo sa isang taon.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Whenever someone quotes a risk number, ask what happens beyond it. The answer is the part that matters.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="173" data-title="International Markets, ADRs & Currency Risk">
+      <div class="page-inner">
+        <section id="international">
+      <div class="section-head"><span class="num">172</span><h2>International Markets, ADRs &amp; Currency Risk</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="international"><span>mark read</span></label></div>
+      <p class="deck">Investing abroad adds a second bet that most people forget: the exchange rate. Your return is the stock&rsquo;s move combined with the currency&rsquo;s.</p>
+
+      <p>You can get foreign exposure in three common ways: buy <b>shares directly</b> on a foreign exchange (needs a broker with that access); buy an <b>ADR</b> (American Depositary Receipt), a US-listed certificate representing shares of a foreign company, which trades in dollars during US hours; or buy an <b>international ETF or fund</b> (Section 52). Markets are often grouped as <i>developed</i> (such as the US, Japan, most of Western Europe) and <i>emerging</i> (such as India, Brazil, much of Southeast Asia), with &ldquo;frontier&rdquo; markets smaller still. Classification varies by index provider.</p>
+
+      <p><b>Currency risk</b> is the key addition. A foreign stock&rsquo;s return in your home currency is roughly the local return combined with the currency change. If a stock gains 10% in its local currency but that currency falls 8% against the dollar, a US investor ends up with 1.10 &times; 0.92 &asymp; +1.2%. The reverse can help you. Drivers of currency moves are covered in Sections 47, 53 and 78. Some funds hedge currency, at a cost, others don&rsquo;t, so check which one you hold (Section 173).</p>
+
+      <p>Emerging markets can offer faster growth and diversification, but extra risks: political and regulatory shifts, weaker investor protection and disclosure (Section 77), capital controls, lower liquidity and wider spreads (Section 56), larger currency swings, and withholding taxes on dividends. Trading hours, holidays and settlement differ too (Section 156), and correlations may spike in a global sell-off (Section 151). Educational only; match exposure to what you can tolerate losing, and diversify rather than concentrating in a single country.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Illustrative case</th><th>Local stock</th><th>Currency vs USD</th><th>Result to a US investor</th></tr></thead><tbody>
+<tr><td>Currency falls</td><td class="mono">+10%</td><td class="mono">&minus;8%</td><td class="mono">&asymp; +1.2%</td></tr>
+<tr><td>Currency rises</td><td class="mono">+10%</td><td class="mono">+8%</td><td class="mono">&asymp; +18.8%</td></tr>
+<tr><td>Both against you</td><td class="mono">&minus;10%</td><td class="mono">&minus;8%</td><td class="mono">&asymp; &minus;17.2%</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Buying a toy overseas means your savings depend on both the toy&rsquo;s price and how much your money is worth over there on the day you buy it.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Kapag bumili ka ng laruan sa ibang bansa, nakadepende ang ipon mo sa presyo ng laruan at sa halaga ng pera mo roon sa araw ng pagbili.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Before buying any foreign stock or fund, ask: in what currency does it earn, in what currency am I measured, and is the currency hedged?</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="174" data-title="Hedging Basics: Insurance, Offsets & Their Costs">
+      <div class="page-inner">
+        <section id="hedging">
+      <div class="section-head"><span class="num">173</span><h2>Hedging Basics: Insurance, Offsets &amp; Their Costs</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="hedging"><span>mark read</span></label></div>
+      <p class="deck">A hedge is a position that moves against another so that a loss in one is partly offset by the other. It reduces risk &mdash; and it always costs something.</p>
+
+      <p>Common hedges: a <b>protective put</b> (buying a put against shares you own; Sections 43, 111) works like insurance, with the premium as the cost; <b>short index futures</b> or an inverse product offsets a portfolio&rsquo;s market exposure; a <b>pairs</b> position (Section 154) offsets sector or market risk; and a <b>currency hedge</b> offsets exchange-rate risk (Section 172). For a trader, the simplest &ldquo;hedge&rdquo; is just a smaller size or a stop (Section 35), which is often cheaper and clearer.</p>
+
+      <p><b>Beta hedging</b> sizes the offset to your portfolio&rsquo;s market sensitivity (Section 50): hedge value &asymp; portfolio value &times; beta. A $50,000 portfolio with a beta of 1.2 behaves like $60,000 of market exposure. If a Micro E-mini S&amp;P futures contract controls $30,000 of notional at the current index level (Section 169; an assumed round number), two short contracts offset roughly all of that market risk. What remains is the portfolio&rsquo;s own &ldquo;idiosyncratic&rdquo; risk, which a hedge does not touch.</p>
+
+      <p>The costs are real: option premium, financing, commissions, tracking error (<b>basis risk</b>, when the hedge doesn&rsquo;t move one-for-one), and the lost upside while hedged. Hedging also adds complexity: over-hedging flips you net short, a hedge left on after the risk is gone turns into a separate bet, and in a crisis the correlations you counted on can shift (Section 151). Decide <i>what risk</i> you&rsquo;re hedging, for how long, at what cost, and how you&rsquo;ll remove it. Don&rsquo;t hedge just to avoid ever feeling a loss, since that guarantees you give up expected return.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Hedge</th><th>Protects against</th><th>Main cost / drawback</th></tr></thead><tbody>
+<tr><td>Protective put</td><td>Large drop in a holding</td><td>Premium; time decay</td></tr>
+<tr><td>Short index futures</td><td>Broad market decline</td><td>Gives up market gains; margin; basis risk</td></tr>
+<tr><td>Pairs / offset position</td><td>Sector or factor risk</td><td>Two legs; relationship can break</td></tr>
+<tr><td>Currency hedge</td><td>Exchange-rate moves</td><td>Hedging cost; may reduce gains</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Insurance on a bike costs money every month you do not crash it. You pay for peace of mind, not for profit.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang insurance sa bisikleta ay may bayad kada buwan kahit hindi ka naaksidente. Binabayaran mo ang kapanatagan, hindi ang kita.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Always write down the exit for a hedge when you open it. Forgotten hedges turn into surprise positions.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="175" data-title="Memecoins, Airdrops & Token Launch Mania">
+      <div class="page-inner">
+        <section id="memecoins">
+      <div class="section-head"><span class="num">174</span><h2>Memecoins, Airdrops &amp; Token Launch Mania</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="memecoins"><span>mark read</span></label></div>
+      <p class="deck">Some tokens have no product, no cash flow and no purpose beyond attention. Trading them is a different game with its own traps.</p>
+
+      <p>A <b>memecoin</b> is a token whose value comes mostly from attention and social momentum, not from revenue or a working product. Launch platforms make creating one take minutes, so thousands appear daily. Most go to near zero (the exact share is debated, but it is the large majority). Typical dynamics: tiny liquidity, huge percentage swings, price set by a few large wallets, and cycles of hype and abandonment. Valuation tools from Sections 60 and 98 mostly do not apply; what matters is who holds it and who has to sell.</p>
+
+      <p>Common traps: <b>rug pulls</b> where creators drain liquidity or dump supply; <b>honeypots</b> that let you buy but not sell; <b>insider and sniper wallets</b> bundled to buy at launch and sell into followers; <b>wash trading</b> to fake volume; and <b>impersonator tokens</b> with the same name as a real one (Section 122). Check holder concentration, whether liquidity is locked, and the contract address from an official source, and remember that DEX trading adds slippage and MEV risk (Sections 132, 145).</p>
+
+      <p>An <b>airdrop</b> is a free token distribution, often to early users, as a marketing or decentralization tool. Real ones exist, but fake airdrops are among the most common wallet-drainer scams: a site asks you to connect a wallet and approve something. Never connect your main wallet or sign unfamiliar approvals (Section 81). New tokens with a small circulating supply and a huge fully diluted value also face unlocks that create selling pressure (Section 98). Airdropped tokens can be taxable income in many places. Treat memecoins as speculation you could lose in full, size it that way (Sections 17, 144), and don&rsquo;t mistake a lucky win for a skill (Section 168). Educational, not advice.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Memecoins are like fashion trends: whatever everyone wants today can be forgotten tomorrow, and someone is always left holding last season&rsquo;s item.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang memecoin ay parang uso sa pananamit: ang gusto ng lahat ngayon ay maaaring kalimutan bukas, at laging may maiiwang may hawak ng lumang uso.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>If you cannot explain who is on the other side of your trade and why they would sell to you, you may be the exit liquidity.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="176" data-title="Crypto Equities & Bitcoin Treasury Companies">
+      <div class="page-inner">
+        <section id="cryptoequities">
+      <div class="section-head"><span class="num">175</span><h2>Crypto Equities &amp; Bitcoin Treasury Companies</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="cryptoequities"><span>mark read</span></label></div>
+      <p class="deck">You can get crypto-linked exposure through stocks: miners, exchanges and companies that hold bitcoin on their balance sheets. They behave differently from the coin itself.</p>
+
+      <p>Several types of listed companies trade alongside crypto. <b>Miners</b> earn bitcoin by securing the network (Section 96), so their profits depend on the bitcoin price, hash rate, power costs and halvings (Section 37). <b>Exchanges and brokers</b> earn fees that rise with trading activity. <b>Bitcoin treasury companies</b> hold bitcoin on their balance sheets and often fund purchases by issuing stock or debt. Spot ETFs (Section 146) offer a cleaner way to hold the coin; these stocks add a layer of business risk.</p>
+
+      <p>For treasury companies, the share price is not simply the bitcoin price. Shares may trade at a <b>premium</b> or a <b>discount</b> to the net asset value of the bitcoin held, and that premium can swing widely with sentiment. Debt and share issuance can amplify moves but add risks: <b>dilution</b>, interest payments, and in stress the potential need to sell holdings. These stocks often show a higher beta to bitcoin (Section 50) &mdash; larger moves in both directions &mdash; and they trade only during market hours, creating gaps against 24/7 crypto (Section 134).</p>
+
+      <p>Questions to ask: What exactly does the company own, and how much debt backs it (Section 92)? How is cash flow (Section 137)? Is the premium to NAV justified or just hype? How dilutive is its financing? Does it rely on a single business line? Position sizing should reflect that the stock can fall more than bitcoin does (Sections 17, 119). Using stocks as a proxy for crypto also changes your tax and account treatment (Section 38). Educational only; not a recommendation on any company.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Owning a company that owns gold bars isn&rsquo;t the same as owning the gold. The company might be worth more or less than its gold, and it has bills to pay too.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang pagmamay-ari ng kumpanyang may hawak na gold bars ay hindi pareho ng pagmamay-ari ng ginto mismo. Maaaring mas mahal o mas mura ang kumpanya kaysa sa ginto nito, at may bayarin din ito.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>When a stock trades well above the value of its holdings, ask what you are paying for. The premium can vanish quickly.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="177" data-title="Goal Setting: Process Goals vs. Profit Goals">
+      <div class="page-inner">
+        <section id="goals">
+      <div class="section-head"><span class="num">176</span><h2>Goal Setting: Process Goals vs. Profit Goals</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="goals"><span>mark read</span></label></div>
+      <p class="deck">Aiming for a profit number feels natural and is quietly dangerous. The markets don&rsquo;t owe you the number, and chasing it breaks the rules that protect you.</p>
+
+      <p>A <b>profit goal</b> (&ldquo;make $2,000 this month&rdquo;) depends on things you don&rsquo;t control. As the deadline nears, it pushes you to force trades, raise size or skip stops (Sections 143, 144, 99). The pressure is worse if you <i>need</i> the money to cover bills. A <b>process goal</b> targets what you do control: follow the plan on at least 95% of trades, log every trade the same day, stay under the daily trade and loss limits, and review weekly. Over many trades, good process is what produces results (Section 168).</p>
+
+      <p>Useful goal types: <b>process</b> (rule adherence, journaling, review habits); <b>skill</b> (replay 100 trades of one setup, learn one new market mechanic, Section 167); <b>risk</b> (never exceed 1% risk per trade; keep drawdown under a set cap, Section 63); and <b>learning milestones</b> (complete the quiz, finish a demo sample of 100 trades, Section 58). Profit can still be tracked, but as a result to measure in R-multiples (Section 116), not a quota to chase.</p>
+
+      <p>Make goals specific, measurable and time-bound, e.g., &ldquo;This quarter I will take only A-grade setups and log every one, with a plan-adherence score above 90%.&rdquo; Review them each quarter (Section 39) and adjust, and keep your expectations realistic: consistent profitability takes a long time, and most of the first period is tuition (Sections 144, 160). If trading has to cover essential expenses, treat that as a risk problem and reduce the dependence, since it is nearly impossible to trade calmly with rent riding on each position.</p>
+
+      <div class="tablewrap"><table><thead><tr><th></th><th>Profit goal</th><th>Process goal</th></tr></thead><tbody>
+<tr><td>Example</td><td>&ldquo;Make $2,000 this month&rdquo;</td><td>&ldquo;Follow my plan on 95% of trades&rdquo;</td></tr>
+<tr><td>Under your control?</td><td>No</td><td>Yes</td></tr>
+<tr><td>Failure mode</td><td>Forced trades, bigger size, no stops</td><td>Too rigid if the plan itself is flawed</td></tr>
+<tr><td>Feedback</td><td>Noisy (luck-driven)</td><td>Clear (you either did it or didn&rsquo;t)</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A basketball player can&rsquo;t control whether the shot goes in, but can control practicing the form. Practice the form and the shots take care of themselves over a season.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Hindi kontrolado ng manlalaro ng basketball kung papasok ang tira, pero kontrolado niya ang pag-eensayo ng porma. Kapag nag-ensayo siya nang maayos, bibigay din ang resulta sa buong season.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Replace &ldquo;make X dollars&rdquo; with &ldquo;take zero trades that break my rules.&rdquo; The second one is achievable every single day.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="178" data-title="FOMC Days: Statement, Dot Plot & Press Conference">
+      <div class="page-inner">
+        <section id="fomc">
+      <div class="section-head"><span class="num">177</span><h2>FOMC Days: Statement, Dot Plot &amp; Press Conference</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="fomc"><span>mark read</span></label></div>
+      <p class="deck">A Fed meeting day has a script, and markets often move in stages. Knowing the order of events helps you avoid being whipsawed.</p>
+
+      <p>The Federal Open Market Committee (FOMC) sets US interest-rate policy (Sections 53, 84). It holds <b>eight scheduled meetings a year</b>. On decision day the <b>statement</b> is typically released at 2:00 p.m. Eastern, followed by the Chair&rsquo;s <b>press conference</b> at 2:30 p.m. Four times a year (March, June, September, December) the Fed also publishes its <b>Summary of Economic Projections</b>, including the &ldquo;dot plot&rdquo; of where each member sees rates heading. The <b>minutes</b> follow about three weeks later. In the week before a meeting there is a &ldquo;blackout&rdquo; during which officials generally don&rsquo;t comment publicly.</p>
+
+      <p>What moves markets is the <b>surprise</b> relative to expectations, not the decision itself. Rate-futures-based tools such as CME FedWatch show the odds the market has priced, so a widely expected decision may barely register (Section 164). Traders then parse the <b>change in wording</b> of the statement, the dot plot&rsquo;s path versus prior projections, and the tone of the press conference. A common pattern is a sharp first move on the statement, a reversal during the press conference, and a settled direction only later; spreads widen and stops get slipped (Section 56), and volatility measures like the VIX often fall after the uncertainty resolves (Sections 129, 161).</p>
+
+      <p>Plan, don&rsquo;t predict: know the schedule (Section 65), decide in advance whether you will be flat, reduced or normal, avoid new entries in the minutes around 2:00 and 2:30 p.m., and let the dust settle for a few candles. If you hold a position through the event, size it as if the stop will slip (Section 14). Surrounding data such as inflation and employment reports (Sections 89, 112, 157) feeds expectations, so the whole week matters. Check the Fed&rsquo;s official calendar, as dates and times can change.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>When</th><th>Event</th><th>What to watch</th></tr></thead><tbody>
+<tr><td>Week before</td><td>Blackout; data and pricing of expectations</td><td>FedWatch odds, inflation and jobs data</td></tr>
+<tr><td>2:00 p.m. ET</td><td>Statement (and decision)</td><td>Rate vs. expectations; wording changes</td></tr>
+<tr><td>2:30 p.m. ET</td><td>Press conference</td><td>Tone; guidance; reversals</td></tr>
+<tr><td>Quarterly</td><td>Projections / dot plot</td><td>Expected rate path vs. prior</td></tr>
+<tr><td>~3 weeks after</td><td>Minutes</td><td>Detail on the debate</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>On Fed day, the market is like a crowd watching a magician. Everyone reacts to the first trick, then changes their mind after the explanation.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Sa araw ng Fed, ang market ay parang madlang nanonood ng salamangkero. Lahat ay nagre-react sa unang trick, tapos nagbabago ng isip pagkatapos ng paliwanag.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>The first move after the statement is often a trap. Waiting for the press conference costs you a little and saves you a lot of whipsaws.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="179" data-title="Reading SEC Filings: 10-K, 10-Q, 8-K & Form 4">
+      <div class="page-inner">
+        <section id="secfilings">
+      <div class="section-head"><span class="num">178</span><h2>Reading SEC Filings: 10-K, 10-Q, 8-K &amp; Form 4</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="secfilings"><span>mark read</span></label></div>
+      <p class="deck">The company&rsquo;s own legal filings are free, official and more reliable than any headline or tweet. A few forms tell you most of what you need.</p>
+
+      <p>US public companies file with the SEC, and anyone can read the documents free on the SEC&rsquo;s EDGAR database. The core ones: the <b>10-K</b> (annual report, audited, with the business description, <i>risk factors</i>, management&rsquo;s discussion and full financial statements); the <b>10-Q</b> (quarterly, unaudited); and the <b>8-K</b> (current report for material events, such as earnings releases, executive changes, deals and bankruptcies, generally filed within four business days). The financial statements behind them are covered in Sections 91, 92 and 137.</p>
+
+      <p>Ownership filings: <b>Form 4</b> reports trades by company insiders (officers, directors, major holders), generally due within two business days; <b>Schedule 13D/G</b> reports stakes above 5%; and <b>13F</b> filings list the holdings of large institutional managers each quarter, filed up to 45 days after quarter end, so they are <i>stale</i> by the time you read them. IPO documents (the S-1) are covered in Section 51. These filings are where you check claims made by promoters (Section 153): does the company really have those revenues, customers or cash?</p>
+
+      <p>What to look for: in the 10-K, read the <b>risk factors</b>, the <b>management discussion</b> and the <b>footnotes</b> (debt terms, lawsuits, customer concentration); look for &ldquo;going concern&rdquo; doubts and sudden changes in auditors or accounting methods; watch debt maturities against cash (Section 92). On Form 4, insider <i>buying</i> with their own money tends to be more informative than selling, since selling can be planned for taxes or diversification. Don&rsquo;t trade off one filing; combine with price action and your plan (Section 30). This is research education, not investment advice.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Form</th><th>What it is</th><th>Timing</th></tr></thead><tbody>
+<tr><td>10-K</td><td>Annual report (audited)</td><td>Yearly</td></tr>
+<tr><td>10-Q</td><td>Quarterly report (unaudited)</td><td>Quarterly</td></tr>
+<tr><td>8-K</td><td>Material events (earnings, deals, executive changes)</td><td>Within ~4 business days</td></tr>
+<tr><td>Form 4</td><td>Insider transactions</td><td>Within ~2 business days</td></tr>
+<tr><td>13F</td><td>Large institutional holdings</td><td>Quarterly, up to 45 days late</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A filing is the company&rsquo;s official homework, turned in to the teacher. Social posts about the company are the gossip in the hallway.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang filing ay opisyal na takdang-aralin ng kumpanya na ipinasa sa guro. Ang mga post sa social media tungkol dito ay tsismis lang sa pasilyo.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>When a claim sounds too good, open the 10-K and search for the exact phrase. The risk-factors section often says the opposite in plain language.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="180" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">170</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">179</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -6499,6 +6756,24 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
         <div><dt>Outcome Bias</dt><dd>Judging a decision by its result instead of by the quality of the reasoning and process behind it.</dd></div>
         <div><dt>Tick Value</dt><dd>The dollar value of the smallest allowed price move in a futures contract.</dd></div>
         <div><dt>Notional Value</dt><dd>The total value of the exposure a position controls: price multiplied by the contract multiplier and quantity.</dd></div>
+              <div><dt>Exercise / Assignment</dt><dd>Exercise is the holder using an option&rsquo;s right; assignment is the seller being obligated to fulfill it.</dd></div>
+        <div><dt>American vs. European Option</dt><dd>American options can be exercised any time before expiry; European options only at expiry.</dd></div>
+        <div><dt>Pin Risk</dt><dd>The uncertainty of assignment when the underlying closes very near a short option&rsquo;s strike at expiration.</dd></div>
+        <div><dt>Value at Risk (VaR)</dt><dd>A loss level not expected to be exceeded over a horizon at a given confidence. It says nothing about losses beyond that level.</dd></div>
+        <div><dt>Expected Shortfall (CVaR)</dt><dd>The average loss on the days that exceed the VaR threshold.</dd></div>
+        <div><dt>Stress Test</dt><dd>Estimating losses under specified adverse scenarios rather than from historical statistics.</dd></div>
+        <div><dt>ADR</dt><dd>American Depositary Receipt: a US-listed certificate representing shares of a foreign company.</dd></div>
+        <div><dt>Currency Hedge</dt><dd>A position or fund feature that offsets exchange-rate moves on foreign holdings.</dd></div>
+        <div><dt>Hedge</dt><dd>A position that offsets another position&rsquo;s risk, at some cost.</dd></div>
+        <div><dt>Basis Risk</dt><dd>The risk that a hedge does not move one-for-one with what it is meant to protect.</dd></div>
+        <div><dt>Memecoin</dt><dd>A token valued mainly on attention and social momentum rather than cash flows or a product.</dd></div>
+        <div><dt>Airdrop</dt><dd>A free distribution of tokens to wallets, often to bootstrap a network. Also a common scam lure.</dd></div>
+        <div><dt>mNAV / Premium to NAV</dt><dd>How a company&rsquo;s market value compares with the net asset value of what it holds, such as bitcoin.</dd></div>
+        <div><dt>Process Goal</dt><dd>A goal about behavior you control (following rules, logging trades) rather than profit.</dd></div>
+        <div><dt>FOMC</dt><dd>The Federal Open Market Committee, which sets US monetary policy; meets eight times a year.</dd></div>
+        <div><dt>Dot Plot</dt><dd>The Fed&rsquo;s chart of each member&rsquo;s projected path for interest rates, published quarterly.</dd></div>
+        <div><dt>10-K / 10-Q / 8-K</dt><dd>US annual report, quarterly report and current-event report filed with the SEC.</dd></div>
+        <div><dt>Form 4</dt><dd>An SEC filing reporting trades by company insiders, due within two business days.</dd></div>
       </dl>
     </section>
       </div>
@@ -6513,7 +6788,7 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 170 read</span>
+      <span id="progressLabel" class="mono">0 / 179 read</span>
     </div>
     <div class="toc-filter-wrap">
       <input type="search" id="tocFilter" class="mono" placeholder="Filter lessons&hellip;" aria-label="Filter lessons by title">
@@ -6690,7 +6965,16 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       <li><a href="#barreplay"><span class="n mono">167</span> Bar Replay Practice</a></li>
       <li><a href="#processoutcome"><span class="n mono">168</span> Process vs. Outcome</a></li>
       <li><a href="#futuresspecs"><span class="n mono">169</span> Futures Specs &amp; Ticks</a></li>
-      <li><a href="#glossary"><span class="n mono">170</span> Glossary</a></li>
+      <li><a href="#optionsassignment"><span class="n mono">170</span> Exercise &amp; Assignment</a></li>
+      <li><a href="#valueatrisk"><span class="n mono">171</span> VaR &amp; Stress Testing</a></li>
+      <li><a href="#international"><span class="n mono">172</span> International &amp; Currency Risk</a></li>
+      <li><a href="#hedging"><span class="n mono">173</span> Hedging Basics</a></li>
+      <li><a href="#memecoins"><span class="n mono">174</span> Memecoins &amp; Airdrops</a></li>
+      <li><a href="#cryptoequities"><span class="n mono">175</span> Crypto Stocks &amp; Treasury Cos.</a></li>
+      <li><a href="#goals"><span class="n mono">176</span> Goal Setting</a></li>
+      <li><a href="#fomc"><span class="n mono">177</span> FOMC Days</a></li>
+      <li><a href="#secfilings"><span class="n mono">178</span> SEC Filings</a></li>
+      <li><a href="#glossary"><span class="n mono">179</span> Glossary</a></li>
     </ol>
   </nav>
 
