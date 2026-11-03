@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#181c15" media="(prefers-color-scheme: dark)">
   <meta property="og:type" content="website">
   <meta property="og:title" content="The Tape Reader's Notebook">
-  <meta property="og:description" content="161 bite-sized trading lessons with plain-English and Taglish explainers, a risk calculator, journal and quiz.">
+  <meta property="og:description" content="170 bite-sized trading lessons with plain-English and Taglish explainers, a risk calculator, journal and quiz.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231c231f'/%3E%3Cpath d='M9 22V14M16 24V8M23 20V12' stroke='%23d9a545' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Archivo:wght@600;700;800&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="/src/styles/main.css">
@@ -5985,10 +5985,276 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       </div>
     </div>
 
-    <div class="page" data-page="162" data-title="Glossary">
+    <div class="page" data-page="162" data-title="Earnings Options & the IV Crush">
+      <div class="page-inner">
+        <section id="ivcrush">
+      <div class="section-head"><span class="num">161</span><h2>Earnings Options &amp; the IV Crush</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="ivcrush"><span>mark read</span></label></div>
+      <p class="deck">You can be right about direction and still lose money on an earnings option. The reason is a drop in implied volatility the moment the news is out.</p>
+
+      <p>Before a known event such as earnings (Section 91), traders bid up options because the outcome is uncertain &mdash; so <b>implied volatility (IV)</b> rises (Section 129 explains implied versus realized). Once the report is released, the uncertainty is gone and IV usually drops sharply and immediately. This fall is the <b>IV crush</b>. Since an option&rsquo;s price includes a volatility component (the vega in Section 80), the option loses value even if the stock moves in your direction, as long as the move is smaller than what was priced in.</p>
+
+      <p>The market&rsquo;s <b>expected move</b> can be roughly read from the price of the at-the-money straddle (a call and put at the same strike, Section 111): if a $100 stock&rsquo;s straddle costs $6, the options are pricing about a &plusmn;6% move. To profit as a buyer, the stock typically has to move <i>more</i> than that. Many traders therefore avoid simply buying options into earnings, or use defined-risk structures such as spreads that reduce vega exposure. Selling premium collects the crush but accepts rare, large losses when the stock gaps far beyond expectations (Sections 119, 134).</p>
+
+      <p>The illustration below uses made-up round numbers. Practical habits: check IV relative to its own history; know the expected move before choosing strikes; remember the stock can gap through everything overnight; size so a total loss of the premium is acceptable (Section 17); and treat earnings as a coin-flip event, not an edge, unless your records prove otherwise (Section 160). Educational only, not a recommendation to trade options.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Illustrative call option</th><th>Value</th></tr></thead><tbody>
+<tr><td>Price before earnings (IV elevated)</td><td class="mono">$3.00</td></tr>
+<tr><td>Stock rises 3% &mdash; gain from direction (delta)</td><td class="mono">+$1.50</td></tr>
+<tr><td>IV crush after the announcement (vega loss)</td><td class="mono">&minus;$2.00</td></tr>
+<tr><td><b>Price after earnings</b></td><td class="mono">$2.50 (&minus;17%)</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>Buying a ticket to a sold-out concert is expensive because everyone wants in. The day after the show, the same ticket is worth nothing &mdash; not because the band was bad, but because the excitement is over.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Mahal ang ticket sa konsiyertong ubos na ang upuan dahil gusto ng lahat. Kinabukasan, wala nang halaga ang parehong ticket &mdash; hindi dahil pangit ang banda, kundi dahil tapos na ang kasabikan.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Right direction, wrong price: with options you must beat the market&rsquo;s expected move, not just guess the sign.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="163" data-title="Trade Management: Break-Even, Partials, Trails & Time Stops">
+      <div class="page-inner">
+        <section id="trademanagement">
+      <div class="section-head"><span class="num">162</span><h2>Trade Management: Break-Even, Partials, Trails &amp; Time Stops</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="trademanagement"><span>mark read</span></label></div>
+      <p class="deck">Entries get the attention, but what you do after you are in decides whether a good setup turns into good results. Decide it all in advance.</p>
+
+      <p>Section 35 sets the initial stop and Section 36 the targets. <b>Trade management</b> covers everything in between. The main tools: a <b>break-even stop</b> (move the stop to entry after the trade moves a set distance, such as +1R, Section 116); <b>partial profits</b> (sell a portion at a target and let the rest run); a <b>trailing stop</b> (follow price using swing lows, an ATR multiple or a moving average, Sections 10, 33); and a <b>time stop</b> (exit if the trade hasn&rsquo;t moved in the expected direction within a set number of bars or days).</p>
+
+      <p>Every tool has a price. Moving to break-even too early gets you stopped on a normal retest and removes winners; partials lower variance and help you hold the rest, but they also cut your average winner, so check the expectancy math (Section 21); trails that are tight exit before trends mature, while loose ones give back a lot. A time stop addresses something people ignore: a trade that goes nowhere still ties up capital and risk (Section 62) and often fails eventually. If the reason you entered hasn&rsquo;t played out in the time that reason should take, the premise is weaker than you thought.</p>
+
+      <p>Rules that protect you: write the management plan <i>before</i> entry; never <b>widen</b> a stop (only tighten in the direction of profit); add to winners only by rules (Section 117); and don&rsquo;t manage by emotion, since the urge to lock in a green trade or hold a red one is the psychology of Section 16. Test the management variants on your own data (Section 44) rather than copying someone else&rsquo;s, and log which rule you used on each trade (Section 26).</p>
+
+      <figure>
+        <svg viewBox="0 0 520 230" role="img" aria-label="Trade management: price rises after entry; the stop starts below entry, moves to break-even after one R, then trails beneath higher swing lows. A partial profit is taken at one R and a time stop line marks the maximum holding time.">
+  <line x1="40" y1="150" x2="480" y2="150" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" opacity="0.6"/>
+  <text x="60" y="144" text-anchor="start" class="mono" font-size="9">entry</text>
+  <polyline points="40,150 90,135 130,142 180,110 220,120 270,80 310,92 360,55 410,68 460,40" fill="none" stroke="currentColor" stroke-width="2.5"/>
+  <polyline points="40,185 130,185 135,150 220,150 225,128 310,128 315,100 410,100" fill="none" stroke="var(--bear)" stroke-width="2"/>
+  <text x="85" y="202" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">initial stop (&minus;1R)</text>
+  <text x="185" y="166" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">break-even</text>
+  <text x="375" y="116" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)">trailing stop</text>
+  <circle cx="180" cy="110" r="5" fill="var(--bull)"/>
+  <text x="180" y="98" text-anchor="middle" class="mono" font-size="9" fill="var(--bull)" font-weight="700">partial at +1R</text>
+  <line x1="320" y1="25" x2="320" y2="215" stroke="var(--accent)" stroke-width="1.2" stroke-dasharray="3 3"/>
+  <text x="320" y="20" text-anchor="middle" class="mono" font-size="9" fill="var(--accent)">time stop</text>
+</svg>
+        <figcaption>The stop starts at &minus;1R, moves to break-even after the first R, then trails higher; a partial is taken at +1R and a time stop caps how long the trade can sit.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>When climbing a mountain you set a safety rope, move it up as you climb, and also decide on a turnaround time. If you are not near the top by then, you head back.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Kapag umaakyat ng bundok, may safety rope ka, inaangat mo ito habang umaakyat, at may nakatakdang oras ng balik. Kung hindi pa malapit sa tuktok pagdating ng oras na iyon, bababa ka na.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>A plan you can state in two sentences is a plan you will follow under stress: &ldquo;Stop at X; at +1R move to break-even; trail under swing lows; exit if flat after N bars.&rdquo;</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="164" data-title="Credit Spreads & Risk Appetite">
+      <div class="page-inner">
+        <section id="creditspreads">
+      <div class="section-head"><span class="num">163</span><h2>Credit Spreads &amp; Risk Appetite</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="creditspreads"><span>mark read</span></label></div>
+      <p class="deck">Bond investors lend to companies and watch for trouble closely. The extra yield they demand is one of the better stress gauges around.</p>
+
+      <p>A <b>credit spread</b> is the extra yield a corporate bond pays over a government bond of similar maturity (Section 76). It is compensation for the risk the company might not repay. Spreads are quoted separately for <b>investment-grade</b> companies and for riskier <b>high-yield</b> (&ldquo;junk&rdquo;) issuers, which carry much wider spreads. When investors are comfortable, spreads compress; when they fear defaults or want out of risk, spreads <b>widen</b>.</p>
+
+      <p>Why traders watch: widening spreads, especially in high yield, often accompany or precede equity sell-offs, because tighter credit hurts companies that need to refinance and signals fear from professional lenders (Sections 87, 22). They resemble the VIX (Section 129) as a stress thermometer, but from the debt market. Publicly available series, such as the ICE BofA indices published through the St. Louis Fed&rsquo;s FRED database, make it easy to chart. In crypto terms, it&rsquo;s the same idea as watching funding rates and stablecoin stress (Sections 67, 82): where does the risk premium hide?</p>
+
+      <p>Use it as <b>context</b>: widening spreads argue for smaller size and tighter standards; calm, tight spreads support a healthier risk-on backdrop, but tight spreads can last a long time before a reversal, so they are not a timing tool. Spreads also move with interest rates and liquidity, not only default fears, and they can lag a sudden shock. Combine with the macro and breadth view (Sections 136, 22) and your confluence check (Section 30) rather than trading off the spread alone.</p>
+
+      <figure>
+        <svg viewBox="0 0 520 220" role="img" aria-label="A corporate credit spread stays low and stable in calm markets, then widens sharply during a stress episode before narrowing again.">
+  <polyline points="20,170 70,168 120,172 170,165 220,160 260,130 300,70 330,45 370,70 420,115 470,140 500,148" fill="none" stroke="var(--bear)" stroke-width="2.5"/>
+  <line x1="20" y1="165" x2="500" y2="165" stroke="currentColor" stroke-width="1" stroke-dasharray="4 3" opacity="0.5"/>
+  <text x="60" y="158" text-anchor="start" class="mono" font-size="9">calm: tight spread</text>
+  <text x="330" y="36" text-anchor="middle" class="mono" font-size="9" fill="var(--bear)" font-weight="700">stress: spread widens</text>
+  <text x="260" y="205" text-anchor="middle" class="mono" font-size="9">credit spread = corporate bond yield &minus; Treasury yield</text>
+</svg>
+        <figcaption>Spreads stay low while markets feel safe and balloon when lenders get nervous &mdash; a stress signal from the bond market.</figcaption>
+      </figure>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>If lending money to a friend is risky, you charge more interest. When lots of friends look shaky at once, the extra interest everyone charges jumps &mdash; that jump is the credit spread widening.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Kung mapanganib magpautang sa kaibigan, mas mataas ang singil mong tubo. Kapag maraming kaibigan ang mukhang mahina, tumataas ang dagdag na tubo &mdash; iyon ang paglapad ng credit spread.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Credit is often the &ldquo;smart money&rdquo; side of the market. If spreads and stocks disagree, that disagreement is worth noticing.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="165" data-title="Interest Rates & Valuation: The Discount Rate">
+      <div class="page-inner">
+        <section id="discountrate">
+      <div class="section-head"><span class="num">164</span><h2>Interest Rates &amp; Valuation: The Discount Rate</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="discountrate"><span>mark read</span></label></div>
+      <p class="deck">Why do stocks, especially growth stocks, wobble when interest rates move? Because a dollar later is worth less than a dollar today, and the rate sets by how much.</p>
+
+      <p>The value of any asset that pays cash in the future is, in principle, the <b>present value</b> of those payments: each future dollar is divided by (1 + r) for each year, where r is the <b>discount rate</b> &mdash; roughly the return you could earn elsewhere, plus a premium for risk. Raise r and every future payment is worth less today. Lower it and they are worth more. This is the idea behind bond pricing (Section 76), and behind discounted cash-flow thinking in stock analysis (Section 60).</p>
+
+      <p>The effect grows with distance. $100 received in two years is worth about $92.46 at a 4% rate and $89.00 at 6% &mdash; a 3.7% drop. $100 received in ten years falls from about $67.56 to $55.84, a 17% drop. So assets whose value rests on cash far in the future, such as high-growth companies and long-term bonds, are more sensitive to rate changes than companies paying cash now. That is why rate expectations and central bank decisions (Sections 53, 84) can hit growth stocks harder than value stocks (Section 75).</p>
+
+      <p>Practical use: rising-rate periods tend to pressure long-duration assets, and falling-rate hopes tend to support them, but markets trade <i>expectations</i>, not the headline rate, so a rate hike that was fully expected may do little. Also, rates are one factor among earnings, growth and sentiment, and real-world relationships are messy. Use it to understand <i>why</i> a macro release moves your market (Sections 23, 89, 157), and to be careful about trading growth names into rate decisions with big size.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>$100 received in&hellip;</th><th>PV at 4%</th><th>PV at 6%</th><th>Change</th></tr></thead><tbody>
+<tr><td>2 years</td><td class="mono">$92.46</td><td class="mono">$89.00</td><td class="mono">&minus;3.7%</td></tr>
+<tr><td>10 years</td><td class="mono">$67.56</td><td class="mono">$55.84</td><td class="mono">&minus;17.3%</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A promise of $100 next week is nearly worth $100 today; a promise of $100 in twenty years is worth far less. Higher interest rates make far-away promises shrink even faster.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Ang pangakong $100 sa susunod na linggo ay halos katumbas ng $100 ngayon; ang pangakong $100 pagkalipas ng dalawampung taon ay mas maliit ang halaga. Lalong lumiliit ang malalayong pangako kapag tumataas ang interes.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>The longer the wait for the cash, the more a rate change matters. That one idea explains a lot of macro-driven moves.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="166" data-title="Building a Watchlist & Scanning for Setups">
+      <div class="page-inner">
+        <section id="watchlist">
+      <div class="section-head"><span class="num">165</span><h2>Building a Watchlist &amp; Scanning for Setups</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="watchlist"><span>mark read</span></label></div>
+      <p class="deck">You can&rsquo;t watch everything. A short, well-chosen watchlist turns thousands of tickers into a handful you can actually know.</p>
+
+      <p>A workable pipeline: <b>universe &rarr; scan &rarr; watchlist &rarr; alerts &rarr; trade</b>. Start with a universe you understand (a market, an index, or a sector). A <b>scanner</b> or <b>screener</b> (built into most broker and charting platforms) filters it by rules; the survivors form your watchlist; you set <b>price alerts</b> at the levels where a setup would trigger (Sections 4, 126); and you only trade what meets your plan (Section 25). The watchlist is a source of candidates, never a list of trades.</p>
+
+      <p>Useful filters: <b>liquidity</b> (average daily volume and tight spreads, so you can get in and out; Sections 20, 56); <b>relative volume</b> &mdash; today&rsquo;s volume compared with that stock&rsquo;s own average, where readings well above 1 suggest unusual interest (Section 7); <b>range</b> measured by ATR (Section 33) so there&rsquo;s enough movement to trade; <b>trend and relative strength</b> (Sections 3, 130); <b>catalysts</b> such as earnings or news dates (Sections 91, 23); and structure, such as names near key levels or in a squeeze (Section 159).</p>
+
+      <p>Keep it small, roughly 10&ndash;20 names you can really track, and refresh on a schedule (end of day or pre-market, Section 65), dropping names that no longer qualify. Write why each ticker is on the list in one line. Beware of scanner overload: more output doesn&rsquo;t mean more edge, and chasing the day&rsquo;s biggest movers often means buying the tail of a move (Section 127). Record how your scan-sourced trades perform in the journal (Section 26) and tune the filters from that data.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Filter</th><th>Why it matters</th></tr></thead><tbody>
+<tr><td>Average volume</td><td>Liquidity: you can enter and exit without moving price</td></tr>
+<tr><td>Relative volume</td><td>Unusual interest compared with normal</td></tr>
+<tr><td>ATR / range</td><td>Enough movement to reach a target</td></tr>
+<tr><td>Trend / relative strength</td><td>Trade with leaders, not laggards</td></tr>
+<tr><td>Catalyst date</td><td>Avoid or plan around scheduled risk</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>A fisherman doesn&rsquo;t cast into the whole ocean. They pick a few good spots and watch them patiently until the fish show up.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Hindi inihahagis ng mangingisda ang pamingwit sa buong karagatan. Pumipili siya ng ilang magagandang lugar at matiyagang binabantayan hanggang dumating ang isda.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>If you can&rsquo;t say in one line why a ticker is on your watchlist, remove it.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="167" data-title="Dividend Yield, Payout Ratio & Yield Traps">
+      <div class="page-inner">
+        <section id="dividendyield">
+      <div class="section-head"><span class="num">166</span><h2>Dividend Yield, Payout Ratio &amp; Yield Traps</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="dividendyield"><span>mark read</span></label></div>
+      <p class="deck">A high yield looks like a bargain &mdash; until you notice it is high because the price collapsed. Learn to tell income from a warning sign.</p>
+
+      <p><b>Dividend yield</b> = annual dividend per share &divide; current share price. A $2 annual dividend on a $50 stock is a 4% yield. Because the price is in the denominator, <i>a falling price raises the yield</i>: if the same stock drops to $25, the yield doubles to 8% without the company doing anything generous. That is why the screen sorted by highest yield is full of troubled companies. Dividends are paid from profits and cash (Sections 74, 137), and the board can cut them at any time.</p>
+
+      <p>Check sustainability. The <b>payout ratio</b> (dividends &divide; earnings, or better, dividends &divide; free cash flow) shows how much of the profit is paid out; a ratio near or above 100% means the dividend is being funded by something other than earnings, such as debt. Look at the trend in earnings and cash flow, the debt load on the balance sheet (Section 92), and the dividend&rsquo;s history. A <b>yield trap</b> is a high yield that is about to be cut; when the dividend is cut, the price commonly drops further.</p>
+
+      <p>Keep perspective: <b>total return</b> = price change + dividends. A 5% yield with a 10% price fall is a loss. Dividends aren&rsquo;t free money, since the price typically drops by about the dividend on the ex-date (Section 74). For income investors the better question is dividend growth and coverage, not the headline yield, and diversified funds (Sections 52, 88) reduce single-company risk. This sits on the investing side (Section 64), and tax treatment varies by country and account type. Educational, not a recommendation.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Illustrative stock</th><th>Annual dividend</th><th>Price</th><th>Yield</th></tr></thead><tbody>
+<tr><td>Before the drop</td><td class="mono">$2.00</td><td class="mono">$50</td><td class="mono">4%</td></tr>
+<tr><td>After a 50% price fall</td><td class="mono">$2.00</td><td class="mono">$25</td><td class="mono">8% &mdash; a warning, not a bargain</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>If a shop suddenly offers a giant discount on everything, ask why. Sometimes it is a sale; sometimes the shop is closing.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Kung biglang may napakalaking diskwento ang tindahan sa lahat ng paninda, itanong kung bakit. Minsan sale lang; minsan magsasara na pala ang tindahan.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Always look at what the yield was a year ago. A yield that doubled because the price halved is not a raise.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="168" data-title="Bar Replay & Deliberate Practice">
+      <div class="page-inner">
+        <section id="barreplay">
+      <div class="section-head"><span class="num">167</span><h2>Bar Replay &amp; Deliberate Practice</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="barreplay"><span>mark read</span></label></div>
+      <p class="deck">You can get hundreds of reps in a weekend by replaying old charts one candle at a time &mdash; if you do it honestly.</p>
+
+      <p><b>Bar replay</b> (offered by many charting platforms) hides the future of a historical chart and reveals it candle by candle, as if the market were live. You make your decision, then step forward and see what happened. Compared with waiting for live setups, it compresses experience: you can see 50 or 100 examples of one setup in an evening, which builds pattern recognition and tests whether the rules you wrote actually work (Section 44).</p>
+
+      <p>Make it <b>deliberate practice</b>, not video-game clicking. Pick one setup (for example the pullback in Section 141). Write exact rules for entry, stop and target <i>first</i>. Replay at random starting points, not famous moments, and log each trade in a journal with the R result (Sections 26, 116): date, setup, planned stop, exit, and a process grade. After 50&ndash;100 trades, review the stats and the mistakes (Sections 39, 118). Then change one thing at a time and repeat.</p>
+
+      <p>Know its limits. It has <b>no emotions</b> and no real money on the line, so it can&rsquo;t train the discipline you need live (Sections 16, 58). Fills are perfect, with no slippage or spread (Section 56). It is easy to <b>peek</b> at the future or to remember historical outcomes, which creates lookahead bias, and to cherry-pick clean examples. Treat results as a rough upper bound, then validate with demo and small live size (Sections 58, 160). Use a printed or written rulebook so you aren&rsquo;t deciding on the fly.</p>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>It is like practicing free throws a thousand times in the gym before the real game. Real games add crowd noise, which the gym can&rsquo;t simulate.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Parang pag-eensayo ng libreng tira ng isang libong beses sa gym bago ang tunay na laro. May ingay ng manonood sa totoong laro na hindi kayang gayahin ng gym.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Write the rules, replay without peeking, log every trade including the ones you hate. A practice log with only winners proves nothing.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="169" data-title="Process Over Outcome: Judging Decisions, Not Results">
+      <div class="page-inner">
+        <section id="processoutcome">
+      <div class="section-head"><span class="num">168</span><h2>Process Over Outcome: Judging Decisions, Not Results</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="processoutcome"><span>mark read</span></label></div>
+      <p class="deck">A profitable trade can be a bad decision and a losing one can be a good decision. Mixing them up is how traders learn the wrong lessons.</p>
+
+      <p>Markets are probabilistic, so any single trade&rsquo;s result is partly luck (Section 160). <b>Outcome bias</b> &mdash; judging a decision by how it turned out &mdash; is a version of the &ldquo;resulting&rdquo; problem described by decision researchers. A trade that broke every rule but made money teaches you to break rules; a trade that followed the plan and lost can make you doubt a sound approach (Section 110). Over many trades, process drives results; over a few, luck can dominate.</p>
+
+      <p>Grade <b>process</b> instead. After each trade, ask yes/no questions: was it a setup in my plan (Section 25)? Did I size to my risk rule (Section 17)? Did I place the stop where the idea was invalidated (Section 35)? Did I follow my management plan (Section 162)? Did I stay out of impulse trades (Section 143)? Score it A to F on process, separately from P/L, and record both in your journal (Section 26). Four quadrants result: good process/good outcome (repeat), good process/bad outcome (keep going), bad process/good outcome (dangerous &mdash; you got lucky), bad process/bad outcome (fix).</p>
+
+      <p>At the weekly review (Section 39), count how many trades were good process, and look at the <i>process</i> grades before looking at the dollars. Don&rsquo;t change the strategy from a handful of results; change it only when a large sample shows a problem, or when the plan itself had a flaw. This approach also protects your emotions (Sections 99, 101): you can feel okay after a loss you handled well, and uneasy after a lucky win. Reward the behavior you want, and the P/L follows over time.</p>
+
+      <div class="tablewrap"><table><thead><tr><th></th><th>Good outcome</th><th>Bad outcome</th></tr></thead><tbody>
+<tr><td><b>Good process</b></td><td>Deserved win &mdash; repeat it</td><td>Normal variance &mdash; keep going</td></tr>
+<tr><td><b>Bad process</b></td><td>Dumb luck &mdash; dangerous to reinforce</td><td>Deserved loss &mdash; fix the habit</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>If you cross the street without looking and nothing happens, it was still a bad decision. If you look carefully and a rare accident happens, it was still a good one.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Kung tumawid ka nang hindi tumitingin at walang nangyari, maling desisyon pa rin iyon. Kung maingat kang tumingin at may bihirang aksidente, tamang desisyon pa rin iyon.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Make &ldquo;process grade&rdquo; a column in your journal, right next to P/L. The gap between the two columns is where the learning is.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="170" data-title="Futures Contract Specs: Ticks, Point Value & Sizing">
+      <div class="page-inner">
+        <section id="futuresspecs">
+      <div class="section-head"><span class="num">169</span><h2>Futures Contract Specs: Ticks, Point Value &amp; Sizing</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="futuresspecs"><span>mark read</span></label></div>
+      <p class="deck">A futures position isn&rsquo;t sized in shares. It&rsquo;s sized in ticks and point values, and the numbers decide whether a trade fits your account.</p>
+
+      <p>Every futures contract has a <b>contract size</b>, a <b>tick</b> (the smallest price move) and a <b>tick value</b> (dollars per tick), so the dollar value of a point is fixed. Examples at the time of writing (always verify on the exchange&rsquo;s own contract specification page, as these can change): CME Bitcoin futures represent 5 BTC, with a minimum tick of $5 per BTC, or $25 per tick; Micro Bitcoin futures represent 0.1 BTC, $0.50 per tick; E-mini S&amp;P 500 futures pay $50 per index point (0.25-point tick = $12.50); Micro E-mini pays $5 per point ($1.25 per tick).</p>
+
+      <p>To size a trade, convert your stop into dollars <b>per contract</b>: risk per contract = stop distance &times; contract multiplier. Then contracts = dollar risk &divide; risk per contract (Section 17), rounded <b>down</b>. With a $10,000 account risking 1% ($100) and a Bitcoin stop $800 away: one full contract risks $800 &times; 5 = $4,000, far above $100, so it can&rsquo;t be traded at your rule; one Micro risks $800 &times; 0.1 = $80, which fits. That is exactly why micro contracts matter for smaller accounts (Section 144).</p>
+
+      <p>Related mechanics: <b>initial and maintenance margin</b> per contract are set by the exchange and broker and change with volatility; margin is a deposit, not a cost, but it sets how big a loss triggers a margin call (Sections 18, 66). <b>Notional value</b> (price &times; multiplier) is your true exposure, often many times the margin. Contracts expire and roll (Sections 14, 41), and tax treatment can differ (Section 38). Commodity contracts follow the same logic (Section 59). Check the spec sheet before trading any new contract.</p>
+
+      <div class="tablewrap"><table><thead><tr><th>Contract</th><th>Multiplier</th><th>Tick</th><th>Tick value</th></tr></thead><tbody>
+<tr><td>CME Bitcoin</td><td class="mono">5 BTC</td><td class="mono">$5 / BTC</td><td class="mono">$25</td></tr>
+<tr><td>CME Micro Bitcoin</td><td class="mono">0.1 BTC</td><td class="mono">$5 / BTC</td><td class="mono">$0.50</td></tr>
+<tr><td>E-mini S&amp;P 500</td><td class="mono">$50 / point</td><td class="mono">0.25 pt</td><td class="mono">$12.50</td></tr>
+<tr><td>Micro E-mini S&amp;P 500</td><td class="mono">$5 / point</td><td class="mono">0.25 pt</td><td class="mono">$1.25</td></tr></tbody></table></div>
+
+      <div class="simple">
+        <div class="lbl">Explain it like I'm 5</div>
+        <p>In a candy shop that sells by the bag, you have to know how many candies are in each bag before you decide how many bags you can afford.</p>
+        <div class="tl"><b>Sa Tagalog:</b> Sa tindahan ng kendi na nagbebenta kada supot, kailangan mong alamin kung ilang kendi ang laman ng bawat supot bago mo malaman kung ilang supot ang kaya mong bilhin.</div>
+      </div>
+
+      <div class="note"><b>Field note</b>Run the one-contract risk number before you look at a setup. If a single contract already breaks your risk rule, the answer is a smaller contract, not a wider risk.</div>
+    </section>
+      </div>
+    </div>
+
+    <div class="page" data-page="171" data-title="Glossary">
       <div class="page-inner">
         <section id="glossary">
-      <div class="section-head"><span class="num">161</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
+      <div class="section-head"><span class="num">170</span><h2>Glossary</h2><label class="mark-read"><input type="checkbox" class="progress-check" data-section="glossary"><span>mark read</span></label></div>
       <p class="deck">Quick reference for terms used above.</p>
       <dl class="glossary">
         <div><dt>OHLC</dt><dd>Open, High, Low, Close — the four prices that define one candle.</dd></div>
@@ -6220,6 +6486,19 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
         <div><dt>Slashing</dt><dd>A penalty that removes part of a validator&rsquo;s staked coins for misbehavior or downtime.</dd></div>
         <div><dt>Volatility Squeeze</dt><dd>A period of unusually narrow bands and small ranges that often precedes a larger move, direction unknown.</dd></div>
         <div><dt>Standard Error</dt><dd>The typical sampling error of a statistic. It shrinks with the square root of the sample size.</dd></div>
+              <div><dt>IV Crush</dt><dd>The sharp drop in implied volatility after a known event such as earnings, which can reduce option prices even when the stock moves your way.</dd></div>
+        <div><dt>Expected Move</dt><dd>The move implied by option prices, roughly the price of the at-the-money straddle.</dd></div>
+        <div><dt>Time Stop</dt><dd>An exit rule that closes a trade that has not worked within a set number of bars or days.</dd></div>
+        <div><dt>Credit Spread</dt><dd>The extra yield a corporate bond pays over a government bond of similar maturity; widening signals stress.</dd></div>
+        <div><dt>Discount Rate</dt><dd>The rate used to convert future cash flows into present value. Higher rates lower present values, especially for distant cash flows.</dd></div>
+        <div><dt>Relative Volume</dt><dd>Today&rsquo;s volume compared with a security&rsquo;s own average volume; high readings indicate unusual interest.</dd></div>
+        <div><dt>Dividend Yield</dt><dd>Annual dividend per share divided by current share price.</dd></div>
+        <div><dt>Payout Ratio</dt><dd>The share of earnings (or free cash flow) paid out as dividends. Near or above 100% is a warning.</dd></div>
+        <div><dt>Yield Trap</dt><dd>A very high dividend yield caused by a collapsed price, often followed by a dividend cut.</dd></div>
+        <div><dt>Bar Replay</dt><dd>A chart mode that reveals historical price candle by candle for practice and manual testing.</dd></div>
+        <div><dt>Outcome Bias</dt><dd>Judging a decision by its result instead of by the quality of the reasoning and process behind it.</dd></div>
+        <div><dt>Tick Value</dt><dd>The dollar value of the smallest allowed price move in a futures contract.</dd></div>
+        <div><dt>Notional Value</dt><dd>The total value of the exposure a position controls: price multiplied by the contract multiplier and quantity.</dd></div>
       </dl>
     </section>
       </div>
@@ -6234,7 +6513,7 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
     </div>
     <div class="rail-progress">
       <div class="rail-progress-track"><div class="rail-progress-fill" id="progressFillDrawer"></div></div>
-      <span id="progressLabel" class="mono">0 / 161 read</span>
+      <span id="progressLabel" class="mono">0 / 170 read</span>
     </div>
     <div class="toc-filter-wrap">
       <input type="search" id="tocFilter" class="mono" placeholder="Filter lessons&hellip;" aria-label="Filter lessons by title">
@@ -6402,7 +6681,16 @@ FRI  8:30am ET   Flash PMI (Manufacturing &amp; Services) ... MEDIUM impact<br>
       <li><a href="#staking"><span class="n mono">158</span> Staking &amp; Crypto Yield</a></li>
       <li><a href="#volsqueeze"><span class="n mono">159</span> Volatility Squeeze</a></li>
       <li><a href="#statistics"><span class="n mono">160</span> Statistics &amp; Luck</a></li>
-      <li><a href="#glossary"><span class="n mono">161</span> Glossary</a></li>
+      <li><a href="#ivcrush"><span class="n mono">161</span> Earnings &amp; IV Crush</a></li>
+      <li><a href="#trademanagement"><span class="n mono">162</span> Trade Management</a></li>
+      <li><a href="#creditspreads"><span class="n mono">163</span> Credit Spreads</a></li>
+      <li><a href="#discountrate"><span class="n mono">164</span> Rates &amp; Valuation</a></li>
+      <li><a href="#watchlist"><span class="n mono">165</span> Watchlists &amp; Scanning</a></li>
+      <li><a href="#dividendyield"><span class="n mono">166</span> Dividend Yield</a></li>
+      <li><a href="#barreplay"><span class="n mono">167</span> Bar Replay Practice</a></li>
+      <li><a href="#processoutcome"><span class="n mono">168</span> Process vs. Outcome</a></li>
+      <li><a href="#futuresspecs"><span class="n mono">169</span> Futures Specs &amp; Ticks</a></li>
+      <li><a href="#glossary"><span class="n mono">170</span> Glossary</a></li>
     </ol>
   </nav>
 
